@@ -18,6 +18,7 @@ const App = () => {
     <>
       <GlobalStyle />
       <Map />
+      <HamburgerMenu />
       <Search />
     </>
   );
