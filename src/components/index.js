@@ -1,7 +1,8 @@
 import { hot } from 'react-hot-loader/root';
 import React from 'react';
 import Map from './Map';
-import Search from './Search';
+import HamburgerMenu from './HamburgerMenu';
+import SideBar from './SideBar';
 import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
@@ -19,7 +20,7 @@ const App = () => {
       <GlobalStyle />
       <Map />
       <HamburgerMenu />
-      <Search />
+      <SideBar />
     </>
   );
 }

@@ -12,3 +12,9 @@ export const defaultValue = {
     disableDefaultUI: true
   }
 }
+
+export const defaultStyle = {
+  sideBar: {
+    linearColor: '#D3D3D3',
+  }
+}

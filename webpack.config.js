@@ -20,6 +20,9 @@ module.exports = {
       }
     ]
   },
+  devServer: {
+    publicPath: '/'
+  },
   plugins: [
     new HtmlWebPackPlugin({
       template: 'public/index.html'
