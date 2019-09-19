@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import { GoogleMap, useLoadScript, Marker } from '@react-google-maps/api';
-import { defaultValue } from '../../config';
+import { defaultMapOptions } from '../../config';
 import styled from 'styled-components';
 
 const MapContainer = styled.div`
@@ -9,7 +9,7 @@ const MapContainer = styled.div`
 `
 
 const Map = () => {
-  const { center, zoom, mapStyle, options } = defaultValue;
+  const { center, zoom, mapStyle, options } = defaultMapOptions;
   const [curCenter, setCurCenter] = useState(center);
   const [curMarker, setCurMarker] = useState();
    

@@ -1,4 +1,4 @@
-export const defaultValue = {
+export const defaultMapOptions = {
   center: {
     lat: 37.531058,
     lng: 126.929067
@@ -14,7 +14,11 @@ export const defaultValue = {
 }
 
 export const defaultStyle = {
-  sideBar: {
-    linearColor: '#D3D3D3',
-  }
+  linearColor: '#D3D3D3',
+}
+
+export const formOptionList = {
+  INDOOR_OR_OUTDOOR: ['실내코트', '야외코트'],
+  PLAYER_LEVEL: ['상', '중상', '중', '중하', '하'],
+  TRANSPORTATION: ['버스', '전철']
 }

@@ -4,8 +4,13 @@ import Map from './Map';
 import HamburgerMenu from './HamburgerMenu';
 import SideBar from './SideBar';
 import { createGlobalStyle } from 'styled-components';
+import PlaceAddition from './PlaceAddition';
 
 const GlobalStyle = createGlobalStyle`
+  *{
+   box-sizing: border-box; 
+  }
+  
   body {
     background-color: lightblue;
     width: 100%;
@@ -21,6 +26,7 @@ const App = () => {
       <Map />
       <HamburgerMenu />
       <SideBar />
+      <PlaceAddition />
     </>
   );
 }

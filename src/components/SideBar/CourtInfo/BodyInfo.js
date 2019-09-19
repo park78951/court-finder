@@ -1,12 +1,16 @@
-import React from 'react'
+import React from 'react';
+import { defaultStyle } from '../../../config';
 import styled from 'styled-components';
 
 const BodyInfoWrapper = styled.div`
   flex: 1;
   width: 100%;
+  border: solid 1px ${ ({ linearColor }) => linearColor ? linearColor : '#D3D3D3' };
 `
 
 const BodyInfo = () => {
+  const { linearColor } = defaultStyle
+
   return (
     <BodyInfoWrapper>
       <a href='https://www.google.com' target="_blank">www.google.com</a>

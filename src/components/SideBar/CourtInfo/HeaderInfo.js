@@ -5,16 +5,15 @@ import { defaultStyle } from '../../../config';
 const HeaderWrapper = styled.div`
   height: 220px;
   width: 100%;
-  box-sizing: border-box;
   background-color: orange;
   border: solid 1px ${ ({ linearColor }) => linearColor ? linearColor : '#D3D3D3' };
 `
 
 const HeaderInfo = () => {
-  const { sideBar } = defaultStyle;
+  const { linearColor } = defaultStyle;
 
   return (
-    <HeaderWrapper borderColor={ sideBar } >
+    <HeaderWrapper borderColor={ linearColor } >
       <div>
         <div>뒤로</div>
         <h2>웨스트 코스트 농구장</h2>
