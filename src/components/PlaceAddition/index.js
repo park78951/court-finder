@@ -1,10 +1,12 @@
-import React from 'react'
-import CustomDropDown from '../../lib/CustomDropDown';
+import React from 'react';
 import { 
   formOptionList, 
-  defaultStyle,
+  buttonTheme
 } from '../../config';
-import styled from 'styled-components';
+import CustomDropDown from '../lib/DropDown';
+import CustomButton from '../lib/Button';
+import styled, { ThemeProvider } from 'styled-components';
+
 
 const AdditionFormWrapper = styled.div`
   width: 500px;
@@ -23,7 +25,7 @@ const AdditionFormWrapper = styled.div`
   input {
     outline: 0;
     border-width: 0 0 2px;
-    border-color: ${({ underlineColor }) => underlineColor ? underlineColor : '#D3D3D3' };
+    border-color: #D3D3D3;
     width: 100%;
     height: 40px;
     font-size: 1.1rem;
@@ -40,34 +42,45 @@ const AdditionFormWrapper = styled.div`
       width: 200px;
     }
   }
-`
+`;
 
 const PlaceAddition = () => {
   const { INDOOR_OR_OUTDOOR, PLAYER_LEVEL, TRANSPORTATION } = formOptionList;
-  const { linearColor } = defaultStyle
 
   return (
-    <AdditionFormWrapper underlineColor={ linearColor } >
-      <h1>장소추가</h1>
-      <form>
-        <p>장소명</p>
-        <input placeholder='ex) 해운대 농구코트' />
-        <p>실내외 여부</p>
-        <CustomDropDown optionValues={ INDOOR_OR_OUTDOOR } />
-        <p>방문 농구인 Level</p>
-        <CustomDropDown optionValues={ PLAYER_LEVEL } />
-        <p>유/무료 여부</p>
-        <input placeholder='ex) 유료' />
-        <p>교통편</p>
-        <div className='dropdown_input'>
-          <CustomDropDown optionValues={ TRANSPORTATION } />
-          <input placeholder='ex) 3004번 / 2호선' />
-        </div>
+    <ThemeProvider theme={ buttonTheme }>
+      <AdditionFormWrapper>
+        <h1>장소추가</h1>
+        <form>
+          <p>장소명</p>
+          <input placeholder='ex) 해운대 농구코트' />
+          <p>실내외 여부</p>
+          <CustomDropDown optionValues={ INDOOR_OR_OUTDOOR } />
+          <p>방문 농구인 Level</p>
+          <CustomDropDown optionValues={ PLAYER_LEVEL } />
+          <p>유/무료 여부</p>
+          <input placeholder='ex) 유료' />
+          <p>교통편</p>
+          <div className='dropdown_input'>
+            <CustomDropDown optionValues={ TRANSPORTATION } />
+            <input placeholder='ex) 3004번 / 2호선' />
+          </div>
+          <div>
+            <CustomButton>
+              등록
+            </CustomButton>
+            <CustomButton 
+              color='cancel'
+            >
+              취소
+            </CustomButton>
+          </div>
 
-      </form>
-      
-    </AdditionFormWrapper>
-  )
-}
+        </form>
+        
+      </AdditionFormWrapper>
+    </ThemeProvider>
+  );
+};
 
 export default PlaceAddition;

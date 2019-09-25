@@ -1,4 +1,4 @@
-const path = require('path')
+const path = require('path');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
 const dotenv = require('dotenv')
@@ -31,4 +31,4 @@ module.exports = {
       KEY: dotenv.parsed.GOOGLE_API_KEY
     })
   ]
-}
+};

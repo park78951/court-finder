@@ -17,7 +17,7 @@ const GlobalStyle = createGlobalStyle`
     height: 100%;
     margin: 0;
   }
-`
+`;
 
 const App = () => {
   return (
@@ -29,6 +29,6 @@ const App = () => {
       <PlaceAddition />
     </>
   );
-}
+};
 
 export default hot(App);

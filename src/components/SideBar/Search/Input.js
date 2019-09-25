@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import styled from 'styled-components';
 
 const InputContainer = styled.div`
@@ -19,7 +19,7 @@ const InputContainer = styled.div`
     }
   }
 
-`
+`;
 
 const Input = () => {
   return (
@@ -31,7 +31,7 @@ const Input = () => {
         />
       </form>
     </InputContainer>
-  )
-}
+  );
+};
 
 export default Input;

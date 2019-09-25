@@ -11,7 +11,7 @@ top: 0;
 background-color: white;
 width: 420px;
 height: 100vh;
-`
+`;
 
 const SideBar = () => {
   return (
@@ -20,6 +20,6 @@ const SideBar = () => {
       <CourtInfo />
     </SideBarWrapper>
   );
-}
+};
 
 export default SideBar;

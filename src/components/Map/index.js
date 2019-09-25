@@ -6,11 +6,11 @@ import styled from 'styled-components';
 const MapContainer = styled.div`
   height: 100vh;
   width: 100%;
-`
+`;
 
 const Map = () => {
   const { center, zoom, mapStyle, options } = defaultMapOptions;
-  const [curCenter, setCurCenter] = useState(center);
+  const [curCenter, ] = useState(center);
   const [curMarker, setCurMarker] = useState();
    
   const { isLoaded, loadError } = useLoadScript({
@@ -19,11 +19,7 @@ const Map = () => {
 
   const clickMapHandler = ({ latLng }) => {
     setCurMarker(latLng.toJSON());
-  }
-
-  const popupContextMenu = e => {
-    console.log(e);
-  }
+  };
 
   const moveMarker = useMemo(
     () => {
@@ -32,10 +28,10 @@ const Map = () => {
           key={ Date.now() }
           position={ curMarker }
         />
-      )
+      );
     },
     [curMarker]
-  )
+  );
 
   const renderMap = () => {
     return (
@@ -51,14 +47,14 @@ const Map = () => {
           { moveMarker }
         </GoogleMap>
       </MapContainer>
-    )
-  }
+    );
+  };
 
   if(loadError) {
-    return <div>Map cannot be loaded right now, sorry.</div>
+    return <div>Map cannot be loaded right now, sorry.</div>;
   }
   
-  return isLoaded ? renderMap() : '<Spinner />'
-}
+  return isLoaded ? renderMap() : '<Spinner />';
+};
 
 export default Map;

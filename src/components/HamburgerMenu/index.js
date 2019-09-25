@@ -12,14 +12,14 @@ const HamburgerWrapper = styled.div`
   width: 60px;
   height: 60px;
   z-index: 10;
-`
+`;
 
 const HamburgerMenu = () => {
   return (
     <HamburgerWrapper>
       <FaBars size={40} />
     </HamburgerWrapper>
-  )
-}
+  );
+};
 
 export default HamburgerMenu;

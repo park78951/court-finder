@@ -1,0 +1,40 @@
+{
+  "body": [{
+    "locationName": "웨스트 코스트 농구장",
+    "coordinate": {
+      "lat": 35.159743,
+      "lng": 129.162214
+    },
+    "averagePoint": 4.7,
+    "recommendation": 304,
+    "address": {
+      "city": "부산광역시",
+      "old": {
+        "gu": "해운대구",
+        "dong": "중동",
+        "rest": "1439-3"
+      },
+      "new": {
+        "gu": "해운대구",
+        "street": ""
+      }
+    },
+    "web": "",
+    "phone": "051-000-9999",
+    "fee": {
+      "amount": "free",
+      "time": "day"
+    },
+    "indoorOutdoor": "outdoor",
+    "availableTime": {
+      "open": 8,
+      "close": 23
+    },
+    "transportation": {
+      "method": "버스",
+      "detail": "부산 1호선"
+    },
+    "parkingLot": true,
+    "tag": ["부산농구장", "부산중심"]
+  }]
+}

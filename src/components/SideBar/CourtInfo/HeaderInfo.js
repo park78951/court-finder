@@ -1,19 +1,16 @@
-import React from 'react'
+import React from 'react';
 import styled from 'styled-components';
-import { defaultStyle } from '../../../config';
 
 const HeaderWrapper = styled.div`
   height: 220px;
   width: 100%;
   background-color: orange;
-  border: solid 1px ${ ({ linearColor }) => linearColor ? linearColor : '#D3D3D3' };
-`
+  border: solid 1px #D3D3D3;
+`;
 
 const HeaderInfo = () => {
-  const { linearColor } = defaultStyle;
-
   return (
-    <HeaderWrapper borderColor={ linearColor } >
+    <HeaderWrapper>
       <div>
         <div>뒤로</div>
         <h2>웨스트 코스트 농구장</h2>
@@ -25,7 +22,7 @@ const HeaderInfo = () => {
         <div>리뷰</div>
       </div>
     </HeaderWrapper>
-  )
-}
+  );
+};
 
 export default HeaderInfo;

@@ -8,7 +8,7 @@ const DropDown = styled.select`
   border-radius: 5px;
   font-weight: bolder;
   font-size: 1rem;
-`
+`;
 
 const CustomDropDown = ({ optionValues }) => {
   const selectOptions = optionValues.map( optionValue => {
@@ -21,7 +21,7 @@ const CustomDropDown = ({ optionValues }) => {
     <DropDown>
       { selectOptions }
     </DropDown>
-  )
-}
+  );
+};
 
 export default CustomDropDown;

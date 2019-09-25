@@ -11,14 +11,17 @@ export const defaultMapOptions = {
   options: {
     disableDefaultUI: true
   }
-}
+};
 
-export const defaultStyle = {
-  linearColor: '#D3D3D3',
-}
+export const buttonTheme = {
+  colors: {
+    acceptance: '#0d98ba',
+    cancel: '#DC143C'
+  }
+};
 
 export const formOptionList = {
   INDOOR_OR_OUTDOOR: ['실내코트', '야외코트'],
   PLAYER_LEVEL: ['상', '중상', '중', '중하', '하'],
   TRANSPORTATION: ['버스', '전철']
-}
+};
