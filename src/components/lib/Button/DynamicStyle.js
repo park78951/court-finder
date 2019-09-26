@@ -19,8 +19,11 @@ export const colorStyles = css`
 export const sizeStyles = css`
   ${ ({ size }) => 
     size === 'large' && css`
-      height: 2.25rem;
-      font-size: 1rem;
+      height: 2.5rem;
+      width: 13rem;
+      font-size: 1.25rem;
+      letter-spacing: 1em;
+      text-indent: 1em;
     `
   // eslint-disable-next-line indent
   }
@@ -28,7 +31,10 @@ export const sizeStyles = css`
   ${ ({ size }) => 
     size === 'medium' && css`
       height: 2.25rem;
+      width: 9rem;
       font-size: 1rem;
+      letter-spacing: 0.5em;
+      text-indent: 0.5em;
     `
     // eslint-disable-next-line indent
   }
@@ -37,6 +43,7 @@ export const sizeStyles = css`
     size === 'small' && css`
       height: 1.75rem;
       font-size: 0.875rem;
+      width: 5rem;
     `
     // eslint-disable-next-line indent
   }

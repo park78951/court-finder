@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import { sizeStyles, colorStyles } from './DynamicStyle';
 
 const StyledButton = styled.button`
-  display: inline-flex;
   outline: none;
   border: none;
   border-radius: 4px;
@@ -16,7 +15,6 @@ const StyledButton = styled.button`
   ${colorStyles}
 
   ${sizeStyles}
-
 `;
 
 const CustomButton = ({ color, size, children, ...rest }) => {
