@@ -3,8 +3,9 @@ import React from 'react';
 import Map from './Map';
 import HamburgerMenu from './HamburgerMenu';
 import SideBar from './SideBar';
-import { createGlobalStyle } from 'styled-components';
 import PlaceAddition from './PlaceAddition';
+import CourtStore from '../storage/CourtStore';
+import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
   *{
@@ -23,10 +24,12 @@ const App = () => {
   return (
     <>
       <GlobalStyle />
-      <Map />
-      <HamburgerMenu />
-      <SideBar />
-      <PlaceAddition />
+      <CourtStore>
+        <Map />
+        <HamburgerMenu />
+        <SideBar />
+        <PlaceAddition />
+      </CourtStore>
     </>
   );
 };

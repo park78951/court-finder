@@ -1,6 +1,7 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useContext, useEffect } from 'react';
 import { GoogleMap, useLoadScript, Marker } from '@react-google-maps/api';
 import { defaultMapOptions } from '../../config';
+import { CourtContext } from '../../storage/CourtStore';
 import styled from 'styled-components';
 
 const MapContainer = styled.div`
@@ -10,51 +11,53 @@ const MapContainer = styled.div`
 
 const Map = () => {
   const { center, zoom, mapStyle, options } = defaultMapOptions;
-  const [curCenter, ] = useState(center);
-  const [curMarker, setCurMarker] = useState();
+  const [curCenter, setCurCenter] = useState(center);
+  const { courtsData } = useContext(CourtContext);
+  const hasCourtsData = courtsData.length;
    
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.KEY
   });
 
-  const clickMapHandler = ({ latLng }) => {
-    setCurMarker(latLng.toJSON());
-  };
-
-  const moveMarker = useMemo(
+  const setMarker = useMemo(
     () => {
-      return (
-        <Marker
-          key={ Date.now() }
-          position={ curMarker }
-        />
-      );
+      if(!hasCourtsData) return;
+      return courtsData.map( ({ position }) => {
+        return (
+          <Marker
+            key={ Date.now() }
+            position={ position }
+          />
+        );
+      });
     },
-    [curMarker]
+    [courtsData]
   );
-
-  const renderMap = () => {
-    return (
-      <MapContainer>
-        <GoogleMap
-          zoom={ zoom }
-          center={ curCenter }
-          mapContainerStyle={ mapStyle }
-          mapTypeId='roadmap'
-          options={ options }
-          onRightClick={ clickMapHandler }
-        >
-          { moveMarker }
-        </GoogleMap>
-      </MapContainer>
-    );
-  };
+  
+  useEffect(() => {
+    if(!hasCourtsData) return;
+    const { position } = courtsData[0];
+    setCurCenter(position);
+  }, [courtsData]);
 
   if(loadError) {
     return <div>Map cannot be loaded right now, sorry.</div>;
   }
   
-  return isLoaded ? renderMap() : '<Spinner />';
+  return isLoaded && (
+    <MapContainer>
+      <GoogleMap
+        zoom={ zoom }
+        center={ curCenter }
+        mapContainerStyle={ mapStyle }
+        mapTypeId='roadmap'
+        options={ options }
+        // onRightClick={ clickMapHandler }
+      >
+        { setMarker }
+      </GoogleMap>
+    </MapContainer>
+  );
 };
 
 export default Map;
