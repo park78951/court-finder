@@ -4,7 +4,7 @@ import Map from './Map';
 import HamburgerMenu from './HamburgerMenu';
 import SideBar from './SideBar';
 import PlaceAddition from './PlaceAddition';
-import CourtStore from '../storage/CourtStore';
+import CourtStore from '../courtStore/CourtStore';
 import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`

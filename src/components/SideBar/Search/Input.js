@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { CourtContext } from '../../../storage/CourtStore';
+import { CourtContext } from '../../../courtStore/CourtStore';
 import { IoIosSearch } from 'react-icons/io';
 
 import styled from 'styled-components';

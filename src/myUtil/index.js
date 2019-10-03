@@ -1,5 +1,5 @@
-export const filterCourtsByInput = ({ keyword, courtsInfo }) => {
+export const filterCourtsByInput = ({ userInput, courtsInfo }) => {
   return courtsInfo.filter( courtInfo => {
-    return courtInfo.locationName.includes(keyword);
+    return courtInfo.locationName.includes(userInput);
   });
 };

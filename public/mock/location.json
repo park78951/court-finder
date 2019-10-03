@@ -1,40 +1,80 @@
 {
-  "body": [{
-    "locationName": "웨스트 코스트 농구장",
-    "position": {
-      "lat": 37.531058,
-      "lng": 126.929067
-    },
-    "averagePoint": 4.7,
-    "recommendation": 304,
-    "address": {
-      "city": "부산광역시",
-      "old": {
-        "gu": "해운대구",
-        "dong": "중동",
-        "rest": "1439-3"
+  "body": [
+    {
+      "locationName": "웨스트 농구장",
+      "position": {
+        "lat": 37.530802,
+        "lng": 126.929310
       },
-      "new": {
-        "gu": "해운대구",
-        "street": ""
-      }
+      "averagePoint": 4.7,
+      "recommendation": 304,
+      "address": {
+        "city": "서울시",
+        "old": {
+          "gu": "영등포구",
+          "dong": "여의도동",
+          "rest": "1439-3"
+        },
+        "new": {
+          "gu": "영등포구",
+          "street": ""
+        }
+      },
+      "web": "",
+      "phone": "051-000-9999",
+      "fee": {
+        "amount": "free",
+        "time": "day"
+      },
+      "indoorOutdoor": "outdoor",
+      "availableTime": {
+        "open": 8,
+        "close": 23
+      },
+      "transportation": {
+        "method": "버스",
+        "detail": "부산 1호선"
+      },
+      "parkingLot": true,
+      "tag": ["부산농구장", "부산중심"]
     },
-    "web": "",
-    "phone": "051-000-9999",
-    "fee": {
-      "amount": "free",
-      "time": "day"
-    },
-    "indoorOutdoor": "outdoor",
-    "availableTime": {
-      "open": 8,
-      "close": 23
-    },
-    "transportation": {
-      "method": "버스",
-      "detail": "부산 1호선"
-    },
-    "parkingLot": true,
-    "tag": ["부산농구장", "부산중심"]
-  }]
+    {
+      "locationName": "웨스트 코스트 농구장",
+      "position": {
+        "lat": 37.531058,
+        "lng": 126.929067
+      },
+      "averagePoint": 4.7,
+      "recommendation": 304,
+      "address": {
+        "city": "부산광역시",
+        "old": {
+          "gu": "영등포구",
+          "dong": "여의도동",
+          "rest": "1439-3"
+        },
+        "new": {
+          "gu": "영등포구",
+          "street": ""
+        }
+      },
+      "web": "",
+      "phone": "051-000-9999",
+      "fee": {
+        "amount": "free",
+        "time": "day"
+      },
+      "indoorOutdoor": "outdoor",
+      "availableTime": {
+        "open": 8,
+        "close": 23
+      },
+      "transportation": {
+        "method": "버스",
+        "detail": "부산 1호선"
+      },
+      "parkingLot": true,
+      "tag": ["부산농구장", "부산중심"]
+    }
+  ]
 }

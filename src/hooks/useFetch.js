@@ -1,27 +1,24 @@
-import { useState, useEffect } from 'react';
+// import { useState, useEffect } from 'react';
 import { filterCourtsByInput } from '../myUtil';
 import courtsApi from '../apis';
 
 
-const fetchCourtsData = ({ userInput }) => {
-  const [data, setData] = useState([]);
-
+const fetchCourtsData = ({ userInput, dispatch }) => {
   const fetchData = async () => {
     try {
+      dispatch({ type: "SEARCH_COURTS_REQUEST" });
       const fetchedData = await courtsApi.get('/location.json');
       const courtsInfo = fetchedData.data.body;
       const courtsByUserInput = filterCourtsByInput({ userInput, courtsInfo });
-      setData(courtsByUserInput);
+      dispatch({ type: "SEARCH_COURTS_SUCCESS", payload: courtsByUserInput });
+      // setCourtsData(courtsByUserInput);
+      // setIsLoaded(true);
     } catch(err) {
       console.log(err);
     }
   };
 
-  useEffect(() => {
-    fetchData();
-  }, [userInput]);
-
-  return data;
+  fetchData();
 };
 
 export default fetchCourtsData;

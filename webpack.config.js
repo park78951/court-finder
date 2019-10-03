@@ -3,6 +3,7 @@ const HtmlWebPackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
 const dotenv = require('dotenv')
   .config({ path: __dirname + '/.env'});
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
   mode: 'development',
@@ -10,6 +11,11 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'build'),
     filename: 'bundle.js'
+  },
+  resolve: {
+    alias: {
+      'react-dom': '@hot-loader/react-dom'
+    }
   },
   module: {
     rules: [
@@ -29,6 +35,7 @@ module.exports = {
     }),
     new webpack.EnvironmentPlugin({
       KEY: dotenv.parsed.GOOGLE_API_KEY
-    })
+    }),
+    new CleanWebpackPlugin()
   ]
 };
