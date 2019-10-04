@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { CourtContext } from '../../courtStore/CourtStore';
 import { buttonTheme} from '../../config';
 import { INDOOR_OR_OUTDOOR, PLAYER_LEVEL, TRANSPORTATION } from '../../config/constants';
 import CustomDropDown from '../lib/DropDown';
@@ -8,6 +9,7 @@ import styled, { ThemeProvider } from 'styled-components';
 
 
 const AdditionFormWrapper = styled.div`
+  display: ${ ({ isOpen }) => isOpen ? 'block' : 'none' };
   width: 500px;
   height: 600px;
   background-color: white;
@@ -54,9 +56,11 @@ const AdditionFormWrapper = styled.div`
 `;
 
 const PlaceAddition = () => {
+  const { isPlaceAdditionOpen } = useContext(CourtContext);
+
   return (
     <ThemeProvider theme={ buttonTheme }>
-      <AdditionFormWrapper>
+      <AdditionFormWrapper isOpen={isPlaceAdditionOpen}>
         <h1>장소추가</h1>
         <form>
           <p>장소명</p>

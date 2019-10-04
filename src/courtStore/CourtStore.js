@@ -7,15 +7,15 @@ import React, {
 // import { filterCourtsByInput } from '../myUtil';
 // import courtsApi from '../apis';
 import useFetch from '../helper/hooks/useFetch';
-import courtReducer from '../helper/hooks/courtReducer';
-import { initCourtsData, initUIToggleInfo } from '../config';
+import { courtReducer, uiReducer } from '../helper/reducers';
+import { initCourtsData, initUIToggleInfo } from './initalState';
 
 export const CourtContext = createContext();
 
 const CourtStore = ({ children }) => {
   const [userInput, setUserInput] = useState('');
   const [courtsData, courtsDataDispatch] = useReducer(courtReducer, initCourtsData);
-  const [uiToggleInfo, uiToggleDispatch] = useReducer(courtReducer, initUIToggleInfo);
+  const [uiToggleInfo, uiToggleDispatch] = useReducer(uiReducer, initUIToggleInfo);
   const getUserInput = userInput => {
     setUserInput(userInput);
   };

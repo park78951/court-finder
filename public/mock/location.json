@@ -28,8 +28,8 @@
       },
       "indoorOutdoor": "outdoor",
       "availableTime": {
-        "open": 8,
-        "close": 23
+        "open": "8:00",
+        "close": "23:00"
       },
       "transportation": {
         "method": "지하철",
