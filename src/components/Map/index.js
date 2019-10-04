@@ -2,6 +2,7 @@ import React, { useState, useMemo, useContext, useEffect } from 'react';
 import { GoogleMap, useLoadScript, Marker } from '@react-google-maps/api';
 import { defaultMapOptions } from '../../config';
 import { CourtContext } from '../../courtStore/CourtStore';
+import { createUniqueKey } from '../../helper/myUtil';
 import styled from 'styled-components';
 
 const MapContainer = styled.div`
@@ -22,11 +23,11 @@ const Map = () => {
     () => {
       if(hasCourtsData) return;
       const { courtsInfo } = courtsData;
-      return courtsInfo.map( ({ position, locationName }) => {
+      return courtsInfo.map( ({ position }) => {
         // console.log(position)
         return (
           <Marker
-            key={ locationName }
+            key={ createUniqueKey() }
             position={ position }
           />
         );

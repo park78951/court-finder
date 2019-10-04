@@ -30,6 +30,8 @@ const InputContainer = styled.div`
       align-items: center;
       background: transparent;
       border: none;
+      outline: none;
+      cursor: pointer;
     }
   }
 `;

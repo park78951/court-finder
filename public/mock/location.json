@@ -4,7 +4,7 @@
       "locationName": "웨스트 농구장",
       "position": {
         "lat": 37.530802,
-        "lng": 126.929310
+        "lng": 126.929510
       },
       "averagePoint": 4.7,
       "recommendation": 304,
@@ -20,7 +20,7 @@
           "street": ""
         }
       },
-      "web": "",
+      "web": "https://www.google.com",
       "phone": "051-000-9999",
       "fee": {
         "amount": "free",
@@ -32,17 +32,18 @@
         "close": 23
       },
       "transportation": {
-        "method": "버스",
-        "detail": "부산 1호선"
+        "method": "지하철",
+        "detail": "1호선",
+        "stop": "영등포역"
       },
       "parkingLot": true,
-      "tag": ["부산농구장", "부산중심"]
+      "tags": ["부산농구장", "부산중심"]
     },
     {
       "locationName": "웨스트 코스트 농구장",
       "position": {
-        "lat": 37.531058,
-        "lng": 126.929067
+        "lat": 37.531158,
+        "lng": 126.929167
       },
       "averagePoint": 4.7,
       "recommendation": 304,
@@ -74,7 +75,7 @@
         "detail": "부산 1호선"
       },
       "parkingLot": true,
-      "tag": ["부산농구장", "부산중심"]
+      "tags": ["부산농구장", "부산중심"]
     }
   ]
 }

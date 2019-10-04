@@ -1,8 +1,6 @@
 import React from 'react';
-import { 
-  formOptionList, 
-  buttonTheme
-} from '../../config';
+import { buttonTheme} from '../../config';
+import { INDOOR_OR_OUTDOOR, PLAYER_LEVEL, TRANSPORTATION } from '../../config/constants';
 import CustomDropDown from '../lib/DropDown';
 import CustomButton from '../lib/Button';
 import CustomInput from '../lib/Input';
@@ -56,8 +54,6 @@ const AdditionFormWrapper = styled.div`
 `;
 
 const PlaceAddition = () => {
-  const { INDOOR_OR_OUTDOOR, PLAYER_LEVEL, TRANSPORTATION } = formOptionList;
-
   return (
     <ThemeProvider theme={ buttonTheme }>
       <AdditionFormWrapper>

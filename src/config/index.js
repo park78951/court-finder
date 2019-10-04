@@ -20,8 +20,13 @@ export const buttonTheme = {
   }
 };
 
-export const formOptionList = {
-  INDOOR_OR_OUTDOOR: ['실내코트', '야외코트'],
-  PLAYER_LEVEL: ['상', '중상', '중', '중하', '하'],
-  TRANSPORTATION: ['버스', '전철']
+export const initCourtsData = {
+  loading: true,
+  courtsInfo: [],
+  errorMessage: null
+};
+
+export const initUIToggleInfo = {
+  isSidebarHidden: false,
+  isPlaceAdditionClicked: false
 };

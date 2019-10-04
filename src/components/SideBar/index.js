@@ -1,21 +1,23 @@
-import React from 'react';
-import styled from 'styled-components';
+import React, { useContext } from 'react';
 import Search from './Search';
 import CourtInfo from './CourtInfo';
+import { CourtContext } from '../../courtStore/CourtStore';
+import styled from 'styled-components';
 
 const SideBarWrapper = styled.div`
-display: flex;
-flex-flow: column;
-position: absolute;
-top: 0;
-background-color: white;
-width: 420px;
-height: 100vh;
+  display: ${ ({ isSidebarHidden }) => isSidebarHidden ? 'none' : 'flex'};
+  flex-flow: column;
+  position: absolute;
+  top: 0;
+  background-color: white;
+  width: 380px;
+  height: 100vh;
 `;
 
 const SideBar = () => {
+  const { isSidebarHidden } = useContext(CourtContext);
   return (
-    <SideBarWrapper>
+    <SideBarWrapper isSidebarHidden={ isSidebarHidden }>
       <Search />
       <CourtInfo />
     </SideBarWrapper>
