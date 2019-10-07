@@ -23,12 +23,12 @@ const Map = () => {
     () => {
       if(hasCourtsData) return;
       const { courtsInfo } = courtsData;
-      return courtsInfo.map( ({ position }) => {
-        // console.log(position)
+      return courtsInfo.map( ({ coordinates }) => {
+        // console.log(coordinates)
         return (
           <Marker
             key={ createUniqueKey() }
-            position={ position }
+            position={ coordinates }
           />
         );
       });
@@ -38,8 +38,8 @@ const Map = () => {
   
   useEffect(() => {
     if(hasCourtsData) return;
-    const { position } = courtsData.courtsInfo[0];
-    setCurCenter(position);
+    const { coordinates } = courtsData.courtsInfo[0];
+    setCurCenter(coordinates);
   }, [courtsData.courtsInfo]);
 
   if(loadError) {

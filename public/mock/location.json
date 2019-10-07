@@ -2,7 +2,7 @@
   "body": [
     {
       "locationName": "웨스트 농구장",
-      "position": {
+      "coordinates": {
         "lat": 37.530802,
         "lng": 126.929510
       },
@@ -41,7 +41,7 @@
     },
     {
       "locationName": "웨스트 코스트 농구장",
-      "position": {
+      "coordinates": {
         "lat": 37.531158,
         "lng": 126.929167
       },
