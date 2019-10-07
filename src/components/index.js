@@ -5,6 +5,7 @@ import HamburgerMenu from './HamburgerMenu';
 import SideBar from './SideBar';
 import PlaceAddition from './PlaceAddition';
 import CourtStore from '../courtStore/CourtStore';
+import MapContextMenu from './ContextMenu';
 import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
@@ -25,7 +26,9 @@ const App = () => {
     <>
       <GlobalStyle />
       <CourtStore>
-        <Map />
+        <MapContextMenu>
+          <Map />
+        </MapContextMenu>
         <HamburgerMenu />
         <SideBar />
         <PlaceAddition />
