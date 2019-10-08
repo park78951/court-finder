@@ -1,25 +1,25 @@
 import { 
   TOGGLE_SIDEBAR,
-  OPEN_PLACEADDITION,
-  CLOSE_PLACEADDITION
+  OPEN_COURTADDITION,
+  CLOSE_COURTADDITION
 } from '../../config/constants';
 
-const uiReducers = (state, { type, payload }) => {
+const uiReducers = (state, { type }) => {
   switch(type) {
     case TOGGLE_SIDEBAR:
       return {
         ...state,
         isSidebarHidden: !state.isSidebarHidden
       };
-    case OPEN_PLACEADDITION:
+    case OPEN_COURTADDITION:
       return {
         ...state,
-        isPlaceAdditionOpen: true
+        courtAdditionFlag: true
       };
-    case CLOSE_PLACEADDITION:
+    case CLOSE_COURTADDITION:
       return {
         ...state,
-        isPlaceAdditionOpen: false
+        courtAdditionFlag: false
       };
     default: 
       break;

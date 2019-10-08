@@ -1,66 +1,28 @@
 import React, { useContext } from 'react';
 import { CourtContext } from '../../courtStore/CourtStore';
 import { buttonTheme} from '../../config';
-import { INDOOR_OR_OUTDOOR, PLAYER_LEVEL, TRANSPORTATION } from '../../config/constants';
+import { INDOOR_OR_OUTDOOR, PLAYER_LEVEL, TRANSPORTATION, CLOSE_COURTADDITION } from '../../config/constants';
 import CustomDropDown from '../lib/DropDown';
 import CustomButton from '../lib/Button';
 import CustomInput from '../lib/Input';
-import styled, { ThemeProvider } from 'styled-components';
+import { ThemeProvider } from 'styled-components';
+import Styles from './indexStyle';
 
 
-const AdditionFormWrapper = styled.div`
-  display: ${ ({ isOpen }) => isOpen ? 'block' : 'none' };
-  width: 500px;
-  height: 600px;
-  background-color: white;
-  border-radius: 15px;
-  padding: 20px 50px;
-  overflow: scroll;
-  overflow-x: hidden;
-  
-  &::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-    border-radius: 10px;
-    background-color: #F5F5F5;
-  }
+const CourtAddition = () => {
+  const { 
+    courtAdditionFlag, 
+    uiToggleDispatch 
+  } = useContext(CourtContext);
 
-  &::-webkit-scrollbar {
-    width: 12px;
-    height: 20px;
-    background-color: #F5F5F5;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    border-radius: 10px;
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
-    background-color: #555;
-  }
-
-
-  p {
-    font-weight: bolder;
-    font-size: 1.3rem;
-    margin: 20px 0 10px 0;
-  }
-
-  .dropdown_input {
-    display: flex;
-    justify-content: space-between;
-  }
-
-  .btn-container {
-    display: flex;
-    justify-content: space-evenly;
-    margin: 30px 0;
-  }
-`;
-
-const PlaceAddition = () => {
-  const { isPlaceAdditionOpen } = useContext(CourtContext);
+  const closeModal = evt => {
+    evt.preventDefault();
+    uiToggleDispatch({ type: CLOSE_COURTADDITION });
+  };
 
   return (
     <ThemeProvider theme={ buttonTheme }>
-      <AdditionFormWrapper isOpen={isPlaceAdditionOpen}>
+      <Styles.AdditionFormWrapper isOpen={courtAdditionFlag}>
         <h1>장소추가</h1>
         <form>
           <p>장소명</p>
@@ -82,17 +44,16 @@ const PlaceAddition = () => {
             </CustomButton>
             <CustomButton 
               color='cancel'
+              onClick={ closeModal }
             >
               취소
             </CustomButton>
           </div>
-          
-
         </form>
         
-      </AdditionFormWrapper>
+      </Styles.AdditionFormWrapper>
     </ThemeProvider>
   );
 };
 
-export default PlaceAddition;
+export default CourtAddition;

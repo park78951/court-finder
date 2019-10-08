@@ -3,9 +3,10 @@ import React from 'react';
 import Map from './Map';
 import HamburgerMenu from './HamburgerMenu';
 import SideBar from './SideBar';
-import PlaceAddition from './PlaceAddition';
+import CourtAddition from './CourtAddition';
 import CourtStore from '../courtStore/CourtStore';
 import MapContextMenu from './ContextMenu';
+import AppContainer from './container/ModalContainer';
 import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
@@ -14,6 +15,7 @@ const GlobalStyle = createGlobalStyle`
   }
   
   body {
+    position: relative;
     background-color: lightblue;
     width: 100%;
     height: 100%;
@@ -31,7 +33,9 @@ const App = () => {
         </MapContextMenu>
         <HamburgerMenu />
         <SideBar />
-        <PlaceAddition />
+        <AppContainer>
+          <CourtAddition />
+        </AppContainer>
       </CourtStore>
     </>
   );

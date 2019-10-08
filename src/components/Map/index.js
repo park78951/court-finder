@@ -19,6 +19,10 @@ const Map = () => {
     googleMapsApiKey: process.env.KEY
   });
 
+  const clickMapHandler = (e) => {
+    console.log(e);
+  };
+
   const setMarker = useMemo(
     () => {
       if(hasCourtsData) return;
@@ -54,7 +58,7 @@ const Map = () => {
         mapContainerStyle={ mapStyle }
         mapTypeId='roadmap'
         options={ options }
-        // onRightClick={ clickMapHandler }
+        onRightClick={ clickMapHandler }
       >
         { setMarker }
       </GoogleMap>

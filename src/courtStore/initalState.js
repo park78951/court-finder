@@ -6,5 +6,5 @@ export const initCourtsData = {
 
 export const initUIToggleInfo = {
   isSidebarHidden: false,
-  isPlaceAdditionOpen: false
+  courtAdditionFlag: false
 };
