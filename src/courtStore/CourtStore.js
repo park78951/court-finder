@@ -4,29 +4,44 @@ import React, {
   useEffect, 
   useReducer 
 } from 'react';
-// import { filterCourtsByInput } from '../myUtil';
-// import courtsApi from '../apis';
 import useFetch from '../helper/hooks/useFetch';
 import { courtReducer, uiReducer } from '../helper/reducers';
-import { initCourtsData, initUIToggleInfo } from './initalState';
+import { initCourtsInfo, initUIToggleInfo } from './initalState';
 
 export const CourtContext = createContext();
 
 const CourtStore = ({ children }) => {
   const [userInput, setUserInput] = useState('');
-  const [courtsData, courtsDataDispatch] = useReducer(courtReducer, initCourtsData);
+  // eslint-disable-next-line no-unused-vars
+  const [addedCourts, setAddedCourts] = useState([]);
+  const [courtsInfo, courtsInfoDispatch] = useReducer(courtReducer, initCourtsInfo);
   const [uiToggleInfo, uiToggleDispatch] = useReducer(uiReducer, initUIToggleInfo);
   const getUserInput = userInput => {
     setUserInput(userInput);
   };
 
+  const addCourt = submitList => {
+    const copiedList = { ...submitList };
+    setAddedCourts({
+      ...addedCourts,
+      copiedList
+    });
+  };
+
   useEffect(() => {
     if(!userInput) return;
-    useFetch({ userInput, courtsDataDispatch });
+    useFetch({ userInput, courtsInfoDispatch });
     setUserInput('');
   }, [userInput]);
+  
   return (
-    <CourtContext.Provider value={{ getUserInput, courtsData, ...uiToggleInfo, uiToggleDispatch }}>
+    <CourtContext.Provider value={{ 
+      getUserInput, 
+      courtsInfo, 
+      ...uiToggleInfo, 
+      uiToggleDispatch,
+      addCourt
+    }}>
       { children }
     </CourtContext.Provider>
   );

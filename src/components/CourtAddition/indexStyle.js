@@ -32,6 +32,18 @@ const AdditionFormWrapper = styled.div`
     background-color: #555;
   }
 
+  & > button {
+    position: absolute;
+    right: 30px;
+    top: 40px;
+    border: none;
+    background: transparent;
+    outline: none;
+    width: fit-content;
+    height: fit-content;
+    cursor: pointer;
+  }
+
   p {
     font-weight: bolder;
     font-size: 1.3rem;

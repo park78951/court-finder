@@ -14,4 +14,4 @@ const CustomButton = ({ color, size, children, ...rest }) => {
   );
 };
 
-export default CustomButton;
+export default React.memo(CustomButton);

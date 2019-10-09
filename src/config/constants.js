@@ -2,9 +2,8 @@ export const BEFORE_WORK = 'Before Work';
 export const LOADING = 'Loading';
 export const DONE = 'Done';
 
-export const SEARCH_COURTS_REQUEST = 'SEARCH_COURTS_REQUEST';
-export const SEARCH_COURTS_SUCCESS = 'SEARCH_COURTS_SUCCESS';
-export const SEARCH_COURTS_FAILURE = 'SEARCH_COURTS_FAILURE';
+export const SEARCH_COURTS = 'SEARCH_COURTS';
+export const UPDATE_COURTS = 'UPDATE_COURTS';
 
 export const TOGGLE_SIDEBAR = 'TOGGLE_SIDEBAR';
 export const OPEN_COURTADDITION = 'OPEN_COURTADDITION';

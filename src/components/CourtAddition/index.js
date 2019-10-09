@@ -1,28 +1,58 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { CourtContext } from '../../courtStore/CourtStore';
 import { buttonTheme} from '../../config';
 import { INDOOR_OR_OUTDOOR, PLAYER_LEVEL, TRANSPORTATION, CLOSE_COURTADDITION } from '../../config/constants';
 import CustomDropDown from '../lib/DropDown';
 import CustomButton from '../lib/Button';
-import CustomInput from '../lib/Input';
 import { ThemeProvider } from 'styled-components';
+import { MdCancel } from 'react-icons/md';
+import { initSubmitList } from '../../courtStore/initalState';
 import Styles from './indexStyle';
 
 
 const CourtAddition = () => {
   const { 
     courtAdditionFlag, 
-    uiToggleDispatch 
+    uiToggleDispatch ,
+    addCourt
   } = useContext(CourtContext);
+  
+  const [submitList, setSubmitList] = useState(initSubmitList);
 
   const closeModal = evt => {
     evt.preventDefault();
     uiToggleDispatch({ type: CLOSE_COURTADDITION });
   };
 
+  const moveNext = (formList) => {
+    setSubmitList({
+      ...submitList,
+      curPage: submitList.curPage + 1,
+      ...formList
+    });
+  };
+
+  const movePrev = () => {
+    setSubmitList({
+      ...submitList,
+      curPage: submitList.curPage - 1
+    });
+  };
+
+  const submitCourtsInfo = e => {
+    e.preventDefault();
+    addCourt(submitList);
+  };
+
   return (
     <ThemeProvider theme={ buttonTheme }>
-      <Styles.AdditionFormWrapper isOpen={courtAdditionFlag}>
+      <Styles.AdditionFormWrapper 
+        isOpen={ courtAdditionFlag }
+        onSubmit={ submitCourtsInfo }
+      >
+        <button onClick={ closeModal }>
+          <MdCancel size={ 40 } />
+        </button>
         <h1>장소추가</h1>
         <form>
           <p>장소명</p>

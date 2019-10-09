@@ -6,9 +6,10 @@
         "lat": 37.530802,
         "lng": 126.929510
       },
-      "averagePoint": 4.7,
+      "averageRates": 4.7,
       "recommendation": 304,
       "address": {
+        "full": "서울시 영등포구 여의도동 1439-3",
         "city": "서울시",
         "old": {
           "gu": "영등포구",
@@ -48,7 +49,8 @@
       "averagePoint": 4.7,
       "recommendation": 304,
       "address": {
-        "city": "부산광역시",
+        "full": "서울시 영등포구 여의도동 1439-3",
+        "city": "서울시",
         "old": {
           "gu": "영등포구",
           "dong": "여의도동",

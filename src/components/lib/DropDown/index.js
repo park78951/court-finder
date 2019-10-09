@@ -1,7 +1,7 @@
 import React from 'react';
 import Style from './indexStyle';
 
-const CustomDropDown = ({ optionValues, size }) => {
+const CustomDropDown = ({ optionValues, size, ...rest }) => {
   const selectOptions = optionValues.map( optionValue => {
     return (
       <option value={ optionValue } key={ optionValue } >{optionValue}</option>
@@ -9,10 +9,13 @@ const CustomDropDown = ({ optionValues, size }) => {
   });
 
   return (
-    <Style.DropDown size={size}>
+    <Style.DropDown 
+      size={ size }
+      { ...rest }
+    >
       { selectOptions }
     </Style.DropDown>
   );
 };
 
-export default CustomDropDown;
+export default React.memo(CustomDropDown);
