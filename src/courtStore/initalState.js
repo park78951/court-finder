@@ -24,6 +24,6 @@ export const initSubmitList = {
     detail: null,
     stop: null
   },
-  parkingLot: false,
+  parkingLot: null,
   tags: []
 };

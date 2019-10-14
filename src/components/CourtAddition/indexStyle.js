@@ -3,7 +3,7 @@ import styled from 'styled-components';
 const AdditionFormWrapper = styled.div`
   display: ${ ({ isOpen }) => isOpen ? 'block' : 'none' };
   width: 500px;
-  height: 600px;
+  height: 700px;
   position: absolute;
   left: 50%;
   top: 50%;
@@ -11,10 +11,14 @@ const AdditionFormWrapper = styled.div`
   background-color: white;
   border-radius: 15px;
   padding: 20px 50px;
-  overflow: scroll;
-  overflow-x: hidden;
+
+  & > form {
+    margin-top: 30px;
+  }
+  /* overflow: scroll; */
+  /* overflow-x: hidden; */
   
-  &::-webkit-scrollbar-track {
+  /* &::-webkit-scrollbar-track {
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
     border-radius: 10px;
     background-color: #F5F5F5;
@@ -30,7 +34,7 @@ const AdditionFormWrapper = styled.div`
     border-radius: 10px;
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
     background-color: #555;
-  }
+  } */
 
   & > button {
     position: absolute;

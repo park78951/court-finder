@@ -30,9 +30,9 @@ export const sizeStyles = css`
 
   ${ ({ size }) => 
     size === 'medium' && css`
-      height: 2.25rem;
-      width: 9rem;
-      font-size: 1rem;
+      height: 2.5rem;
+      width: 11rem;
+      font-size: 1.25rem;
       letter-spacing: 0.5em;
       text-indent: 0.5em;
     `
