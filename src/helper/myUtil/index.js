@@ -5,7 +5,7 @@ export const filterCourtsByInput = ({ userInput, courtsInfo }) => {
 };
 
 export const createUniqueKey = () => {
-  return Date.now() * Math.floor((Math.random() + 1) * 134) + Date.now();
+  return Date.now() * Math.floor((Math.random() + 1) * 1000) + Date.now();
 };
 
 export const checkUnfilled = collection => {

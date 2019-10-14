@@ -54,16 +54,7 @@ const AdditionFormWrapper = styled.div`
     margin: 20px 0 10px 0;
   }
 
-  .dropdown_input {
-    display: flex;
-    justify-content: space-between;
-  }
 
-  .btn-container {
-    display: flex;
-    justify-content: space-evenly;
-    margin: 30px 0;
-  }
 `;
 
 export default { AdditionFormWrapper };

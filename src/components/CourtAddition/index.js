@@ -2,8 +2,6 @@ import React, { useContext, useState, useMemo } from 'react';
 import { CourtContext } from '../../courtStore/CourtStore';
 import { buttonTheme } from '../../config';
 import { CLOSE_COURTADDITION } from '../../config/constants';
-// import CustomDropDown from '../lib/DropDown';
-import CustomButton from '../lib/Button';
 import { ThemeProvider } from 'styled-components';
 import { MdCancel } from 'react-icons/md';
 import { initSubmitList } from '../../courtStore/initalState';
@@ -64,7 +62,10 @@ const CourtAddition = () => {
         );
       case 3:
         return (
-          <TagForm />
+          <TagForm 
+            moveNext={ moveNext }
+            movePrev={ movePrev }
+          />
         );
       default:
         break;

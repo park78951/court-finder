@@ -9,9 +9,9 @@ const BasicFormWrapper = styled.div`
   .input__container--available-time {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     & > span {
       font-weight: bold;
-      vertical-align: text-bottom;
     }
   }
 
