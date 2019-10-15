@@ -1,7 +1,23 @@
 export const filterCourtsByInput = ({ userInput, courtsInfo }) => {
-  return courtsInfo.filter( courtInfo => {
-    return courtInfo.locationName.includes(userInput);
+  let filteredData = [];
+  filteredData = courtsInfo.filter( ({ locationName }) => {
+    return locationName.includes(userInput);
   });
+
+  if(!filteredData.length) {
+    filteredData = courtsInfo.filter( ({ gu_nm }) => {
+      return gu_nm.includes(userInput);
+    });
+  }
+
+  return filteredData;
+};
+
+export const convertCoordinatesNum = ({ lat, lng}) => {
+  const numLat = Number(lat);
+  const numLng = Number(lng);
+
+  return { lat: numLat, lng: numLng };
 };
 
 export const createUniqueKey = () => {

@@ -11,8 +11,8 @@ const HeaderInfo = () => {
   const { courtsInfo } = useContext(CourtContext);
   return (
     <Style.HeaderWrapper>
-      <Title courtsInfo={ courtsInfo } />
-      <Address courtsInfo={ courtsInfo } />
+      <Title courtsInfo={ courtsInfo[0] } />
+      <Address courtsInfo={ courtsInfo[0] } />
       <Additional />
       <NavBtn />
     </Style.HeaderWrapper>

@@ -5,7 +5,7 @@ import { SEARCH_COURTS } from '../../config/constants';
 
 const fetchCourtsData = async ({ userInput, courtsInfoDispatch }) => {
   try {
-    const fetchedData = await courtsApi.get('/location.json');
+    const fetchedData = await courtsApi.get('/seoulCourt.json');
     const courtsInfo = fetchedData.data.body;
     const courtsByUserInput = filterCourtsByInput({ userInput, courtsInfo });
     courtsInfoDispatch({ 

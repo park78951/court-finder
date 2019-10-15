@@ -34,8 +34,7 @@
       },
       "transportation": {
         "method": "지하철",
-        "detail": "1호선",
-        "stop": "영등포역"
+        "detail": "1호선"
       },
       "parkingLot": true,
       "tags": ["부산농구장", "부산중심"]

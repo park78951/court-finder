@@ -7,7 +7,6 @@ import { MdCancel } from 'react-icons/md';
 import { initSubmitList } from '../../courtStore/initalState';
 import BasicForm from './BasicForm';
 import AdditionalForm from './AdditionalForm';
-import TagForm from './TagForm';
 import Styles from './indexStyle';
 
 
@@ -22,6 +21,7 @@ const CourtAddition = () => {
 
   const closeModal = evt => {
     evt.preventDefault();
+    setSubmitList(initSubmitList);
     uiToggleDispatch({ type: CLOSE_COURTADDITION });
   };
 
@@ -60,13 +60,7 @@ const CourtAddition = () => {
             movePrev={ movePrev }
           />
         );
-      case 3:
-        return (
-          <TagForm 
-            moveNext={ moveNext }
-            movePrev={ movePrev }
-          />
-        );
+
       default:
         break;
     }

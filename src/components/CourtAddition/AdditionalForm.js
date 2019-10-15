@@ -16,7 +16,7 @@ const AdditionalForm = ({ moveNext, movePrev }) => {
   const nextClickHandler = () => {
     if(checkUnfilled(transportation)) return;
     moveNext(transportation);
-  }
+  };
 
   // const setValuesOnChange = dataName => ({ target }) => {
   //   const tempStore = {};
@@ -73,6 +73,6 @@ const AdditionalForm = ({ moveNext, movePrev }) => {
       </div>
     </Style.AdditionalFormStyle>
   );
-}
+};
 
 export default AdditionalForm;

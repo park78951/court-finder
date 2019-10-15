@@ -1,6 +1,6 @@
-import React, { useContext, useMemo } from 'react';
+import React, { useContext } from 'react';
 import { CourtContext } from '../../../courtStore/CourtStore';
-import { createUniqueKey } from '../../../helper/myUtil';
+import { NO_DATA } from '../../../config/constants';
 import { 
   MdLanguage,
   MdPhone,
@@ -9,27 +9,18 @@ import {
   MdAccessTime,
   MdDirectionsTransit,
   MdLocalParking,
-  MdLabel
 } from 'react-icons/md';
 import Style from './BodyInfoStyle';
 
 const BodyInfo = () => {
   const { courtsInfo } = useContext(CourtContext);
-  
-  const tagCollection = useMemo(() => {
-    if(!courtsInfo.length) return;
-    const { tags } = courtsInfo[0];
-    return tags.map( tag => {
-      return <li key={ createUniqueKey() }>{ tag }</li>;
-    });
-  }, [courtsInfo]);
 
   const renderOnData = size => {
     const {
       web,
       phone,
       fee,
-      indoorOutdoor,
+      in_out,
       availableTime,
       transportation,
       parkingLot,
@@ -37,37 +28,54 @@ const BodyInfo = () => {
     return (
       <>
         <div>
-          <MdLanguage size={ size } />
-          <a href={ web } target="_blank">{ web }</a>
+          <div className=''>
+            <MdLanguage size={ size } />
+          </div>
+          { web
+            ? <a href={ web } target="_blank"> { web } </a>
+            : <span>{ NO_DATA }</span>
+          }
         </div>
         <div>
           <MdPhone size={ size } />
-          <span>전화번호: { phone }</span>
+          <span>전화번호: 02-{ phone ? phone : NO_DATA }</span>
         </div>
         <div>
           <MdAttachMoney size={ size } />
-          <span>요금: { fee.amount } / { fee.time }</span>
+          <span>요금: { 
+            fee
+              ? `${ fee.amount } / ${ fee.time }` 
+              : NO_DATA 
+          }</span>
         </div>
         <div>
           <MdHome size={ size } />
-          <span>실내여부: { indoorOutdoor }</span>
+          <span>실내여부: { in_out ? in_out : NO_DATA }</span>
         </div>
         <div>
           <MdAccessTime size={ size } />
-          <span>개방시간: { availableTime.open } ~ { availableTime.close }</span>
+          <span>개방시간: { 
+            availableTime 
+              ? `${availableTime.open} ~ ${availableTime.close}` 
+              : NO_DATA 
+          }</span>
         </div>
         <div>
           <MdDirectionsTransit size={ size } />
-          <span>교통: { transportation.stop } - { transportation.method } { transportation.stop }</span>
+          <span>교통: {
+            transportation
+              ? `${ transportation.method } - ${ transportation.detail }` 
+              : NO_DATA
+          }</span>
         </div>
         <div>
           <MdLocalParking size={ size } />
-          <span>주차장: {parkingLot ? '있음' : '없음'}</span>
+          <span>주차장: {parkingLot ? parkingLot : NO_DATA }</span>
         </div>
-        <ul>
+        {/* <ul>
           <MdLabel size={ size } />
-          <span>Tag: </span>{ tagCollection }
-        </ul>
+          <span>Tag: </span>{ tagCollection ? tagCollection : NO_DATA }
+        </ul> */}
       </>
     );
   };

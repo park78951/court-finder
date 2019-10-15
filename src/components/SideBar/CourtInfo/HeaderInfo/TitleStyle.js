@@ -13,11 +13,14 @@ const HeaderTitleStyle = styled.div`
     background: transparent;
     cursor: pointer;
   }
-  & > h2 {
-    display: inline-block;
+  & > p {
     flex: 1;
-    align-content: center;
+    font-weight: bold;
+    font-size: 1.5rem;
     margin: 0;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
   }
 `;
 

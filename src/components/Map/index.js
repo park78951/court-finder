@@ -2,7 +2,7 @@ import React, { useState, useMemo, useContext, useEffect } from 'react';
 import { GoogleMap, useLoadScript, Marker } from '@react-google-maps/api';
 import { defaultMapOptions } from '../../config';
 import { CourtContext } from '../../courtStore/CourtStore';
-import { createUniqueKey } from '../../helper/myUtil';
+import { createUniqueKey, convertCoordinatesNum } from '../../helper/myUtil';
 import styled from 'styled-components';
 
 const MapContainer = styled.div`
@@ -24,12 +24,14 @@ const Map = () => {
 
   const setMarker = useMemo(
     () => {
+      console.log(courtsInfo);
       if(!courtsInfo.length) return;
-      return courtsInfo.map( ({ coordinates }) => {
+      return courtsInfo.map( courtInfo => {
+        const position = convertCoordinatesNum(courtInfo);
         return (
           <Marker
             key={ createUniqueKey() }
-            position={ coordinates }
+            position={ position }
           />
         );
       });
@@ -39,8 +41,8 @@ const Map = () => {
   
   useEffect(() => {
     if(!courtsInfo.length) return;
-    const { coordinates } = courtsInfo[0];
-    setCurCenter(coordinates);
+    const position = convertCoordinatesNum(courtsInfo[0]);
+    setCurCenter(position);
   }, [courtsInfo]);
 
   if(loadError) {
