@@ -13,7 +13,7 @@ const MapContainer = styled.div`
 const Map = () => {
   const { center, zoom, mapStyle, options } = defaultMapOptions;
   const [curCenter, setCurCenter] = useState(center);
-  const { courtsInfo } = useContext(CourtContext);
+  const { searchedInfo } = useContext(CourtContext);
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.KEY
   });
@@ -24,9 +24,9 @@ const Map = () => {
 
   const setMarker = useMemo(
     () => {
-      console.log(courtsInfo);
-      if(!courtsInfo.length) return;
-      return courtsInfo.map( courtInfo => {
+      console.log(searchedInfo);
+      if(!searchedInfo.length) return;
+      return searchedInfo.map( courtInfo => {
         const position = convertCoordinatesNum(courtInfo);
         return (
           <Marker
@@ -36,14 +36,14 @@ const Map = () => {
         );
       });
     },
-    [courtsInfo]
+    [searchedInfo]
   );
   
   useEffect(() => {
-    if(!courtsInfo.length) return;
-    const position = convertCoordinatesNum(courtsInfo[0]);
+    if(!searchedInfo.length) return;
+    const position = convertCoordinatesNum(searchedInfo[0]);
     setCurCenter(position);
-  }, [courtsInfo]);
+  }, [searchedInfo]);
 
   if(loadError) {
     return <div>Map cannot be loaded right now, sorry.</div>;

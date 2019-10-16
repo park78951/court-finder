@@ -14,33 +14,26 @@ const CourtStore = ({ children }) => {
   const [userInput, setUserInput] = useState('');
   // eslint-disable-next-line no-unused-vars
   const [addedCourts, setAddedCourts] = useState([]);
-  const [courtsInfo, courtsInfoDispatch] = useReducer(courtReducer, initCourtsInfo);
+  const [courtsInfo, courtsDispatch] = useReducer(courtReducer, initCourtsInfo);
   const [uiToggleInfo, uiToggleDispatch] = useReducer(uiReducer, initUIToggleInfo);
+  
   const getUserInput = userInput => {
     setUserInput(userInput);
   };
 
-  const addCourt = submitList => {
-    const copiedList = { ...submitList };
-    setAddedCourts({
-      ...addedCourts,
-      copiedList
-    });
-  };
-
   useEffect(() => {
     if(!userInput) return;
-    useFetch({ userInput, courtsInfoDispatch });
+    useFetch({ userInput, courtsDispatch });
     setUserInput('');
   }, [userInput]);
   
   return (
     <CourtContext.Provider value={{ 
       getUserInput, 
-      courtsInfo, 
+      ...courtsInfo,
       ...uiToggleInfo, 
       uiToggleDispatch,
-      addCourt
+      courtsDispatch
     }}>
       { children }
     </CourtContext.Provider>

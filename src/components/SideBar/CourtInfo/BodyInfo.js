@@ -13,7 +13,7 @@ import {
 import Style from './BodyInfoStyle';
 
 const BodyInfo = () => {
-  const { courtsInfo } = useContext(CourtContext);
+  const { searchedInfo } = useContext(CourtContext);
 
   const renderOnData = size => {
     const {
@@ -24,7 +24,7 @@ const BodyInfo = () => {
       availableTime,
       transportation,
       parkingLot,
-    } = courtsInfo[0];
+    } = searchedInfo[0];
     return (
       <>
         <div>
@@ -80,9 +80,9 @@ const BodyInfo = () => {
     );
   };
   
-  return courtsInfo && (
+  return searchedInfo && (
     <Style.BodyInfoWrapper>
-      { courtsInfo.length ? renderOnData(30) : '일치하는 검색이 없습니다.' }
+      { searchedInfo.length ? renderOnData(30) : '일치하는 검색이 없습니다.' }
     </Style.BodyInfoWrapper>
   );
 };

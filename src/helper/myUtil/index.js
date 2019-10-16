@@ -25,5 +25,5 @@ export const createUniqueKey = () => {
 };
 
 export const checkUnfilled = collection => {
-  return Object.values(collection).every(val => val !== null);
+  return Object.values(collection).every(val => val);
 };

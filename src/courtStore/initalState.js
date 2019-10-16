@@ -1,4 +1,7 @@
-export const initCourtsInfo = [];
+export const initCourtsInfo = {
+  searchedInfo: [],
+  addedInfo:{}
+};
 
 export const initUIToggleInfo = {
   isSidebarHidden: false,

@@ -3,12 +3,12 @@ import courtsApi from '../../apis';
 import { SEARCH_COURTS } from '../../config/constants';
 
 
-const fetchCourtsData = async ({ userInput, courtsInfoDispatch }) => {
+const fetchCourtsData = async ({ userInput, courtsDispatch }) => {
   try {
     const fetchedData = await courtsApi.get('/seoulCourt.json');
     const courtsInfo = fetchedData.data.body;
     const courtsByUserInput = filterCourtsByInput({ userInput, courtsInfo });
-    courtsInfoDispatch({ 
+    courtsDispatch({ 
       type: SEARCH_COURTS, 
       payload: courtsByUserInput 
     });

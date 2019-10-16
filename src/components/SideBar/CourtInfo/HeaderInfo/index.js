@@ -8,11 +8,11 @@ import NavBtn from './NavBtn';
 import Style from './indexStyle';
 
 const HeaderInfo = () => {
-  const { courtsInfo } = useContext(CourtContext);
+  const { searchedInfo } = useContext(CourtContext);
   return (
     <Style.HeaderWrapper>
-      <Title courtsInfo={ courtsInfo[0] } />
-      <Address courtsInfo={ courtsInfo[0] } />
+      <Title searchedInfo={ searchedInfo[0] } />
+      <Address searchedInfo={ searchedInfo[0] } />
       <Additional />
       <NavBtn />
     </Style.HeaderWrapper>
