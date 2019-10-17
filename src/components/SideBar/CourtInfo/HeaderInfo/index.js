@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { CourtContext } from '../../../../courtStore/CourtStore';
 import Title from './Title';
-import Address from './Adress';
+import Address from './Address';
 import Additional from './Additional';
 import NavBtn from './NavBtn';
 
