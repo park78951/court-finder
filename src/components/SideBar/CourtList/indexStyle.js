@@ -6,10 +6,20 @@ const CourtListWrapper = styled.div`
   overflow: hidden;
   height: auto;
 
+  & > a {
+    text-decoration: none;
+    color: inherit;
+
+    &:focus, &:hover, &:visited, &:link, &:active {
+        text-decoration: none;
+    }
+  }
+
   &:hover {
     overflow-y: scroll;
 
     &::-webkit-scrollbar-track {
+      box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
       -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
       border-radius: 10px;
       background-color: #F5F5F5;
@@ -23,6 +33,7 @@ const CourtListWrapper = styled.div`
 
     &::-webkit-scrollbar-thumb {
       border-radius: 10px;
+      box-shadow: inset 0 0 6px rgba(0,0,0,.3);
       -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
       background-color: #555;
     }

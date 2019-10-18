@@ -5,6 +5,7 @@ export const DONE = 'Done';
 export const SEARCH_COURTS = 'SEARCH_COURTS';
 export const UPDATE_COURTS = 'UPDATE_COURTS';
 export const ADD_COURTS = 'ADD_COURTS';
+export const SELECT_COURT = 'SELECT_COURT';
 
 export const TOGGLE_SIDEBAR = 'TOGGLE_SIDEBAR';
 export const OPEN_COURTADDITION = 'OPEN_COURTADDITION';

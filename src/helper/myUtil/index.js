@@ -21,7 +21,7 @@ export const convertCoordinatesNum = ({ lat, lng}) => {
 };
 
 export const createUniqueKey = () => {
-  return Date.now() * Math.floor((Math.random() + 1) * 1000) + Date.now();
+  return (Date.now() * Math.floor((Math.random() + 1) * 976)).toString(36).substr(2, 9);
 };
 
 export const checkUnfilled = collection => {

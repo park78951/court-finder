@@ -5,9 +5,11 @@ import PropTypes from 'prop-types';
 const CourtItem = ({ locationName, address, in_out, phone }) => {
   return (
     <Style.CourtItemWrapper>
-      <h2>{ locationName }</h2>   <span>{in_out}</span>
-      <p>주소: { address }</p>
-      <p>전화번호: 02-{ phone }</p>
+      <h2>{ locationName }</h2><span>{ in_out }</span>
+      <div>
+        <p>주소: { address }</p>
+        <p>전화번호: 02-{ phone }</p>
+      </div>
     </Style.CourtItemWrapper>
   );
 };

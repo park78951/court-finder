@@ -2,6 +2,7 @@ import React, { useContext, useMemo } from 'react';
 import { CourtContext } from '../../../courtStore/CourtStore';
 import CourtItem from './CourtItem';
 import { createUniqueKey } from '../../../helper/myUtil';
+import { Link } from 'react-router-dom';
 import Style from './indexStyle';
 import PropTypes from 'prop-types';
 
@@ -15,13 +16,17 @@ const CourtList = () => {
       phone,
       in_out
     }) => (
-      <CourtItem 
+      <Link 
         key={createUniqueKey()} 
-        locationName={ locationName }
-        address={ address }
-        phone={ phone }
-        in_out={ in_out }
-      />
+        to='/courtinfo'
+      >
+        <CourtItem 
+          locationName={ locationName }
+          address={ address }
+          phone={ phone }
+          in_out={ in_out }
+        />
+      </Link>
     ));
   }, [searchedInfo]);
   

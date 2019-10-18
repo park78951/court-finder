@@ -8,17 +8,22 @@ const CourtItemWrapper = styled.div`
 
   & > h2 {
     display: inline-block;
-    margin: 0;
+    margin: 5px 0;
   }
   
   & > span {
     display: inline-block;
     color: #383838;
     font-size: 1.1rem;
+    margin-left: 10px;
   }
 
-  & > p {
-    margin: 0;
+  & > div {
+    margin-top: 15px;
+
+    & > p {
+      margin:5px 0;
+    }
   }
 `;
 
