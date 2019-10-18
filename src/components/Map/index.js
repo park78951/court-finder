@@ -4,6 +4,7 @@ import { defaultMapOptions } from '../../config';
 import { CourtContext } from '../../courtStore/CourtStore';
 import { createUniqueKey, convertCoordinatesNum } from '../../helper/myUtil';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const MapContainer = styled.div`
   height: 100vh;
@@ -63,6 +64,11 @@ const Map = () => {
       </GoogleMap>
     </MapContainer>
   );
+};
+
+Map.propTypes = {
+  searchedInfo: PropTypes.array,
+  isLoaded: PropTypes.bool
 };
 
 export default Map;

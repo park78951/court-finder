@@ -4,19 +4,24 @@ import Title from './Title';
 import Address from './Address';
 import Additional from './Additional';
 import NavBtn from './NavBtn';
-
 import Style from './indexStyle';
+import PropTypes from 'prop-types';
 
 const HeaderInfo = () => {
   const { searchedInfo } = useContext(CourtContext);
+  
   return (
     <Style.HeaderWrapper>
-      <Title searchedInfo={ searchedInfo[0] } />
-      <Address searchedInfo={ searchedInfo[0] } />
+      <Title {...searchedInfo[0]} />
+      <Address {...searchedInfo[0]} />
       <Additional />
       <NavBtn />
     </Style.HeaderWrapper>
   );
 };
 
-export default React.memo(HeaderInfo);
+HeaderInfo.propTypes = {
+  searchedInfo: PropTypes.array
+};
+
+export default HeaderInfo;

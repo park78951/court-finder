@@ -1,11 +1,11 @@
 import React from 'react';
-import Input from './Input';
+import InputBar from './InputBar';
 import Style from './indexStyle';
 
 const Search = () => {
   return (
     <Style.SearchContainer>
-      <Input />
+      <InputBar />
     </Style.SearchContainer>
   );
 };

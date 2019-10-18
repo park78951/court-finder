@@ -8,7 +8,7 @@ import BasicForm from './BasicForm';
 import AdditionalForm from './AdditionalForm';
 import SummaryForm from './SummaryForm';
 import Styles from './indexStyle';
-
+import PropTypes from 'prop-types';
 
 const CourtAddition = () => {
   const { 
@@ -90,6 +90,13 @@ const CourtAddition = () => {
       </Styles.AdditionFormWrapper>
     </ThemeProvider>
   );
+};
+
+CourtAddition.propTypes = {
+  courtAdditionFlag: PropTypes.bool,
+  uiToggleDispatch: PropTypes.func,
+  courtsDispatch: PropTypes.func,
+  addedInfo: PropTypes.object
 };
 
 export default CourtAddition;

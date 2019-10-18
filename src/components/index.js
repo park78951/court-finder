@@ -8,8 +8,11 @@ import CourtStore from '../courtStore/CourtStore';
 import MapContextMenu from './ContextMenu';
 import AppContainer from './container/ModalContainer';
 import { createGlobalStyle } from 'styled-components';
+import { normalize } from 'styled-normalize';
 
 const GlobalStyle = createGlobalStyle`
+  ${ normalize }
+
   *{
    box-sizing: border-box; 
   }
@@ -19,7 +22,6 @@ const GlobalStyle = createGlobalStyle`
     background-color: lightblue;
     width: 100%;
     height: 100%;
-    margin: 0;
   }
 `;
 

@@ -3,7 +3,7 @@ export const defaultMapOptions = {
     lat: 37.531058,
     lng: 126.929067
   },
-  zoom: 16,
+  zoom: 14,
   mapStyle: {
     height: "100vh",
     width: "100%"

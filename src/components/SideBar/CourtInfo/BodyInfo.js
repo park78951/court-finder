@@ -11,6 +11,7 @@ import {
   MdLocalParking,
 } from 'react-icons/md';
 import Style from './BodyInfoStyle';
+import PropTypes from 'prop-types';
 
 const BodyInfo = () => {
   const { searchedInfo } = useContext(CourtContext);
@@ -85,6 +86,10 @@ const BodyInfo = () => {
       { searchedInfo.length ? renderOnData(30) : '일치하는 검색이 없습니다.' }
     </Style.BodyInfoWrapper>
   );
+};
+
+BodyInfo.propTypes = {
+  searchedInfo: PropTypes.array
 };
 
 export default BodyInfo;

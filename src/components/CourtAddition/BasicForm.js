@@ -5,6 +5,7 @@ import CustomButton from '../lib/Button';
 import { INDOOR_OR_OUTDOOR, PLAYER_LEVEL, TIME_DIVISION_AVAILABLE, TIME_DIVISION_HOURS, ADD_COURTS } from '../../config/constants';
 import { checkUnfilled } from '../../helper/myUtil';
 import Style from './BasicFormStyle';
+import PropTypes from 'prop-types';
 
 const BasicForm = ({ 
   moveNext, 
@@ -98,6 +99,11 @@ const BasicForm = ({
       </div>
     </Style.BasicFormWrapper>
   );
+};
+
+BasicForm.propTypes = {
+  moveNext: PropTypes.func,
+  courtsDispatch: PropTypes.func
 };
 
 export default BasicForm;

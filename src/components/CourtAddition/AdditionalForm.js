@@ -4,6 +4,7 @@ import CustomInput from '../lib/Input';
 import CustomButton from '../lib/Button';
 import { TRANSPORTATION, ADD_COURTS } from '../../config/constants';
 import Style from './AdditionalFormStyle';
+import PropTypes from 'prop-types';
 
 const AdditionalForm = ({ 
   moveNext, 
@@ -31,14 +32,6 @@ const AdditionalForm = ({
     moveNext();
   };
 
-  // const setValuesOnChange = dataName => ({ target }) => {
-  //   const tempStore = {};
-  //   tempStore[dataName] = target.value;
-  //   setTransportation({
-  //     ...transportation,
-  //     ...tempStore
-  //   })
-  // }
   return (
     <Style.AdditionalFormStyle>
       <div>
@@ -98,6 +91,12 @@ const AdditionalForm = ({
       </div>
     </Style.AdditionalFormStyle>
   );
+};
+
+AdditionalForm.propTypes = {
+  moveNext: PropTypes.func,
+  movePrev: PropTypes.func,
+  courtsDispatch: PropTypes.func
 };
 
 export default AdditionalForm;

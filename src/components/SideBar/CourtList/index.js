@@ -3,6 +3,7 @@ import { CourtContext } from '../../../courtStore/CourtStore';
 import CourtItem from './CourtItem';
 import { createUniqueKey } from '../../../helper/myUtil';
 import Style from './indexStyle';
+import PropTypes from 'prop-types';
 
 const CourtList = () => {
   const { searchedInfo } = useContext(CourtContext);
@@ -23,15 +24,19 @@ const CourtList = () => {
       />
     ));
   }, [searchedInfo]);
-  console.log(searchedItems);
+  
   return (
-    <Style.CourtListStyle>
-      { searchedItems.length
+    <Style.CourtListWrapper>
+      { searchedInfo.length
         ? searchedItems 
         : <p>코트를 검색해 주세요.</p>
       }
-    </Style.CourtListStyle>
+    </Style.CourtListWrapper>
   );
 };
 
-export default CourtList;
+CourtList.propType = {
+  searchedInfo: PropTypes.array
+};
+
+export default React.memo(CourtList);

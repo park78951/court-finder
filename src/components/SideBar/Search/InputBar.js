@@ -1,10 +1,10 @@
 import React, { useState, useContext } from 'react';
 import { CourtContext } from '../../../courtStore/CourtStore';
 import { IoIosSearch } from 'react-icons/io';
-import Style from './InputStyle';
+import Style from './InputBarStyle';
+import PropTypes from 'prop-types';
 
-
-const Input = () => {
+const InputBar = () => {
   const [term, setTerm] = useState('');
   const { getUserInput } = useContext(CourtContext);
 
@@ -36,4 +36,8 @@ const Input = () => {
   );
 };
 
-export default Input;
+InputBar.propTypes = {
+  getUserInput: PropTypes.func
+};
+
+export default InputBar;

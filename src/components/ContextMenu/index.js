@@ -7,6 +7,7 @@ import {
 import { CourtContext } from '../../courtStore/CourtStore';
 import { OPEN_COURTADDITION } from '../../config/constants';
 import Style from './indexStyle';
+import PropTypes from 'prop-types';
 
 const MapContextMenu = ({ children }) => {
   const { uiToggleDispatch } = useContext(CourtContext);
@@ -33,6 +34,10 @@ const MapContextMenu = ({ children }) => {
       </ContextMenu>
     </Style.ContextMenuWrapper>
   );
+};
+
+MapContextMenu.propTypes = {
+  uiToggleDispatch: PropTypes.func
 };
 
 export default MapContextMenu;

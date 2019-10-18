@@ -1,11 +1,12 @@
 import React from 'react';
 import CustomButton from '../lib/Button';
+import PropTypes from 'prop-types';
 
 const SummaryForm = ({ 
   submitHandler, 
-  courtAdditionFlag, 
   movePrev,
   addedInfo,
+  courtAdditionFlag
 }) => {
 
   const summaryList = () => {
@@ -36,4 +37,10 @@ const SummaryForm = ({
   );
 };
 
-export default React.memo(SummaryForm);
+SummaryForm.propTypes = {
+  submitHandler: PropTypes.func,
+  movePrev: PropTypes.func,
+  addedInfo: PropTypes.object
+};
+
+export default SummaryForm;

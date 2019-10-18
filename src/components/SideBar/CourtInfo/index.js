@@ -1,20 +1,14 @@
 import React from 'react';
-import styled from 'styled-components';
 import HeaderInfo from './HeaderInfo';
 import BodyInfo from './BodyInfo';
-
-const CourtInfoWrapper = styled.div`
-  display: ${({ isSelected }) => isSelected ? 'flex' : 'none'};
-  flex-flow: column;
-  flex: 1;
-`;
+import Style from './IndexStyle';
 
 const CourtInfo = () => {
   return (
-    <CourtInfoWrapper>
+    <Style.CourtInfoWrapper >
       <HeaderInfo />
       <BodyInfo />
-    </CourtInfoWrapper>
+    </Style.CourtInfoWrapper>
   );
 };
 
@@ -22,4 +16,4 @@ CourtInfo.defaultProps = {
   isSelected: false
 };
 
-export default CourtInfo;
+export default React.memo(CourtInfo);

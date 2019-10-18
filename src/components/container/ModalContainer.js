@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { CourtContext } from '../../courtStore/CourtStore';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const WholeAppWrapper = styled.div`
   display: ${ ({ courtAdditionFlag }) => 
@@ -22,6 +23,11 @@ const AppContainer = ({ children }) => {
       { children }
     </WholeAppWrapper>
   );
+};
+
+AppContainer.propTypes = {
+  courtAdditionFlag: PropTypes.func,
+  children: PropTypes.object
 };
 
 export default AppContainer;
