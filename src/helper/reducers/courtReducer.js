@@ -5,29 +5,29 @@ import {
 } from '../../config/constants';
 
 const courtReducer = (
-  { searchedInfo, selectedInfo, addedInfo }, 
+  { searchedCourts, selectedCourt, addedInfo }, 
   { type, payload }
 ) => {
   switch (type) {
     case SEARCH_COURTS:
       return {
-        selectedInfo,
+        selectedCourt,
         addedInfo,
-        searchedInfo: [...payload]
+        searchedCourts: [...payload]
       };
 
     case ADD_COURTS:
       return {
-        searchedInfo,
-        selectedInfo,
+        searchedCourts,
+        selectedCourt,
         addedInfo: { ...addedInfo, ...payload }
       };
     
     case SELECT_COURT: 
       return {
-        searchedInfo,
+        searchedCourts,
         addedInfo,
-        selectedInfo: { ...payload }
+        selectedCourt: { ...payload }
       };
 
     default:

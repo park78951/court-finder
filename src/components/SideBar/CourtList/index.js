@@ -7,32 +7,24 @@ import Style from './indexStyle';
 import PropTypes from 'prop-types';
 
 const CourtList = () => {
-  const { searchedInfo } = useContext(CourtContext);
+  const { searchedCourts } = useContext(CourtContext);
 
   const searchedItems = useMemo(() => {
-    return searchedInfo.map(({ 
-      locationName,
-      address,
-      phone,
-      in_out
-    }) => (
+    return searchedCourts.map(searchedCourt => (
       <Link 
         key={createUniqueKey()} 
         to='/courtinfo'
       >
         <CourtItem 
-          locationName={ locationName }
-          address={ address }
-          phone={ phone }
-          in_out={ in_out }
+          searchedCourt = { searchedCourt }
         />
       </Link>
     ));
-  }, [searchedInfo]);
+  }, [searchedCourts]);
   
   return (
     <Style.CourtListWrapper>
-      { searchedInfo.length
+      { searchedCourts.length
         ? searchedItems 
         : <p>코트를 검색해 주세요.</p>
       }
@@ -41,7 +33,7 @@ const CourtList = () => {
 };
 
 CourtList.propType = {
-  searchedInfo: PropTypes.array
+  searchedCourts: PropTypes.array
 };
 
 export default React.memo(CourtList);

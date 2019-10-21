@@ -33,7 +33,7 @@ const CourtStore = ({ children }) => {
       ...courtsInfo,
       ...uiToggleInfo, 
       uiToggleDispatch,
-      courtsDispatch
+      courtsDispatch,
     }}>
       { children }
     </CourtContext.Provider>

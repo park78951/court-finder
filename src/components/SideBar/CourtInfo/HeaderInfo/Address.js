@@ -7,7 +7,7 @@ const Address = ({ address }) => {
   return (
     <Style.AddressStyle>
       <div><MdLocationOn size={25} /></div>
-      <p> {address ? address : '서울시 여의도구 여의도동'}</p>
+      <p> { address }</p>
     </Style.AddressStyle>
   );
 };

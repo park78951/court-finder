@@ -9,7 +9,7 @@ const Title = ({ locationName }) => {
   return (
     <Style.HeaderTitleStyle>
       <GoBackBtn />
-      <p>{ locationName ? locationName : '여의도 농구장' }</p>
+      <p>{ locationName }</p>
     </Style.HeaderTitleStyle>
   );
 };

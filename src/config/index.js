@@ -19,3 +19,7 @@ export const buttonTheme = {
     cancel: '#DC143C'
   }
 };
+
+export const iconSize = {
+  bodyInfo: 30
+};

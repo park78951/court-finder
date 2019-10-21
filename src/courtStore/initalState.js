@@ -1,6 +1,6 @@
 export const initCourtsInfo = {
-  searchedInfo: [],
-  selectedInfo: [],
+  searchedCourts: [],
+  selectedCourt: null,
   addedInfo:{}
 };
 

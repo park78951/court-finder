@@ -1,6 +1,7 @@
-import React, { useContext } from 'react';
+import React, { useContext, useMemo } from 'react';
 import { CourtContext } from '../../../courtStore/CourtStore';
 import { NO_DATA } from '../../../config/constants';
+import { iconSize } from '../../../config';
 import { 
   MdLanguage,
   MdPhone,
@@ -14,9 +15,9 @@ import Style from './BodyInfoStyle';
 import PropTypes from 'prop-types';
 
 const BodyInfo = () => {
-  const { searchedInfo } = useContext(CourtContext);
+  const { selectedCourt } = useContext(CourtContext);
 
-  const renderOnData = size => {
+  const renderOnData = useMemo(() => {
     const {
       web,
       phone,
@@ -25,12 +26,13 @@ const BodyInfo = () => {
       availableTime,
       transportation,
       parkingLot,
-    } = searchedInfo[0];
+    } = selectedCourt;
+
     return (
       <>
         <div>
           <div className=''>
-            <MdLanguage size={ size } />
+            <MdLanguage size={ iconSize.bodyInfo } />
           </div>
           { web
             ? <a href={ web } target="_blank"> { web } </a>
@@ -38,11 +40,11 @@ const BodyInfo = () => {
           }
         </div>
         <div>
-          <MdPhone size={ size } />
+          <MdPhone size={ iconSize.bodyInfo } />
           <span>전화번호: 02-{ phone ? phone : NO_DATA }</span>
         </div>
         <div>
-          <MdAttachMoney size={ size } />
+          <MdAttachMoney size={ iconSize.bodyInfo } />
           <span>요금: { 
             fee
               ? `${ fee.amount } / ${ fee.time }` 
@@ -50,11 +52,11 @@ const BodyInfo = () => {
           }</span>
         </div>
         <div>
-          <MdHome size={ size } />
+          <MdHome size={ iconSize.bodyInfo } />
           <span>실내여부: { in_out ? in_out : NO_DATA }</span>
         </div>
         <div>
-          <MdAccessTime size={ size } />
+          <MdAccessTime size={ iconSize.bodyInfo } />
           <span>개방시간: { 
             availableTime 
               ? `${availableTime.open} ~ ${availableTime.close}` 
@@ -62,7 +64,7 @@ const BodyInfo = () => {
           }</span>
         </div>
         <div>
-          <MdDirectionsTransit size={ size } />
+          <MdDirectionsTransit size={ iconSize.bodyInfo } />
           <span>교통: {
             transportation
               ? `${ transportation.method } - ${ transportation.detail }` 
@@ -70,26 +72,22 @@ const BodyInfo = () => {
           }</span>
         </div>
         <div>
-          <MdLocalParking size={ size } />
+          <MdLocalParking size={ iconSize.bodyInfo } />
           <span>주차장: {parkingLot ? parkingLot : NO_DATA }</span>
         </div>
-        {/* <ul>
-          <MdLabel size={ size } />
-          <span>Tag: </span>{ tagCollection ? tagCollection : NO_DATA }
-        </ul> */}
       </>
     );
-  };
-  
-  return searchedInfo && (
+  }, [selectedCourt]);
+
+  return selectedCourt && (
     <Style.BodyInfoWrapper>
-      { searchedInfo.length ? renderOnData(30) : '일치하는 검색이 없습니다.' }
+      { renderOnData }
     </Style.BodyInfoWrapper>
   );
 };
 
 BodyInfo.propTypes = {
-  searchedInfo: PropTypes.array
+  selectedCourt: PropTypes.array
 };
 
 export default BodyInfo;

@@ -8,12 +8,12 @@ import Style from './indexStyle';
 import PropTypes from 'prop-types';
 
 const HeaderInfo = () => {
-  const { searchedInfo } = useContext(CourtContext);
+  const { selectedCourt } = useContext(CourtContext);
   
   return (
     <Style.HeaderWrapper>
-      <Title {...searchedInfo[0]} />
-      <Address {...searchedInfo[0]} />
+      <Title { ...selectedCourt } />
+      <Address { ...selectedCourt } />
       <Additional />
       <NavBtn />
     </Style.HeaderWrapper>
@@ -21,7 +21,7 @@ const HeaderInfo = () => {
 };
 
 HeaderInfo.propTypes = {
-  searchedInfo: PropTypes.array
+  selectedCourt: PropTypes.array
 };
 
 export default HeaderInfo;

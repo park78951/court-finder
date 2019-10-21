@@ -1,10 +1,22 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { CourtContext } from '../../../courtStore/CourtStore';
+import { SELECT_COURT } from '../../../config/constants';
 import Style from './CourtItemStyle';
 import PropTypes from 'prop-types';
 
-const CourtItem = ({ locationName, address, in_out, phone }) => {
+const CourtItem = ({ searchedCourt }) => {
+  const { locationName, address, in_out, phone } = searchedCourt;
+  const { courtsDispatch } = useContext(CourtContext);
+
+  const selectCourt = () => {
+    console.log(searchedCourt);
+    courtsDispatch({ type: SELECT_COURT, payload: searchedCourt });
+  };
+
   return (
-    <Style.CourtItemWrapper>
+    <Style.CourtItemWrapper
+      onClick={ selectCourt }
+    >
       <h2>{ locationName }</h2><span>{ in_out }</span>
       <div>
         <p>주소: { address }</p>

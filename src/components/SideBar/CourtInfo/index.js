@@ -16,4 +16,4 @@ CourtInfo.defaultProps = {
   isSelected: false
 };
 
-export default React.memo(CourtInfo);
+export default CourtInfo;
