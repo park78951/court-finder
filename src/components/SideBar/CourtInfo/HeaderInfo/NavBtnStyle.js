@@ -5,23 +5,25 @@ const NavBtnStyle = styled.div`
   flex: 1;
   margin-top: 15px;
 
-    & > div {
+  & > a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+
+    & > button {
       display: flex;
-      flex-direction: column;
-      width: 50%;
-      & > button {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border: none;
-        padding: 0;
-        background: transparent;
-        cursor: pointer;
-      }
-      & > div {
-        width: 100%;
-        flex: 1;
-      }
+      border: none;
+      padding: 0;
+      background: transparent;
+      cursor: pointer;
+      height: fit-content;
+      outline: none;
+    }
+  }
+
+  .nav__selected {
+    border-bottom: 4px solid white;
   }
 `;
 

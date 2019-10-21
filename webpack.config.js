@@ -27,7 +27,8 @@ module.exports = {
     ]
   },
   devServer: {
-    publicPath: '/'
+    publicPath: '/',
+    historyApiFallback: true
   },
   plugins: [
     new HtmlWebPackPlugin({
