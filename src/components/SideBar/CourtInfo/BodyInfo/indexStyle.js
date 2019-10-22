@@ -29,8 +29,6 @@ const BodyInfoWrapper = styled.div`
     }
   }
 
-
-
   & > ul {
     display: flex;
     justify-content: start;

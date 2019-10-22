@@ -19,7 +19,7 @@ const InputBar = ({ location, history }) => {
     getUserInput(term);
     setTerm('');
 
-    if(location.pathname !== '/') history.push('/');
+    if(location.pathname !== '/search') history.push('/search');
   };
 
   return (

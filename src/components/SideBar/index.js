@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import Search from './Search';
 import CourtInfo from './CourtInfo';
 import CourtList from './CourtList';
+import SearchFilter from './SearchFilter';
 import { CourtContext } from '../../courtStore/CourtStore';
 import { Route, Switch } from 'react-router-dom';
 import Style from './indexStyle';
@@ -13,7 +14,8 @@ const SideBar = () => {
     <Style.SideBarWrapper isSidebarHidden={ isSidebarHidden }>
       <Search />
       <Switch>
-        <Route path='/' exact component={ CourtList} />
+        <Route path='/' exact component={ SearchFilter } />
+        <Route path='/search' exact component={ CourtList} />
         <Route path='/courtinfo' component={ CourtInfo } />
       </Switch>
     </Style.SideBarWrapper>

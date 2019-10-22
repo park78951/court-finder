@@ -1,7 +1,7 @@
 import React, { useContext, useMemo } from 'react';
-import { CourtContext } from '../../../courtStore/CourtStore';
-import { NO_DATA } from '../../../config/constants';
-import { iconSize } from '../../../config';
+import { CourtContext } from '../../../../courtStore/CourtStore';
+import { NO_DATA } from '../../../../config/constants';
+import { iconSize } from '../../../../config';
 import { 
   MdLanguage,
   MdPhone,
@@ -11,7 +11,7 @@ import {
   MdDirectionsTransit,
   MdLocalParking,
 } from 'react-icons/md';
-import Style from './BodyInfoStyle';
+import Style from './indexStyle';
 import PropTypes from 'prop-types';
 
 const BodyInfo = () => {
@@ -31,7 +31,7 @@ const BodyInfo = () => {
     return (
       <>
         <div>
-          <div className=''>
+          <div>
             <MdLanguage size={ iconSize.bodyInfo } />
           </div>
           { web
