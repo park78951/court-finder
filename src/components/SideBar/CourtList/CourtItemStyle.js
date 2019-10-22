@@ -5,16 +5,16 @@ const CourtItemWrapper = styled.div`
   height: 15vh;
   box-sizing: border-box;
   border: solid 1px #D3D3D3;
+  padding-left: 5px;
 
-  & > h2 {
+  & > h3 {
     display: inline-block;
-    margin: 5px 0;
+    margin: 10px 0;
   }
   
   & > span {
     display: inline-block;
     color: #383838;
-    font-size: 1.1rem;
     margin-left: 10px;
   }
 

@@ -1,4 +1,4 @@
-export const defaultMapOptions = {
+const defaultMapOptions = {
   center: {
     lat: 37.531058,
     lng: 126.929067
@@ -13,13 +13,19 @@ export const defaultMapOptions = {
   }
 };
 
-export const buttonTheme = {
+const buttonTheme = {
   colors: {
     acceptance: '#0d98ba',
     cancel: '#DC143C'
   }
 };
 
-export const iconSize = {
+const iconSize = {
   bodyInfo: 30
+};
+
+export { 
+  defaultMapOptions,
+  buttonTheme,
+  iconSize
 };

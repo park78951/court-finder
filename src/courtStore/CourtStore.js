@@ -13,7 +13,6 @@ export const CourtContext = createContext();
 const CourtStore = ({ children }) => {
   const [userInput, setUserInput] = useState('');
   // eslint-disable-next-line no-unused-vars
-  const [addedCourts, setAddedCourts] = useState([]);
   const [courtsInfo, courtsDispatch] = useReducer(courtReducer, initCourtsInfo);
   const [uiToggleInfo, uiToggleDispatch] = useReducer(uiReducer, initUIToggleInfo);
   
