@@ -4,14 +4,18 @@ import CourtInfo from './CourtInfo';
 import CourtList from './CourtList';
 import SearchFilter from './SearchFilter';
 import { CourtContext } from '../../courtStore/CourtStore';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, withRouter } from 'react-router-dom';
 import Style from './indexStyle';
 import PropTypes from 'prop-types';
 
-const SideBar = () => {
+const SideBar = ({ location }) => {
   const { isSidebarHidden } = useContext(CourtContext);
+  
   return (
-    <Style.SideBarWrapper isSidebarHidden={ isSidebarHidden }>
+    <Style.SideBarWrapper 
+      isSidebarHidden={ isSidebarHidden }
+      curPath={ location.pathname }
+    >
       <Search />
       <Switch>
         <Route path='/' exact component={ SearchFilter } />
@@ -26,4 +30,4 @@ SideBar.propTypes = {
   isSidebarHidden: PropTypes.bool
 };
 
-export default SideBar;
+export default withRouter(SideBar);

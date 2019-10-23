@@ -2,8 +2,8 @@ export const BEFORE_WORK = 'Before Work';
 export const LOADING = 'Loading';
 export const DONE = 'Done';
 
-export const SEARCH_COURTS = 'SEARCH_COURTS';
-export const UPDATE_COURTS = 'UPDATE_COURTS';
+export const COMPLETE_SEARCH_COURTS = 'COMPLETE_SEARCH_COURTS';
+export const SEARCHING_COURTS = 'SEARCHING_COURTS';
 export const ADD_COURTS = 'ADD_COURTS';
 export const SELECT_COURT = 'SELECT_COURT';
 

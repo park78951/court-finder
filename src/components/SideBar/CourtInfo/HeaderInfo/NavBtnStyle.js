@@ -9,10 +9,12 @@ const NavBtnStyle = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
     width: 50%;
 
     & > button {
-      display: flex;
+      position: absolute;
+      top: 2px;
       border: none;
       padding: 0;
       background: transparent;
@@ -23,7 +25,7 @@ const NavBtnStyle = styled.div`
   }
 
   .nav__selected {
-    border-bottom: 4px solid white;
+    border-bottom: 6px solid white;
   }
 `;
 

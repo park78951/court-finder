@@ -24,8 +24,15 @@ const iconSize = {
   bodyInfo: 30
 };
 
+const routes = {
+  search: '/search',
+  courtInfo: '/courtInfo',
+  review: '/courtInfo/review'
+};
+
 export { 
   defaultMapOptions,
   buttonTheme,
-  iconSize
+  iconSize,
+  routes
 };

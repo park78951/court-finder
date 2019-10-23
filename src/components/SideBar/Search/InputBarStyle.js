@@ -16,7 +16,7 @@ const InputContainer = styled.div`
       height: 100%;
       width: 80%;
       padding: 0 0 0 10px;
-      font-size: 1.3rem;
+      font-size: 1.1rem;
       outline: none;
     }
 

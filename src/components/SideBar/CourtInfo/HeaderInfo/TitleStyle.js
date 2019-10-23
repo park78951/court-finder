@@ -16,8 +16,9 @@ const HeaderTitleStyle = styled.div`
   & > p {
     flex: 1;
     font-weight: bold;
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     margin: 0;
+    line-height: 35px;
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;

@@ -4,7 +4,8 @@ const CourtListWrapper = styled.div`
   flex: 1;
   border: solid 1px #D3D3D3;
   overflow: hidden;
-  height: 100vh;
+  flex-grow: 1;
+  flex-shrink: 1;
 
   & > a {
     text-decoration: none;

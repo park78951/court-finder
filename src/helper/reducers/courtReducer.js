@@ -1,25 +1,36 @@
 import { 
-  SEARCH_COURTS,
+  COMPLETE_SEARCH_COURTS,
   ADD_COURTS,
-  SELECT_COURT
+  SELECT_COURT,
+  SEARCHING_COURTS
 } from '../../config/constants';
 
 const courtReducer = (
-  { searchedCourts, selectedCourt, addedInfo }, 
+  { searchedCourts, selectedCourt, addedInfo, isSearching }, 
   { type, payload }
 ) => {
   switch (type) {
-    case SEARCH_COURTS:
+    case COMPLETE_SEARCH_COURTS:
       return {
         selectedCourt,
         addedInfo,
+        isSearching: false,
         searchedCourts: [...payload]
+      };
+
+    case SEARCHING_COURTS:
+      return {
+        searchedCourts,
+        selectedCourt,
+        addedInfo,
+        isSearching: true
       };
 
     case ADD_COURTS:
       return {
         searchedCourts,
         selectedCourt,
+        isSearching,
         addedInfo: { ...addedInfo, ...payload }
       };
     
@@ -27,6 +38,7 @@ const courtReducer = (
       return {
         searchedCourts,
         addedInfo,
+        isSearching,
         selectedCourt: { ...payload }
       };
 

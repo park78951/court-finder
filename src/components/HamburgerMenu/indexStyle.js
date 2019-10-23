@@ -8,7 +8,7 @@ const HamburgerWrapper = styled.button`
   top: 2px;
   left: 2px;
   width: 60px;
-  height: 60px;
+  height: 55px;
   z-index: 10;
   background-color: ${ ({ isSidebarHidden }) => isSidebarHidden ? 'white' : 'transparent' };
   border: none;

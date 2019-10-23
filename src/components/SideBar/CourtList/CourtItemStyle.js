@@ -4,7 +4,7 @@ const CourtItemWrapper = styled.div`
   width: 100%;
   height: 15vh;
   box-sizing: border-box;
-  border: solid 1px #D3D3D3;
+  border-bottom: solid 1px #D3D3D3;
   padding-left: 5px;
 
   & > h3 {

@@ -3,11 +3,12 @@ import { CourtContext } from '../../../courtStore/CourtStore';
 import CourtItem from './CourtItem';
 import { createUniqueKey } from '../../../helper/myUtil';
 import { Link } from 'react-router-dom';
+import Loading from '../../Loading';
 import Style from './indexStyle';
 import PropTypes from 'prop-types';
 
 const CourtList = () => {
-  const { searchedCourts } = useContext(CourtContext);
+  const { searchedCourts, isSearching } = useContext(CourtContext);
 
   const searchedItems = useMemo(() => {
     return searchedCourts.map(searchedCourt => (
@@ -23,12 +24,14 @@ const CourtList = () => {
   }, [searchedCourts]);
   
   return (
-    <Style.CourtListWrapper>
-      { searchedCourts.length
-        ? searchedItems 
-        : <p>코트를 검색해 주세요.</p>
-      }
-    </Style.CourtListWrapper>
+    isSearching
+      ? <Loading />
+      : <Style.CourtListWrapper>
+        { searchedCourts.length
+          ? searchedItems 
+          : <p>검색 데이터가 없습니다.</p>
+        }
+      </Style.CourtListWrapper>
   );
 };
 

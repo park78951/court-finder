@@ -1,5 +1,6 @@
 export const initCourtsInfo = {
   searchedCourts: [],
+  isSearching: false,
   selectedCourt: null,
   addedInfo:{}
 };
