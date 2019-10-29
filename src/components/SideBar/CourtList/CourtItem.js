@@ -11,6 +11,7 @@ const CourtItem = ({ searchedCourt }) => {
   const selectCourt = () => {
     console.log(searchedCourt);
     courtsDispatch({ type: SELECT_COURT, payload: searchedCourt });
+    localStorage.setItem('selectCourt', JSON.stringify(searchedCourt));
   };
 
   return (

@@ -1,14 +1,18 @@
 import React from 'react';
 import HeaderInfo from './HeaderInfo';
 import BodyInfo from './BodyInfo';
+import ReviewInfo from './ReviewInfo';
 import { Route } from 'react-router-dom';
 import Style from './IndexStyle';
 
-const CourtInfo = () => {
+const CourtInfo = ({ match }) => {
+  const { path } = match;
+
   return (
     <Style.CourtInfoWrapper >
       <HeaderInfo />
-      <Route path='/' component={ BodyInfo } />
+      <Route path={`${ path }/detail`} component={ BodyInfo } />
+      <Route path={`${ path }/review`} component={ ReviewInfo } />
     </Style.CourtInfoWrapper>
   );
 };

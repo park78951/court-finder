@@ -9,12 +9,13 @@ import PropTypes from 'prop-types';
 
 const CourtList = () => {
   const { searchedCourts, isSearching } = useContext(CourtContext);
+  // const courtsData = searchedCourts.length ? searchedItems : JSON.parse(localStorage.getItem('filteredInfo'));
 
   const searchedItems = useMemo(() => {
     return searchedCourts.map(searchedCourt => (
       <Link 
         key={createUniqueKey()} 
-        to='/courtinfo'
+        to='/courtinfo/detail'
       >
         <CourtItem 
           searchedCourt = { searchedCourt }

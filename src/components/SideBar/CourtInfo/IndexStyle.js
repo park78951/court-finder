@@ -2,9 +2,10 @@ import styled from 'styled-components';
 
 const CourtInfoWrapper = styled.div`
   /* display: ${({ isSelected }) => isSelected ? 'flex' : 'none'}; */
+  /* height: 100%; */
+  height: 92%;
   display: flex;
-  flex-flow: column;
-  flex: 1;
+  flex-direction: column;
 `;
 
 export default { CourtInfoWrapper };

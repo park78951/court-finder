@@ -16,6 +16,7 @@ import PropTypes from 'prop-types';
 
 const BodyInfo = () => {
   const { selectedCourt } = useContext(CourtContext);
+  const courtData = selectedCourt || JSON.parse(localStorage.getItem('selectCourt'));
 
   const renderOnData = useMemo(() => {
     const {
@@ -26,7 +27,7 @@ const BodyInfo = () => {
       availableTime,
       transportation,
       parkingLot,
-    } = selectedCourt;
+    } = courtData;
 
     return (
       <>
@@ -77,9 +78,9 @@ const BodyInfo = () => {
         </div>
       </>
     );
-  }, [selectedCourt]);
+  }, [courtData]);
 
-  return selectedCourt && (
+  return courtData && (
     <Style.BodyInfoWrapper>
       { renderOnData }
     </Style.BodyInfoWrapper>

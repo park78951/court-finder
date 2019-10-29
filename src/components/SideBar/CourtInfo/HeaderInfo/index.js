@@ -9,11 +9,12 @@ import PropTypes from 'prop-types';
 
 const HeaderInfo = () => {
   const { selectedCourt } = useContext(CourtContext);
+  const courtData = selectedCourt || JSON.parse(localStorage.getItem('selectCourt'));
   
   return (
     <Style.HeaderWrapper>
-      <Title { ...selectedCourt } />
-      <Address { ...selectedCourt } />
+      <Title { ...courtData } />
+      <Address { ...courtData } />
       <Additional />
       <NavBtn />
     </Style.HeaderWrapper>

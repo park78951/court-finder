@@ -32,7 +32,7 @@ const InputBar = ({ location, history }) => {
           value={ term }
         />
         <button type='submit'>
-          <IoIosSearch size={ 40 } />
+          <IoIosSearch size={ 30 } />
         </button>
       </form>
     </Style.InputContainer>

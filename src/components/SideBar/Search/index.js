@@ -2,9 +2,9 @@ import React from 'react';
 import InputBar from './InputBar';
 import Style from './indexStyle';
 
-const Search = () => {
+const Search = ({ curPath }) => {
   return (
-    <Style.SearchContainer>
+    <Style.SearchContainer curPath={ curPath } >
       <InputBar />
     </Style.SearchContainer>
   );

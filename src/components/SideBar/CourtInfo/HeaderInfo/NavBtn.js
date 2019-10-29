@@ -8,7 +8,7 @@ const NavBtn = () => {
     <Style.NavBtnStyle>
       <NavLink 
         exact
-        to='/courtinfo/'
+        to='/courtinfo/detail'
         activeClassName='nav__selected'
         replace={ true }
       >

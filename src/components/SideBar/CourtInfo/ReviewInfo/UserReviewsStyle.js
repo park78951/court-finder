@@ -1,23 +1,12 @@
 import styled from 'styled-components';
 
-const CourtListWrapper = styled.div`
-  flex: 1;
-  border: solid 1px #D3D3D3;
-  overflow: hidden;
-  flex-shrink: 1;
+const UserReviewsWrapper = styled.div`
+  width: 100%;
+  /* height: 200px; */
+/*   
+  overflow-y: scroll; */
 
-  & > a {
-    text-decoration: none;
-    color: inherit;
-
-    &:focus, &:hover, &:visited, &:link, &:active {
-        text-decoration: none;
-    }
-  }
-
-  overflow-y: scroll;
-
-  &::-webkit-scrollbar-track {
+  /* &::-webkit-scrollbar-track {
     box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
     border-radius: 10px;
@@ -35,7 +24,7 @@ const CourtListWrapper = styled.div`
     box-shadow: inset 0 0 6px rgba(0,0,0,.3);
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
     background-color: #555;
-  }
+  } */
 `;
 
-export default { CourtListWrapper };
+export default { UserReviewsWrapper };

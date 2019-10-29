@@ -10,13 +10,14 @@ import PropTypes from 'prop-types';
 
 const SideBar = ({ location }) => {
   const { isSidebarHidden } = useContext(CourtContext);
-  
+  const { pathname } = location;
+
   return (
     <Style.SideBarWrapper 
       isSidebarHidden={ isSidebarHidden }
-      curPath={ location.pathname }
+      curPath={ pathname }
     >
-      <Search />
+      <Search curPath={ pathname }/>
       <Switch>
         <Route path='/' exact component={ SearchFilter } />
         <Route path='/search' exact component={ CourtList} />

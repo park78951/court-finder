@@ -11,6 +11,7 @@ const fetchCourtsData = async ({ userInput, courtsDispatch }) => {
     const fetchedData = await courtsApi.get('/seoulCourt.json');
     const courtsInfo = fetchedData.data.body;
     const courtsByUserInput = filterCourtsByInput({ userInput, courtsInfo });
+    // localStorage.setItem('filteredInfo', JSON.stringify(courtsByUserInput));
     courtsDispatch({ 
       type: COMPLETE_SEARCH_COURTS, 
       payload: courtsByUserInput 

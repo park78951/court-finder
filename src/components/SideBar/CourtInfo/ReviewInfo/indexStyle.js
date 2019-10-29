@@ -1,19 +1,10 @@
 import styled from 'styled-components';
 
-const CourtListWrapper = styled.div`
-  flex: 1;
-  border: solid 1px #D3D3D3;
-  overflow: hidden;
-  flex-shrink: 1;
-
-  & > a {
-    text-decoration: none;
-    color: inherit;
-
-    &:focus, &:hover, &:visited, &:link, &:active {
-        text-decoration: none;
-    }
-  }
+const ReviewInfoWrapper = styled.div`
+  height: 74%;
+  /* height: 400px; */
+  border: #D3D3D3;
+  padding: 20px 15px 0 15px;
 
   overflow-y: scroll;
 
@@ -38,4 +29,4 @@ const CourtListWrapper = styled.div`
   }
 `;
 
-export default { CourtListWrapper };
+export default { ReviewInfoWrapper };
