@@ -1,15 +1,11 @@
 import React from 'react';
-import UserReview from './UserReview';
-import Style from './UserReviewsStyle';
+import NoReview from './NoReview';
 
 const UserReviews = () => {
   return (
-      <>
-      <UserReview />
-      <UserReview />
-      <UserReview />
-      <UserReview />
-      </>
+    <>
+      <NoReview />
+    </>
   );
 };
 
