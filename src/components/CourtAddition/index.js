@@ -1,6 +1,9 @@
 import React, { useContext, useState, useMemo } from 'react';
 import { CourtContext } from '../../courtStore/CourtStore';
-import { buttonTheme } from '../../config';
+import { 
+  buttonTheme,
+  cancelBtnSizeOfAddForm
+} from '../../config/initConfig';
 import { CLOSE_COURTADDITION } from '../../config/constants';
 import { ThemeProvider } from 'styled-components';
 import { MdCancel } from 'react-icons/md';
@@ -17,8 +20,8 @@ const CourtAddition = () => {
     courtsDispatch,
     addedInfo
   } = useContext(CourtContext);
-  
   const [curPage, setcurPage] = useState(1);
+  const { size } = cancelBtnSizeOfAddForm;
 
   const closeModal = e => {
     e.preventDefault();
@@ -81,7 +84,7 @@ const CourtAddition = () => {
         onSubmit={ submitCourtsInfo }
       >
         <button onClick={ closeModal }>
-          <MdCancel size={ 40 } />
+          <MdCancel size={ size } />
         </button>
         <h1>장소추가</h1>
         <form>

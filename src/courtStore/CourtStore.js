@@ -20,10 +20,18 @@ const CourtStore = ({ children }) => {
     setUserInput(userInput);
   };
 
+  const fetchData = () => {
+    useFetch({ userInput, courtsDispatch });
+    if(!courtsInfo.isError) setUserInput('');
+  };
+
+  const refetchData = () => {
+    fetchData();
+  };
+
   useEffect(() => {
     if(!userInput) return;
-    useFetch({ userInput, courtsDispatch });
-    setUserInput('');
+    fetchData();
   }, [userInput]);
   
   return (
@@ -33,6 +41,7 @@ const CourtStore = ({ children }) => {
       ...uiToggleInfo, 
       uiToggleDispatch,
       courtsDispatch,
+      refetchData
     }}>
       { children }
     </CourtContext.Provider>

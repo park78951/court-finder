@@ -4,6 +4,7 @@ import BodyInfo from './BodyInfo';
 import ReviewInfo from './ReviewInfo';
 import { Route } from 'react-router-dom';
 import Style from './IndexStyle';
+import PropTypes from 'prop-types';
 
 const CourtInfo = ({ match }) => {
   const { path } = match;
@@ -17,8 +18,8 @@ const CourtInfo = ({ match }) => {
   );
 };
 
-CourtInfo.defaultProps = {
-  isSelected: false
+CourtInfo.propTypes = {
+  match: PropTypes.object.isRequired
 };
 
 export default CourtInfo;

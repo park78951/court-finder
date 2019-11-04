@@ -6,7 +6,6 @@ const SummaryForm = ({
   submitHandler, 
   movePrev,
   addedInfo,
-  courtAdditionFlag
 }) => {
 
   const summaryList = () => {

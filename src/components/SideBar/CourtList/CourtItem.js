@@ -21,7 +21,7 @@ const CourtItem = ({ searchedCourt }) => {
       <h3>{ locationName }</h3><span>{ in_out }</span>
       <div>
         <p>주소: { address }</p>
-        <p>전화번호: 02-{ phone }</p>
+        <p>전화번호: { phone }</p>
       </div>
     </Style.CourtItemWrapper>
   );

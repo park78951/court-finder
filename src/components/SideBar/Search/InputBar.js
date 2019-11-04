@@ -2,12 +2,13 @@ import React, { useState, useContext } from 'react';
 import { CourtContext } from '../../../courtStore/CourtStore';
 import { IoIosSearch } from 'react-icons/io';
 import { withRouter } from 'react-router-dom';
+import { REMOVE_SELECT_COURT } from '../../../config/constants';
 import Style from './InputBarStyle';
 import PropTypes from 'prop-types';
 
 const InputBar = ({ location, history }) => {
   const [term, setTerm] = useState('');
-  const { getUserInput } = useContext(CourtContext);
+  const { getUserInput, courtsDispatch } = useContext(CourtContext);
 
   const setInput = ({ target }) => {
     const { value } = target;
@@ -18,6 +19,7 @@ const InputBar = ({ location, history }) => {
     evt.preventDefault();
     getUserInput(term);
     setTerm('');
+    courtsDispatch({ type: REMOVE_SELECT_COURT });
 
     if(location.pathname !== '/search') history.push('/search');
   };

@@ -1,6 +1,10 @@
 import { filterCourtsByInput } from '../myUtil';
 import courtsApi from '../../apis';
-import { COMPLETE_SEARCH_COURTS, SEARCHING_COURTS } from '../../config/constants';
+import { 
+  COMPLETE_SEARCH_COURTS, 
+  SEARCHING_COURTS,
+  CATCHING_ERROR
+} from '../../config/constants';
 
 
 const fetchCourtsData = async ({ userInput, courtsDispatch }) => {
@@ -17,7 +21,8 @@ const fetchCourtsData = async ({ userInput, courtsDispatch }) => {
       payload: courtsByUserInput 
     });
   } catch(err) {
-    console.log(err);
+    console.log(err.message);
+    courtsDispatch({ type: CATCHING_ERROR });
   }
 };
 

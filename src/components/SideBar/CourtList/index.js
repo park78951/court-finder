@@ -1,21 +1,27 @@
 import React, { useContext, useMemo } from 'react';
 import { CourtContext } from '../../../courtStore/CourtStore';
 import CourtItem from './CourtItem';
+import { routes } from '../../../config/initConfig';
 import { createUniqueKey } from '../../../helper/myUtil';
 import { Link } from 'react-router-dom';
 import Loading from '../../Loading';
+import Refetch from '../Refetch';
 import Style from './indexStyle';
 import PropTypes from 'prop-types';
 
 const CourtList = () => {
-  const { searchedCourts, isSearching } = useContext(CourtContext);
-  // const courtsData = searchedCourts.length ? searchedItems : JSON.parse(localStorage.getItem('filteredInfo'));
+  const { 
+    searchedCourts, 
+    isSearching, 
+    isError 
+  } = useContext(CourtContext);
+  const { infoDetail } = routes;
 
   const searchedItems = useMemo(() => {
     return searchedCourts.map(searchedCourt => (
       <Link 
         key={createUniqueKey()} 
-        to='/courtinfo/detail'
+        to={ infoDetail }
       >
         <CourtItem 
           searchedCourt = { searchedCourt }
@@ -27,12 +33,14 @@ const CourtList = () => {
   return (
     isSearching
       ? <Loading />
-      : <Style.CourtListWrapper>
-        { searchedCourts.length
-          ? searchedItems 
-          : <p>검색 데이터가 없습니다.</p>
-        }
-      </Style.CourtListWrapper>
+      : isError 
+        ? <Refetch />
+        : <Style.CourtListWrapper>
+          { searchedCourts.length
+            ? searchedItems 
+            : <p>검색 데이터가 없습니다.</p>
+          }
+        </Style.CourtListWrapper>
   );
 };
 

@@ -21,6 +21,7 @@ const MapContextMenu = ({ children }) => {
       <ContextMenuTrigger 
         id='map_wrapper'
         holdToDisplay={ -1 }
+        disable={ true }
       >
         { children }
       </ContextMenuTrigger>

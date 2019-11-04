@@ -7,7 +7,7 @@ const ReviewInfo = () => {
   return (
     <Style.ReviewInfoWrapper>
       <Photos />
-      <h2>여기 어때?</h2>
+      <h2>코트 리뷰</h2>
       <UserReviews />
     </Style.ReviewInfoWrapper>
   );

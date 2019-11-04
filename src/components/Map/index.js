@@ -1,8 +1,21 @@
-import React, { useState, useMemo, useContext, useEffect } from 'react';
-import { GoogleMap, useLoadScript, Marker } from '@react-google-maps/api';
-import { defaultMapOptions } from '../../config';
+import React, { 
+  useState, 
+  useMemo, 
+  useContext, 
+  useEffect 
+} from 'react';
+import { 
+  GoogleMap, 
+  useLoadScript, 
+  Marker 
+} from '@react-google-maps/api';
+import { defaultMapOptions } from '../../config/initConfig';
 import { CourtContext } from '../../courtStore/CourtStore';
-import { createUniqueKey, convertCoordinatesNum } from '../../helper/myUtil';
+import { 
+  createUniqueKey, 
+  createFullCoordinate,
+} from '../../helper/myUtil';
+import { withRouter } from 'react-router-dom';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
@@ -11,40 +24,46 @@ const MapContainer = styled.div`
   width: 100%;
 `;
 
-const Map = () => {
-  const { center, zoom, mapStyle, options } = defaultMapOptions;
+const Map = ({ location }) => {
+  const { 
+    center, 
+    zoom, 
+    mapStyle, 
+    options, 
+    mapTypeId 
+  } = defaultMapOptions;
   const [curCenter, setCurCenter] = useState(center);
-  const { searchedCourts } = useContext(CourtContext);
-  const courtsData = searchedCourts.length ? searchedCourts : JSON.parse(localStorage.getItem('filteredInfo'));
+  const { searchedCourts, selectedCourt } = useContext(CourtContext);
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.KEY
   });
+  const { pathname } = location;
 
   const clickMapHandler = (e) => {
     console.log(e);
   };
 
-  const setMarker = useMemo(
+  // SetAnimation stat를 만들어서 animation route에 따른 관리
+  const setMarkers = useMemo(
     () => {
-      if(!searchedCourts.length) return;
-      return courtsData.map( courtInfo => {
-        const position = convertCoordinatesNum(courtInfo);
+      return searchedCourts.map( courtInfo => {
         return (
           <Marker
             key={ createUniqueKey() }
-            position={ position }
+            position={ createFullCoordinate(courtInfo) }
           />
         );
       });
-    },
-    [courtsData]
-  );
+    }, [searchedCourts, selectedCourt]);
   
   useEffect(() => {
     if(!searchedCourts.length) return;
-    const position = convertCoordinatesNum(courtsData[0]);
-    setCurCenter(position);
-  }, [courtsData]);
+    setCurCenter(
+      pathname === '/search' 
+        ? createFullCoordinate(searchedCourts[0])
+        : createFullCoordinate(selectedCourt)
+    );
+  }, [searchedCourts, selectedCourt]);
 
   if(loadError) {
     return <div>Map cannot be loaded right now, sorry.</div>;
@@ -56,11 +75,11 @@ const Map = () => {
         zoom={ zoom }
         center={ curCenter }
         mapContainerStyle={ mapStyle }
-        mapTypeId='roadmap'
+        mapTypeId={ mapTypeId }
         options={ options }
         onRightClick={ clickMapHandler }
       >
-        { setMarker }
+        { setMarkers }
       </GoogleMap>
     </MapContainer>
   );
@@ -71,4 +90,4 @@ Map.propTypes = {
   isLoaded: PropTypes.bool
 };
 
-export default Map;
+export default withRouter(Map);

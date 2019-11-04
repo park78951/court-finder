@@ -2,7 +2,15 @@ import React, { useState } from 'react';
 import CustomInput from '../lib/Input';
 import CustomDropDown from '../lib/DropDown';
 import CustomButton from '../lib/Button';
-import { INDOOR_OR_OUTDOOR, PLAYER_LEVEL, TIME_DIVISION_AVAILABLE, TIME_DIVISION_HOURS, ADD_COURTS } from '../../config/constants';
+import { 
+  INDOOR_OR_OUTDOOR, 
+  PLAYER_LEVEL, 
+  TIME_DIVISION_AVAILABLE, 
+  TIME_DIVISION_HOURS, 
+  ADD_COURTS,
+  PLACEHOLDER_COURT_NAME,
+  PLACEHOLDER_FEE_AMOUNT
+} from '../../config/constants';
 import { checkUnfilled } from '../../helper/myUtil';
 import Style from './BasicFormStyle';
 import PropTypes from 'prop-types';
@@ -44,7 +52,7 @@ const BasicForm = ({
         <p>장소명</p>
         <CustomInput 
           name='locationName'
-          placeholder='ex) 해운대 농구코트'
+          placeholder={ PLACEHOLDER_COURT_NAME }
           onChange={ setData }
         />
         <p>실내외 여부</p>
@@ -69,7 +77,7 @@ const BasicForm = ({
           />
           <CustomInput
             name='feeAmount'
-            placeholder='ex) 무료 / 3000' 
+            placeholder={ PLACEHOLDER_FEE_AMOUNT }
             onChange={ setData }
             size='medium'
           />

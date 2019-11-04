@@ -2,7 +2,15 @@ import React, { useState } from 'react';
 import CustomDropDown from '../lib/DropDown';
 import CustomInput from '../lib/Input';
 import CustomButton from '../lib/Button';
-import { TRANSPORTATION, ADD_COURTS } from '../../config/constants';
+import { 
+  TRANSPORTATION, 
+  ADD_COURTS,
+  PLACEHOLDER_PARKING_LOT,
+  PLACEHOLDER_PHONE_NUM,
+  PLACEHOLDER_TRANSPORT_DETAIL,
+  PLACEHOLDER_TRANSPORT_STOP,
+  PLACEHOLDER_WEB_URL,
+} from '../../config/constants';
 import Style from './AdditionalFormStyle';
 import PropTypes from 'prop-types';
 
@@ -44,13 +52,13 @@ const AdditionalForm = ({
           />
           <div>
             <CustomInput 
-              placeholder='ex) 정거장 / 역이름'
+              placeholder={ PLACEHOLDER_TRANSPORT_STOP }
               size='medium'
               name='transpstop'
               onChange={ setData }
             />
             <CustomInput 
-              placeholder='ex) 3004번 / 2호선'
+              placeholder={ PLACEHOLDER_TRANSPORT_DETAIL }
               size='medium'
               name='transpdetail'
               onChange={ setData }
@@ -59,19 +67,19 @@ const AdditionalForm = ({
         </div>
         <p>웹사이트</p>
         <CustomInput 
-          placeholder='ex) https://www.court-finder.com'
+          placeholder={ PLACEHOLDER_WEB_URL }
           name='web'
           onChange={ setData }
         />
         <p>전화번호</p>
         <CustomInput 
-          placeholder='ex) 02-7777-7777'
+          placeholder={ PLACEHOLDER_PHONE_NUM }
           name='phone'
           onChange={ setData }
         />
         <p>주차장</p>
         <CustomInput 
-          placeholder='ex) 탄천 주차장 이용 / 불가'
+          placeholder={ PLACEHOLDER_PARKING_LOT }
           name='parkingLot'
           onChange={ setData }
         />

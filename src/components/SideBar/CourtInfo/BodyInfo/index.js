@@ -1,7 +1,7 @@
 import React, { useContext, useMemo } from 'react';
 import { CourtContext } from '../../../../courtStore/CourtStore';
 import { NO_DATA } from '../../../../config/constants';
-import { iconSize } from '../../../../config';
+import { iconSize } from '../../../../config/initConfig';
 import { 
   MdLanguage,
   MdPhone,
@@ -42,7 +42,7 @@ const BodyInfo = () => {
         </div>
         <div>
           <MdPhone size={ iconSize.bodyInfo } />
-          <span>전화번호: 02-{ phone ? phone : NO_DATA }</span>
+          <span>전화번호: { phone ? phone : NO_DATA }</span>
         </div>
         <div>
           <MdAttachMoney size={ iconSize.bodyInfo } />
@@ -74,7 +74,7 @@ const BodyInfo = () => {
         </div>
         <div>
           <MdLocalParking size={ iconSize.bodyInfo } />
-          <span>주차장: {parkingLot ? parkingLot : NO_DATA }</span>
+          <span>주차장: { parkingLot ? parkingLot : NO_DATA }</span>
         </div>
       </>
     );

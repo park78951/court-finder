@@ -1,6 +1,7 @@
 export const initCourtsInfo = {
   searchedCourts: [],
   isSearching: false,
+  isError: false,
   selectedCourt: null,
   addedInfo:{}
 };
@@ -15,7 +16,7 @@ export const initSubmitList = {
   locationName: null,
   web: null,
   phone: null,
-  fee: {
+  feeAmount: {
     amount: null,
     time: null
   },

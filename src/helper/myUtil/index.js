@@ -13,15 +13,15 @@ const filterCourtsByInput = ({ userInput, courtsInfo }) => {
   return filteredData;
 };
 
-const convertCoordinatesNum = ({ lat, lng}) => {
+const createFullCoordinate = ({ lat, lng}) => {
   const numLat = Number(lat);
   const numLng = Number(lng);
-
   return { lat: numLat, lng: numLng };
 };
 
 const createUniqueKey = () => {
-  return (Date.now() * Math.floor((Math.random() + 1) * 10000)).toString(36).substr(2, 9);
+  return (Date.now() * Math.floor((Math.random() + 1) * 10000))
+    .toString(36).substr(2, 9);
 };
 
 const checkUnfilled = collection => {
@@ -30,7 +30,7 @@ const checkUnfilled = collection => {
 
 export {
   filterCourtsByInput,
-  convertCoordinatesNum,
+  createFullCoordinate,
   createUniqueKey,
-  checkUnfilled
+  checkUnfilled,
 };
