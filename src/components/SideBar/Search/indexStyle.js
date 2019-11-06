@@ -5,7 +5,7 @@ const SearchContainer = styled.div`
   justify-content: flex-end;
   background-color: white;
   width: 100%;
-  height: ${ ({ curPath }) => curPath === '/' ? '4rem' : '8%' };
+  height: 4rem;
   border: solid 1px #D3D3D3;
 `;
 

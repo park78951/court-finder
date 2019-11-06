@@ -17,7 +17,9 @@ const NavBtn = () => {
         replace={ true }
       >
         <button>
-          <MdInfo size={ headerInfo_nav } />
+          <MdInfo 
+            size={ headerInfo_nav }
+          />
         </button>
       </NavLink>
       <NavLink 
@@ -27,7 +29,9 @@ const NavBtn = () => {
         replace={ true }
       >
         <button>
-          <MdAssignment size={ headerInfo_nav } />
+          <MdAssignment 
+            size={ headerInfo_nav }
+          />
         </button>
       </NavLink>
     </Style.NavBtnStyle>

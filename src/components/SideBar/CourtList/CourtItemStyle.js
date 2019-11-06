@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 const CourtItemWrapper = styled.div`
   width: 100%;
-  height: 15vh;
+  height: 7.5rem;
   box-sizing: border-box;
   border-bottom: solid 1px #D3D3D3;
   padding-left: 5px;

@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 const NavBtnStyle = styled.div`
   display: flex;
-  flex: 1;
+  height: 35%;
   margin-top: 15px;
 
   & > a {
@@ -14,7 +14,7 @@ const NavBtnStyle = styled.div`
 
     & > button {
       position: absolute;
-      top: 2px;
+      top: 10px;
       border: none;
       padding: 0;
       background: transparent;
@@ -25,7 +25,8 @@ const NavBtnStyle = styled.div`
   }
 
   .nav__selected {
-    border-bottom: 6px solid white;
+    background-color: white;
+    border-radius: 15px 15px 0 0;
   }
 `;
 
