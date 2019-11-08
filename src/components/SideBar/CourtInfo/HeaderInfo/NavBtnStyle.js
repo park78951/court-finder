@@ -14,13 +14,15 @@ const NavBtnStyle = styled.div`
 
     & > button {
       position: absolute;
-      top: 10px;
+      top: 10;
       border: none;
       padding: 0;
       background: transparent;
       cursor: pointer;
       height: fit-content;
       outline: none;
+      height: 90%;
+      width: 90%;
     }
   }
 

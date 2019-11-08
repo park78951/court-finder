@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const BodyInfoWrapper = styled.div`
-  height: 64%;
+  height: 74%;
   width: 100%;
   border: #D3D3D3;
   padding: 0 15px;
