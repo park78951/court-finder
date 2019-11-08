@@ -5,6 +5,8 @@ const dotenv = require('dotenv')
   .config({ path: __dirname + '/.env'});
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
+const ENV = process.env.NODE_ENV === 'development' ? 'development' : 'production';
+
 module.exports = {
   mode: 'development',
   entry: ['react-hot-loader/patch', './src/index.js'],
@@ -36,7 +38,8 @@ module.exports = {
       template: 'public/index.html'
     }),
     new webpack.EnvironmentPlugin({
-      KEY: dotenv.parsed.GOOGLE_API_KEY
+      KEY: dotenv.parsed.GOOGLE_API_KEY,
+      ENV
     }),
     new CleanWebpackPlugin()
   ]

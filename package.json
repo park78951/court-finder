@@ -1,12 +1,13 @@
 {
-  "name": "javascript-web-todo",
+  "name": "court-finder",
   "version": "1.0.0",
   "main": "src/index.js",
-  "repository": "https://github.com/park78951/javascript-web-todo.git",
+  "repository": "https://github.com/park78951/court-finder.git",
   "scripts": {
-    "dev": "webpack-dev-server --hot",
-    "build": "webpack",
-    "eslint": "eslint ./"
+    "dev": "set NODE_ENV=development&&webpack-dev-server --hot",
+    "build": "yarn eslint&&webpack --mode production",
+    "eslint": "eslint ./",
+    "test": "exit"
   },
   "author": "Sangkyu <park78951@gmail.com>",
   "license": "MIT",
