@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 const ReviewInfoWrapper = styled.div`
   height: 74%;
-  /* height: 400px; */
   border: #D3D3D3;
   padding: 20px 15px 0 15px;
 
