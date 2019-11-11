@@ -23,10 +23,10 @@ Court Finder Korea를 만든 목적은 이러한 불편함을 해소하기 위�
 - UX 향상을 위한 데이터 제공 중 Loader 및 데이터 실패시 Refetch Component 구현
 
 ## Things to do
-- [] Express를 사용한 서버 연결
-- [] DB를 사용한 유저 베이스 장소 추가 기능 구현
-- [] 로그인 기능 구현
-- [] 사진 및 유저 리뷰 추가 기능 구현
-- [] 검색 필터기능 구현
-- [] Rendering 최적화
-- [] Test Code 추가
+- [ ] Express를 사용한 서버 연결
+- [ ] DB를 사용한 유저 베이스 장소 추가 기능 구현
+- [ ] 로그인 기능 구현
+- [ ] 사진 및 유저 리뷰 추가 기능 구현
+- [ ] 검색 필터기능 구현
+- [ ] Rendering 최적화
+- [ ] Test Code 추가
