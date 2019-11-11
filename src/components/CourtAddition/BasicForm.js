@@ -43,7 +43,6 @@ const BasicForm = ({
     }
     moveNext();
     courtsDispatch({ type: ADD_COURTS, payload: formContents });
-    console.log(formContents);
   };
 
   return (

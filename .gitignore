@@ -106,4 +106,7 @@ typings/
 # Ignore all local history of files
 .history
 
+# Ingonre all files in the build/ directory
+build/
+
 # End of https://www.gitignore.io/api/node,visualstudiocode
