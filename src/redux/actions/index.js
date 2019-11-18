@@ -13,26 +13,15 @@ import courtsApi from '../../apis';
 
 export const searchingCourts = () => ({
   type: SEARCHING_COURTS,
-  payload: {
-    isError: false,
-    isSearching: true
-  }
 });
 
 export const catchErrorOnSearch = () => ({
-  type: CATCHING_ERROR,
-  payload: {
-    isSearching: false,
-    isError: true,
-    searchedCourts: []
-  }
+  type: CATCHING_ERROR
 });
 
 export const addCourts = addedInfo => ({
   type: ADD_COURTS,
-  payload: {
-    addedInfo
-  }
+  payload: addedInfo
 });
 
 export const selectCourt = selectedCourt => ({
@@ -41,18 +30,15 @@ export const selectCourt = selectedCourt => ({
 });
 
 export const removeSelectedCourt = () => ({
-  type: REMOVE_SELECT_COURT,
-  payload: null
+  type: REMOVE_SELECT_COURT
 });
 
 export const openCourtAddtionForm = () => ({
-  type: OPEN_COURTADDITION,
-  payload: true
+  type: OPEN_COURTADDITION
 });
 
 export const closeCourtAddtionFomr = () => ({
   type: CLOSE_COURTADDITION,
-  payload: false
 });
 
 export const searchCourtsWithSuccess = userInput => 
@@ -66,10 +52,7 @@ export const searchCourtsWithSuccess = userInput =>
 
       dispatch({
         type: COMPLETE_SEARCH_COURTS,
-        payload: {
-          searchedCourts: courtsByUserInput,
-          isSearching: false
-        }
+        payload: courtsByUserInput
       });
     } catch(err) {
       console.log(err.message);
