@@ -10,6 +10,7 @@ export const ADD_COURTS = 'ADD_COURTS';
 export const CATCHING_ERROR = 'CATCHING_ERROR';
 export const SELECT_COURT = 'SELECT_COURT';
 export const REMOVE_SELECT_COURT = 'REMOVE_SELECT_COURT';
+export const USER_INPUT = 'USER_INPUT';
 
 // UI Controlling Reducer
 export const TOGGLE_SIDEBAR = 'TOGGLE_SIDEBAR';

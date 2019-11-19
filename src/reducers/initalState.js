@@ -1,8 +1,15 @@
-export const initCourtsInfo = {
+export const searchInfo = {
   searchedCourts: [],
   isSearching: false,
   isError: false,
-  selectedCourt: null,
+  userInput: null
+};
+
+export const selectionInfo = {
+  selectedCourt: null
+};
+
+export const additionInfo = {
   addedInfo:{}
 };
 

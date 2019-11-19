@@ -6,10 +6,12 @@ import {
   REMOVE_SELECT_COURT,
   CATCHING_ERROR,
   OPEN_COURTADDITION,
-  CLOSE_COURTADDITION
-} from '../../config/constants';
-import { filterCourtsByInput } from '../myUtil';
-import courtsApi from '../../apis';
+  CLOSE_COURTADDITION,
+  TOGGLE_SIDEBAR,
+  USER_INPUT
+} from '../config/constants';
+import { filterCourtsByInput } from '../helper/myUtil';
+import courtsApi from '../apis';
 
 export const searchingCourts = () => ({
   type: SEARCHING_COURTS,
@@ -33,15 +35,24 @@ export const removeSelectedCourt = () => ({
   type: REMOVE_SELECT_COURT
 });
 
+export const toggleSidebar = () => ({
+  type: TOGGLE_SIDEBAR
+});
+
 export const openCourtAddtionForm = () => ({
   type: OPEN_COURTADDITION
 });
 
-export const closeCourtAddtionFomr = () => ({
+export const closeCourtAddtionForm = () => ({
   type: CLOSE_COURTADDITION,
 });
 
-export const searchCourtsWithSuccess = userInput => 
+export const getUserInput = input => ({
+  type: USER_INPUT,
+  payload: input
+});
+
+export const searchCourts = userInput => 
   async dispatch => {
     try{
       dispatch(searchingCourts());

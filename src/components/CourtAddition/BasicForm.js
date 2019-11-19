@@ -7,7 +7,6 @@ import {
   PLAYER_LEVEL, 
   TIME_DIVISION_AVAILABLE, 
   TIME_DIVISION_HOURS, 
-  ADD_COURTS,
   PLACEHOLDER_COURT_NAME,
   PLACEHOLDER_FEE_AMOUNT
 } from '../../config/constants';
@@ -17,7 +16,8 @@ import PropTypes from 'prop-types';
 
 const BasicForm = ({ 
   moveNext, 
-  courtsDispatch, 
+  dispatch,
+  addCourts 
 }) => {
   const [formContents, setFormContents] = useState({
     locationName: '', 
@@ -42,7 +42,7 @@ const BasicForm = ({
       return;
     }
     moveNext();
-    courtsDispatch({ type: ADD_COURTS, payload: formContents });
+    dispatch(addCourts(formContents));
   };
 
   return (

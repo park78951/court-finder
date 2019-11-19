@@ -1,5 +1,5 @@
-import React, { useContext } from 'react';
-import { CourtContext } from '../../courtStore/CourtStore';
+import React from 'react';
+import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
@@ -15,7 +15,10 @@ const WholeAppWrapper = styled.div`
 `;
 
 const AppContainer = ({ children }) => {
-  const { courtAdditionFlag } = useContext(CourtContext);
+  const { courtAdditionFlag } = useSelector(state => ({
+    courtAdditionFlag: state.storeOnFlag.courtAdditionFlag
+  }));
+
   return (
     <WholeAppWrapper
       courtAdditionFlag={ courtAdditionFlag }

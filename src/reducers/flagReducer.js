@@ -2,9 +2,10 @@ import {
   TOGGLE_SIDEBAR,
   OPEN_COURTADDITION,
   CLOSE_COURTADDITION
-} from '../../config/constants';
+} from '../config/constants';
+import { initUIToggleInfo } from './initalState';
 
-const uiReducers = (state, { type }) => {
+const uiReducers = (state = initUIToggleInfo, { type }) => {
   switch(type) {
     case TOGGLE_SIDEBAR:
       return {

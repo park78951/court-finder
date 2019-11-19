@@ -1,4 +1,4 @@
-const filterCourtsByInput = ({ userInput, courtsInfo }) => {
+export const filterCourtsByInput = ({ userInput, courtsInfo }) => {
   let filteredData = [];
   filteredData = courtsInfo.filter( ({ locationName }) => {
     return locationName.includes(userInput);
@@ -13,24 +13,17 @@ const filterCourtsByInput = ({ userInput, courtsInfo }) => {
   return filteredData;
 };
 
-const createFullCoordinate = ({ lat, lng}) => {
+export const createFullCoordinate = ({ lat, lng}) => {
   const numLat = Number(lat);
   const numLng = Number(lng);
   return { lat: numLat, lng: numLng };
 };
 
-const createUniqueKey = () => {
+export const createUniqueKey = () => {
   return (Date.now() * Math.floor((Math.random() + 1) * 10000))
     .toString(36).substr(2, 9);
 };
 
-const checkUnfilled = collection => {
+export const checkUnfilled = collection => {
   return Object.values(collection).every(val => val);
-};
-
-export {
-  filterCourtsByInput,
-  createFullCoordinate,
-  createUniqueKey,
-  checkUnfilled,
 };

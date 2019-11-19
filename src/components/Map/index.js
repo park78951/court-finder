@@ -1,7 +1,6 @@
 import React, { 
   useState, 
   useMemo, 
-  useContext, 
   useEffect 
 } from 'react';
 import { 
@@ -10,12 +9,14 @@ import {
   Marker 
 } from '@react-google-maps/api';
 import { defaultMapOptions } from '../../config/initConfig';
-import { CourtContext } from '../../courtStore/CourtStore';
 import { 
   createUniqueKey, 
   createFullCoordinate,
 } from '../../helper/myUtil';
 import { withRouter } from 'react-router-dom';
+
+import { useSelector } from 'react-redux';
+
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
@@ -33,7 +34,10 @@ const Map = ({ location }) => {
     mapTypeId 
   } = defaultMapOptions;
   const [curCenter, setCurCenter] = useState(center);
-  const { searchedCourts, selectedCourt } = useContext(CourtContext);
+  const { searchedCourts, selectedCourt } = useSelector(state => ({
+    searchedCourts: state.storeOnSearch.searchedCourts,
+    selectedCourt: state.storeOnSelection.selectedCourt
+  }));
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.KEY
   });

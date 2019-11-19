@@ -4,7 +4,6 @@ import CustomInput from '../lib/Input';
 import CustomButton from '../lib/Button';
 import { 
   TRANSPORTATION, 
-  ADD_COURTS,
   PLACEHOLDER_PARKING_LOT,
   PLACEHOLDER_PHONE_NUM,
   PLACEHOLDER_TRANSPORT_DETAIL,
@@ -17,7 +16,8 @@ import PropTypes from 'prop-types';
 const AdditionalForm = ({ 
   moveNext, 
   movePrev,
-  courtsDispatch
+  dispatch,
+  addCourts
 }) => {  
   const [formContents, setFormContents] = useState({
     transpmethod: '',
@@ -36,7 +36,7 @@ const AdditionalForm = ({
   };
 
   const nextClickHandler = () => {
-    courtsDispatch({ type: ADD_COURTS, payload: formContents });
+    dispatch(addCourts(formContents));
     moveNext();
   };
 

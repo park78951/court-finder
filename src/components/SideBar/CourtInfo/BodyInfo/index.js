@@ -1,5 +1,5 @@
-import React, { useContext, useMemo } from 'react';
-import { CourtContext } from '../../../../courtStore/CourtStore';
+import React, { useMemo } from 'react';
+import { useSelector } from 'react-redux';
 import { NO_DATA } from '../../../../config/constants';
 import { iconSize } from '../../../../config/initConfig';
 import { 
@@ -15,7 +15,9 @@ import Style from './indexStyle';
 import PropTypes from 'prop-types';
 
 const BodyInfo = () => {
-  const { selectedCourt } = useContext(CourtContext);
+  const { selectedCourt } = useSelector(state => ({
+    selectedCourt: state.storeOnSelection.selectedCourt
+  }));
   const courtData = selectedCourt || JSON.parse(localStorage.getItem('selectCourt'));
 
   const renderOnData = useMemo(() => {

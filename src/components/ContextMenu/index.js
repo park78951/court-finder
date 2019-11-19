@@ -1,19 +1,18 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { 
   ContextMenu, 
   MenuItem, 
   ContextMenuTrigger 
 } from 'react-contextmenu';
-import { CourtContext } from '../../courtStore/CourtStore';
-import { OPEN_COURTADDITION } from '../../config/constants';
+import { useDispatch } from 'react-redux';
+import { openCourtAddtionForm } from '../../actions';
 import Style from './indexStyle';
-import PropTypes from 'prop-types';
 
 const MapContextMenu = ({ children }) => {
-  const { uiToggleDispatch } = useContext(CourtContext);
+  const dispatch = useDispatch();
 
   const courtsAdditionTrigger = () => {
-    uiToggleDispatch({ type: OPEN_COURTADDITION });
+    dispatch(openCourtAddtionForm());
   };
 
   return (
@@ -35,10 +34,6 @@ const MapContextMenu = ({ children }) => {
       </ContextMenu>
     </Style.ContextMenuWrapper>
   );
-};
-
-MapContextMenu.propTypes = {
-  uiToggleDispatch: PropTypes.func
 };
 
 export default MapContextMenu;

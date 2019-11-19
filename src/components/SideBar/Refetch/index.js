@@ -1,6 +1,7 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import CustomButton from '../../lib/Button';
-import { CourtContext } from '../../../courtStore/CourtStore';
+import { useDispatch } from 'react-redux';
+import { searchCourts } from '../../../actions';
 import { ThemeProvider } from 'styled-components';
 import { 
   buttonTheme,
@@ -9,7 +10,7 @@ import {
 import Style from './indexStyle';
 
 const Refetch = () => {
-  const { refetchData } = useContext(CourtContext);
+  const dispatch = useDispatch();
   const { color, size } = refetchBtnStyle;
 
   return (
@@ -19,7 +20,7 @@ const Refetch = () => {
         <CustomButton
           size={ size }
           color={ color }
-          onClick={ () => refetchData() }
+          onClick={ () => dispatch(searchCourts()) }
         >
           새로고침
         </CustomButton>

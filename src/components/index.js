@@ -4,12 +4,18 @@ import Map from './Map';
 import HamburgerMenu from './HamburgerMenu';
 import SideBar from './SideBar';
 import CourtAddition from './CourtAddition';
-import CourtStore from '../courtStore/CourtStore';
+// import CourtStore from '../courtStore/CourtStore';
 import MapContextMenu from './ContextMenu';
 import AppContainer from './container/ModalContainer';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { createGlobalStyle } from 'styled-components';
 import { normalize } from 'styled-normalize';
+
+import { createStore, applyMiddleware } from 'redux';
+import { Provider } from 'react-redux';
+import reduxLogger from 'redux-logger';
+import reduxThunk from 'redux-thunk';
+import rootReducer from '../reducers';
 
 const GlobalStyle = createGlobalStyle`
   ${ normalize }
@@ -26,12 +32,14 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
+const store = createStore(rootReducer, applyMiddleware(reduxThunk, reduxLogger));
+
 const App = () => {
   return (
     <>
       <Router>
         <GlobalStyle />
-        <CourtStore>
+        <Provider store={ store }>
           <MapContextMenu>
             <Map />
           </MapContextMenu>
@@ -40,7 +48,7 @@ const App = () => {
           <AppContainer>
             <CourtAddition />
           </AppContainer>
-        </CourtStore>
+        </Provider>
       </Router>
     </>
   );

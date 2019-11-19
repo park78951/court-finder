@@ -1,14 +1,16 @@
-import React, { useContext } from 'react';
-import { CourtContext } from '../../../../courtStore/CourtStore';
+import React from 'react';
 import Title from './Title';
 import Address from './Address';
 import Additional from './Additional';
 import NavBtn from './NavBtn';
+import { useSelector } from 'react-redux';
 import Style from './indexStyle';
 import PropTypes from 'prop-types';
 
 const HeaderInfo = () => {
-  const { selectedCourt } = useContext(CourtContext);
+  const { selectedCourt } = useSelector(state => ({
+    selectedCourt: state.storeOnSelection.selectedCourt
+  }));
   const courtData = selectedCourt || JSON.parse(localStorage.getItem('selectCourt'));
   
   return (

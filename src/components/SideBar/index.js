@@ -1,15 +1,18 @@
-import React, { useContext } from 'react';
+import React from 'react';
+
+import { useSelector } from 'react-redux';
 import Search from './Search';
 import CourtInfo from './CourtInfo';
 import CourtList from './CourtList';
 import SearchFilter from './SearchFilter';
-import { CourtContext } from '../../courtStore/CourtStore';
 import { Route, Switch, withRouter } from 'react-router-dom';
 import Style from './indexStyle';
 import PropTypes from 'prop-types';
 
 const SideBar = ({ location }) => {
-  const { isSidebarHidden } = useContext(CourtContext);
+  const { isSidebarHidden } = useSelector(state => ({
+    isSidebarHidden: state.storeOnFlag.isSidebarHidden
+  }));
   const { pathname } = location;
 
   return (
@@ -28,7 +31,7 @@ const SideBar = ({ location }) => {
 };
 
 SideBar.propTypes = {
-  isSidebarHidden: PropTypes.bool
+  location: PropTypes.object
 };
 
 export default withRouter(SideBar);

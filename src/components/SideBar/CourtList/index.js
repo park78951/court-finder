@@ -1,5 +1,5 @@
-import React, { useContext, useMemo } from 'react';
-import { CourtContext } from '../../../courtStore/CourtStore';
+import React, { useMemo } from 'react';
+import { useSelector } from 'react-redux';
 import CourtItem from './CourtItem';
 import { routes } from '../../../config/initConfig';
 import { createUniqueKey } from '../../../helper/myUtil';
@@ -14,7 +14,11 @@ const CourtList = () => {
     searchedCourts, 
     isSearching, 
     isError 
-  } = useContext(CourtContext);
+  } = useSelector(state => ({
+    searchedCourts: state.storeOnSearch.searchedCourts,
+    isSearching: state.storeOnSearch.isSearching,
+    isError: state.storeOnSearch.isError
+  }));
   const { infoDetail } = routes;
 
   const searchedItems = useMemo(() => {

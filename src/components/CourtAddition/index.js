@@ -1,31 +1,35 @@
-import React, { useContext, useState, useMemo } from 'react';
-import { CourtContext } from '../../courtStore/CourtStore';
+import React, { useState, useMemo } from 'react';
+import BasicForm from './BasicForm';
+import AdditionalForm from './AdditionalForm';
+import SummaryForm from './SummaryForm';
+import { useSelector, useDispatch } from 'react-redux';
+import { 
+  closeCourtAddtionForm,
+  addCourts
+} from '../../actions';
 import { 
   buttonTheme,
   cancelBtnSizeOfAddForm
 } from '../../config/initConfig';
-import { CLOSE_COURTADDITION } from '../../config/constants';
-import { ThemeProvider } from 'styled-components';
 import { MdCancel } from 'react-icons/md';
-import BasicForm from './BasicForm';
-import AdditionalForm from './AdditionalForm';
-import SummaryForm from './SummaryForm';
+import { ThemeProvider } from 'styled-components';
 import Styles from './indexStyle';
-import PropTypes from 'prop-types';
 
 const CourtAddition = () => {
-  const { 
-    courtAdditionFlag, 
-    uiToggleDispatch,
-    courtsDispatch,
-    addedInfo
-  } = useContext(CourtContext);
   const [curPage, setcurPage] = useState(1);
   const { size } = cancelBtnSizeOfAddForm;
+  const dispatch = useDispatch();
+  const { 
+    courtAdditionFlag,
+    addedInfo
+  } = useSelector(state => ({
+    courtAdditionFlag: state.storeOnFlag.courtAdditionFlag,
+    addedInfo: state.storeOnAddition.addedInfo
+  }));
 
   const closeModal = e => {
     e.preventDefault();
-    uiToggleDispatch({ type: CLOSE_COURTADDITION });
+    dispatch(closeCourtAddtionForm());
   };
 
   const submitHandler = e => {
@@ -51,7 +55,8 @@ const CourtAddition = () => {
         return (
           <BasicForm 
             moveNext={ moveNext }
-            courtsDispatch={ courtsDispatch }
+            dispatch={ dispatch }
+            addCourts={ addCourts }
           />
         );
       case 2:
@@ -59,7 +64,8 @@ const CourtAddition = () => {
           <AdditionalForm 
             moveNext={ moveNext }
             movePrev={ movePrev }
-            courtsDispatch={ courtsDispatch }
+            dispatch={ dispatch }
+            addCourts={ addCourts }
           />
         );
       case 3:
@@ -67,7 +73,6 @@ const CourtAddition = () => {
           <SummaryForm 
             submitHandler={ submitHandler }
             movePrev={ movePrev }
-            courtAdditionFlag={ courtAdditionFlag }
             addedInfo={ addedInfo }
           />
         );
@@ -93,13 +98,6 @@ const CourtAddition = () => {
       </Styles.AdditionFormWrapper>
     </ThemeProvider>
   );
-};
-
-CourtAddition.propTypes = {
-  courtAdditionFlag: PropTypes.bool,
-  uiToggleDispatch: PropTypes.func,
-  courtsDispatch: PropTypes.func,
-  addedInfo: PropTypes.object
 };
 
 export default CourtAddition;

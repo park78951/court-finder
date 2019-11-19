@@ -1,14 +1,14 @@
-import React, { useState, useContext } from 'react';
-import { CourtContext } from '../../../courtStore/CourtStore';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { searchCourts } from '../../../actions';
 import { IoIosSearch } from 'react-icons/io';
 import { withRouter } from 'react-router-dom';
-import { REMOVE_SELECT_COURT } from '../../../config/constants';
 import Style from './InputBarStyle';
 import PropTypes from 'prop-types';
 
 const InputBar = ({ location, history }) => {
   const [term, setTerm] = useState('');
-  const { getUserInput, courtsDispatch } = useContext(CourtContext);
+  const dispatch = useDispatch();
 
   const setInput = ({ target }) => {
     const { value } = target;
@@ -17,9 +17,8 @@ const InputBar = ({ location, history }) => {
 
   const inputSubmit = evt => {
     evt.preventDefault();
-    getUserInput(term);
+    dispatch(searchCourts(term));
     setTerm('');
-    courtsDispatch({ type: REMOVE_SELECT_COURT });
 
     if(location.pathname !== '/search') history.push('/search');
   };

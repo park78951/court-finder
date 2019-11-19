@@ -1,21 +1,21 @@
-import React, { useContext } from 'react';
-import { CourtContext } from '../../../courtStore/CourtStore';
-import { SELECT_COURT } from '../../../config/constants';
+import React from 'react';
+import { useDispatch } from 'react-redux';
+import { selectCourt } from '../../../actions';
 import Style from './CourtItemStyle';
 import PropTypes from 'prop-types';
 
 const CourtItem = ({ searchedCourt }) => {
   const { locationName, address, in_out, phone } = searchedCourt;
-  const { courtsDispatch } = useContext(CourtContext);
+  const dispatch = useDispatch();
 
-  const selectCourt = () => {
-    courtsDispatch({ type: SELECT_COURT, payload: searchedCourt });
+  const selectCourtInfo = () => {
+    dispatch(selectCourt(searchedCourt));
     localStorage.setItem('selectCourt', JSON.stringify(searchedCourt));
   };
 
   return (
     <Style.CourtItemWrapper
-      onClick={ selectCourt }
+      onClick={ selectCourtInfo }
     >
       <h3>{ locationName }</h3><span>{ in_out }</span>
       <div>
@@ -27,10 +27,7 @@ const CourtItem = ({ searchedCourt }) => {
 };
 
 CourtItem.propTypes = {
-  locationName: PropTypes.string,
-  address: PropTypes.string,
-  in_out: PropTypes.string,
-  phone: PropTypes.string
+  searchedCourt: PropTypes.object
 };
 
 export default CourtItem;

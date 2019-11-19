@@ -1,15 +1,18 @@
-import React, { useContext } from 'react';
+import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { toggleSidebar } from '../../actions';
 import { FaBars } from 'react-icons/fa';
-import { CourtContext } from '../../courtStore/CourtStore';
-import { TOGGLE_SIDEBAR } from '../../config/constants';
 import Style from './indexStyle';
-import PropTypes from 'prop-types';
 
 const HamburgerMenu = () => {
-  const { uiToggleDispatch, isSidebarHidden } = useContext(CourtContext);
+  const { isSidebarHidden } = useSelector(state => ({
+    isSidebarHidden: state.storeOnFlag.isSidebarHidden
+  }));
+
+  const dispatch = useDispatch();
 
   const sidebarClickHandler = () => {
-    uiToggleDispatch({ type: TOGGLE_SIDEBAR });
+    dispatch(toggleSidebar());
   };
   
   return (
@@ -20,11 +23,6 @@ const HamburgerMenu = () => {
       <FaBars size={33} />
     </Style.HamburgerWrapper>
   );
-};
-
-HamburgerMenu.propTypes = {
-  uiToggleDispatch: PropTypes.func,
-  isSidebarHidden: PropTypes.bool
 };
 
 export default HamburgerMenu;
