@@ -2,7 +2,8 @@ import { searchInfo } from './initalState';
 import { 
   COMPLETE_SEARCH_COURTS,
   SEARCHING_COURTS,
-  CATCHING_ERROR
+  CATCHING_ERROR,
+  USER_INPUT
 } from '../config/constants';
 
 const searchReducer = (state = searchInfo, { type, payload}) => {
@@ -27,6 +28,12 @@ const searchReducer = (state = searchInfo, { type, payload}) => {
         isSearching: false,
         isError: true,
         searchedCourts: []
+      };
+
+    case USER_INPUT:
+      return {
+        ...state,
+        userInput: payload
       };
 
     default:

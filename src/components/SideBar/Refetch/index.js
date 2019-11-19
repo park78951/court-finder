@@ -1,6 +1,6 @@
 import React from 'react';
 import CustomButton from '../../lib/Button';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { searchCourts } from '../../../actions';
 import { ThemeProvider } from 'styled-components';
 import { 
@@ -10,8 +10,11 @@ import {
 import Style from './indexStyle';
 
 const Refetch = () => {
-  const dispatch = useDispatch();
   const { color, size } = refetchBtnStyle;
+  const dispatch = useDispatch();
+  const { userInput } = useSelector(state => ({
+    userInput: state.storeOnSearch.userInput
+  }));
 
   return (
     <ThemeProvider theme={ buttonTheme }>
@@ -20,7 +23,7 @@ const Refetch = () => {
         <CustomButton
           size={ size }
           color={ color }
-          onClick={ () => dispatch(searchCourts()) }
+          onClick={ () => dispatch(searchCourts(userInput)) }
         >
           새로고침
         </CustomButton>

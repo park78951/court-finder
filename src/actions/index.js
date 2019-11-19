@@ -13,7 +13,7 @@ import {
 import { filterCourtsByInput } from '../helper/myUtil';
 import courtsApi from '../apis';
 
-export const searchingCourts = () => ({
+const searchingCourts = () => ({
   type: SEARCHING_COURTS,
 });
 
@@ -47,13 +47,14 @@ export const closeCourtAddtionForm = () => ({
   type: CLOSE_COURTADDITION,
 });
 
-export const getUserInput = input => ({
+const getUserInput = input => ({
   type: USER_INPUT,
   payload: input
 });
 
 export const searchCourts = userInput => 
   async dispatch => {
+    dispatch(getUserInput(userInput));
     try{
       dispatch(searchingCourts());
 

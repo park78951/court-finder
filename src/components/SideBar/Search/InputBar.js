@@ -19,7 +19,6 @@ const InputBar = ({ location, history }) => {
     evt.preventDefault();
     dispatch(searchCourts(term));
     setTerm('');
-
     if(location.pathname !== '/search') history.push('/search');
   };
 
