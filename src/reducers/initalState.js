@@ -19,6 +19,11 @@ export const initUIToggleInfo = {
   filterFlag: false
 };
 
+export const initFilterInfo = {
+  activeBtn: 'location',
+  filteredData: {}
+};
+
 export const initSubmitList = {
   curPage: 1,
   locationName: null,

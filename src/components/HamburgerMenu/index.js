@@ -25,4 +25,4 @@ const HamburgerMenu = () => {
   );
 };
 
-export default HamburgerMenu;
+export default React.memo(HamburgerMenu);

@@ -1,25 +1,41 @@
 import React from 'react';
-import { MdExpandMore } from 'react-icons/lib/md';
 import { useSelector, useDispatch } from 'react-redux';
-import { toggleFilter } from '../../../../actions';
+import { toggleFilter, getActiveBtnName } from '../../../../actions';
+import { filterTitle } from '../../../../config/initConfig';
+import { MdExpandMore } from 'react-icons/lib/md';
 import Style from './indexStyle';
 
 const FilterMenu = () => {
   const dispatch = useDispatch();
-  const { filterFlag } = useSelector(state => ({
-    filterFlag: state.storeOnFlag.filterFlag
+  const { filterFlag, activeBtn } = useSelector(state => ({
+    filterFlag: state.storeOnFlag.filterFlag,
+    activeBtn: state.storeOnFilter.activeBtn
   }));
 
   const filterToggler = () => {
     dispatch(toggleFilter());
   };
 
+  const selectFilterBtn = (btnName) => () => {
+    dispatch(getActiveBtnName(btnName));
+    dispatch(toggleFilter(true));
+  };
+
+  const filterBtn = Object.keys(filterTitle).map(filterName => {
+    return (
+      <button 
+        className={`filter__types ${ filterName === activeBtn && 'button__active' }`}
+        key={ filterName }
+        onClick={ selectFilterBtn(filterName) }
+      >
+        { filterTitle[filterName] }
+      </button>
+    );
+  });
+
   return (
     <Style.MenuWrapper filterFlag={ filterFlag }>
-      <button className='filter__types'>지역별</button>
-      <button className='filter__types'>키워드별</button>
-      <button className='filter__types'>유저추천</button>
-      <button className='filter__types'>수준별</button>
+      { filterBtn }
       <button 
         className='filter__dropdown'
         onClick={ filterToggler }
@@ -33,4 +49,4 @@ const FilterMenu = () => {
   );
 };
 
-export default FilterMenu;
+export default React.memo(FilterMenu);

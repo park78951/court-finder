@@ -48,3 +48,10 @@ export const routes = {
   review: '/courtinfo/review',
   infoDetail: '/courtinfo/detail'
 };
+
+export const filterTitle = {
+  location: '지역별',
+  keywords: '키워드별',
+  recommendation: '유저추천',
+  level: '수준별',
+};

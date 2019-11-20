@@ -19,6 +19,9 @@ export const CLOSE_COURTADDITION = 'CLOSE_COURTADDITION';
 export const TOGGLE_FILTER = 'TOGGLE_FILTER';
 export const NO_DATA = '정보없음';
 
+// Filter Info Reducer
+export const ACTIVE_BUTTON = 'ACTIVE_BUTTON';
+
 // Data for drop down
 export const INDOOR_OR_OUTDOOR = ['실내코트', '야외코트'];
 export const PLAYER_LEVEL = ['상', '중상', '중', '중하', '하'];

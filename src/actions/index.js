@@ -9,7 +9,8 @@ import {
   CLOSE_COURTADDITION,
   TOGGLE_SIDEBAR,
   USER_INPUT,
-  TOGGLE_FILTER
+  TOGGLE_FILTER,
+  ACTIVE_BUTTON
 } from '../config/constants';
 import { filterCourtsByInput } from '../helper/myUtil';
 import courtsApi from '../apis';
@@ -56,6 +57,11 @@ export const closeCourtAddtionForm = () => ({
 const getUserInput = input => ({
   type: USER_INPUT,
   payload: input
+});
+
+export const getActiveBtnName = btnName => ({
+  type: ACTIVE_BUTTON,
+  payload: btnName
 });
 
 export const searchCourts = userInput => 

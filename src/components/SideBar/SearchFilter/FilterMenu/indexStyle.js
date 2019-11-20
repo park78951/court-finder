@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { darken, lighten } from 'polished';
 
 const MenuWrapper = styled.div`
   display: flex;
@@ -23,14 +22,6 @@ const MenuWrapper = styled.div`
     height: 2.0rem;
     width: 4.8rem;
     border-radius: 20px;
-
-    &:hover {
-      background-color: ${lighten(0.1, '#DCDCDC')}
-    }
-
-    &:active {
-      background-color: ${darken(0.1, '#DCDCDC')}
-    }
   }
 
   .filter__dropdown {
@@ -46,6 +37,10 @@ const MenuWrapper = styled.div`
       left: 50%;
       transform: translate(-50%, -50%);
     }
+  }
+
+  .button__active {
+    border: 2px solid black;
   }
 `;
 

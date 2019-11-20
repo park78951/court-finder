@@ -12,4 +12,4 @@ const SearchFilter = () => {
   );
 };
 
-export default SearchFilter;
+export default React.memo(SearchFilter);
