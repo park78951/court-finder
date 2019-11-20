@@ -14,13 +14,14 @@ Court Finder Korea를 만든 목적은 이러한 불편함을 해소하기 위�
 ## Tech
 - Javascript (ES2015+)
 - React Hooks
-- State Management by Hooks API with Context API
+- State Management by Hooks API with Context API (Before Modification)
 - Routing with react-router-dom
 - Styled-components for the css style
+- State Management by Redux with Redux Thunk (Currently)
 
 ## Challenge
 - UI Component의 재사용을 위한 설계 및 구현
-- UX 향상을 위한 데이터 제공 중 Loader 및 데이터 실패시 Refetch Component 구현
+- UX 향상을 위한 검색 요청 중 Loader Component, 데이터 요청 실패시 Refetch Component 구현
 
 ## Things to do
 - [ ] Express를 사용한 서버 연결
@@ -30,3 +31,4 @@ Court Finder Korea를 만든 목적은 이러한 불편함을 해소하기 위�
 - [ ] 검색 필터기능 구현
 - [ ] Rendering 최적화
 - [ ] Test Code 추가
+- [x] Redux를 사용한 상태관리로 변경
