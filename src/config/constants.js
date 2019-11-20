@@ -16,6 +16,7 @@ export const USER_INPUT = 'USER_INPUT';
 export const TOGGLE_SIDEBAR = 'TOGGLE_SIDEBAR';
 export const OPEN_COURTADDITION = 'OPEN_COURTADDITION';
 export const CLOSE_COURTADDITION = 'CLOSE_COURTADDITION';
+export const TOGGLE_FILTER = 'TOGGLE_FILTER';
 export const NO_DATA = '정보없음';
 
 // Data for drop down

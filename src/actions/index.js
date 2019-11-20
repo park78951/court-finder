@@ -8,7 +8,8 @@ import {
   OPEN_COURTADDITION,
   CLOSE_COURTADDITION,
   TOGGLE_SIDEBAR,
-  USER_INPUT
+  USER_INPUT,
+  TOGGLE_FILTER
 } from '../config/constants';
 import { filterCourtsByInput } from '../helper/myUtil';
 import courtsApi from '../apis';
@@ -37,6 +38,11 @@ export const removeSelectedCourt = () => ({
 
 export const toggleSidebar = () => ({
   type: TOGGLE_SIDEBAR
+});
+
+export const toggleFilter = isOpen => ({
+  type: TOGGLE_FILTER,
+  payload: isOpen
 });
 
 export const openCourtAddtionForm = () => ({
