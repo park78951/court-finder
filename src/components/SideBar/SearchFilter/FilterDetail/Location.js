@@ -1,6 +1,6 @@
 import React from 'react';
 
-const location = () => {
+const Location = () => {
   return (
     <div>
       
@@ -8,4 +8,4 @@ const location = () => {
   );
 };
 
-export default location;
+export default Location;

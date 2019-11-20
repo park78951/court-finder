@@ -1,5 +1,4 @@
 import React from 'react';
-
 import { useSelector } from 'react-redux';
 import Search from './Search';
 import CourtInfo from './CourtInfo';
