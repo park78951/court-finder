@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { searchCourts } from '../../../actions';
-import { IoIosSearch } from 'react-icons/io';
+import { IoIosSearch } from 'react-icons/lib/io';
 import { withRouter } from 'react-router-dom';
 import Style from './InputBarStyle';
 import PropTypes from 'prop-types';

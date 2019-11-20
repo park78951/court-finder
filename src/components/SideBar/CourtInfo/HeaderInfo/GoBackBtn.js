@@ -1,6 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import { MdArrowBack } from 'react-icons/md';
+import { MdArrowBack } from 'react-icons/lib/md';
 import { iconSize } from '../../../../config/initConfig';
 
 const GoBackBtn = ({ history }) => {

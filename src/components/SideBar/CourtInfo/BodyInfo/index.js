@@ -10,7 +10,7 @@ import {
   MdAccessTime,
   MdDirectionsTransit,
   MdLocalParking,
-} from 'react-icons/md';
+} from 'react-icons/lib/md';
 import Style from './indexStyle';
 import PropTypes from 'prop-types';
 

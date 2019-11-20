@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { toggleSidebar } from '../../actions';
-import { FaBars } from 'react-icons/fa';
+import { FaBars } from 'react-icons/lib/fa';
 import Style from './indexStyle';
 
 const HamburgerMenu = () => {
