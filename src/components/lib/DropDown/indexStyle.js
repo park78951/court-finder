@@ -9,8 +9,4 @@ const DropDown = styled.select`
   text-indent: 0.3rem;
 `;
 
-DropDown.defaultProps = {
-  size: 'large'
-};
-
 export default { DropDown };

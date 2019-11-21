@@ -15,9 +15,9 @@ const WholeAppWrapper = styled.div`
 `;
 
 const AppContainer = ({ children }) => {
-  const { courtAdditionFlag } = useSelector(state => ({
-    courtAdditionFlag: state.storeOnFlag.courtAdditionFlag
-  }));
+  const courtAdditionFlag = useSelector(state => {
+    return state.storeOnFlag.courtAdditionFlag;
+  });
 
   return (
     <WholeAppWrapper

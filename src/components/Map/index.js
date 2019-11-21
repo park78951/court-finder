@@ -94,4 +94,4 @@ Map.propTypes = {
   isLoaded: PropTypes.bool
 };
 
-export default withRouter(Map);
+export default withRouter(React.memo(Map));

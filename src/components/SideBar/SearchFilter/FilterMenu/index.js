@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { toggleFilter, getActiveBtnName } from '../../../../actions';
-import { filterTitle } from '../../../../config/initConfig';
+import { filterConfig } from '../../../../config/initConfig';
 import { MdExpandMore } from 'react-icons/lib/md';
 import Style from './indexStyle';
 
@@ -21,14 +21,16 @@ const FilterMenu = () => {
     dispatch(toggleFilter(true));
   };
 
-  const filterBtn = Object.keys(filterTitle).map(filterName => {
+  const filterBtn = Object.keys(filterConfig).map(filterKey => {
+    const filterTitle = filterConfig[filterKey].name;
+    
     return (
       <button 
-        className={`filter__types ${ filterName === activeBtn && 'button__active' }`}
-        key={ filterName }
-        onClick={ selectFilterBtn(filterName) }
+        className={`filter__types ${ filterKey === activeBtn && 'button__active' }`}
+        key={ filterKey }
+        onClick={ selectFilterBtn(filterKey) }
       >
-        { filterTitle[filterName] }
+        { filterTitle }
       </button>
     );
   });
@@ -49,4 +51,4 @@ const FilterMenu = () => {
   );
 };
 
-export default React.memo(FilterMenu);
+export default FilterMenu;

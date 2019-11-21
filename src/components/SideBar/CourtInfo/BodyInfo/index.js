@@ -15,9 +15,9 @@ import Style from './indexStyle';
 import PropTypes from 'prop-types';
 
 const BodyInfo = () => {
-  const { selectedCourt } = useSelector(state => ({
-    selectedCourt: state.storeOnSelection.selectedCourt
-  }));
+  const selectedCourt = useSelector(state => {
+    return state.storeOnSelection.selectedCourt;
+  });
   const courtData = selectedCourt || JSON.parse(localStorage.getItem('selectCourt'));
 
   const renderOnData = useMemo(() => {

@@ -4,7 +4,8 @@ const SideBarWrapper = styled.div`
   display: ${ ({ isSidebarHidden }) => isSidebarHidden ? 'none' : 'flex'};
   flex-flow: column;
   position: absolute;
-  min-height: ${ ({ curPath }) => curPath === '/' ? '120px' : '100vh'};
+  min-height: ${ ({ curPath }) => curPath === '/' && '120px' };
+  height: ${ ({ curPath }) => curPath !== '/' && '100vh' };
   top: 0;
   background-color: white;
   width: 380px;

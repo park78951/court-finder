@@ -12,9 +12,9 @@ import Style from './indexStyle';
 const Refetch = () => {
   const { color, size } = refetchBtnStyle;
   const dispatch = useDispatch();
-  const { userInput } = useSelector(state => ({
-    userInput: state.storeOnSearch.userInput
-  }));
+  const userInput = useSelector(state => {
+    return state.storeOnSearch.userInput;
+  });
 
   return (
     <ThemeProvider theme={ buttonTheme }>

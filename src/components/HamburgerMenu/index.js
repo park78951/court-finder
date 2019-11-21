@@ -5,9 +5,9 @@ import { FaBars } from 'react-icons/lib/fa';
 import Style from './indexStyle';
 
 const HamburgerMenu = () => {
-  const { isSidebarHidden } = useSelector(state => ({
-    isSidebarHidden: state.storeOnFlag.isSidebarHidden
-  }));
+  const isSidebarHidden = useSelector(state => {
+    return state.storeOnFlag.isSidebarHidden;
+  });
 
   const dispatch = useDispatch();
 

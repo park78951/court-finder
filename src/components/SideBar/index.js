@@ -9,9 +9,9 @@ import Style from './indexStyle';
 import PropTypes from 'prop-types';
 
 const SideBar = ({ location }) => {
-  const { isSidebarHidden } = useSelector(state => ({
-    isSidebarHidden: state.storeOnFlag.isSidebarHidden
-  }));
+  const isSidebarHidden = useSelector(state => {
+    return state.storeOnFlag.isSidebarHidden;
+  });
   const { pathname } = location;
 
   return (

@@ -1,5 +1,6 @@
 import React from 'react';
 import Style from './indexStyle';
+import PropTypes from 'prop-types';
 
 const Input  = ({ placeholder, size, type, ...rest }) => {
   return (
@@ -10,6 +11,12 @@ const Input  = ({ placeholder, size, type, ...rest }) => {
       { ...rest }
     />
   );
+};
+
+Input.propTypes = {
+  placeholder: PropTypes.string,
+  size: PropTypes.string,
+  type: PropTypes.string
 };
 
 export default React.memo(Input);

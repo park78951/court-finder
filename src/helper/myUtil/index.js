@@ -27,3 +27,14 @@ export const createUniqueKey = () => {
 export const checkUnfilled = collection => {
   return Object.values(collection).every(val => val);
 };
+
+export const storeKeywords = (keywordType, state, setState) => (
+  ({ target }) => {
+    const value = target.value === '선택해주세요' ? '' : target.value;
+    
+    setState({
+      ...state,
+      [keywordType]: value
+    });
+  }
+);

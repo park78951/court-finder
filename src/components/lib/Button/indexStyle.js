@@ -16,9 +16,4 @@ const StyledButton = styled.button`
   ${sizeStyles}
 `;
 
-StyledButton.defaultProps = {
-  color: 'acceptance',
-  size: 'medium'
-};
-
 export default { StyledButton };

@@ -38,3 +38,17 @@ export const PLACEHOLDER_PHONE_NUM = 'ex) 02-7777-7777';
 export const PLACEHOLDER_PARKING_LOT = 'ex) 탄천 주차장 이용 / 불가';
 export const PLACEHOLDER_COURT_NAME = 'ex) 해운대 농구코트';
 export const PLACEHOLDER_FEE_AMOUNT = 'ex) 무료 / 3000' ;
+
+export const FILTER_OPTIONS_TYPES = {
+  "도시명": 'city',
+  "구/군": 'division',
+  "게임종류": 'kindOfGame',
+  "장소": 'place',
+  "실내/야외": 'in_out',
+  "예약제도": 'must_reservation',
+  "추천수": 'recommendation',
+  "평점": 'grades',
+  "검색갯수": 'numOfShows',
+  "정확도": 'accuracy',
+  "수준": 'level'
+};
