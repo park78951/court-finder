@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const SideBarWrapper = styled.div`
-  display: ${ ({ isSidebarHidden }) => isSidebarHidden ? 'none' : 'flex'};
+  display: 'flex';
   flex-flow: column;
   position: absolute;
   min-height: ${ ({ curPath }) => curPath === '/' && '120px' };

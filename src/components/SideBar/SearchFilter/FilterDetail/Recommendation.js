@@ -3,7 +3,6 @@ import FilterMenu from './filterMenu';
 import { filterConfig } from '../../../../config/initConfig';
 import { FILTER_OPTIONS_TYPES } from '../../../../config/constants';
 import { storeKeywords } from '../../../../helper/myUtil';
-import Style from './RecommendStyle';
 import PropTypes from 'prop-types';
 
 
@@ -34,13 +33,12 @@ const Recommendation = ({ activeBtn, setFilterData }) => {
     setFilterData(recommendFilter);
   }, [recommendFilter]);
 
-  return (
-    <Style.RecommendWrapper 
-      activeBtn={ activeBtn }
+  return activeBtn === 'recommendation' && (
+    <div
       className='dropdown__menus'
     >
       { dropdownList }
-    </Style.RecommendWrapper>
+    </div>
   );
 };
 

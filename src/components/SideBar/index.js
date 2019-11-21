@@ -14,9 +14,8 @@ const SideBar = ({ location }) => {
   });
   const { pathname } = location;
 
-  return (
+  return !isSidebarHidden && (
     <Style.SideBarWrapper 
-      isSidebarHidden={ isSidebarHidden }
       curPath={ pathname }
     >
       <Search curPath={ pathname }/>

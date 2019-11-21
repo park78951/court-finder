@@ -18,7 +18,7 @@ const Location = ({ activeBtn, setFilterData }) => {
     });
   }, [city, division]);
 
-  return (
+  return activeBtn === 'location' && (
     <Style.LocationWrapper 
       activeBtn={ activeBtn }
       className='dropdown__menus'

@@ -3,7 +3,6 @@ import FilterMenu from './filterMenu';
 import { filterConfig } from '../../../../config/initConfig';
 import { FILTER_OPTIONS_TYPES } from '../../../../config/constants';
 import { storeKeywords } from '../../../../helper/myUtil';
-import Style from './levelStyle';
 import PropTypes from 'prop-types';
 
 
@@ -34,13 +33,12 @@ const Level = ({ activeBtn, setFilterData }) => {
     setFilterData(levelFilter);
   }, [levelFilter]);
 
-  return (
-    <Style.LevelWrapper 
-      activeBtn={ activeBtn }
+  return activeBtn === 'level' && (
+    <div 
       className='dropdown__menus'
     >
       { dropdownList }
-    </Style.LevelWrapper>
+    </div>
   );
 };
 

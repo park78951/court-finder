@@ -3,7 +3,6 @@ import FilterMenu from './filterMenu';
 import { filterConfig } from '../../../../config/initConfig';
 import { FILTER_OPTIONS_TYPES } from '../../../../config/constants';
 import { storeKeywords } from '../../../../helper/myUtil';
-import Style from './KeywordsStyle';
 import PropTypes from 'prop-types';
 
 const Keywords = ({ activeBtn, setFilterData }) => {
@@ -33,13 +32,12 @@ const Keywords = ({ activeBtn, setFilterData }) => {
     setFilterData(keywordFilter);
   }, [keywordFilter]);
 
-  return (
-    <Style.KeywordsWrapper 
-      activeBtn={ activeBtn }
+  return activeBtn === 'keywords' && (
+    <div 
       className='dropdown__menus'
     >
       { dropdownList }
-    </Style.KeywordsWrapper>
+    </div>
   );
 };
 

@@ -51,4 +51,4 @@ const FilterMenu = () => {
   );
 };
 
-export default FilterMenu;
+export default React.memo(FilterMenu);
