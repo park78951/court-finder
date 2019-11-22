@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import FilterMenu from './filterMenu';
 import { filterConfig} from '../../../../config/initConfig';
-import Style from './LocationStyle';
 import PropTypes from 'prop-types';
 
 const Location = ({ activeBtn, setFilterData }) => {
@@ -19,8 +18,7 @@ const Location = ({ activeBtn, setFilterData }) => {
   }, [city, division]);
 
   return activeBtn === 'location' && (
-    <Style.LocationWrapper 
-      activeBtn={ activeBtn }
+    <div
       className='dropdown__menus'
     >
       <FilterMenu 
@@ -33,7 +31,7 @@ const Location = ({ activeBtn, setFilterData }) => {
         onChange={ ({ target }) => setDivision(target.value)}
         optionValues={ locationDetail[city] }
       />
-    </Style.LocationWrapper>
+    </div>
   );
 };
 

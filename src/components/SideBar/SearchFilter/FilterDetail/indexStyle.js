@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 const DetailWrapper = styled.div`
-  display: ${({ filterFlag }) => !filterFlag && 'none'};
   width: 100%;
   padding: 0.5rem 0 2rem 0;
 
