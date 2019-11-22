@@ -32,7 +32,7 @@ const Keywords = ({ activeBtn, setFilterData }) => {
     setFilterData(keywordFilter);
   }, [keywordFilter]);
 
-  return activeBtn === 'keyword' && (
+  return activeBtn === 'keywords' && (
     <div 
       className='dropdown__menus'
     >

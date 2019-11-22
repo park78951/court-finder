@@ -22,9 +22,9 @@ const FilterDetail = () => {
     console.log(filterData);
   }, [filterData]);
 
-  return (
+  return filterFlag && (
     <ThemeProvider theme={ buttonTheme }>
-      <Style.DetailWrapper filterFlag={ filterFlag }>
+      <Style.DetailWrapper>
         <Location 
           activeBtn={ activeBtn }
           setFilterData={ setFilterData }
