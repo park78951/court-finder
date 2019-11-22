@@ -21,6 +21,7 @@ export const NO_DATA = '정보없음';
 
 // Filter Info Reducer
 export const ACTIVE_BUTTON = 'ACTIVE_BUTTON';
+export const SEND_FILTER_DATA = 'SEND_FILTER_DATA';
 
 // Data for drop down
 export const INDOOR_OR_OUTDOOR = ['실내코트', '야외코트'];
@@ -41,7 +42,7 @@ export const PLACEHOLDER_FEE_AMOUNT = 'ex) 무료 / 3000' ;
 
 export const FILTER_OPTIONS_TYPES = {
   "도시명": 'city',
-  "구/군": 'division',
+  "구/군": 'gu_nm',
   "게임종류": 'kindOfGame',
   "장소": 'place',
   "실내/야외": 'in_out',

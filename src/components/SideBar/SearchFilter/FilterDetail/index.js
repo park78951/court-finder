@@ -1,11 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import React, { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { getFilterData } from '../../../../actions';
 import CustomButton from '../../../lib/Button';
 import Location from './Location';
 import Keywords from './Keywords';
 import Recommendation from './Recommendation';
 import Level from './Level';
 import { filterButton, buttonTheme } from '../../../../config/initConfig';
+import { deleteObjProps } from '../../../../myUtil';
 import { ThemeProvider } from 'styled-components';
 import Style from './indexStyle';
 
@@ -16,11 +18,20 @@ const FilterDetail = () => {
     filterFlag: state.storeOnFlag.filterFlag,
     activeBtn: state.storeOnFilter.activeBtn
   }));
+  const dispatch = useDispatch();
+
   const [filterData, setFilterData] = useState({});
 
-  useEffect(() => {
-    console.log(filterData);
-  }, [filterData]);
+  const sendFilterData = e => {
+    e.stopPropagation();
+    if(activeBtn !== 'location') {
+      alert('해당 기능은 준비중입니다.');
+      return;
+    }
+
+    const polishedFilterData = deleteObjProps(filterData);
+    dispatch(getFilterData(polishedFilterData));
+  };
 
   return filterFlag && (
     <ThemeProvider theme={ buttonTheme }>
@@ -45,6 +56,7 @@ const FilterDetail = () => {
           <CustomButton 
             size={ size }
             color={ color }
+            onClick={ sendFilterData }
           >
             필터적용
           </CustomButton>

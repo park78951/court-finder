@@ -8,14 +8,17 @@ const Location = ({ activeBtn, setFilterData }) => {
   const cities = Object.keys(locationDetail);
 
   const [city, setCity] = useState('');
-  const [division, setDivision] = useState('');
+  const [gu_nm, setGu_nm] = useState('');
 
   useEffect(() => {
     setFilterData({
       city,
-      division
+      gu_nm
     });
-  }, [city, division]);
+    if(!city) {
+      setGu_nm('');
+    }
+  }, [city, gu_nm]);
 
   return activeBtn === 'location' && (
     <div
@@ -28,7 +31,7 @@ const Location = ({ activeBtn, setFilterData }) => {
       />
       <FilterMenu 
         menuTitle='군/구'
-        onChange={ ({ target }) => setDivision(target.value)}
+        onChange={ ({ target }) => setGu_nm(target.value)}
         optionValues={ locationDetail[city] }
       />
     </div>

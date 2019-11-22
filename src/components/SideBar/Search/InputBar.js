@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { searchCourts } from '../../../actions';
 import { IoIosSearch } from 'react-icons/lib/io';
 import { withRouter } from 'react-router-dom';
@@ -8,7 +8,11 @@ import PropTypes from 'prop-types';
 
 const InputBar = ({ location, history }) => {
   const [term, setTerm] = useState('');
+
+  const { filteredData } = useSelector(({ storeOnFilter}) => storeOnFilter);
+
   const dispatch = useDispatch();
+
 
   const setInput = ({ target }) => {
     const { value } = target;
@@ -17,7 +21,7 @@ const InputBar = ({ location, history }) => {
 
   const inputSubmit = evt => {
     evt.preventDefault();
-    dispatch(searchCourts(term));
+    dispatch(searchCourts(term, filteredData));
     setTerm('');
     if(location.pathname !== '/search') history.push('/search');
   };

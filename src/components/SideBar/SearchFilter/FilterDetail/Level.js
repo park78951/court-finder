@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import FilterMenu from './filterMenu';
 import { filterConfig } from '../../../../config/initConfig';
 import { FILTER_OPTIONS_TYPES } from '../../../../config/constants';
-import { storeKeywords } from '../../../../helper/myUtil';
+import { storeKeywords } from '../../../../myUtil';
 import PropTypes from 'prop-types';
 
 

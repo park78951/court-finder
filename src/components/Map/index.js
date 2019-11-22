@@ -12,7 +12,7 @@ import { defaultMapOptions } from '../../config/initConfig';
 import { 
   createUniqueKey, 
   createFullCoordinate,
-} from '../../helper/myUtil';
+} from '../../myUtil';
 import { withRouter } from 'react-router-dom';
 
 import { useSelector } from 'react-redux';

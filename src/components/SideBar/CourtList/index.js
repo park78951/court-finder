@@ -2,7 +2,7 @@ import React, { useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import CourtItem from './CourtItem';
 import { routes } from '../../../config/initConfig';
-import { createUniqueKey } from '../../../helper/myUtil';
+import { createUniqueKey } from '../../../myUtil';
 import { Link } from 'react-router-dom';
 import Loading from '../../Loading';
 import Refetch from '../Refetch';

@@ -10,7 +10,7 @@ import {
   PLACEHOLDER_COURT_NAME,
   PLACEHOLDER_FEE_AMOUNT
 } from '../../config/constants';
-import { checkUnfilled } from '../../helper/myUtil';
+import { checkUnfilled } from '../../myUtil';
 import Style from './BasicFormStyle';
 import PropTypes from 'prop-types';
 

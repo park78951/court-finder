@@ -10,9 +10,10 @@ import {
   TOGGLE_SIDEBAR,
   USER_INPUT,
   TOGGLE_FILTER,
-  ACTIVE_BUTTON
+  ACTIVE_BUTTON,
+  SEND_FILTER_DATA
 } from '../config/constants';
-import { filterCourtsByInput } from '../helper/myUtil';
+import { filterCourtsByInput } from '../myUtil';
 import courtsApi from '../apis';
 
 const searchingCourts = () => ({
@@ -64,7 +65,12 @@ export const getActiveBtnName = btnName => ({
   payload: btnName
 });
 
-export const searchCourts = userInput => 
+export const getFilterData = filterData => ({
+  type: SEND_FILTER_DATA,
+  payload: filterData
+});
+
+export const searchCourts = (userInput, filteredData) => 
   async dispatch => {
     dispatch(getUserInput(userInput));
     try{
@@ -72,8 +78,11 @@ export const searchCourts = userInput =>
 
       const fetchedData = await courtsApi.get('/seoulCourt.json');
       const courtsInfo = fetchedData.data.body;
-      const courtsByUserInput = filterCourtsByInput({ userInput, courtsInfo });
-
+      let courtsByUserInput = filterCourtsByInput({ 
+        userInput, 
+        courtsInfo, 
+        filteredData 
+      });
       dispatch({
         type: COMPLETE_SEARCH_COURTS,
         payload: courtsByUserInput

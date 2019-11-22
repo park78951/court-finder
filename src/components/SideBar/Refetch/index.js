@@ -12,9 +12,10 @@ import Style from './indexStyle';
 const Refetch = () => {
   const { color, size } = refetchBtnStyle;
   const dispatch = useDispatch();
-  const userInput = useSelector(state => {
-    return state.storeOnSearch.userInput;
-  });
+  const { userInput, filteredData } = useSelector(state => ({
+    userInput: state.storeOnSearch.userInput,
+    filteredData: state.storeOnFilter.filteredData
+  }));
 
   return (
     <ThemeProvider theme={ buttonTheme }>
@@ -23,7 +24,7 @@ const Refetch = () => {
         <CustomButton
           size={ size }
           color={ color }
-          onClick={ () => dispatch(searchCourts(userInput)) }
+          onClick={ () => dispatch(searchCourts(userInput, filteredData)) }
         >
           새로고침
         </CustomButton>
