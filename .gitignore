@@ -110,3 +110,5 @@ typings/
 build/
 
 # End of https://www.gitignore.io/api/node,visualstudiocode
+.gitignore
+.travis.yml
