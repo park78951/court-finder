@@ -22,6 +22,7 @@ export const NO_DATA = '정보없음';
 // Filter Info Reducer
 export const ACTIVE_BUTTON = 'ACTIVE_BUTTON';
 export const SEND_FILTER_DATA = 'SEND_FILTER_DATA';
+export const INIT_FILTER_DATA = 'INIT_FILTER_DATA';
 
 // Data for drop down
 export const INDOOR_OR_OUTDOOR = ['실내코트', '야외코트'];

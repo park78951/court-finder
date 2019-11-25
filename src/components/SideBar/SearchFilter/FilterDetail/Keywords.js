@@ -5,7 +5,7 @@ import { FILTER_OPTIONS_TYPES } from '../../../../config/constants';
 import { storeKeywords } from '../../../../myUtil';
 import PropTypes from 'prop-types';
 
-const Keywords = ({ activeBtn, setFilterData }) => {
+const Keywords = ({ setFilterData }) => {
   const keywordsDetails = filterConfig.keywords.details;
   const keywords = Object.keys(keywordsDetails);
   const [keywordFilter, setKeywordFilter] = useState({});
@@ -32,17 +32,14 @@ const Keywords = ({ activeBtn, setFilterData }) => {
     setFilterData(keywordFilter);
   }, [keywordFilter]);
 
-  return activeBtn === 'keywords' && (
-    <div 
-      className='dropdown__menus'
-    >
+  return (
+    <div className='dropdown__menus'>
       { dropdownList }
     </div>
   );
 };
 
 Location.propTypes = {
-  activeBtn: PropTypes.string,
   setFilterData: PropTypes.func
 };
 

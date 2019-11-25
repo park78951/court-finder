@@ -21,7 +21,7 @@ const DetailWrapper = styled.div`
   .button__apply {
     margin-top: 2.3rem;
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     flex-wrap: wrap;
   }
 `;

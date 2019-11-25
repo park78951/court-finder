@@ -1,7 +1,8 @@
 import { initFilterInfo } from './initalState';
 import { 
   ACTIVE_BUTTON,
-  SEND_FILTER_DATA
+  SEND_FILTER_DATA,
+  INIT_FILTER_DATA
 } from '../config/constants';
 
 const searchFilterReducer = (state = initFilterInfo, { type, payload }) => {
@@ -12,11 +13,15 @@ const searchFilterReducer = (state = initFilterInfo, { type, payload }) => {
         activeBtn: payload
       };
     case SEND_FILTER_DATA:
-      return{
+      return {
         ...state,
         filteredData: payload
       };
-      
+    case INIT_FILTER_DATA:
+      return  {
+        ...state,
+        filteredData: {}
+      };
     default:
       return state;
   }

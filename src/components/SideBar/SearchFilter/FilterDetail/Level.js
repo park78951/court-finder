@@ -6,7 +6,7 @@ import { storeKeywords } from '../../../../myUtil';
 import PropTypes from 'prop-types';
 
 
-const Level = ({ activeBtn, setFilterData }) => {
+const Level = ({ setFilterData }) => {
   const levelDetails = filterConfig.level.details;
   const levelOptions = Object.keys(levelDetails);
   const [levelFilter, setLevelFilter] = useState({});
@@ -33,17 +33,14 @@ const Level = ({ activeBtn, setFilterData }) => {
     setFilterData(levelFilter);
   }, [levelFilter]);
 
-  return activeBtn === 'level' && (
-    <div 
-      className='dropdown__menus'
-    >
+  return (
+    <div className='dropdown__menus'>
       { dropdownList }
     </div>
   );
 };
 
 Level.propTypes = {
-  activeBtn: PropTypes.string,
   setFilterData: PropTypes.func
 };
 

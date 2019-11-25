@@ -3,7 +3,7 @@ import FilterMenu from './filterMenu';
 import { filterConfig} from '../../../../config/initConfig';
 import PropTypes from 'prop-types';
 
-const Location = ({ activeBtn, setFilterData }) => {
+const Location = ({ setFilterData }) => {
   const locationDetail = filterConfig.location.options;
   const cities = Object.keys(locationDetail);
 
@@ -20,10 +20,8 @@ const Location = ({ activeBtn, setFilterData }) => {
     }
   }, [city, gu_nm]);
 
-  return activeBtn === 'location' && (
-    <div
-      className='dropdown__menus'
-    >
+  return (
+    <div className='dropdown__menus'>
       <FilterMenu 
         menuTitle='도시명'
         onChange={ ({ target }) => setCity(target.value) }
@@ -39,7 +37,6 @@ const Location = ({ activeBtn, setFilterData }) => {
 };
 
 Location.propTypes = {
-  activeBtn: PropTypes.string,
   setFilterData: PropTypes.func
 };
 

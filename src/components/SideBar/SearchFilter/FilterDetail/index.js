@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { getFilterData } from '../../../../actions';
+import { getFilterData, initFilterData } from '../../../../actions';
 import CustomButton from '../../../lib/Button';
 import Location from './Location';
 import Keywords from './Keywords';
@@ -12,7 +12,7 @@ import { ThemeProvider } from 'styled-components';
 import Style from './indexStyle';
 
 const FilterDetail = () => {
-  const { size, color } = filterButton;
+  const { apply, initialize } = filterButton;
 
   const { filterFlag, activeBtn } = useSelector(state => ({
     filterFlag: state.storeOnFlag.filterFlag,
@@ -33,32 +33,59 @@ const FilterDetail = () => {
     dispatch(getFilterData(polishedFilterData));
   };
 
+  const initFilters = () => {
+    dispatch(initFilterData());
+  };
+
+  const filterDetailRenderer = useMemo(() => {
+    switch(activeBtn) {
+      case 'location':
+        return (
+          <Location 
+            setFilterData={ setFilterData }
+          />
+        );
+      case 'keywords':
+        return (
+          <Keywords 
+            setFilterData={ setFilterData }
+          />
+        );
+      case 'recommendation':
+        return (
+          <Recommendation
+            setFilterData={ setFilterData }
+          />
+        );
+      case 'level':
+        return (
+          <Level 
+            setFilterData={ setFilterData }
+          />
+        );
+      default:
+        break;
+    }
+  }, [activeBtn]);
+
   return filterFlag && (
     <ThemeProvider theme={ buttonTheme }>
       <Style.DetailWrapper>
-        <Location 
-          activeBtn={ activeBtn }
-          setFilterData={ setFilterData }
-        />
-        <Keywords 
-          activeBtn={ activeBtn }
-          setFilterData={ setFilterData }
-        />
-        <Recommendation
-          activeBtn={ activeBtn }
-          setFilterData={ setFilterData }
-        />
-        <Level 
-          activeBtn={ activeBtn }
-          setFilterData={ setFilterData }
-        />
+        { filterDetailRenderer }
         <div className='button__apply'>
           <CustomButton 
-            size={ size }
-            color={ color }
+            size={ apply.size }
+            color={ apply.color }
             onClick={ sendFilterData }
           >
             필터적용
+          </CustomButton>
+          <CustomButton 
+            size={ initialize.size }
+            color={ initialize.color }
+            onClick={ initFilters }
+          >
+            필터초기화
           </CustomButton>
         </div>
       </Style.DetailWrapper>

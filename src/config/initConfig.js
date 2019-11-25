@@ -43,8 +43,14 @@ export const refetchBtnStyle = {
 };
 
 export const filterButton = {
-  size: 'medium',
-  color: 'acceptance'
+  apply: {
+    size: 'small',
+    color: 'acceptance'
+  },
+  initialize: {
+    size: 'small',
+    color: 'cancel'
+  }
 };
 
 export const routes = {

@@ -11,7 +11,8 @@ import {
   USER_INPUT,
   TOGGLE_FILTER,
   ACTIVE_BUTTON,
-  SEND_FILTER_DATA
+  SEND_FILTER_DATA,
+  INIT_FILTER_DATA
 } from '../config/constants';
 import { filterCourtsByInput } from '../myUtil';
 import courtsApi from '../apis';
@@ -68,6 +69,10 @@ export const getActiveBtnName = btnName => ({
 export const getFilterData = filterData => ({
   type: SEND_FILTER_DATA,
   payload: filterData
+});
+
+export const initFilterData = () => ({
+  type: INIT_FILTER_DATA
 });
 
 export const searchCourts = (userInput, filteredData) => 

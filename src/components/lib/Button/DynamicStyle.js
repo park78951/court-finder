@@ -41,9 +41,9 @@ export const sizeStyles = css`
 
   ${ ({ size }) => 
     size === 'small' && css`
-      height: 1.75rem;
+      height: 2.3rem;
       font-size: 0.875rem;
-      width: 5rem;
+      width: 8.5rem;
     `
     // eslint-disable-next-line indent
   }

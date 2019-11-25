@@ -6,7 +6,7 @@ import { storeKeywords } from '../../../../myUtil';
 import PropTypes from 'prop-types';
 
 
-const Recommendation = ({ activeBtn, setFilterData }) => {
+const Recommendation = ({ setFilterData }) => {
   const recommendDetails = filterConfig.recommendation.details;
   const recommendations = Object.keys(recommendDetails);
   const [recommendFilter, setRecommendFilter] = useState({});
@@ -33,17 +33,14 @@ const Recommendation = ({ activeBtn, setFilterData }) => {
     setFilterData(recommendFilter);
   }, [recommendFilter]);
 
-  return activeBtn === 'recommendation' && (
-    <div
-      className='dropdown__menus'
-    >
+  return (
+    <div className='dropdown__menus'>
       { dropdownList }
     </div>
   );
 };
 
 Location.propTypes = {
-  activeBtn: PropTypes.string,
   setFilterData: PropTypes.func
 };
 
