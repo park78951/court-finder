@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import Search from './Search';
 import CourtInfo from './CourtInfo';
-import CourtList from './CourtList';
+import SidebarContentsContainer from '../container/SidebarListContainer';
 import SearchFilter from './SearchFilter';
 import { Route, Switch, withRouter } from 'react-router-dom';
 import Style from './indexStyle';
@@ -21,7 +21,7 @@ const SideBar = ({ location }) => {
       <Search curPath={ pathname }/>
       <Switch>
         <Route path='/' exact component={ SearchFilter } />
-        <Route path='/search' exact component={ CourtList} />
+        <Route path='/search' exact component={ SidebarContentsContainer } />
         <Route path='/courtinfo' component={ CourtInfo } />
       </Switch>
     </Style.SideBarWrapper>

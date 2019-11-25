@@ -1,10 +1,9 @@
 import styled from 'styled-components';
 
 const CourtListWrapper = styled.div`
-  flex: 1;
   border: solid 1px #D3D3D3;
-  overflow: hidden;
-  flex-shrink: 1;
+  flex: 1;
+  overflow-y: scroll;
 
   & > a {
     text-decoration: none;
@@ -14,8 +13,6 @@ const CourtListWrapper = styled.div`
         text-decoration: none;
     }
   }
-
-  overflow-y: scroll;
 
   &::-webkit-scrollbar-track {
     box-shadow: inset 0 0 6px rgba(0,0,0,0.3);

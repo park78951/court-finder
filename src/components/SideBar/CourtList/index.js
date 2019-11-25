@@ -4,21 +4,11 @@ import CourtItem from './CourtItem';
 import { routes } from '../../../config/initConfig';
 import { createUniqueKey } from '../../../myUtil';
 import { Link } from 'react-router-dom';
-import Loading from '../../Loading';
-import Refetch from '../Refetch';
 import Style from './indexStyle';
 import PropTypes from 'prop-types';
 
 const CourtList = () => {
-  const { 
-    searchedCourts, 
-    isSearching, 
-    isError 
-  } = useSelector(state => ({
-    searchedCourts: state.storeOnSearch.searchedCourts,
-    isSearching: state.storeOnSearch.isSearching,
-    isError: state.storeOnSearch.isError
-  }));
+  const searchedCourts = useSelector(state => state.storeOnSearch.searchedCourts);
   const { infoDetail } = routes;
 
   const searchedItems = useMemo(() => {
@@ -35,16 +25,9 @@ const CourtList = () => {
   }, [searchedCourts]);
   
   return (
-    isSearching
-      ? <Loading />
-      : isError 
-        ? <Refetch />
-        : <Style.CourtListWrapper>
-          { searchedCourts.length
-            ? searchedItems 
-            : <p>검색 데이터가 없습니다.</p>
-          }
-        </Style.CourtListWrapper>
+    <Style.CourtListWrapper>
+      { searchedItems }
+    </Style.CourtListWrapper>
   );
 };
 
