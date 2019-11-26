@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { getFilterData, initFilterData } from '../../../../actions';
+import { getFilterData, removeFilterData } from '../../../../actions';
 import CustomButton from '../../../lib/Button';
 import Location from './Location';
 import Keywords from './Keywords';
@@ -34,7 +34,7 @@ const FilterDetail = () => {
   };
 
   const initFilters = () => {
-    dispatch(initFilterData());
+    dispatch(removeFilterData());
   };
 
   const filterDetailRenderer = useMemo(() => {

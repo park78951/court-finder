@@ -76,7 +76,7 @@ export const getFilterData = filterData => ({
   payload: filterData
 });
 
-export const initFilterData = () => ({
+export const removeFilterData = () => ({
   type: INIT_FILTER_DATA
 });
 
