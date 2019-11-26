@@ -1,9 +1,9 @@
 export const filterCourtsByInput = ({ 
   userInput, 
   courtsInfo, 
-  filteredData 
+  filterData 
 }) => {
-  const filteredDataKeys = Object.keys(filteredData);
+  const filterDataKeys = Object.keys(filterData);
   let completeData = [];
 
   completeData = courtsInfo.filter( ({ locationName }) => {
@@ -11,10 +11,10 @@ export const filterCourtsByInput = ({
   });
 
   
-  if(filteredDataKeys.length) {
-    filteredDataKeys.forEach(dataKeys => {
+  if(filterDataKeys.length) {
+    filterDataKeys.forEach(dataKeys => {
       completeData = completeData.filter(dataUnit => {
-        return dataUnit[dataKeys] === filteredData[dataKeys];
+        return dataUnit[dataKeys] === filterData[dataKeys];
       });
     });
   }

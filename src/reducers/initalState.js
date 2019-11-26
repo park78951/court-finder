@@ -21,7 +21,7 @@ export const initUIToggleInfo = {
 
 export const initFilterInfo = {
   activeBtn: 'location',
-  filteredData: {}
+  filterData: {}
 };
 
 export const initSubmitList = {

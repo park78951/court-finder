@@ -5,6 +5,7 @@ const HelperNavWrapper = styled.div`
   width: 100%;
   display: flex;
   justify-content: flex-end;
+  border: solid 1px #D3D3D3;
 
   & > button {
     background-color: transparent;

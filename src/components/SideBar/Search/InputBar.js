@@ -9,7 +9,7 @@ import PropTypes from 'prop-types';
 const InputBar = ({ location, history }) => {
   const [term, setTerm] = useState('');
 
-  const { filteredData } = useSelector(({ storeOnFilter}) => storeOnFilter);
+  const { filterData } = useSelector(({ storeOnFilter}) => storeOnFilter);
 
   const dispatch = useDispatch();
 
@@ -21,7 +21,7 @@ const InputBar = ({ location, history }) => {
 
   const inputSubmit = evt => {
     evt.preventDefault();
-    dispatch(searchCourts(term, filteredData));
+    dispatch(searchCourts(term, filterData));
     setTerm('');
     if(location.pathname !== '/search') history.push('/search');
   };

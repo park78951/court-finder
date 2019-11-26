@@ -80,7 +80,7 @@ export const removeFilterData = () => ({
   type: INIT_FILTER_DATA
 });
 
-export const searchCourts = (userInput, filteredData) => 
+export const searchCourts = (userInput, filterData) => 
   async dispatch => {
     dispatch(getUserInput(userInput));
     try{
@@ -91,7 +91,7 @@ export const searchCourts = (userInput, filteredData) =>
       let courtsByUserInput = filterCourtsByInput({ 
         userInput, 
         courtsInfo, 
-        filteredData 
+        filterData 
       });
       dispatch({
         type: COMPLETE_SEARCH_COURTS,

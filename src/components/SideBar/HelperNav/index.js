@@ -13,6 +13,7 @@ const HelperNav = ({ history }) => {
 
   const initializeFilter = () => {
     dispatch(removeFilterData());
+    alert('필터를 초기화했습니다.');
   };
 
   return (

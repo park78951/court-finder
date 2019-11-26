@@ -15,12 +15,12 @@ const searchFilterReducer = (state = initFilterInfo, { type, payload }) => {
     case SEND_FILTER_DATA:
       return {
         ...state,
-        filteredData: payload
+        filterData: payload
       };
     case INIT_FILTER_DATA:
       return  {
         ...state,
-        filteredData: {}
+        filterData: {}
       };
     default:
       return state;
