@@ -12,17 +12,22 @@ import {
   TOGGLE_FILTER,
   ACTIVE_BUTTON,
   SEND_FILTER_DATA,
-  INIT_FILTER_DATA
+  INIT_FILTER_DATA,
+  DELETE_COURTS
 } from '../config/constants';
 import { filterCourtsByInput } from '../myUtil';
 import courtsApi from '../apis';
 
-const searchingCourts = () => ({
+const startSearchingCourts = () => ({
   type: SEARCHING_COURTS,
 });
 
 export const catchErrorOnSearch = () => ({
   type: CATCHING_ERROR
+});
+
+export const deleteSearchedCourts = () => ({
+  type: DELETE_COURTS
 });
 
 export const addCourts = addedInfo => ({
@@ -79,7 +84,7 @@ export const searchCourts = (userInput, filteredData) =>
   async dispatch => {
     dispatch(getUserInput(userInput));
     try{
-      dispatch(searchingCourts());
+      dispatch(startSearchingCourts());
 
       const fetchedData = await courtsApi.get('/seoulCourt.json');
       const courtsInfo = fetchedData.data.body;

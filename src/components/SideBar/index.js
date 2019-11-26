@@ -18,7 +18,7 @@ const SideBar = ({ location }) => {
     <Style.SideBarWrapper 
       curPath={ pathname }
     >
-      <Search curPath={ pathname }/>
+      <Search />
       <Switch>
         <Route path='/' exact component={ SearchFilter } />
         <Route path='/search' exact component={ SidebarContentsContainer } />

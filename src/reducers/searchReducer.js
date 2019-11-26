@@ -3,7 +3,8 @@ import {
   COMPLETE_SEARCH_COURTS,
   SEARCHING_COURTS,
   CATCHING_ERROR,
-  USER_INPUT
+  USER_INPUT,
+  DELETE_COURTS
 } from '../config/constants';
 
 const searchReducer = (state = searchInfo, { type, payload}) => {
@@ -34,6 +35,12 @@ const searchReducer = (state = searchInfo, { type, payload}) => {
       return {
         ...state,
         userInput: payload
+      };
+
+    case DELETE_COURTS:
+      return {
+        ...state,
+        searchedCourts: []
       };
 
     default:

@@ -9,10 +9,7 @@ import {
   Marker 
 } from '@react-google-maps/api';
 import { defaultMapOptions } from '../../config/initConfig';
-import { 
-  createUniqueKey, 
-  createFullCoordinate,
-} from '../../myUtil';
+import { createUniqueKey, createFullCoordinate } from '../../myUtil';
 import { withRouter } from 'react-router-dom';
 
 import { useSelector } from 'react-redux';
@@ -43,22 +40,18 @@ const Map = ({ location }) => {
   });
   const { pathname } = location;
 
-  const clickMapHandler = (e) => {
-    console.log(e);
-  };
-
   // SetAnimation stat를 만들어서 animation route에 따른 관리
   const setMarkers = useMemo(
     () => {
       return searchedCourts.map( courtInfo => {
-        return (
+        return pathname !== '/' && (
           <Marker
             key={ createUniqueKey() }
             position={ createFullCoordinate(courtInfo) }
           />
         );
       });
-    }, [searchedCourts, selectedCourt]);
+    }, [searchedCourts, pathname]);
   
   useEffect(() => {
     if(!searchedCourts.length) return;
@@ -81,7 +74,6 @@ const Map = ({ location }) => {
         mapContainerStyle={ mapStyle }
         mapTypeId={ mapTypeId }
         options={ options }
-        onRightClick={ clickMapHandler }
       >
         { setMarkers }
       </GoogleMap>
