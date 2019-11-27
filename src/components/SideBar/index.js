@@ -1,17 +1,12 @@
-import React, { Suspense, lazy } from 'react';
+import React from 'react';
 import { useSelector } from 'react-redux';
 import Search from './Search';
-// import CourtInfo from './CourtInfo';
-// import SidebarContentsContainer from '../container/SidebarListContainer';
-// import SearchFilter from './SearchFilter';
-import Loader from '../Loader';
+import CourtInfo from './CourtInfo';
+import SidebarContentsContainer from '../container/SidebarListContainer';
+import SearchFilter from './SearchFilter';
 import { Route, Switch, withRouter } from 'react-router-dom';
 import Style from './indexStyle';
 import PropTypes from 'prop-types';
-
-const CourtInfo = lazy(() => import('./CourtInfo'));
-const SidebarContentsContainer = lazy(() => import('../container/SidebarListContainer'));
-const SearchFilter = lazy(() => import('./SearchFilter'));
 
 const SideBar = ({ location }) => {
   const isSidebarHidden = useSelector(state => {
@@ -24,13 +19,11 @@ const SideBar = ({ location }) => {
       curPath={ pathname }
     >
       <Search />
-      <Suspense fallback={ <Loader /> }>
-        <Switch>
-          <Route path='/' exact component={ SearchFilter } />
-          <Route path='/search' exact component={ SidebarContentsContainer } />
-          <Route path='/courtinfo' component={ CourtInfo } />
-        </Switch>
-      </Suspense>
+      <Switch>
+        <Route path='/' exact component={ SearchFilter } />
+        <Route path='/search' exact component={ SidebarContentsContainer } />
+        <Route path='/courtinfo' component={ CourtInfo } />
+      </Switch>
     </Style.SideBarWrapper>
   );
 };
