@@ -4,20 +4,33 @@ const webpack = require('webpack');
 const dotenv = require('dotenv')
   .config({ path: __dirname + '/.env'});
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const ManifestPlugin = require('webpack-manifest-plugin');
 
 const ENV = process.env.NODE_ENV === 'development' ? 'development' : 'production';
 
 module.exports = {
-  mode: 'development',
+  mode: ENV,
   entry: ['react-hot-loader/patch', './src/index.js'],
   output: {
     path: path.resolve(__dirname, 'build'),
-    filename: 'bundle.js',
+    filename: '[name].[hash].js',
+    chunkFilename: '[name].[hash].js',
     publicPath: '/'
   },
   resolve: {
     alias: {
       'react-dom': '@hot-loader/react-dom'
+    }
+  },
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        commons: {
+          test: /[\\/]node_moudles[\\/]/,
+          name: 'vendors',
+          chunks: 'all'
+        }
+      }
     }
   },
   module: {
@@ -41,6 +54,10 @@ module.exports = {
       KEY: dotenv.parsed.GOOGLE_API_KEY,
       ENV
     }),
-    new CleanWebpackPlugin()
+    new CleanWebpackPlugin(),
+    new ManifestPlugin({
+      fileName: 'manifest.json',
+      basePath: '/'
+    })
   ]
 };

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import Loading from '../Loading';
+import Loading from '../Loader';
 import Refetch from '../SideBar/Refetch';
 import CourtList from '../SideBar/CourtList';
 import HelperNav from '../SideBar/HelperNav';

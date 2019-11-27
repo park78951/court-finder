@@ -3,7 +3,7 @@ import { DotLoader } from 'react-spinners';
 import { loaderConfig } from '../../config/initConfig';
 import Styled, { loaderStyle } from './indexStyle';
 
-const Loading = () => {
+const Loader = () => {
   const {
     sizeUnit,
     size,
@@ -22,4 +22,4 @@ const Loading = () => {
   );
 };
 
-export default Loading;
+export default Loader;

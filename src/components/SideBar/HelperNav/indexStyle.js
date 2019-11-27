@@ -13,6 +13,7 @@ const HelperNavWrapper = styled.div`
     outline: none;
     margin: 0 10px 0 10px;
     border-radius: 50%;
+    cursor: pointer;
 
     &:hover {
       font-weight: bold;

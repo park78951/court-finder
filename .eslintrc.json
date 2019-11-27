@@ -22,7 +22,7 @@
     "plugins": [
         "react"
     ],
-    "rules": {
+    "rules":     {
         "react/jsx-no-target-blank": [0],
         "react/prop-types": 0,
         "indent": [
@@ -38,5 +38,6 @@
             "error", 
             "before"
         ]
-    }
+    },
+    "parser": "babel-eslint"
 }
