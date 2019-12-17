@@ -1,11 +1,11 @@
-import { fork, put, takeLatest, call } from 'redux-saga/effects';
-import courtsApi from '../api';
+import { fork, put, takeLatest, call, all } from 'redux-saga/effects';
+import courtsApi from '../apis';
 import { filterCourtsByInput } from '../myUtil';
 import {
   completeSearchCourts,
   catchErrorOnSearch,
-  startSearchingCourts
 } from '../actions';
+import { SEARCH_COURTS_REQUEST } from '../actions/types';
 
 function searchCourtsAPI() {
   return courtsApi.get('/seoulCourt.json');
@@ -30,11 +30,13 @@ function* searchCourts(action) {
 
 function* watchSearchCourts() {
   yield takeLatest(
-    startSearchingCourts(),
+    SEARCH_COURTS_REQUEST,
     searchCourts,
   );
 }
 
 export default function* searchCourtsSaga() {
-  yield fork(watchSearchCourts);
+  yield all([
+    fork(watchSearchCourts),
+  ]);
 }

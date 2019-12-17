@@ -15,11 +15,13 @@ import {
   INIT_FILTER_DATA,
   DELETE_COURTS
 } from './types';
-import { filterCourtsByInput } from '../myUtil';
-import courtsApi from '../apis';
 
-const startSearchingCourts = () => ({
+export const startSearchingCourts = (userInput, filterData) => ({
   type: SEARCH_COURTS_REQUEST,
+  payload: {
+    userInput,
+    filterData,
+  }
 });
 
 export const completeSearchCourts = courtsData => ({
@@ -67,7 +69,7 @@ export const closeCourtAddtionForm = () => ({
   type: CLOSE_COURTADDITION,
 });
 
-const getUserInput = input => ({
+export const getUserInput = input => ({
   type: USER_INPUT,
   payload: input,
 });
@@ -85,26 +87,3 @@ export const getFilterData = filterData => ({
 export const removeFilterData = () => ({
   type: INIT_FILTER_DATA,
 });
-
-export const searchCourts = (userInput, filterData) => 
-  async dispatch => {
-    dispatch(getUserInput(userInput));
-    try{
-      dispatch(startSearchingCourts());
-
-      const fetchedData = await courtsApi.get('/seoulCourt.json');
-      const courtsInfo = fetchedData.data.body;
-      let courtsByUserInput = filterCourtsByInput({ 
-        userInput, 
-        courtsInfo, 
-        filterData 
-      });
-      dispatch({
-        type: SEARCH_COURTS_SUCCESS,
-        payload: courtsByUserInput
-      });
-    } catch(err) {
-      console.log(err.message);
-      dispatch(catchErrorOnSearch());
-    }
-  };

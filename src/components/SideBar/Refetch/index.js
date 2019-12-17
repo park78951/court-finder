@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import CustomButton from '../../lib/Button';
 import { useDispatch, useSelector } from 'react-redux';
-import { searchCourts } from '../../../actions';
+import { startSearchingCourts, getUserInput } from '../../../actions';
 import { ThemeProvider } from 'styled-components';
 import { 
   buttonTheme,
@@ -17,6 +17,11 @@ const Refetch = () => {
     filterData: state.storeOnFilter.filterData
   }));
 
+  const refetchRequestor = useCallback(() => {
+    dispatch(startSearchingCourts(userInput, filterData));
+    getUserInput(userInput);
+  }, [userInput, filterData]);
+
   return (
     <ThemeProvider theme={ buttonTheme }>
       <Style.RefetchWrapper>
@@ -24,7 +29,7 @@ const Refetch = () => {
         <CustomButton
           size={ size }
           color={ color }
-          onClick={ () => dispatch(searchCourts(userInput, filterData)) }
+          onClick={ refetchRequestor }
         >
           새로고침
         </CustomButton>
