@@ -32,4 +32,4 @@ const HelperNav = ({ history }) => {
   );
 };
 
-export default withRouter(HelperNav);
+export default withRouter(React.memo(HelperNav));

@@ -48,7 +48,8 @@ module.exports = {
   },
   plugins: [
     new HtmlWebPackPlugin({
-      template: 'public/index.html'
+      template: 'public/index.html',
+      favicon: "public/img/favicon.png"
     }),
     new webpack.EnvironmentPlugin({
       KEY: dotenv.parsed.GOOGLE_API_KEY,

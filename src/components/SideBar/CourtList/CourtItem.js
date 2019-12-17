@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 import { selectCourt } from '../../../actions';
 import Style from './CourtItemStyle';
@@ -8,10 +8,10 @@ const CourtItem = ({ searchedCourt }) => {
   const { locationName, address, in_out, phone } = searchedCourt;
   const dispatch = useDispatch();
 
-  const selectCourtInfo = () => {
+  const selectCourtInfo = useCallback(() => {
     dispatch(selectCourt(searchedCourt));
     localStorage.setItem('selectCourt', JSON.stringify(searchedCourt));
-  };
+  }, [searchedCourt]);
 
   return (
     <Style.CourtItemWrapper

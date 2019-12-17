@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getFilterData, removeFilterData } from '../../../../actions';
 import CustomButton from '../../../lib/Button';
@@ -22,7 +22,7 @@ const FilterDetail = () => {
 
   const [filterData, setFilterData] = useState({});
 
-  const sendFilterData = e => {
+  const sendFilterData = useCallback(e => {
     e.stopPropagation();
     if(activeBtn !== 'location') {
       alert('해당 기능은 준비중입니다.');
@@ -31,11 +31,11 @@ const FilterDetail = () => {
 
     const polishedFilterData = deleteObjProps(filterData);
     dispatch(getFilterData(polishedFilterData));
-  };
+  }, [activeBtn, filterData]);
 
-  const initFilters = () => {
+  const initFilters = useCallback(() => {
     dispatch(removeFilterData());
-  };
+  }, []);
 
   const filterDetailRenderer = useMemo(() => {
     switch(activeBtn) {

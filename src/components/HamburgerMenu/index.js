@@ -8,7 +8,6 @@ const HamburgerMenu = () => {
   const isSidebarHidden = useSelector(state => {
     return state.storeOnFlag.isSidebarHidden;
   });
-
   const dispatch = useDispatch();
 
   const sidebarClickHandler = () => {

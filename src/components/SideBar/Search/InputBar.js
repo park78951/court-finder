@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { searchCourts } from '../../../actions';
 import { IoIosSearch } from 'react-icons/lib/io';
@@ -14,17 +14,17 @@ const InputBar = ({ location, history }) => {
   const dispatch = useDispatch();
 
 
-  const setInput = ({ target }) => {
+  const setInput = useCallback(({ target }) => {
     const { value } = target;
     setTerm(value);
-  };
+  }, []);
 
-  const inputSubmit = evt => {
+  const inputSubmit = useCallback(evt => {
     evt.preventDefault();
     dispatch(searchCourts(term, filterData));
     setTerm('');
     if(location.pathname !== '/search') history.push('/search');
-  };
+  }, [term, filterData, location]);
 
   return (
     <Style.InputContainer onSubmit={ inputSubmit }>
@@ -47,4 +47,4 @@ InputBar.propTypes = {
   getUserInput: PropTypes.func
 };
 
-export default withRouter(InputBar);
+export default withRouter(React.memo(InputBar));

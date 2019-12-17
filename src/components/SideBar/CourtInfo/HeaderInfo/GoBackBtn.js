@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { withRouter } from 'react-router-dom';
 import { MdArrowBack } from 'react-icons/lib/md';
 import { iconSize } from '../../../../config/initConfig';
@@ -6,9 +6,9 @@ import { iconSize } from '../../../../config/initConfig';
 const GoBackBtn = ({ history }) => {
   const { headerInfo_goback } = iconSize;
 
-  const goBack = () => {
+  const goBack = useCallback(() => {
     history.goBack();
-  };
+  }, []);
 
   return (
     <button onClick={ goBack }>

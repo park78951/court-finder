@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { toggleFilter, getActiveBtnName } from '../../../../actions';
 import { filterConfig } from '../../../../config/initConfig';
@@ -12,14 +12,14 @@ const FilterMenu = () => {
     activeBtn: state.storeOnFilter.activeBtn
   }));
 
-  const filterToggler = () => {
+  const filterToggler = useCallback(() => {
     dispatch(toggleFilter());
-  };
+  }, []);
 
-  const selectFilterBtn = (btnName) => () => {
+  const selectFilterBtn = useCallback((btnName) => () => {
     dispatch(getActiveBtnName(btnName));
     dispatch(toggleFilter(true));
-  };
+  }, []);
 
   const filterBtn = Object.keys(filterConfig).map(filterKey => {
     const filterTitle = filterConfig[filterKey].name;
