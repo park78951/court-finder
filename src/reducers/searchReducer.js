@@ -1,29 +1,29 @@
 import { searchInfo } from './initalState';
 import { 
-  COMPLETE_SEARCH_COURTS,
-  SEARCHING_COURTS,
-  CATCHING_ERROR,
+  SEARCH_COURTS_SUCCESS,
+  SEARCH_COURTS_REQUEST,
+  SEARCH_COURTS_FAILURE,
   USER_INPUT,
   DELETE_COURTS
-} from '../config/constants';
+} from '../actions/types';
 
 const searchReducer = (state = searchInfo, { type, payload}) => {
   switch (type) {
-    case COMPLETE_SEARCH_COURTS:
+    case SEARCH_COURTS_SUCCESS:
       return {
         ...state,
         isSearching: false,
         searchedCourts: [...payload]
       };
 
-    case SEARCHING_COURTS:
+    case SEARCH_COURTS_REQUEST:
       return {
         ...state,
         isError: false,
         isSearching: true
       };
 
-    case CATCHING_ERROR:
+    case SEARCH_COURTS_FAILURE:
       return {
         ...state,
         isSearching: false,

@@ -3,7 +3,7 @@ import {
   ACTIVE_BUTTON,
   SEND_FILTER_DATA,
   INIT_FILTER_DATA
-} from '../config/constants';
+} from '../actions/types';
 
 const searchFilterReducer = (state = initFilterInfo, { type, payload }) => {
   switch (type) {

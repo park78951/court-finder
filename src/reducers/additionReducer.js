@@ -1,5 +1,5 @@
 import { additionInfo } from './initalState';
-import { ADD_COURTS } from '../config/constants';
+import { ADD_COURTS } from '../actions/types';
 
 const additionReducer = (state = additionInfo, { type, payload}) => {
   switch (type) {

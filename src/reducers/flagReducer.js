@@ -3,7 +3,7 @@ import {
   OPEN_COURTADDITION,
   CLOSE_COURTADDITION,
   TOGGLE_FILTER
-} from '../config/constants';
+} from '../actions/types';
 import { initUIToggleInfo } from './initalState';
 
 const uiReducers = (state = initUIToggleInfo, { type, payload }) => {

@@ -1,7 +1,7 @@
 import { selectionInfo } from './initalState';
 import { 
   SELECT_COURT,
-} from '../config/constants';
+} from '../actions/types';
 
 const selectionReducer = (state = selectionInfo, { type, payload}) => {
   switch (type) { 

@@ -1,12 +1,12 @@
 export const filterCourtsByInput = ({ 
   userInput, 
-  courtsInfo, 
+  courtsData, 
   filterData 
 }) => {
   const filterDataKeys = Object.keys(filterData);
   let completeData = [];
 
-  completeData = courtsInfo.filter( ({ locationName }) => {
+  completeData = courtsData.filter( ({ locationName }) => {
     return locationName.includes(userInput);
   });
 
@@ -20,7 +20,7 @@ export const filterCourtsByInput = ({
   }
 
   if(!completeData.length) {
-    completeData = courtsInfo.filter( ({ gu_nm }) => {
+    completeData = courtsData.filter( ({ gu_nm }) => {
       return gu_nm.includes(userInput);
     });
   }

@@ -1,10 +1,10 @@
 import { 
-  COMPLETE_SEARCH_COURTS,
+  SEARCH_COURTS_SUCCESS,
   ADD_COURTS,
   SELECT_COURT,
-  SEARCHING_COURTS,
+  SEARCH_COURTS_REQUEST,
   REMOVE_SELECT_COURT,
-  CATCHING_ERROR,
+  SEARCH_COURTS_FAILURE,
   OPEN_COURTADDITION,
   CLOSE_COURTADDITION,
   TOGGLE_SIDEBAR,
@@ -14,47 +14,53 @@ import {
   SEND_FILTER_DATA,
   INIT_FILTER_DATA,
   DELETE_COURTS
-} from '../config/constants';
+} from './types';
 import { filterCourtsByInput } from '../myUtil';
 import courtsApi from '../apis';
 
 const startSearchingCourts = () => ({
-  type: SEARCHING_COURTS,
+  type: SEARCH_COURTS_REQUEST,
 });
 
-export const catchErrorOnSearch = () => ({
-  type: CATCHING_ERROR
+export const completeSearchCourts = courtsData => ({
+  type: SEARCH_COURTS_SUCCESS,
+  payload: courtsData,
+});
+
+export const catchErrorOnSearch = error => ({
+  type: SEARCH_COURTS_FAILURE,
+  payload: error,
 });
 
 export const deleteSearchedCourts = () => ({
-  type: DELETE_COURTS
+  type: DELETE_COURTS,
 });
 
 export const addCourts = addedInfo => ({
   type: ADD_COURTS,
-  payload: addedInfo
+  payload: addedInfo,
 });
 
 export const selectCourt = selectedCourt => ({
   type: SELECT_COURT,
-  payload: selectedCourt
+  payload: selectedCourt,
 });
 
 export const removeSelectedCourt = () => ({
-  type: REMOVE_SELECT_COURT
+  type: REMOVE_SELECT_COURT,
 });
 
 export const toggleSidebar = () => ({
-  type: TOGGLE_SIDEBAR
+  type: TOGGLE_SIDEBAR,
 });
 
 export const toggleFilter = isOpen => ({
   type: TOGGLE_FILTER,
-  payload: isOpen
+  payload: isOpen,
 });
 
 export const openCourtAddtionForm = () => ({
-  type: OPEN_COURTADDITION
+  type: OPEN_COURTADDITION,
 });
 
 export const closeCourtAddtionForm = () => ({
@@ -63,21 +69,21 @@ export const closeCourtAddtionForm = () => ({
 
 const getUserInput = input => ({
   type: USER_INPUT,
-  payload: input
+  payload: input,
 });
 
 export const getActiveBtnName = btnName => ({
   type: ACTIVE_BUTTON,
-  payload: btnName
+  payload: btnName,
 });
 
 export const getFilterData = filterData => ({
   type: SEND_FILTER_DATA,
-  payload: filterData
+  payload: filterData,
 });
 
 export const removeFilterData = () => ({
-  type: INIT_FILTER_DATA
+  type: INIT_FILTER_DATA,
 });
 
 export const searchCourts = (userInput, filterData) => 
@@ -94,7 +100,7 @@ export const searchCourts = (userInput, filterData) =>
         filterData 
       });
       dispatch({
-        type: COMPLETE_SEARCH_COURTS,
+        type: SEARCH_COURTS_SUCCESS,
         payload: courtsByUserInput
       });
     } catch(err) {
