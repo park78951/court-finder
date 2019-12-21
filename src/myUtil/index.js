@@ -34,11 +34,6 @@ export const createFullCoordinate = ({ lat, lng}) => {
   return { lat: numLat, lng: numLng };
 };
 
-export const createUniqueKey = () => {
-  return (Date.now() * Math.floor((Math.random() + 1) * 10000))
-    .toString(36).substr(2, 9);
-};
-
 export const checkUnfilled = collection => {
   return Object.values(collection).every(val => val);
 };
@@ -64,3 +59,13 @@ export const deleteObjProps = obj => {
 
   return duplicateObj;
 };
+
+const keyGenerator = () => {
+  let increasingNum = 0;
+  return (data) => {
+    increasingNum++;
+    return `${data}_${Date.now()}_${increasingNum}`;
+  };
+};
+
+export const keyMaker = keyGenerator();

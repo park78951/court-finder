@@ -1,18 +1,20 @@
 import React, { 
   useState, 
   useMemo, 
-  useEffect 
+  useEffect, 
+  useCallback
 } from 'react';
 import { 
   GoogleMap, 
   useLoadScript, 
-  Marker 
+  Marker,
+  InfoWindow
 } from '@react-google-maps/api';
-import { defaultMapOptions } from '../../config/initConfig';
-import { createUniqueKey, createFullCoordinate } from '../../myUtil';
+import { useSelector } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
-import { useSelector } from 'react-redux';
+import { defaultMapOptions } from '../../config/initConfig';
+import { createFullCoordinate, keyMaker } from '../../myUtil';
 
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
@@ -23,6 +25,7 @@ const MapContainer = styled.div`
 `;
 
 const Map = ({ location }) => {
+  const { pathname } = location;
   const { 
     center, 
     zoom, 
@@ -30,7 +33,11 @@ const Map = ({ location }) => {
     options, 
     mapTypeId 
   } = defaultMapOptions;
+
   const [curCenter, setCurCenter] = useState(center);
+  const [markerInfos, setMarkerInfos] = useState({});
+  const [mouseOverPlace, setMouseOverPlace] = useState(null);
+
   const { searchedCourts, selectedCourt } = useSelector(state => ({
     searchedCourts: state.storeOnSearch.searchedCourts,
     selectedCourt: state.storeOnSelection.selectedCourt
@@ -38,20 +45,40 @@ const Map = ({ location }) => {
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.KEY
   });
-  const { pathname } = location;
+  
 
-  // SetAnimation stat를 만들어서 animation route에 따른 관리
-  const setMarkers = useMemo(
-    () => {
-      return searchedCourts.map( courtInfo => {
-        return pathname !== '/' && (
-          <Marker
-            key={ createUniqueKey() }
-            position={ createFullCoordinate(courtInfo) }
-          />
-        );
-      });
-    }, [searchedCourts, pathname]);
+  const onLoadMarker = useCallback((locationName) => (markerInfo) => {
+    setMarkerInfos(prevState => {
+      return {...prevState, [locationName]: markerInfo};
+    });
+  }, [mouseOverPlace]);
+
+  const onMouseOverHandler = useCallback((courtInfo) => {
+    return () => {
+      setMouseOverPlace(courtInfo);
+    };
+  }, [searchedCourts]);
+
+  const onMouseOutHandler = useCallback(() => {
+    setMouseOverPlace(null);
+  }, []);
+
+  // SetAnimation state를 만들어서 animation route에 따른 관리
+  const setMarkers = useMemo(() => {
+    return searchedCourts.map((courtInfo) => {
+      const { locationName } = courtInfo;
+      return pathname !== '/' && (
+        <Marker
+          key={ keyMaker(locationName) }
+          position={ createFullCoordinate(courtInfo) }
+          onLoad={ onLoadMarker(locationName) }
+          onMouseOver={ onMouseOverHandler(courtInfo) }
+          onMouseOut={ onMouseOutHandler }
+          cursor='pointer'
+        />            
+      );
+    });
+  }, [searchedCourts, pathname]);
   
   useEffect(() => {
     if(!searchedCourts.length) return;
@@ -76,6 +103,19 @@ const Map = ({ location }) => {
         options={ options }
       >
         { setMarkers }
+        { mouseOverPlace && (
+          <InfoWindow
+            anchor={markerInfos[mouseOverPlace.locationName]}
+          >
+            <div style={{
+              background: `white`,
+              border: `1px solid #ccc`,
+              padding: 15
+            }}>
+              <h1>InfoWindow</h1>
+            </div>
+          </InfoWindow>
+        )}
       </GoogleMap>
     </MapContainer>
   );
@@ -83,7 +123,6 @@ const Map = ({ location }) => {
 
 Map.propTypes = {
   searchedCourts: PropTypes.array,
-  isLoaded: PropTypes.bool
 };
 
 export default withRouter(React.memo(Map));

@@ -33,6 +33,17 @@ const CourtListWrapper = styled.div`
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
     background-color: #555;
   }
+
+  .info-window {
+    margin-bottom: 2rem;
+    .info-window__contents {
+      margin: 0;
+      padding: 0;
+      font-size: 1.1rem;
+      font-weight: bold;
+    }
+  }
+
 `;
 
 export default { CourtListWrapper };
