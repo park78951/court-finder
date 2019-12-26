@@ -30,7 +30,6 @@ const Map = ({ location }) => {
   } = defaultMapOptions;
 
   const [curCenter, setCurCenter] = useState(center);
-  const [markerInfos, setMarkerInfos] = useState({});
   const [mouseOverCourt, setmouseOverCourt] = useState(null);
 
   const { searchedCourts, selectedCourt, listOverCourt } = useSelector(state => ({
@@ -42,13 +41,6 @@ const Map = ({ location }) => {
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: process.env.KEY
   });
-
-  const onLoadMarker = useCallback((locationName) => (markerInfo) => {
-    setMarkerInfos(prevState => {
-      if (!prevState) return {[locationName]: markerInfo};
-      return {...prevState, [locationName]: markerInfo};
-    });
-  }, [searchedCourts]);
 
   const onMouseOverAndOutOfMarker = useCallback((courtInfo) => () => {
     setmouseOverCourt(courtInfo);
@@ -62,9 +54,8 @@ const Map = ({ location }) => {
         <Marker
           key={ keyMaker(locationName) }
           position={ createFullCoordinate(courtInfo) }
-          onLoad={ onLoadMarker(locationName) }
           onMouseOver={ onMouseOverAndOutOfMarker(courtInfo) }
-          onMouseOut={ onMouseOverAndOutOfMarker(null) }
+          // onMouseOut={ onMouseOverAndOutOfMarker(null) }
           cursor='pointer'
           icon={ marker }
         />            
@@ -76,7 +67,11 @@ const Map = ({ location }) => {
     const onMouseOverCourt = listOverCourt || mouseOverCourt;
     return onMouseOverCourt && (
       <InfoBox
-        anchor={ markerInfos[onMouseOverCourt.locationName] }
+        position={ createFullCoordinate(onMouseOverCourt) }
+        options={{ 
+          pixelOffset: new window.google.maps.Size(-90, 5),
+          closeBoxURL: "", 
+        }}
       >
         <div className='infoBox__container'>
           <h2>{ onMouseOverCourt.locationName }</h2>

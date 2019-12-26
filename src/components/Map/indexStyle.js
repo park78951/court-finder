@@ -4,10 +4,6 @@ const MapContainer = styled.div`
   height: 100vh;
   width: 100%;
 
-  .info-window__cover {
-    transition: 1s;
-  }
-
   .infoBox {
     border-radius: 0.3rem;
     animation-name: appear;
@@ -21,17 +17,13 @@ const MapContainer = styled.div`
       border: 1px solid #ccc;
       padding-left: 0.5rem;
       padding-right: 0.5rem;
-      width: fit-content;
+      width: 180px;
       height: 3rem;
 
       & > p, h2 {
         margin: 0;
         padding: 0;
       }
-    }
-
-    & > img {
-      display: none;
     }
   }
 

@@ -28,7 +28,7 @@ export const filterCourtsByInput = ({
   return completeData;
 };
 
-export const createFullCoordinate = ({ lat, lng}) => {
+export const createFullCoordinate = ({ lat, lng}) =>  {
   const numLat = Number(lat);
   const numLng = Number(lng);
   return { lat: numLat, lng: numLng };
