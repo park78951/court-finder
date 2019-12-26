@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import uniqid from 'uniqid';
+import { keyMaker } from '../../../myUtil';
 import CourtItem from './CourtItem';
 import { routes } from '../../../config/initConfig';
 import Style from './indexStyle';
@@ -14,7 +14,7 @@ const CourtList = () => {
   const searchedItems = useMemo(() => {
     return searchedCourts.map(searchedCourt => (
       <Link 
-        key={uniqid()} 
+        key={keyMaker()} 
         to={ infoDetail }
       >
         <CourtItem 

@@ -2,13 +2,8 @@ import { hot } from 'react-hot-loader/root';
 import React from 'react';
 import { createGlobalStyle } from 'styled-components';
 import { normalize } from 'styled-normalize';
-
-// import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
-// import reduxLogger from 'redux-logger';
-// import reduxThunk from 'redux-thunk';
-// import rootReducer from './reducers';
-// import rootSaga from './sags';
+
 import App from './components';
 import store from './store';
 

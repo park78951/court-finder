@@ -1,11 +1,8 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
 const WholeAppWrapper = styled.div`
-  display: ${ ({ courtAdditionFlag }) => 
-    courtAdditionFlag ? 'block' : 'none' };
   position: absolute;
   width: 100vw;
   height: 100vh;
@@ -15,14 +12,8 @@ const WholeAppWrapper = styled.div`
 `;
 
 const AppContainer = ({ children }) => {
-  const courtAdditionFlag = useSelector(state => {
-    return state.storeOnFlag.courtAdditionFlag;
-  });
-
   return (
-    <WholeAppWrapper
-      courtAdditionFlag={ courtAdditionFlag }
-    >
+    <WholeAppWrapper>
       { children }
     </WholeAppWrapper>
   );

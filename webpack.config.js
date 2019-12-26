@@ -5,6 +5,7 @@ const dotenv = require('dotenv')
   .config({ path: __dirname + '/.env'});
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
+const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 
 const ENV = process.env.NODE_ENV === 'development' ? 'development' : 'production';
 
@@ -59,6 +60,7 @@ module.exports = {
     new ManifestPlugin({
       fileName: 'manifest.json',
       basePath: '/'
-    })
+    }),
+    new LodashModuleReplacementPlugin,
   ]
 };
