@@ -1,8 +1,12 @@
 import React, { useCallback } from 'react';
 import { useDispatch } from 'react-redux';
-import { selectCourt } from '../../../actions';
-import Style from './CourtItemStyle';
 import PropTypes from 'prop-types';
+import { 
+  selectCourt, 
+  getListOverCourt, 
+  removeListOverCourt 
+} from '../../../actions';
+import Style from './CourtItemStyle';
 
 const CourtItem = ({ searchedCourt }) => {
   const { locationName, address, in_out, phone } = searchedCourt;
@@ -13,9 +17,17 @@ const CourtItem = ({ searchedCourt }) => {
     localStorage.setItem('selectCourt', JSON.stringify(searchedCourt));
   }, [searchedCourt]);
 
+  const onMouseOverOrOut = useCallback(courtInfo => () => {
+    courtInfo 
+      ? dispatch(getListOverCourt(courtInfo))
+      : dispatch(removeListOverCourt());
+  }, [searchedCourt]);
+
   return (
     <Style.CourtItemWrapper
       onClick={ selectCourtInfo }
+      onMouseOver={ onMouseOverOrOut(searchedCourt) }
+      onMouseOut={ onMouseOverOrOut() }
     >
       <h3>{ locationName }</h3><span>{ in_out }</span>
       <div>

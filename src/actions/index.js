@@ -13,7 +13,9 @@ import {
   ACTIVE_BUTTON,
   SEND_FILTER_DATA,
   INIT_FILTER_DATA,
-  DELETE_COURTS
+  DELETE_COURTS,
+  LIST_OVER_COURT,
+  LIST_OUT_COURT,
 } from './types';
 
 export const startSearchingCourts = (userInput, filterData) => ({
@@ -86,4 +88,13 @@ export const getFilterData = filterData => ({
 
 export const removeFilterData = () => ({
   type: INIT_FILTER_DATA,
+});
+
+export const getListOverCourt = listOverCourt => ({
+  type: LIST_OVER_COURT,
+  payload: listOverCourt
+});
+
+export const removeListOverCourt = () => ({
+  type: LIST_OUT_COURT,
 });

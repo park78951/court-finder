@@ -8,7 +8,7 @@ import Style from './indexStyle';
 import PropTypes from 'prop-types';
 
 const CourtList = () => {
-  const searchedCourts = useSelector(state => state.storeOnSearch.searchedCourts);
+  const { searchedCourts } = useSelector(state => state.storeOnSearch);
   const { infoDetail } = routes;
 
   const searchedItems = useMemo(() => {
@@ -18,7 +18,7 @@ const CourtList = () => {
         to={ infoDetail }
       >
         <CourtItem 
-          searchedCourt = { searchedCourt }
+          searchedCourt={ searchedCourt }
         />
       </Link>
     ));

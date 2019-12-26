@@ -31,12 +31,14 @@ const Map = ({ location }) => {
 
   const [curCenter, setCurCenter] = useState(center);
   const [markerInfos, setMarkerInfos] = useState({});
-  const [mouseOverPlace, setMouseOverPlace] = useState(null);
+  const [mouseOverCourt, setmouseOverCourt] = useState(null);
 
-  const { searchedCourts, selectedCourt } = useSelector(state => ({
+  const { searchedCourts, selectedCourt, listOverCourt } = useSelector(state => ({
     searchedCourts: state.storeOnSearch.searchedCourts,
-    selectedCourt: state.storeOnSelection.selectedCourt
+    selectedCourt: state.storeOnSelection.selectedCourt,
+    listOverCourt: state.storeOnSelection.listOverCourt,
   }));
+
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: process.env.KEY
   });
@@ -49,11 +51,11 @@ const Map = ({ location }) => {
   }, [searchedCourts]);
 
   const onMouseOverAndOutOfMarker = useCallback((courtInfo) => () => {
-    setMouseOverPlace(courtInfo);
+    setmouseOverCourt(courtInfo);
   }, [searchedCourts]);
 
   // SetAnimation state를 만들어서 animation route에 따른 관리
-  const setMarkers = useMemo(() => {
+  const markers = useMemo(() => {
     return searchedCourts.map((courtInfo) => {
       const { locationName } = courtInfo;
       return pathname !== '/' && (
@@ -69,6 +71,20 @@ const Map = ({ location }) => {
       );
     });
   }, [searchedCourts, pathname]);
+
+  const infoBox = useMemo(() => {
+    const onMouseOverCourt = listOverCourt || mouseOverCourt;
+    return onMouseOverCourt && (
+      <InfoBox
+        anchor={ markerInfos[onMouseOverCourt.locationName] }
+      >
+        <div className='infoBox__container'>
+          <h2>{ onMouseOverCourt.locationName }</h2>
+          <p>{ onMouseOverCourt.address }</p>
+        </div>
+      </InfoBox>
+    )
+  }, [listOverCourt, mouseOverCourt]);
   
   useEffect(() => {
     if(!searchedCourts.length) return;
@@ -78,10 +94,6 @@ const Map = ({ location }) => {
         : createFullCoordinate(selectedCourt)
     );
   }, [searchedCourts, selectedCourt]);
-
-  useEffect(() => {
-    setMarkerInfos(null);
-  }, [searchedCourts]);
   
   return isLoaded && (
     <Style.MapContainer>
@@ -92,19 +104,8 @@ const Map = ({ location }) => {
         mapTypeId={ mapTypeId }
         options={ options }
       >
-        { setMarkers }
-        { mouseOverPlace && (
-          <InfoBox
-            anchor={ markerInfos[mouseOverPlace.locationName] }
-          >
-            <div
-              className='infoBox__container'
-            >
-              <h2>{ mouseOverPlace.locationName }</h2>
-              <p>{ mouseOverPlace.address }</p>
-            </div>
-          </InfoBox>
-        )}
+        { markers }
+        { infoBox }
       </GoogleMap>
     </Style.MapContainer>
   );

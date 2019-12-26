@@ -6,7 +6,8 @@ export const searchInfo = {
 };
 
 export const selectionInfo = {
-  selectedCourt: null
+  selectedCourt: null,
+  listOverCourt: null,
 };
 
 export const additionInfo = {
