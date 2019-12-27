@@ -27,6 +27,8 @@ const Map = ({ location }) => {
     options, 
     mapTypeId,
     marker,
+    infoBoxWidth,
+    infoBoxMarginTop,
   } = defaultMapOptions;
 
   const [curCenter, setCurCenter] = useState(center);
@@ -46,7 +48,6 @@ const Map = ({ location }) => {
     setmouseOverCourt(courtInfo);
   }, [searchedCourts]);
 
-  // SetAnimation state를 만들어서 animation route에 따른 관리
   const markers = useMemo(() => {
     return searchedCourts.map((courtInfo) => {
       const { locationName } = courtInfo;
@@ -55,7 +56,7 @@ const Map = ({ location }) => {
           key={ keyMaker(locationName) }
           position={ createFullCoordinate(courtInfo) }
           onMouseOver={ onMouseOverAndOutOfMarker(courtInfo) }
-          // onMouseOut={ onMouseOverAndOutOfMarker(null) }
+          onMouseOut={ onMouseOverAndOutOfMarker(null) }
           cursor='pointer'
           icon={ marker }
         />            
@@ -69,7 +70,7 @@ const Map = ({ location }) => {
       <InfoBox
         position={ createFullCoordinate(onMouseOverCourt) }
         options={{ 
-          pixelOffset: new window.google.maps.Size(-90, 5),
+          pixelOffset: new window.google.maps.Size(-infoBoxWidth/2, infoBoxMarginTop),
           closeBoxURL: "", 
         }}
       >
@@ -89,9 +90,9 @@ const Map = ({ location }) => {
         : createFullCoordinate(selectedCourt)
     );
   }, [searchedCourts, selectedCourt]);
-  
+
   return isLoaded && (
-    <Style.MapContainer>
+    <Style.MapContainer infoBoxWidth={ infoBoxWidth }>
       <GoogleMap
         zoom={ zoom }
         center={ curCenter }
@@ -110,4 +111,4 @@ Map.propTypes = {
   searchedCourts: PropTypes.array,
 };
 
-export default withRouter(React.memo(Map));
+export default React.memo(withRouter(Map));

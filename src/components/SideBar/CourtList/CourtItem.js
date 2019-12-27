@@ -8,26 +8,26 @@ import {
 } from '../../../actions';
 import Style from './CourtItemStyle';
 
-const CourtItem = ({ searchedCourt }) => {
-  const { locationName, address, in_out, phone } = searchedCourt;
+const CourtItem = ({ searchedInfo }) => {
+  const { locationName, address, in_out, phone } = searchedInfo;
   const dispatch = useDispatch();
 
   const selectCourtInfo = useCallback(() => {
-    dispatch(selectCourt(searchedCourt));
-    localStorage.setItem('selectCourt', JSON.stringify(searchedCourt));
-  }, [searchedCourt]);
+    dispatch(selectCourt(searchedInfo));
+    localStorage.setItem('selectCourt', JSON.stringify(searchedInfo));
+  }, [searchedInfo]);
 
   const onMouseOverOrOut = useCallback(courtInfo => () => {
     courtInfo 
       ? dispatch(getListOverCourt(courtInfo))
       : dispatch(removeListOverCourt());
-  }, [searchedCourt]);
+  }, [searchedInfo]);
 
   return (
     <Style.CourtItemWrapper
       onClick={ selectCourtInfo }
-      onMouseOver={ onMouseOverOrOut(searchedCourt) }
-      onMouseOut={ onMouseOverOrOut() }
+      onMouseEnter={ onMouseOverOrOut(searchedInfo) }
+      onMouseLeave={ onMouseOverOrOut() }
     >
       <h3>{ locationName }</h3><span>{ in_out }</span>
       <div>
@@ -39,7 +39,7 @@ const CourtItem = ({ searchedCourt }) => {
 };
 
 CourtItem.propTypes = {
-  searchedCourt: PropTypes.object
+  searchedInfo: PropTypes.object
 };
 
 export default CourtItem;

@@ -27,4 +27,4 @@ HeaderInfo.propTypes = {
   selectedCourt: PropTypes.array
 };
 
-export default HeaderInfo;
+export default React.memo(HeaderInfo);

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 import { removeFilterData } from '../../../actions';
 import { withRouter } from 'react-router-dom';
@@ -7,14 +7,14 @@ import Style from './indexStyle';
 const HelperNav = ({ history }) => {
   const dispatch = useDispatch();
 
-  const goHome = () => {
+  const goHome = useCallback(() => {
     history.push('/');
-  };
+  }, []);
 
-  const initializeFilter = () => {
+  const initializeFilter = useCallback(() => {
     dispatch(removeFilterData());
     alert('필터를 초기화했습니다.');
-  };
+  }, []);
 
   return (
     <Style.HelperNavWrapper>
@@ -32,4 +32,4 @@ const HelperNav = ({ history }) => {
   );
 };
 
-export default withRouter(React.memo(HelperNav));
+export default React.memo(withRouter(HelperNav));

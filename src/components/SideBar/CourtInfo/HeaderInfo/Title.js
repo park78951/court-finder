@@ -4,8 +4,6 @@ import Style from './TitleStyle';
 import PropTypes from 'prop-types';
 
 const Title = ({ locationName }) => {
-
-
   return (
     <Style.HeaderTitleStyle>
       <GoBackBtn />

@@ -8,11 +8,8 @@ import PropTypes from 'prop-types';
 
 const InputBar = ({ location, history }) => {
   const [term, setTerm] = useState('');
-
   const { filterData } = useSelector(({ storeOnFilter}) => storeOnFilter);
-
   const dispatch = useDispatch();
-
 
   const setInput = useCallback(({ target }) => {
     const { value } = target;
@@ -48,4 +45,4 @@ InputBar.propTypes = {
   history: PropTypes.object,
 };
 
-export default withRouter(React.memo(InputBar));
+export default React.memo(withRouter(InputBar));

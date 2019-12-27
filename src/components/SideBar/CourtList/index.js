@@ -18,7 +18,7 @@ const CourtList = () => {
         to={ infoDetail }
       >
         <CourtItem 
-          searchedCourt={ searchedCourt }
+          searchedInfo={ searchedCourt }
         />
       </Link>
     ));

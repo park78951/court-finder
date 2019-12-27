@@ -13,4 +13,4 @@ const ReviewInfo = () => {
   );
 };
 
-export default ReviewInfo;
+export default React.memo(ReviewInfo);

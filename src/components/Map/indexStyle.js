@@ -17,7 +17,7 @@ const MapContainer = styled.div`
       border: 1px solid #ccc;
       padding-left: 0.5rem;
       padding-right: 0.5rem;
-      width: 180px;
+      width: ${({ infoBoxWidth }) => `${ infoBoxWidth }px` };
       height: 3rem;
 
       & > p, h2 {

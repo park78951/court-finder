@@ -93,4 +93,4 @@ BodyInfo.propTypes = {
   selectedCourt: PropTypes.array
 };
 
-export default BodyInfo;
+export default React.memo(BodyInfo);
