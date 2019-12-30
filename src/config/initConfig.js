@@ -102,7 +102,6 @@ export const filterConfig = {
         '중구',
         '중랑구',
       ],
-      "인천시": []
     }
   },
   keywords: {

@@ -29,7 +29,7 @@ const MenuWrapper = styled.div`
     height: 100%;
     width: 1.9rem;
     margin-right: 0.4rem;
-    transform: ${({ filterFlag }) => filterFlag && 'rotate( 180deg )'};
+    transform: ${({ isFilterOpen }) => isFilterOpen && 'rotate( 180deg )'};
 
     .filter__dropdown--icon {
       position: absolute;

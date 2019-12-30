@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import FilterMenu from './filterMenu';
+import FilterMenu from './FilterType';
 import { filterConfig } from '../../../../config/initConfig';
 import { FILTER_OPTIONS_TYPES } from '../../../../config/constants';
 import { storeKeywords } from '../../../../myUtil';
