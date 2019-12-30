@@ -1,6 +1,6 @@
 #Court Finder Backend
 
-## Usage
+## Local에서 사용 방법
 
 ### 환경 셋팅
 
@@ -9,6 +9,27 @@
 * ~~~bash
   npm install
   ~~~
+  
+* MySQL 설치
+
+  * 윈도우는 https://dev.mysql.com/downloads/installer 에서 다운로드 받아서 설치
+
+* sequelize configuration 수정(config/config.json)
+
+  ~~~json
+  {
+    "development": {
+      "username": username,
+      "password": password,
+      "database": "courtFinder",
+      "host": "127.0.0.1",
+      "dialect": "mysql",
+      "operatorsAliases": false
+    }
+  }
+  ~~~
+
+  
 
 ### 시작하기
 
