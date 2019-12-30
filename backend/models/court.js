@@ -12,6 +12,9 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.DECIMAL(10.7),
       allowNull: false,
     },
+    city: {
+      type: DataTypes.STRING(20),
+    },
     district: {
       type: DataTypes.STRING(20),
     },

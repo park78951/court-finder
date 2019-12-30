@@ -19,6 +19,9 @@ module.exports = {
         type: Sequelize.DECIMAL(10.7),
         allowNull: false,
       },
+      city: {
+        type: Sequelize.STRING(20),
+      },
       district: {
         type: Sequelize.STRING(20),
       },
@@ -42,13 +45,20 @@ module.exports = {
       },
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP')
+      },
+      deletedAt: {
+        allowNull: true,
+        type: Sequelize.DATE,
+        defaultValue: null
       }
-    });
+    }, {});
   },
   down: (queryInterface, Sequelize) => {
     return queryInterface.dropTable('Courts');
