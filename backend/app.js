@@ -3,10 +3,11 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
-
+const sequelize = require('./models').sequelize;
 const router = require('./routes');
 
 const app = express();
+sequelize.sync();
 
 if (process.env.NODE_ENV === 'production') {
   app.use(mrgan('combined'));
