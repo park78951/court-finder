@@ -1,5 +1,7 @@
 import React, { useState, useMemo, useCallback } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { ThemeProvider } from 'styled-components';
+import PropTypes from 'prop-types';
 import { getFilterData, removeFilterData } from '../../../../actions';
 import CustomButton from '../../../lib/Button';
 import Location from './Location';
@@ -8,16 +10,10 @@ import Recommendation from './Recommendation';
 import Level from './Level';
 import { filterButton, buttonTheme } from '../../../../config/initConfig';
 import { deleteObjProps } from '../../../../myUtil';
-import { ThemeProvider } from 'styled-components';
 import Style from './indexStyle';
 
-const FilterDetail = () => {
+const FilterDetail = ({ isFilterOpen, activeBtn }) => {
   const { apply, initialize } = filterButton;
-
-  const { filterFlag, activeBtn } = useSelector(state => ({
-    filterFlag: state.storeOnFlag.filterFlag,
-    activeBtn: state.storeOnFilter.activeBtn
-  }));
   const dispatch = useDispatch();
 
   const [filterData, setFilterData] = useState({});
@@ -31,6 +27,7 @@ const FilterDetail = () => {
 
     const polishedFilterData = deleteObjProps(filterData);
     dispatch(getFilterData(polishedFilterData));
+    alert('필터가 적용 되었습니다.');
   }, [activeBtn, filterData]);
 
   const initFilters = useCallback(() => {
@@ -68,7 +65,7 @@ const FilterDetail = () => {
     }
   }, [activeBtn]);
 
-  return filterFlag && (
+  return isFilterOpen && (
     <ThemeProvider theme={ buttonTheme }>
       <Style.DetailWrapper>
         { filterDetailRenderer }
@@ -92,5 +89,10 @@ const FilterDetail = () => {
     </ThemeProvider>
   );
 };
+
+FilterDetail.propTypes = {
+  isFilterOpen: PropTypes.bool.isRequired,
+  activeBtn: PropTypes.string.isRequired,
+}
 
 export default FilterDetail;

@@ -6,7 +6,8 @@ export const searchInfo = {
 };
 
 export const selectionInfo = {
-  selectedCourt: null
+  selectedCourt: null,
+  listOverCourt: null,
 };
 
 export const additionInfo = {
@@ -16,11 +17,9 @@ export const additionInfo = {
 export const initUIToggleInfo = {
   isSidebarHidden: false,
   courtAdditionFlag: false,
-  filterFlag: false
 };
 
 export const initFilterInfo = {
-  activeBtn: 'location',
   filterData: {}
 };
 

@@ -3,17 +3,16 @@ import {
   ADD_COURTS,
   SELECT_COURT,
   SEARCH_COURTS_REQUEST,
-  REMOVE_SELECT_COURT,
   SEARCH_COURTS_FAILURE,
   OPEN_COURTADDITION,
   CLOSE_COURTADDITION,
   TOGGLE_SIDEBAR,
   USER_INPUT,
-  TOGGLE_FILTER,
-  ACTIVE_BUTTON,
   SEND_FILTER_DATA,
   INIT_FILTER_DATA,
-  DELETE_COURTS
+  DELETE_COURTS,
+  MOUSEOVER_LIST,
+  UNSELECT_COURT,
 } from './types';
 
 export const startSearchingCourts = (userInput, filterData) => ({
@@ -48,17 +47,12 @@ export const selectCourt = selectedCourt => ({
   payload: selectedCourt,
 });
 
-export const removeSelectedCourt = () => ({
-  type: REMOVE_SELECT_COURT,
+export const unselectCourt = () => ({
+  type: UNSELECT_COURT,
 });
 
 export const toggleSidebar = () => ({
   type: TOGGLE_SIDEBAR,
-});
-
-export const toggleFilter = isOpen => ({
-  type: TOGGLE_FILTER,
-  payload: isOpen,
 });
 
 export const openCourtAddtionForm = () => ({
@@ -74,11 +68,6 @@ export const getUserInput = input => ({
   payload: input,
 });
 
-export const getActiveBtnName = btnName => ({
-  type: ACTIVE_BUTTON,
-  payload: btnName,
-});
-
 export const getFilterData = filterData => ({
   type: SEND_FILTER_DATA,
   payload: filterData,
@@ -86,4 +75,9 @@ export const getFilterData = filterData => ({
 
 export const removeFilterData = () => ({
   type: INIT_FILTER_DATA,
+});
+
+export const getMouseOverList = mouseoverList => ({
+  type: MOUSEOVER_LIST,
+  payload: mouseoverList
 });

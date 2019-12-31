@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { toggleSidebar } from '../../actions';
 import { FaBars } from 'react-icons/lib/fa';
@@ -10,9 +10,9 @@ const HamburgerMenu = () => {
   });
   const dispatch = useDispatch();
 
-  const sidebarClickHandler = () => {
+  const sidebarClickHandler = useCallback(() => {
     dispatch(toggleSidebar());
-  };
+  }, []);
   
   return (
     <Style.HamburgerWrapper 

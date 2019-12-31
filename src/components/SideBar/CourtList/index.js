@@ -1,24 +1,24 @@
 import React, { useMemo } from 'react';
 import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { keyMaker } from '../../../myUtil';
 import CourtItem from './CourtItem';
 import { routes } from '../../../config/initConfig';
-import { createUniqueKey } from '../../../myUtil';
-import { Link } from 'react-router-dom';
 import Style from './indexStyle';
 import PropTypes from 'prop-types';
 
 const CourtList = () => {
-  const searchedCourts = useSelector(state => state.storeOnSearch.searchedCourts);
+  const { searchedCourts } = useSelector(state => state.storeOnSearch);
   const { infoDetail } = routes;
 
   const searchedItems = useMemo(() => {
     return searchedCourts.map(searchedCourt => (
       <Link 
-        key={createUniqueKey()} 
+        key={keyMaker()} 
         to={ infoDetail }
       >
         <CourtItem 
-          searchedCourt = { searchedCourt }
+          searchedInfo={ searchedCourt }
         />
       </Link>
     ));

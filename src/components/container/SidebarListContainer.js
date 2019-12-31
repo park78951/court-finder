@@ -49,4 +49,4 @@ const SidebarListContainer = () => {
   );
 };
 
-export default SidebarListContainer;
+export default React.memo(SidebarListContainer);

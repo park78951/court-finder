@@ -28,15 +28,19 @@ export const filterCourtsByInput = ({
   return completeData;
 };
 
-export const createFullCoordinate = ({ lat, lng}) => {
+export const createFullCoordinate = ({ lat, lng}) =>  {
   const numLat = Number(lat);
   const numLng = Number(lng);
   return { lat: numLat, lng: numLng };
 };
 
-export const createUniqueKey = () => {
-  return (Date.now() * Math.floor((Math.random() + 1) * 10000))
-    .toString(36).substr(2, 9);
+export const compareCoordinates = (courtInfo1, courtInfo2) => {
+  if(!courtInfo1 || !courtInfo2) return false;
+  
+  const types = ['lat', 'lng'];
+  const isSamePosition = types.every(type => courtInfo1[type] === courtInfo2[type]);
+  
+  return isSamePosition;
 };
 
 export const checkUnfilled = collection => {
@@ -64,3 +68,13 @@ export const deleteObjProps = obj => {
 
   return duplicateObj;
 };
+
+const keyGenerator = () => {
+  let increasingNum = 0;
+  return (data) => {
+    increasingNum++;
+    return `${data}_${Date.now()}_${increasingNum}`;
+  };
+};
+
+export const keyMaker = keyGenerator();

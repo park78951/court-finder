@@ -36,4 +36,4 @@ const MapContextMenu = ({ children }) => {
   );
 };
 
-export default MapContextMenu;
+export default React.memo(MapContextMenu);

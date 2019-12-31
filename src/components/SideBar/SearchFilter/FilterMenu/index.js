@@ -1,24 +1,17 @@
 import React, { useCallback } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { toggleFilter, getActiveBtnName } from '../../../../actions';
+import PropTypes from 'prop-types';
 import { filterConfig } from '../../../../config/initConfig';
 import { MdExpandMore } from 'react-icons/lib/md';
 import Style from './indexStyle';
 
-const FilterMenu = () => {
-  const dispatch = useDispatch();
-  const { filterFlag, activeBtn } = useSelector(state => ({
-    filterFlag: state.storeOnFlag.filterFlag,
-    activeBtn: state.storeOnFilter.activeBtn
-  }));
-
+const FilterMenu = ({ isFilterOpen, setIsFilterOpen, activeBtn, setActiveBtn }) => {
   const filterToggler = useCallback(() => {
-    dispatch(toggleFilter());
+    setIsFilterOpen(state => !state);
   }, []);
 
   const selectFilterBtn = useCallback((btnName) => () => {
-    dispatch(getActiveBtnName(btnName));
-    dispatch(toggleFilter(true));
+    if(!isFilterOpen) setIsFilterOpen(true);
+    setActiveBtn(btnName);
   }, []);
 
   const filterBtn = Object.keys(filterConfig).map(filterKey => {
@@ -36,7 +29,7 @@ const FilterMenu = () => {
   });
 
   return (
-    <Style.MenuWrapper filterFlag={ filterFlag }>
+    <Style.MenuWrapper isFilterOpen={ isFilterOpen }>
       { filterBtn }
       <button 
         className='filter__dropdown'
@@ -50,5 +43,12 @@ const FilterMenu = () => {
     </Style.MenuWrapper>
   );
 };
+
+FilterMenu.propTypes = {
+  isFilterOpen: PropTypes.bool.isRequired,
+  setIsFilterOpen: PropTypes.func.isRequired,
+  activeBtn: PropTypes.string.isRequired,
+  setActiveBtn: PropTypes.func.isRequired,
+}
 
 export default React.memo(FilterMenu);

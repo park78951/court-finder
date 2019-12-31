@@ -11,7 +11,17 @@ export const defaultMapOptions = {
   options: {
     disableDefaultUI: true
   },
-  mapTypeId: 'roadmap'
+  mapTypeId: 'roadmap',
+  marker: {
+    path: 'M0-48c-9.8 0-17.7 7.8-17.7 17.4 0 15.5 17.7 30.6 17.7 30.6s17.7-15.4 17.7-30.6c0-9.6-7.9-17.4-17.7-17.4z',
+    fillColor: "#ff1919",
+    fillOpacity: 1.0,
+    strokeWeight: 3,
+    strokeColor: '#fff',
+    scale: 0.8,
+  },
+  infoBoxWidth: 200,
+  infoBoxMarginTop: 5,
 };
 
 export const buttonTheme = {
@@ -92,7 +102,6 @@ export const filterConfig = {
         '중구',
         '중랑구',
       ],
-      "인천시": []
     }
   },
   keywords: {

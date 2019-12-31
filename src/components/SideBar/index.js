@@ -32,4 +32,4 @@ SideBar.propTypes = {
   location: PropTypes.object
 };
 
-export default withRouter(SideBar);
+export default React.memo(withRouter(SideBar));

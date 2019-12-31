@@ -22,4 +22,4 @@ CourtInfo.propTypes = {
   match: PropTypes.object.isRequired
 };
 
-export default CourtInfo;
+export default React.memo(CourtInfo);
