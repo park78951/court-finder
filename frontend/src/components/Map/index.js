@@ -1,73 +1,91 @@
 import React, { 
   useState, 
   useMemo, 
-  useEffect 
+  useEffect, 
+  useCallback
 } from 'react';
 import { 
   GoogleMap, 
   useLoadScript, 
-  Marker 
+  InfoBox
 } from '@react-google-maps/api';
-import { defaultMapOptions } from '../../config/initConfig';
-import { createUniqueKey, createFullCoordinate } from '../../myUtil';
-import { withRouter } from 'react-router-dom';
-
 import { useSelector } from 'react-redux';
-
-import styled from 'styled-components';
+import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-const MapContainer = styled.div`
-  height: 100vh;
-  width: 100%;
-`;
+import { defaultMapOptions } from '../../config/initConfig';
+import { createFullCoordinate, keyMaker } from '../../myUtil';
+import CourtMarker from './CourtMarker';
+import Style from './indexStyle';
 
 const Map = ({ location }) => {
+  const { pathname } = location;
   const { 
     center, 
     zoom, 
     mapStyle, 
     options, 
-    mapTypeId 
+    mapTypeId,
+    infoBoxWidth,
+    infoBoxMarginTop,
   } = defaultMapOptions;
+
   const [curCenter, setCurCenter] = useState(center);
-  const { searchedCourts, selectedCourt } = useSelector(state => ({
+  const [mouseoverMarker, setMouseoverMarker] = useState(null);
+
+  const { searchedCourts, selectedCourt, mouseoverList } = useSelector(state => ({
     searchedCourts: state.storeOnSearch.searchedCourts,
-    selectedCourt: state.storeOnSelection.selectedCourt
+    selectedCourt: state.storeOnSelection.selectedCourt,
+    mouseoverList: state.storeOnSelection.mouseoverList,
   }));
-  const { isLoaded, loadError } = useLoadScript({
+  const { isLoaded } = useLoadScript({
     googleMapsApiKey: process.env.KEY
   });
-  const { pathname } = location;
 
-  // SetAnimation stat를 만들어서 animation route에 따른 관리
-  const setMarkers = useMemo(
-    () => {
-      return searchedCourts.map( courtInfo => {
-        return pathname !== '/' && (
-          <Marker
-            key={ createUniqueKey() }
-            position={ createFullCoordinate(courtInfo) }
-          />
-        );
-      });
-    }, [searchedCourts, pathname]);
+  const onMouseOverAndOutOfMarker = useCallback((courtInfo) => () => {
+    setMouseoverMarker(courtInfo);
+  }, [searchedCourts]);
+
+  const markers = useMemo(() => {
+    return searchedCourts.map((courtInfo) => {
+      const { locationName } = courtInfo;
+      return (
+        <CourtMarker
+          key={ keyMaker(locationName) }
+          courtInfo={ courtInfo }
+          mouseOverOutHandler={ onMouseOverAndOutOfMarker }
+        />            
+      );
+    });
+  }, [searchedCourts]);
+
+  const infoBox = useMemo(() => {
+    const onMouseOverCourt = mouseoverList || mouseoverMarker;
+    return onMouseOverCourt && (
+      <InfoBox
+        position={ createFullCoordinate(onMouseOverCourt) }
+        options={{ 
+          pixelOffset: new window.google.maps.Size(-infoBoxWidth/2, infoBoxMarginTop),
+          closeBoxURL: "", 
+        }}
+      >
+        <div className='infoBox__container'>
+          <h2>{ onMouseOverCourt.locationName }</h2>
+          <p>{ onMouseOverCourt.address }</p>
+        </div>
+      </InfoBox>
+    );
+  }, [mouseoverList, mouseoverMarker]);
   
   useEffect(() => {
-    if(!searchedCourts.length) return;
-    setCurCenter(
-      pathname === '/search' 
-        ? createFullCoordinate(searchedCourts[0])
-        : createFullCoordinate(selectedCourt)
-    );
+    if (!searchedCourts.length) return;
+
+    if (selectedCourt) setCurCenter(createFullCoordinate(selectedCourt));
+    else setCurCenter(createFullCoordinate(searchedCourts[0]));
   }, [searchedCourts, selectedCourt]);
 
-  if(loadError) {
-    return <div>Map cannot be loaded right now, sorry.</div>;
-  }
-  
   return isLoaded && (
-    <MapContainer>
+    <Style.MapContainer infoBoxWidth={ infoBoxWidth }>
       <GoogleMap
         zoom={ zoom }
         center={ curCenter }
@@ -75,15 +93,15 @@ const Map = ({ location }) => {
         mapTypeId={ mapTypeId }
         options={ options }
       >
-        { setMarkers }
+        { pathname !== '/' && markers }
+        { infoBox }
       </GoogleMap>
-    </MapContainer>
+    </Style.MapContainer>
   );
 };
 
 Map.propTypes = {
   searchedCourts: PropTypes.array,
-  isLoaded: PropTypes.bool
 };
 
-export default withRouter(React.memo(Map));
+export default React.memo(withRouter(Map));

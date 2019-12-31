@@ -1,12 +1,12 @@
 import React from 'react';
-import Style from './UserReviewStyle';
+import Style from './NoReviewStyle';
 
 const NoReview = () => {
   return (
-    <Style.UserReviewWrapper noReview={ true }>
+    <Style.NoReviewWrapper>
       <p>리뷰 정보 없음</p>
-    </Style.UserReviewWrapper>
+    </Style.NoReviewWrapper>
   );
 };
 
-export default NoReview;
+export default React.memo(NoReview);
