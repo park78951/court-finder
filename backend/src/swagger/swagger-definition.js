@@ -6,7 +6,7 @@ const swaggerDefinition = {
     version: '1.0.0', // Version (required)
     description: '', // Description (optional)
   },
-  host: 'http://localhost:3000', // Host (optional)
+  host: 'localhost:3000', // Host (optional)
   basePath: '', // Base path (optional)
 };
 
