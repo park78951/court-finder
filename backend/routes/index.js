@@ -1,8 +1,7 @@
 const express = require('express');
 const router = express.Router();
+const courtsRouter = require('./courts');
 
-router.get('/', function(req, res, next) {
-  return res.send({ status: 'succe2ss' });
-});
+router.use('/courts', courtsRouter);
 
 module.exports = router;
