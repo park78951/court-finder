@@ -47,6 +47,10 @@
   npm start
   ~~~
 
+### API docs
+
+* 서버 실행 상태에서 localhost:3000/docs로 이동
+
 ## Description
 
 1. logger로 morgan 사용. 'NODE_ENV'가 production이면 combined 모드를 사용해서 자세한 로그 기록.
@@ -55,3 +59,5 @@
 4. 초기 database는 기존에 사용하던 서울 농구장 정보를 토대로 만듬.
 5. 농구장 데이터 확장시 city table 생성하여 연결할 예정.
 6. paranoid option을 주어서 database backup 환경 구축.
+
+7. swagger 를 통한 api docs 공유, server test 도 swagger로 해볼까 고민중.
