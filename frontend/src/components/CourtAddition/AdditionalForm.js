@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
-import CustomDropDown from '../lib/DropDown';
-import CustomInput from '../lib/Input';
-import CustomButton from '../lib/Button';
+import { Button, Input, DropDown } from '../lib';
 import { 
   TRANSPORTATION, 
   PLACEHOLDER_PARKING_LOT,
@@ -45,19 +43,19 @@ const AdditionalForm = ({
       <div>
         <p>교통편</p>
         <div className='input__container--transportation'>
-          <CustomDropDown 
+          <DropDown 
             optionValues={ TRANSPORTATION }
             name='transpmethod'
             onChange={ setData }
           />
           <div>
-            <CustomInput 
+            <Input 
               placeholder={ PLACEHOLDER_TRANSPORT_STOP }
               size='medium'
               name='transpstop'
               onChange={ setData }
             />
-            <CustomInput 
+            <Input 
               placeholder={ PLACEHOLDER_TRANSPORT_DETAIL }
               size='medium'
               name='transpdetail'
@@ -66,36 +64,36 @@ const AdditionalForm = ({
           </div>
         </div>
         <p>웹사이트</p>
-        <CustomInput 
+        <Input 
           placeholder={ PLACEHOLDER_WEB_URL }
           name='web'
           onChange={ setData }
         />
         <p>전화번호</p>
-        <CustomInput 
+        <Input 
           placeholder={ PLACEHOLDER_PHONE_NUM }
           name='phone'
           onChange={ setData }
         />
         <p>주차장</p>
-        <CustomInput 
+        <Input 
           placeholder={ PLACEHOLDER_PARKING_LOT }
           name='parkingLot'
           onChange={ setData }
         />
       </div>
       <div className='button__container--two-btn'>
-        <CustomButton 
+        <Button 
           color={ 'cancel' }
           onClick={ movePrev }
         >
           이전
-        </CustomButton>
-        <CustomButton
+        </Button>
+        <Button
           onClick={ nextClickHandler }
         >
           다음
-        </CustomButton>
+        </Button>
       </div>
     </Style.AdditionalFormStyle>
   );

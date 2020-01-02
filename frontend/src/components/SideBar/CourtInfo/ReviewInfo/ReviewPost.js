@@ -1,5 +1,5 @@
 import React from 'react';
-import Style from './ReviewStyle';
+import Style from './ReviewPostStyle';
 
 const Review = () => {
   return (

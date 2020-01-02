@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { sizeStyles, colorStyles } from './DynamicStyle';
+import { sizeStyles, colorStyles } from './ButtonDynamicStyle';
 
 const StyledButton = styled.button`
   outline: none;

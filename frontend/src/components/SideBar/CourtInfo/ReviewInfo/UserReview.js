@@ -1,6 +1,6 @@
 import React from 'react';
 import Profile from './Profile';
-import Review from './Review';
+import ReviewPost from './ReviewPost';
 import Style from './UserReviewStyle';
 
 const UserReview = () => {
@@ -8,7 +8,7 @@ const UserReview = () => {
     <Style.UserReviewWrapper>
       <Profile />
       <hr />
-      <Review />
+      <ReviewPost />
     </Style.UserReviewWrapper>
   );
 };

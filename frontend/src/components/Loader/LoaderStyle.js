@@ -6,7 +6,6 @@ const LoaderContainer = styled.div`
   align-items: center;
   width: 100%;
   height: 100%;
-
 `;
 
 export const loaderStyle = css`

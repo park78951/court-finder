@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
-import CustomInput from '../lib/Input';
-import CustomDropDown from '../lib/DropDown';
-import CustomButton from '../lib/Button';
+import { Button, Input, DropDown } from '../lib';
 import { 
   INDOOR_OR_OUTDOOR, 
   PLAYER_LEVEL, 
@@ -49,32 +47,32 @@ const BasicForm = ({
     <Style.BasicFormWrapper>
       <div>
         <p>장소명</p>
-        <CustomInput 
+        <Input 
           name='locationName'
           placeholder={ PLACEHOLDER_COURT_NAME }
           onChange={ setData }
         />
         <p>실내외 여부</p>
-        <CustomDropDown 
+        <DropDown 
           name='indoorOutdoor'
           optionValues={ INDOOR_OR_OUTDOOR } 
           onChange={ setData }
         />
         <p>방문 농구인 Level</p>
-        <CustomDropDown 
+        <DropDown 
           name='visitorLevel'
           optionValues={ PLAYER_LEVEL } 
           onChange={ setData }
         />
         <p>사용료</p>
         <div className='fee__container--input'>
-          <CustomDropDown 
+          <DropDown 
             name='feeTime'
             optionValues={ TIME_DIVISION_AVAILABLE }
             size='large'
             onChange={ setData }
           />
-          <CustomInput
+          <Input
             name='feeAmount'
             placeholder={ PLACEHOLDER_FEE_AMOUNT }
             onChange={ setData }
@@ -83,13 +81,13 @@ const BasicForm = ({
         </div>
         <p>사용가능 시간</p>
         <div className='input__container--available-time'>
-          <CustomDropDown 
+          <DropDown 
             name='openTime'
             optionValues={ TIME_DIVISION_HOURS }
             onChange={ setData }
           />
           <span> ~ </span>
-          <CustomDropDown 
+          <DropDown 
             name='closeTime'
             optionValues={ TIME_DIVISION_HOURS }
             onChange={ setData }
@@ -97,12 +95,12 @@ const BasicForm = ({
         </div>
       </div>
       <div className='button__container'>
-        <CustomButton
+        <Button
           onClick={ nextClickHandler }
           size='large'
         >
           다음
-        </CustomButton>
+        </Button>
       </div>
     </Style.BasicFormWrapper>
   );

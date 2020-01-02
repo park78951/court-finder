@@ -1,5 +1,5 @@
 import React from 'react';
-import CustomButton from '../lib/Button';
+import { Button } from '../lib';
 import PropTypes from 'prop-types';
 
 const SummaryForm = ({ 

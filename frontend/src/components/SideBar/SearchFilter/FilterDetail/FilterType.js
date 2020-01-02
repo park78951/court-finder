@@ -1,11 +1,11 @@
 import React from 'react';
-import CustomDropDown from '../../../lib/DropDown';
+import { DropDown } from '../../../lib';
 
 const FilterMenu = ({ menuTitle, ...rest }) => {
   return (
     <div>
       <span>{ menuTitle } : </span> 
-      <CustomDropDown 
+      <DropDown 
         name={ menuTitle }
         { ...rest }
       />
