@@ -12,11 +12,11 @@ module.exports = {
         type: Sequelize.STRING(60),
       },
       latitude: {
-        type: Sequelize.DECIMAL(10.7),
+        type: Sequelize.DECIMAL(10,7),
         allowNull: false,
       },
       longitude: {
-        type: Sequelize.DECIMAL(10.7),
+        type: Sequelize.DECIMAL(10,7),
         allowNull: false,
       },
       city: {
