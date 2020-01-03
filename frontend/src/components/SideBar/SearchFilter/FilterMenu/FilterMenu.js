@@ -49,6 +49,6 @@ FilterMenu.propTypes = {
   setIsFilterOpen: PropTypes.func.isRequired,
   activeBtn: PropTypes.string.isRequired,
   setActiveBtn: PropTypes.func.isRequired,
-}
+};
 
 export default React.memo(FilterMenu);

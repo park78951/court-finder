@@ -1,8 +1,9 @@
 import styled from 'styled-components';
+import { flexBox } from '../../../styles';
 
 const CourtListWrapper = styled.div`
   border: solid 1px #D3D3D3;
-  flex: 1;
+  ${ flexBox.flex(1) };
   overflow-y: scroll;
 
   & > a {

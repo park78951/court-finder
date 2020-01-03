@@ -1,1 +1,1 @@
-export { default } from './CourtInfo'
+export { default } from './CourtInfo';

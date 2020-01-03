@@ -1,10 +1,11 @@
 import styled from 'styled-components';
+import { flexBox } from '../../../styles';
 
 const HelperNavWrapper = styled.div`
   height: 2.5rem;
   width: 100%;
-  display: flex;
-  justify-content: flex-end;
+  ${ flexBox.displayFlex() };
+  ${ flexBox.justifyContent('flex-end') };
   border: solid 1px #D3D3D3;
 
   & > button {

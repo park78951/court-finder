@@ -1,4 +1,14 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
+import { flexBox } from '../../styles';
+
+const appear = keyframes`
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+`;
 
 const MapContainer = styled.div`
   height: 100vh;
@@ -6,13 +16,12 @@ const MapContainer = styled.div`
 
   .infoBox {
     border-radius: 0.3rem;
-    animation-name: appear;
-    animation-duration: 1s;
+    animation: ${ appear } 1s;
 
     .infoBox__container {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
+      ${ flexBox.displayFlex() };
+      ${ flexBox.justifyContent('center') };
+      ${ flexBox.flexDirection('column') };
       background: white;
       border: 1px solid #ccc;
       padding-left: 0.5rem;
@@ -24,17 +33,6 @@ const MapContainer = styled.div`
         margin: 0;
         padding: 0;
       }
-    }
-  }
-
-  @keyframes appear {
-    /* keyframe */
-    from {
-      opacity: 0;
-    }
-    /* keyframe */
-    to {
-      opacity: 1;
     }
   }
 `;

@@ -1,26 +1,27 @@
 import styled from 'styled-components';
+import { flexBox } from '../../styles';
 
 const AdditionalFormStyle = styled.div`
   .input__container--transportation {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    ${ flexBox.displayFlex() };
+    ${ flexBox.flexWrap('wrap') };
+    ${ flexBox.justifyContent('space-between') };
 
     & > div {
-      display: flex;
-      justify-content: space-between;
+    ${ flexBox.displayFlex() };
+    ${ flexBox.justifyContent('space-between') };
       margin-top: 10px;
     }
   }
   
   .input__container--available-time {
-    display: flex;
-    justify-content: space-between;
+    ${ flexBox.displayFlex() };
+    ${ flexBox.justifyContent('space-between') };
   }
 
   .button__container--two-btn {
-    display: flex;
-    justify-content: space-evenly;
+    ${ flexBox.displayFlex() };
+    ${ flexBox.justifyContent('space-envely') };
     position: absolute;
     bottom: 5%;
     left: 50%;

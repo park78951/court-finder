@@ -93,6 +93,6 @@ const FilterDetail = ({ isFilterOpen, activeBtn }) => {
 FilterDetail.propTypes = {
   isFilterOpen: PropTypes.bool.isRequired,
   activeBtn: PropTypes.string.isRequired,
-}
+};
 
 export default FilterDetail;

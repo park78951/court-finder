@@ -12,7 +12,7 @@ const App = () => {
   const courtAdditionFlag = useSelector(state => {
     return state.storeOnFlag.courtAdditionFlag;
   });
-  console.log(ModalContainer);
+  
   return (
     <>
       <Router>

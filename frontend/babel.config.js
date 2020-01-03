@@ -1,7 +1,22 @@
 module.exports = (api) => {
   api.cache(true);
 
-  const presets = ["@babel/preset-env", "@babel/preset-react"];
+  const presets = [
+    ["@babel/preset-env", 
+      {
+        "useBuiltIns": "entry",
+        "targets": {
+          "browsers": [
+            "chrome >= 61",
+            "edge >= 15",
+            "firefox >= 52",
+            "ie >= 11",
+          ]
+        }
+      }
+    ],
+    ["@babel/preset-react"],
+  ];
   const plugins = [
     "@babel/plugin-proposal-class-properties",
     "babel-plugin-styled-components",

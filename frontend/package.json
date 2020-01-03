@@ -9,6 +9,11 @@
     "eslint": "eslint ./",
     "test": "exit"
   },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8"
+  ],
   "author": "Sangkyu <park78951@gmail.com>",
   "license": "MIT",
   "dependencies": {

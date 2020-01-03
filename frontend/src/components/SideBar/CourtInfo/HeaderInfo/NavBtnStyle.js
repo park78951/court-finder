@@ -1,14 +1,15 @@
 import styled from 'styled-components';
+import { flexBox } from '../../../../styles';
 
 const NavBtnStyle = styled.div`
-  display: flex;
+  ${ flexBox.displayFlex() };
   height: 35%;
   margin-top: 15px;
 
   & > a {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    ${ flexBox.displayFlex() };
+    ${ flexBox.justifyContent('center') };
+    ${ flexBox.alignItems('center') };
     position: relative;
     width: 50%;
 
