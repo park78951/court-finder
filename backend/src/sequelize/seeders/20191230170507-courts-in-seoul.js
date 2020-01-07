@@ -4,7 +4,7 @@ module.exports = {
   up: (queryInterface, Sequelize) => {
     const courtsInSeoul = require('../seoulCourt.js').body;
     const courts = courtsInSeoul.reduce((accumulator, currentValue) => {
-      const {
+      let {
         lat,
         city,
         gu_nm,
@@ -18,6 +18,8 @@ module.exports = {
         locationName
        } = currentValue;
       
+      address = '서울특별시' + address;
+
       const court = {
         name: locationName,
         latitude: parseFloat(lat),

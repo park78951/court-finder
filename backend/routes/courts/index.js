@@ -52,7 +52,9 @@
  *                items:
  *                  $ref: "#/definitions/Court"
  *        400:
- *          description: "bad request"
+ *          description: "page and size should be defined minimum 1"
+ *        500"
+ *          description: "Internal Server Error"
  */
 /**
  *  @swagger
@@ -60,12 +62,14 @@
  *    Court:
  *      type: "object"
  *      properties:
+ *        id:
+ *          type: number
  *        name:
  *          type: string
  *        latitude:
- *          type: float
+ *          type: number
  *        longitude:
- *          type: float
+ *          type: number
  *        city:
  *          type: string
  *        district:
