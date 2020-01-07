@@ -14,7 +14,7 @@ import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import { defaultMapOptions } from '../../config/initConfig';
-import { createFullCoordinate, keyMaker } from '../../myUtil';
+import { createFullCoordinate, keyMaker, getCenterPosition } from '../../myUtil';
 import CourtMarker from './CourtMarker';
 import Style from './MapStyle';
 
@@ -22,7 +22,8 @@ const Map = ({ location }) => {
   const { pathname } = location;
   const { 
     center, 
-    zoom, 
+    defaultZoom,
+    selectedZoom,
     mapStyle, 
     options, 
     mapTypeId,
@@ -31,6 +32,7 @@ const Map = ({ location }) => {
   } = defaultMapOptions;
 
   const [curCenter, setCurCenter] = useState(center);
+  const [curZoom, setCurZoom] = useState(defaultZoom);
   const [mouseoverMarker, setMouseoverMarker] = useState(null);
 
   const { searchedCourts, selectedCourt, mouseoverList } = useSelector(state => ({
@@ -81,13 +83,19 @@ const Map = ({ location }) => {
     if (!searchedCourts.length) return;
 
     if (selectedCourt) setCurCenter(createFullCoordinate(selectedCourt));
-    else setCurCenter(createFullCoordinate(searchedCourts[0]));
+    else setCurCenter(getCenterPosition(searchedCourts));
   }, [searchedCourts, selectedCourt]);
+
+  useEffect(() => {
+    if (selectedCourt) setCurZoom(selectedZoom);
+    else setCurZoom(defaultZoom);
+    
+  }, [selectedCourt]);
 
   return isLoaded && (
     <Style.MapContainer infoBoxWidth={ infoBoxWidth }>
       <GoogleMap
-        zoom={ zoom }
+        zoom={ curZoom }
         center={ curCenter }
         mapContainerStyle={ mapStyle }
         mapTypeId={ mapTypeId }

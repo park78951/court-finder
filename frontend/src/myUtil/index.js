@@ -5,3 +5,4 @@ export { default as deleteObjProps } from './deleteObjProps';
 export { default as filterCourtsByInput } from './filterCourtsByInput';
 export { default as keyMaker } from './keyGenerator';
 export { default as storeKeywords } from './storeKeywords';
+export { default as getCenterPosition } from './getCenterPosition';
