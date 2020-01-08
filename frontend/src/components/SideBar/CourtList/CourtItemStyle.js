@@ -5,7 +5,7 @@ const CourtItemWrapper = styled.div`
   height: 7.5rem;
   box-sizing: border-box;
   border-bottom: solid 1px #D3D3D3;
-  padding-left: 5px;
+  padding-left: 1rem;
 
   &:hover {
     background-color: #F8F8F8;

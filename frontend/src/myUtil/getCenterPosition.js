@@ -1,10 +1,11 @@
 import { computeDistanceBetween } from 'spherical-geometry-js';
+import createFullCoordinate from './createFullCoordinate';
 
 const getDistanceBetweenTwo = (position1, position2) => {
   const distance = computeDistanceBetween(
-    {lat: Number(position1.lat), lng: Number(position1.lng)},
-    {lat: Number(position2.lat), lng: Number(position2.lng)},
-    );
+    createFullCoordinate(position1),
+    createFullCoordinate(position2),
+  );
 
   return distance;
 };
@@ -32,6 +33,8 @@ const getFarthestCourts = (courts) => {
 }
 
 export default (courts) => {
+  if (courts.length === 1) return createFullCoordinate(courts[0])
+
   const { courtInfo } = getFarthestCourts(courts);
 
   const centerPosition = courtInfo.reduce((court1, court2) => {

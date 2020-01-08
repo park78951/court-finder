@@ -72,7 +72,7 @@ const Map = ({ location }) => {
         }}
       >
         <div className='infoBox__container'>
-          <h2>{ onMouseOverCourt.locationName }</h2>
+          <h2>{ onMouseOverCourt.name }</h2>
           <p>{ onMouseOverCourt.address }</p>
         </div>
       </InfoBox>

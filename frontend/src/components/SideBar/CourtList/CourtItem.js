@@ -8,7 +8,7 @@ import {
 import Style from './CourtItemStyle';
 
 const CourtItem = ({ searchedInfo }) => {
-  const { locationName, address, in_out, phone } = searchedInfo;
+  const { name, address, isIndoor, phone } = searchedInfo;
   const dispatch = useDispatch();
 
   const selectCourtInfo = useCallback(() => {
@@ -27,7 +27,7 @@ const CourtItem = ({ searchedInfo }) => {
       onMouseEnter={ onMouseOverOut(searchedInfo) }
       onMouseLeave={ onMouseOverOut(null) }
     >
-      <h3>{ locationName }</h3><span>{ in_out }</span>
+      <h3>{ name }</h3><span>{ isIndoor ? '실내' : '실외' }</span>
       <div>
         <p>주소: { address }</p>
         <p>전화번호: { phone }</p>
