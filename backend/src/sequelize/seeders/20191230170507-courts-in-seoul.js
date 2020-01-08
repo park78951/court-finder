@@ -18,7 +18,7 @@ module.exports = {
         locationName
        } = currentValue;
       
-      address = '서울특별시' + address;
+      address = '서울특별시 ' + address;
 
       const court = {
         name: locationName,

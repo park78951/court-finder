@@ -53,7 +53,7 @@
  *                  $ref: "#/definitions/Court"
  *        400:
  *          description: "page and size should be defined minimum 1"
- *        500"
+ *        500:
  *          description: "Internal Server Error"
  */
 /**
