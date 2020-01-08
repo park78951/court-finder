@@ -1,9 +1,10 @@
 import styled from 'styled-components';
+import { flexBox } from '../../../../styles';
 
 const ReviewContent = styled.div`
   & > div {
-    display: flex;
-    justify-content: space-between;
+    ${ flexBox.displayFlex() };
+    ${ flexBox.justifyContent('space-between') };
 
     & > h3 {
       margin: 0;

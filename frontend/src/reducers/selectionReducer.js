@@ -18,7 +18,7 @@ const selectionReducer = (state = selectionInfo, { type, payload}) => {
       return {
         ...state,
         selectedCourt: null,
-      }
+      };
 
     case MOUSEOVER_LIST:
       const mouseoverList = payload ? { ...payload } : null;

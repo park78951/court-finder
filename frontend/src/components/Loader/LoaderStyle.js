@@ -1,12 +1,13 @@
 import styled, { css } from 'styled-components';
+import { flexBox } from '../../styles';
 
 const LoaderContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  ${ flexBox.flex(1) };
+  ${ flexBox.displayFlex() };
+  ${ flexBox.justifyContent('center') };
+  ${ flexBox.alignItems('center') };
   width: 100%;
   height: 100%;
-
 `;
 
 export const loaderStyle = css`

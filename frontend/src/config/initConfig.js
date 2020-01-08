@@ -3,7 +3,8 @@ export const defaultMapOptions = {
     lat: 37.531058,
     lng: 126.929067
   },
-  zoom: 14,
+  defaultZoom: 12,
+  selectedZoom:15,
   mapStyle: {
     height: "100vh",
     width: "100%"
@@ -13,7 +14,8 @@ export const defaultMapOptions = {
   },
   mapTypeId: 'roadmap',
   marker: {
-    path: 'M0-48c-9.8 0-17.7 7.8-17.7 17.4 0 15.5 17.7 30.6 17.7 30.6s17.7-15.4 17.7-30.6c0-9.6-7.9-17.4-17.7-17.4z',
+    // path: 'M0-48c-9.8 0-17.7 7.8-17.7 17.4 0 15.5 17.7 30.6 17.7 30.6s17.7-15.4 17.7-30.6c0-9.6-7.9-17.4-17.7-17.4z',
+    url: 'public/img/basketball_marker.png',
     fillColor: "#ff1919",
     fillOpacity: 1.0,
     strokeWeight: 3,

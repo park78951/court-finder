@@ -1,14 +1,16 @@
 import styled from 'styled-components';
+import { flexBox } from '../../../styles';
+
 
 const InputContainer = styled.div`
   width: 80%;
   height: 100%;
 
   & > form {
-    display: flex;
+    ${ flexBox.displayFlex() };
+    ${ flexBox.alignContent('center') };
     height: 100%;
     width: 100%;
-    align-content: center;
     overflow: hidden;
 
     & > input {
@@ -21,10 +23,10 @@ const InputContainer = styled.div`
     }
 
     button {
-      flex: 1;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+    ${ flexBox.flex(1) };
+    ${ flexBox.displayFlex() };
+    ${ flexBox.justifyContent('center') };
+    ${ flexBox.alignItems('center') };
       background: transparent;
       border: none;
       outline: none;

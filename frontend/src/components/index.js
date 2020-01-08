@@ -6,13 +6,13 @@ import HamburgerMenu from './HamburgerMenu';
 import SideBar from './SideBar';
 import CourtAddition from './CourtAddition';
 import MapContextMenu from './ContextMenu';
-import AppContainer from './container/ModalContainer';
+import { ModalContainer } from './container';
 
 const App = () => {
   const courtAdditionFlag = useSelector(state => {
     return state.storeOnFlag.courtAdditionFlag;
   });
-
+  
   return (
     <>
       <Router>
@@ -22,9 +22,9 @@ const App = () => {
         <HamburgerMenu />
         <SideBar />
         { courtAdditionFlag && (
-          <AppContainer>
+          <ModalContainer>
             <CourtAddition />
-          </AppContainer>
+          </ModalContainer>
         ) }
       </Router>
     </>

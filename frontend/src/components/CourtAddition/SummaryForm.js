@@ -1,5 +1,5 @@
 import React from 'react';
-import CustomButton from '../lib/Button';
+import { Button } from '../lib';
 import PropTypes from 'prop-types';
 
 const SummaryForm = ({ 
@@ -20,17 +20,17 @@ const SummaryForm = ({
         { summaryList() }
       </div>
       <div>
-        <CustomButton
+        <Button
           onClick={ movePrev }
         >
           이전
-        </CustomButton>
-        <CustomButton
+        </Button>
+        <Button
           type='submit'
           onSubmit={ submitHandler }
         >
           제출
-        </CustomButton>
+        </Button>
       </div>
     </div>
   );

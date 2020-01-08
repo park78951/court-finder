@@ -1,8 +1,9 @@
 import styled from 'styled-components';
+import { flexBox } from '../../styles';
 
 const SideBarWrapper = styled.div`
-  display: flex;
-  flex-flow: column;
+  ${ flexBox.displayFlex() };
+  ${ flexBox.flexFlow('column') };
   position: absolute;
   min-height: ${ ({ curPath }) => curPath === '/' && '120px' };
   height: ${ ({ curPath }) => curPath !== '/' && '100vh' };

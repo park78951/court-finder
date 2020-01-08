@@ -1,8 +1,9 @@
 import styled from 'styled-components';
+import { flexBox } from '../../../../styles';
 
 const HeaderWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
+  ${ flexBox.displayFlex() };
+  ${ flexBox.flexDirection('column') };
   height: 12rem;
   width: 100%;
   background-color: #F7B733;

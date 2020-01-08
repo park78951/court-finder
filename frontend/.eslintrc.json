@@ -37,7 +37,8 @@
         "operator-linebreak": [
             "error", 
             "before"
-        ]
+        ],
+        "no-case-declarations": "off"
     },
     "parser": "babel-eslint"
 }

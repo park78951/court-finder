@@ -1,24 +1,25 @@
 import styled from 'styled-components';
+import { flexBox } from '../../styles';
 
 const BasicFormWrapper = styled.div`
   .fee__container--input{
-    display: flex;
-    justify-content: space-between;
+    ${ flexBox.displayFlex() };
+    ${ flexBox.justifyContent('space-between') };
   }
 
   .input__container--available-time {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    ${ flexBox.displayFlex() };
+    ${ flexBox.justifyContent('space-between') };
+    ${ flexBox.alignItems('center') };
     & > span {
       font-weight: bold;
     }
   }
 
   .button__container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    ${ flexBox.displayFlex() };
+    ${ flexBox.justifyContent('center') };
+    ${ flexBox.alignItems('center') };
     position: absolute;
     bottom: 5%;
     left: 50%;
