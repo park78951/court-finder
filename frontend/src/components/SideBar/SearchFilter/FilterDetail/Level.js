@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import FilterMenu from './FilterType';
+import FilterType from './FilterType';
 import { filterConfig } from '../../../../config/initConfig';
 import { FILTER_OPTIONS_TYPES } from '../../../../config/constants';
 import { storeKeywords } from '../../../../myUtil';
@@ -14,7 +14,7 @@ const Level = ({ setFilterData }) => {
   const dropdownList = levelOptions.map(levelOption => {
     const levelType = FILTER_OPTIONS_TYPES[levelOption];
     return(
-      <FilterMenu 
+      <FilterType 
         key={ levelOption }
         menuTitle={ levelOption }
         optionValues={ levelDetails[levelOption] }

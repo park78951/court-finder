@@ -15,11 +15,11 @@ import {
   UNSELECT_COURT,
 } from './types';
 
-export const startSearchingCourts = (userInput, filterData) => ({
+export const startSearchingCourts = (userInput, filterInput) => ({
   type: SEARCH_COURTS_REQUEST,
   payload: {
     userInput,
-    filterData,
+    filterInput,
   }
 });
 

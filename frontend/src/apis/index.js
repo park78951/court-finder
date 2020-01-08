@@ -1,5 +1,7 @@
 import axios from 'axios';
+import { LOCALHOST } from '../config/constants';
 
 export default axios.create({
-  baseURL: './public/mock'
+  baseURL: LOCALHOST,
+  timeout: 3000,
 });

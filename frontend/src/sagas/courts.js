@@ -7,21 +7,25 @@ import {
 } from '../actions';
 import { SEARCH_COURTS_REQUEST } from '../actions/types';
 
-function searchCourtsAPI() {
-  return courtsApi.get('/seoulCourt.json');
+function searchCourtsAPI(body) {
+  return courtsApi.post('/courts/search', body);
 }
 
 function* searchCourts(action) {
-  const { userInput, filterData } = action.payload;
+  const { userInput, filterInput } = action.payload;
+  const body = {
+    "page": 1,
+    "size": 10,
+    "query": {
+      "match": userInput,
+      "filter":{}
+    }
+  }
+  if (filterInput) body.query.filter = filterInput;
   try {
-    const fetchedData = yield call(searchCourtsAPI);
-    const courtsData = fetchedData.data.body;
-    const filteredCourts = filterCourtsByInput({
-      userInput, 
-      courtsData,
-      filterData
-    });
-    yield put(completeSearchCourts(filteredCourts));
+    const response = yield call(searchCourtsAPI, body);
+    console.log(response);
+    yield put(completeSearchCourts(response.data.courts));
   } catch (err) {
     console.error(err);
     yield put(catchErrorOnSearch(err));

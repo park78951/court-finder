@@ -2,8 +2,8 @@ import { computeDistanceBetween } from 'spherical-geometry-js';
 
 const getDistanceBetweenTwo = (position1, position2) => {
   const distance = computeDistanceBetween(
-    {lat: position1.lat, lng: position1.lng},
-    {lat: position2.lat, lng: position2.lng},
+    {lat: Number(position1.lat), lng: Number(position1.lng)},
+    {lat: Number(position2.lat), lng: Number(position2.lng)},
     );
 
   return distance;

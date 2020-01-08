@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import FilterMenu from './FilterType';
+import FilterType from './FilterType';
 import { filterConfig} from '../../../../config/initConfig';
 import PropTypes from 'prop-types';
 
@@ -8,28 +8,28 @@ const Location = ({ setFilterData }) => {
   const cities = Object.keys(locationDetail);
 
   const [city, setCity] = useState('');
-  const [gu_nm, setGu_nm] = useState('');
+  const [district, setDistrict] = useState('');
 
   useEffect(() => {
     setFilterData({
       city,
-      gu_nm
+      district
     });
     if(!city) {
-      setGu_nm('');
+      setDistrict('');
     }
-  }, [city, gu_nm]);
+  }, [city, district]);
 
   return (
     <div className='dropdown__menus'>
-      <FilterMenu 
+      <FilterType 
         menuTitle='도시명'
         onChange={ ({ target }) => setCity(target.value) }
         optionValues={ cities }
       />
-      <FilterMenu 
+      <FilterType 
         menuTitle='군/구'
-        onChange={ ({ target }) => setGu_nm(target.value)}
+        onChange={ ({ target }) => setDistrict(target.value)}
         optionValues={ locationDetail[city] }
       />
     </div>

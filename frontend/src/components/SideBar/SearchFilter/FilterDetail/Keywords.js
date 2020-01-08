@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import FilterMenu from './FilterType';
+import FilterType from './FilterType';
 import { filterConfig } from '../../../../config/initConfig';
 import { FILTER_OPTIONS_TYPES } from '../../../../config/constants';
 import { storeKeywords } from '../../../../myUtil';
@@ -13,7 +13,7 @@ const Keywords = ({ setFilterData }) => {
   const dropdownList = keywords.map(keyword => {
     const keywordType = FILTER_OPTIONS_TYPES[keyword];
     return(
-      <FilterMenu 
+      <FilterType 
         key={ keyword }
         menuTitle={ keyword }
         optionValues={ keywordsDetails[keyword] }

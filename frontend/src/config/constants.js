@@ -35,6 +35,11 @@ export const TIME_DIVISION_HOURS = [...Array(24)].map((_, idx) => `${(idx).toStr
 export const TIME_DIVISION_MINUTES = ['00', '30'];
 export const EXISTENCE_NONEXISTENCE = ['유', '무'];
 
+// Request URL
+export const LOCALHOST = 'http://localhost:3000/';
+export const LOCALMOCK = './public/mock';
+
+// Placeholders
 export const PLACEHOLDER_TRANSPORT_STOP = 'ex) 정거장 / 역이름';
 export const PLACEHOLDER_TRANSPORT_DETAIL = 'ex) 3004번 / 2호선';
 export const PLACEHOLDER_WEB_URL = 'ex) https://www.court-finder.com';
