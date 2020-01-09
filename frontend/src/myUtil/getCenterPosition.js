@@ -32,7 +32,7 @@ const getFarthestCourts = (courts) => {
   return farthestCourts;
 };
 
-export default (courts) => {
+export default courts => {
   if (courts.length === 1) return createFullCoordinate(courts[0]);
 
   const { courtInfo } = getFarthestCourts(courts);

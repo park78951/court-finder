@@ -1,4 +1,4 @@
-const deleteObjProps = obj => {
+export default obj => {
   const duplicateObj = {...obj};
   const objectKeys = Object.keys(duplicateObj);
   

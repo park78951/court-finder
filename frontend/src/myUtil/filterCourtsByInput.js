@@ -1,4 +1,4 @@
-const filterCourtsByInput = ({ 
+export default ({ 
   userInput, 
   courtsData, 
   filterData 
@@ -27,5 +27,3 @@ const filterCourtsByInput = ({
 
   return completeData;
 };
-
-export default filterCourtsByInput;
