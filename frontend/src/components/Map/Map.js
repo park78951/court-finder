@@ -11,10 +11,11 @@ import {
 } from '@react-google-maps/api';
 import { useSelector } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import _ from 'lodash';
 import PropTypes from 'prop-types';
 
 import { defaultMapOptions } from '../../config/initConfig';
-import { createFullCoordinate, keyMaker, getCenterPosition } from '../../myUtil';
+import { createFullCoordinate, getCenterPosition } from '../../myUtil';
 import CourtMarker from './CourtMarker';
 import Style from './MapStyle';
 
@@ -40,6 +41,7 @@ const Map = ({ location }) => {
     selectedCourt: state.storeOnSelection.selectedCourt,
     mouseoverList: state.storeOnSelection.mouseoverList,
   }));
+
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: process.env.KEY
   });
@@ -50,10 +52,10 @@ const Map = ({ location }) => {
 
   const markers = useMemo(() => {
     return searchedCourts.map((courtInfo) => {
-      const { locationName } = courtInfo;
+      const { name } = courtInfo;
       return (
         <CourtMarker
-          key={ keyMaker(locationName) }
+          key={ _.uniqueId(name) }
           courtInfo={ courtInfo }
           mouseOverOutHandler={ onMouseOverAndOutOfMarker }
         />            

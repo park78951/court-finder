@@ -8,10 +8,9 @@ import Style from './HeaderInfoStyle';
 import PropTypes from 'prop-types';
 
 const HeaderInfo = () => {
-  const selectedCourt = useSelector(state => {
+  const courtData = useSelector(state => {
     return state.storeOnSelection.selectedCourt;
   });
-  const courtData = selectedCourt || JSON.parse(localStorage.getItem('selectCourt'));
   
   return (
     <Style.HeaderWrapper>

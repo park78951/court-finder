@@ -1,11 +1,12 @@
 import React, { useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { keyMaker } from '../../../myUtil';
+import _ from 'lodash';
+import PropTypes from 'prop-types';
+
 import CourtItem from './CourtItem';
 import { routes } from '../../../config/initConfig';
 import Style from './CourtListStyle';
-import PropTypes from 'prop-types';
 
 const CourtList = () => {
   const { searchedCourts } = useSelector(state => state.storeOnSearch);
@@ -14,7 +15,7 @@ const CourtList = () => {
   const searchedItems = useMemo(() => {
     return searchedCourts.map(searchedCourt => (
       <Link 
-        key={keyMaker()} 
+        key={_.uniqueId(searchedCourt.name)} 
         to={ infoDetail }
       >
         <CourtItem 

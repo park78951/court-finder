@@ -18,10 +18,11 @@ const InputBar = ({ location, history }) => {
 
   const inputSubmit = useCallback(evt => {
     evt.preventDefault();
+    
     dispatch(unselectCourt());
     dispatch(startSearchingCourts(term, filterData));
-    console.log(filterData);
     setTerm('');
+
     if(location.pathname !== '/search') history.push('/search');
   }, [term, filterData, location]);
 
