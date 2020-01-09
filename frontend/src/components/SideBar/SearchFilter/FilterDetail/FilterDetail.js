@@ -2,15 +2,17 @@ import React, { useState, useMemo, useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 import { ThemeProvider } from 'styled-components';
 import PropTypes from 'prop-types';
-import { getFilterData, removeFilterData } from '../../../../actions';
-import { Button } from '../../../lib';
+
 import Location from './Location';
 import Keywords from './Keywords';
 import Recommendation from './Recommendation';
 import Level from './Level';
-import { filterButton, buttonTheme } from '../../../../config/initConfig';
-import { deleteObjProps } from '../../../../myUtil';
 import Style from './FilterDetailStyle';
+import { getFilterData, removeFilterData } from '../../../../actions';
+import { Button } from '../../../lib';
+import { filterButton, buttonTheme } from '../../../../config/initConfig';
+import { FILTER_NOT_WORKING, FILTER_APPLIED } from '../../../../config/constants';
+import { deleteObjProps } from '../../../../myUtil';
 
 const FilterDetail = ({ isFilterOpen, activeBtn }) => {
   const { apply, initialize } = filterButton;
@@ -21,13 +23,13 @@ const FilterDetail = ({ isFilterOpen, activeBtn }) => {
   const sendFilterData = useCallback(e => {
     e.stopPropagation();
     if(activeBtn !== 'location') {
-      alert('해당 기능은 준비중입니다.');
+      alert(FILTER_NOT_WORKING);
       return;
     }
 
     const polishedFilterData = deleteObjProps(filterData);
     dispatch(getFilterData(polishedFilterData));
-    alert('필터가 적용 되었습니다.');
+    alert(FILTER_APPLIED);
   }, [activeBtn, filterData]);
 
   const initFilters = useCallback(() => {

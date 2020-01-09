@@ -39,6 +39,10 @@ export const EXISTENCE_NONEXISTENCE = ['유', '무'];
 export const LOCALHOST = 'http://localhost:3000/';
 export const LOCALMOCK = './public/mock';
 
+// alert
+export const FILTER_NOT_WORKING = '해당 기능은 준비중입니다.'
+export const FILTER_APPLIED = '필터가 적용 되었습니다.'
+
 // Placeholders
 export const PLACEHOLDER_TRANSPORT_STOP = 'ex) 정거장 / 역이름';
 export const PLACEHOLDER_TRANSPORT_DETAIL = 'ex) 3004번 / 2호선';
