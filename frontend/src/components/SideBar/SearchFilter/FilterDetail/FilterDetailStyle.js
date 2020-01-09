@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { flexBox } from '../../../../styles';
 
 const DetailWrapper = styled.div`
   width: 100%;
@@ -21,9 +20,9 @@ const DetailWrapper = styled.div`
 
   .button__apply {
     margin-top: 2.3rem;
-    ${ flexBox.displayFlex() };
-    ${ flexBox.justifyContent('space-evenly') };
-    ${ flexBox.flexWrap('wrap') };
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
   }
 `;
 

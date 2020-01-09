@@ -1,10 +1,9 @@
 import styled from 'styled-components';
-import { flexBox } from '../../styles';
 
 const HamburgerWrapper = styled.button`
-  ${ flexBox.displayFlex() };
-  ${ flexBox.justifyContent('space-between') };
-  ${ flexBox.alignItems('center') };
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   position: absolute;
   top: 2px;
   left: 2px;

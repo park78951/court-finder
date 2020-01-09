@@ -1,9 +1,8 @@
 import styled from 'styled-components';
-import { flexBox } from '../../../../styles';
 
 const ProfileWrapper = styled.div`
-  ${ flexBox.displayFlex() };
-  ${ flexBox.justifyContent('space-between') };
+  display: flex;
+  justify-content: space-between;
   margin-right: 15px;
 
   & h3 {

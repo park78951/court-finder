@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { flexBox } from '../../../../styles';
 
 const BodyInfoWrapper = styled.div`
   height: 74%;
@@ -8,8 +7,8 @@ const BodyInfoWrapper = styled.div`
   padding: 0 15px;
 
   & > div {
-    ${ flexBox.displayFlex() };
-    ${ flexBox.alignItems('center') };
+    display: flex;
+    align-items: center;
     margin: 25px 0;
 
     & > span, a {
@@ -31,8 +30,8 @@ const BodyInfoWrapper = styled.div`
   }
 
   & > ul {
-    ${ flexBox.displayFlex() };
-    ${ flexBox.justifyContent('center') };
+    display: flex;
+    justify-content: center;
     list-style-type: none;
     margin: 0 0 0 10px;
     padding: 0;
