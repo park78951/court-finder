@@ -1,11 +1,12 @@
 import React, { useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 import { removeFilterData } from '../../../actions';
-import { withRouter } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import Style from './HelperNavStyle';
 
-const HelperNav = ({ history }) => {
+const HelperNav = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const goHome = useCallback(() => {
     history.push('/');
@@ -32,4 +33,4 @@ const HelperNav = ({ history }) => {
   );
 };
 
-export default React.memo(withRouter(HelperNav));
+export default React.memo(HelperNav);

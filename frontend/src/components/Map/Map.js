@@ -10,7 +10,7 @@ import {
   InfoBox
 } from '@react-google-maps/api';
 import { useSelector } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import _ from 'lodash';
 import PropTypes from 'prop-types';
 
@@ -19,8 +19,8 @@ import { createFullCoordinate, getCenterPosition } from '../../myUtil';
 import CourtMarker from './CourtMarker';
 import Style from './MapStyle';
 
-const Map = ({ location }) => {
-  const { pathname } = location;
+const Map = () => {
+  const { pathname } = useLocation();
   const { 
     center, 
     defaultZoom,
@@ -114,4 +114,4 @@ Map.propTypes = {
   searchedCourts: PropTypes.array,
 };
 
-export default React.memo(withRouter(Map));
+export default React.memo(Map);
