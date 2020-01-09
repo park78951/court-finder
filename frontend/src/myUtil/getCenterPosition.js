@@ -30,10 +30,10 @@ const getFarthestCourts = (courts) => {
   }, courtsForm);
   
   return farthestCourts;
-}
+};
 
 export default (courts) => {
-  if (courts.length === 1) return createFullCoordinate(courts[0])
+  if (courts.length === 1) return createFullCoordinate(courts[0]);
 
   const { courtInfo } = getFarthestCourts(courts);
   
@@ -53,4 +53,4 @@ export default (courts) => {
   });
 
   return centerPosition;
-}
+};

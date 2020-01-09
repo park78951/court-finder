@@ -1,6 +1,5 @@
 import { fork, put, takeLatest, call, all } from 'redux-saga/effects';
 import courtsApi from '../apis';
-import { filterCourtsByInput } from '../myUtil';
 import {
   completeSearchCourts,
   catchErrorOnSearch,
@@ -20,7 +19,7 @@ function* searchCourts(action) {
       "match": userInput,
       "filter":{}
     }
-  }
+  };
   if (filterInput) body.query.filter = filterInput;
   try {
     const response = yield call(searchCourtsAPI, body);

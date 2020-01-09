@@ -31,7 +31,7 @@ const Map = () => {
     infoBoxWidth,
     infoBoxMarginTop,
   } = defaultMapOptions;
-
+  
   const [curCenter, setCurCenter] = useState(center);
   const [curZoom, setCurZoom] = useState(defaultZoom);
   const [mouseoverMarker, setMouseoverMarker] = useState(null);
