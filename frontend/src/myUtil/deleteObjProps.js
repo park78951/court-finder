@@ -1,4 +1,4 @@
-export default obj => {
+export default (obj) => {
   const duplicateObj = {...obj};
   const objectKeys = Object.keys(duplicateObj);
   
@@ -8,5 +8,3 @@ export default obj => {
 
   return duplicateObj;
 };
-
-export default deleteObjProps;
