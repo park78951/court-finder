@@ -1,0 +1,1 @@
+export const borderLine = '#505050';

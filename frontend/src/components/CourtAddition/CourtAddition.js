@@ -5,7 +5,7 @@ import SummaryForm from './SummaryForm';
 import { useSelector, useDispatch } from 'react-redux';
 import { closeCourtAddtionForm, addCourts } from '../../actions';
 import { buttonTheme, cancelBtnSizeOfAddForm } from '../../config/initConfig';
-import { MdCancel } from 'react-icons/lib/md';
+import { MdCancel } from 'react-icons/md';
 import { ThemeProvider } from 'styled-components';
 import Styles from './CourtAdditionStyle';
 

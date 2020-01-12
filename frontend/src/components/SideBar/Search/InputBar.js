@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory, useLocation } from 'react-router-dom';
-import { IoIosSearch } from 'react-icons/lib/io';
+import { IoIosSearch } from 'react-icons/io';
 import PropTypes from 'prop-types';
 
 import { startSearchingCourts, unselectCourt } from '../../../actions';

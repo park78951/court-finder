@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { MdInfo, MdAssignment } from 'react-icons/lib/md';
+import { MdInfo, MdAssignment } from 'react-icons/md';
 import { routes, iconSize } from '../../../../config/initConfig';
 import Style from './NavBtnStyle';
 

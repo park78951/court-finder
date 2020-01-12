@@ -2,7 +2,8 @@ export const searchInfo = {
   searchedCourts: [],
   isSearching: false,
   isError: false,
-  userInput: null
+  userInput: null,
+  totalCourts: null,
 };
 
 export const selectionInfo = {
