@@ -1,1 +1,1 @@
-export const borderLine = '#505050';
+export const borderLine = '#D3D3D3';

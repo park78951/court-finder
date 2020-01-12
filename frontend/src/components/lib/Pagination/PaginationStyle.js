@@ -1,38 +1,66 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { borderLine } from '../../../styles';
+
+const styleNthChild = function(idx) {
+  return css`
+    &:nth-child(${idx + 1}) {
+      color: #EC4D37;
+      font-weight: bold;
+    }
+  `;
+};
 
 const PaginationWrapper = styled.div`
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  justify-content: center;
   height: 3rem;
+  background-color: #fff;
   border: 0.1rem solid ${ borderLine };
   position: absolute;
   bottom: 0;
   width: 100%;
 
-  & button {
-    height: 100%;
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-  }
-
-  .arrow-btn {
+  & > div {
     display: flex;
+    justify-content: space-between;
     align-items: center;
-  }
+    width: 70%;
 
-  .number-btns {
-    line-height: 100%;
-    flex: 1;
-    height: 100%;
-    
-    & > button {
-      font-size: 1.2rem;
-      line-height: 
+    & button {
+      height: 60%;
+      background-color: transparent;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      border-radius: 50%;
+      
+      &:hover {
+        background-color: ${ borderLine };
+      }
+    }
+
+    .arrow-btn {
+      display: flex;
+      align-items: center;
+    }
+
+    .number-btns {
+      flex: 1;
+      height: 100%;
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      
+      
+      
+      & > button {
+        ${ ({ currentPage, numbersOnList }) => styleNthChild((currentPage - 1) % numbersOnList) }
+        line-height: 1rem;
+        width: 2rem;
+      }
     }
   }
+
   
 `;
 

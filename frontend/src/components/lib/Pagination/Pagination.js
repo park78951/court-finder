@@ -1,19 +1,39 @@
-import React, { useState, useMemo, useEffect } from 'react';
+import React, { useState, useMemo, useCallback, useEffect } from 'react';
 import _ from 'lodash';
-import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md";
+import { MdNavigateBefore, MdNavigateNext } from "react-icons/md";
 import Style from './PaginationStyle';
 
 const Pagination = ({ courtsPerPage, numbersOnList, totalCourts, clickHandler }) => {
-  const [currentPage, setCurrentPage] = useState(0);
+  const [currentPage, setCurrentPage] = useState(1);
   const [currentPages, setCurrentPages] = useState([]);
 
   const totalPage = Math.floor(totalCourts / courtsPerPage);
   const totalNumbers = _.fill(Array(totalPage), 0)
     .map((_, idx) => idx + 1);
 
+  const clickNext = useCallback((event) => {
+    if(currentPage === totalPage) return;
+    clickHandler(event);
+    setCurrentPage(prevState => prevState + 1);
+  }, [currentPage]);
+
+  const clickBefore = useCallback((event) => {
+    if(currentPage === 1) return;
+    clickHandler(event);
+    setCurrentPage(prevState => prevState - 1);
+  }, [currentPage]);
+
+  const clickNumber = useCallback(({ target }) => {
+    const targetNumber = Number(target.closest('button').textContent);
+    if(currentPage === targetNumber) return;
+    console.log(targetNumber);
+    // clickHandler(target);
+    setCurrentPage(targetNumber);
+  }, [currentPage]);
+
   const numberList = useMemo(() => {
     const pageList = currentPages.map(pageNumber => (
-      <button key={_.uniqueId(pageNumber)} onClick={ clickHandler }>
+      <button key={_.uniqueId(pageNumber)} onClick={ clickNumber }>
         { pageNumber }
       </button>
     ));
@@ -26,7 +46,7 @@ const Pagination = ({ courtsPerPage, numbersOnList, totalCourts, clickHandler })
   }, [currentPages]);
 
   useEffect(() => {
-    const pageDivision = currentPage / numbersOnList;
+    const pageDivision = Math.floor((currentPage - 1) / numbersOnList);
     const numberStartingFromOnList = pageDivision * numbersOnList;
     const numberEndingBeforeOnList = (pageDivision + 1) * numbersOnList;
 
@@ -37,14 +57,16 @@ const Pagination = ({ courtsPerPage, numbersOnList, totalCourts, clickHandler })
   }, [totalCourts, currentPage]);
 
   return (
-    <Style.PaginationWrapper>
-      <button onClick={ clickHandler } className='arrow-btn'>
-        <MdKeyboardArrowLeft size={30}/>
-      </button>
-      { numberList }
-      <button onClick={ clickHandler } className='arrow-btn'> 
-        <MdKeyboardArrowRight size={30}/>
-      </button>
+    <Style.PaginationWrapper currentPage={ currentPage } numbersOnList={ numbersOnList }>
+      <div>
+        <button onClick={ clickBefore } className='arrow-btn arrow-btn__before'>
+          <MdNavigateBefore size={20}/>
+        </button>
+        { numberList }
+        <button onClick={ clickNext } className='arrow-btn arrow-btn__next'> 
+          <MdNavigateNext size={20}/>
+        </button>
+      </div>
     </Style.PaginationWrapper>
   );
 };

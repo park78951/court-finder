@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useCallback } from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import _ from 'lodash';
@@ -6,10 +6,12 @@ import PropTypes from 'prop-types';
 
 import CourtItem from './CourtItem';
 import { routes } from '../../../config/initConfig';
+import { Pagination } from '../../lib';
+import { paginationConfig } from '../../../config/initConfig';
 import Style from './CourtListStyle';
 
 const CourtList = () => {
-  const { searchedCourts } = useSelector(state => state.storeOnSearch);
+  const { searchedCourts, totalCourts } = useSelector(state => state.storeOnSearch);
   const { infoDetail } = routes;
 
   const searchedItems = useMemo(() => {
@@ -24,10 +26,21 @@ const CourtList = () => {
       </Link>
     ));
   }, [searchedCourts]);
+
+  const changeCurrentPage = useCallback(({ target }) => {
+    console.log(target.closest('button'));
+  }, []);
   
   return (
     <Style.CourtListWrapper>
-      { searchedItems }
+      <div>
+        { searchedItems }
+      </div>
+      <Pagination 
+        clickHandler={ changeCurrentPage }
+        totalCourts={ 400 }
+        { ...paginationConfig }
+      />
     </Style.CourtListWrapper>
   );
 };

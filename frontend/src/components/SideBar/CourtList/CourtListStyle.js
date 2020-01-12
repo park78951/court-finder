@@ -3,14 +3,17 @@ import styled from 'styled-components';
 const CourtListWrapper = styled.div`
   border: solid 1px #D3D3D3;
   flex: 1;
+  padding-bottom: 2.9rem;
   overflow-y: scroll;
+  
+  & > div{
+    & > a {
+      text-decoration: none;
+      color: inherit;
 
-  & > a {
-    text-decoration: none;
-    color: inherit;
-
-    &:focus, &:hover, &:visited, &:link, &:active {
-        text-decoration: none;
+      &:focus, &:hover, &:visited, &:link, &:active {
+          text-decoration: none;
+      }
     }
   }
 
@@ -32,16 +35,6 @@ const CourtListWrapper = styled.div`
     box-shadow: inset 0 0 6px rgba(0,0,0,.3);
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
     background-color: #555;
-  }
-
-  .info-window {
-    margin-bottom: 2rem;
-    .info-window__contents {
-      margin: 0;
-      padding: 0;
-      font-size: 1.1rem;
-      font-weight: bold;
-    }
   }
 
 `;
