@@ -4,7 +4,6 @@ import {
   SEARCH_COURTS_REQUEST,
   SEARCH_COURTS_FAILURE,
   USER_INPUT,
-  DELETE_COURTS
 } from '../actions/types';
 
 const searchReducer = (state = searchInfo, { type, payload}) => {
@@ -36,12 +35,6 @@ const searchReducer = (state = searchInfo, { type, payload}) => {
       return {
         ...state,
         userInput: payload
-      };
-
-    case DELETE_COURTS:
-      return {
-        ...state,
-        searchedCourts: []
       };
 
     default:

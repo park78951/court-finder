@@ -76,7 +76,7 @@ const Pagination = ({
 
 Pagination.propTypes = {
   courtsPerPage: PropTypes.number,
-  numbersOnList: PropTypes.object, 
+  numbersOnList: PropTypes.number, 
   totalCourts: PropTypes.number, 
   clickHandler: PropTypes.func,
   userInput: PropTypes.string,
