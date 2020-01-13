@@ -45,8 +45,8 @@
  *          schema:
  *            type: "object"
  *            properties:
- *              hasNextPage:
- *                type: boolean
+ *              totalCount:
+ *                type: number
  *              courts:
  *                type: array
  *                items:
