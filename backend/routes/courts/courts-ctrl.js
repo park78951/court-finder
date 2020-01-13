@@ -29,7 +29,7 @@ exports.search = async (req, res, next) => {
     const data = await Court.findAndCountAll(config);
 
     const sendingData = {
-      hasNextPage: Math.ceil(data.count/size) > page,
+      totalCount: data.count,
       courts: data.rows
     }
 

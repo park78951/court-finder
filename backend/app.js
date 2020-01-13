@@ -23,9 +23,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', router);
-// catch 404 and forward to error handler
+// catch 404 and redirect to home
 app.use(function(req, res, next) {
-  next(createError(404));
+  res.redirect('/');
 });
 
 // error handler

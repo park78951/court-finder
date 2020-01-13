@@ -58,7 +58,12 @@ module.exports = {
         type: Sequelize.DATE,
         defaultValue: null
       }
-    }, {});
+    }, {
+      timestamps: true,
+      paranoid: true,
+      charset: 'utf8',
+      collate: 'utf8_general_ci',
+  });
   },
   down: (queryInterface, Sequelize) => {
     return queryInterface.dropTable('Courts');
