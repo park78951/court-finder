@@ -1,12 +1,8 @@
 import styled from 'styled-components';
+import Style from './NoReviewStyle';
 
-const PhotosWrapper = styled.div`
-  height: 200px;
-  width: 100%;
-  border-radius: 10px;
-  background-image: url('/public/img/noimage.gif');
-  background-size: cover;
-  background-position: center;
+const PhotosWrapper = styled(Style.NoReviewWrapper)`
+  margin-bottom: 2rem;
 `;
 
-export default PhotosWrapper;
+export default { PhotosWrapper };

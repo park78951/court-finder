@@ -1,3 +1,5 @@
+import markerImg from '../assets/images/basketball_marker.png';
+
 export const defaultMapOptions = {
   center: {
     lat: 37.531058,
@@ -14,7 +16,7 @@ export const defaultMapOptions = {
   },
   mapTypeId: 'roadmap',
   marker: {
-    url: '/img/basketball_marker.png',
+    url: markerImg,
     fillColor: "#ff1919",
     fillOpacity: 1.0,
     strokeWeight: 3,
@@ -44,8 +46,8 @@ export const iconSize = {
 
 export const loaderConfig = {
   sizeUnit: 'rem',
-  size: 4,
-  color: '#505050'
+  size: 5,
+  color: '#5CDB95'
 };
 
 export const refetchBtnStyle = {

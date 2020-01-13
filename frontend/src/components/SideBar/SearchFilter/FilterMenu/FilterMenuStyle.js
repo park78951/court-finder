@@ -15,6 +15,7 @@ const MenuWrapper = styled.div`
     background-color: transparent;
     border: none;
     cursor: pointer;
+    font-size: 0.9rem;
   }
 
   .filter__types {

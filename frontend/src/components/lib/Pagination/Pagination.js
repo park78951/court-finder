@@ -1,6 +1,7 @@
 import React, { useState, useMemo, useCallback, useEffect } from 'react';
 import _ from 'lodash';
 import { MdNavigateBefore, MdNavigateNext } from "react-icons/md";
+import PropTypes from 'prop-types';
 import Style from './PaginationStyle';
 
 const Pagination = ({ 
@@ -9,7 +10,7 @@ const Pagination = ({
   totalCourts, 
   clickHandler,
   userInput,
-  filterInput
+  filterInput,
 }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [currentPages, setCurrentPages] = useState([]);
@@ -71,6 +72,15 @@ const Pagination = ({
       </div>
     </Style.PaginationWrapper>
   );
+};
+
+Pagination.propTypes = {
+  courtsPerPage: PropTypes.number,
+  numbersOnList: PropTypes.object, 
+  totalCourts: PropTypes.number, 
+  clickHandler: PropTypes.func,
+  userInput: PropTypes.string,
+  filterInput: PropTypes.object,
 };
 
 export default Pagination;

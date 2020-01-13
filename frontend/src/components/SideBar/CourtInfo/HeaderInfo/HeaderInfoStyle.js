@@ -5,7 +5,8 @@ const HeaderWrapper = styled.div`
   flex-flow: column;
   height: 12rem;
   width: 100%;
-  background-color: #F7B733;
+  background-color: #f4b41a;
+  color: #1d1b1b;
 `;
 
 export default { HeaderWrapper };

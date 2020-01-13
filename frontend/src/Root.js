@@ -10,6 +10,12 @@ import store from './store';
 const GlobalStyle = createGlobalStyle`
   ${ reset }
 
+  @font-face {
+    font-family: 'Nanum Gothic Coding', monospace;
+    src: url('./assets/fonts/NanumGothicCoding-Bold.ttf'),
+      url('./assets/fonts/NanumGothicCoding-Regular.ttf');
+  }
+
   *{
    box-sizing: border-box; 
   }

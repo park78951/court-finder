@@ -11,7 +11,8 @@ export const TIME_DIVISION_MINUTES = ['00', '30'];
 export const EXISTENCE_NONEXISTENCE = ['유', '무'];
 
 // Request URL
-export const LOCALHOST = 'http://localhost:3000/';
+export const DEVLOPMENT_HOST = 'http://localhost:3000/';
+export const PRODUCTION_HOST = 'http://13.124.209.33/';
 export const LOCALMOCK = './public/mock';
 
 // alert

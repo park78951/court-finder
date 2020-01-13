@@ -14,7 +14,7 @@ const CourtMarker = ({
   const isSelectedCourt = useMemo(() => {
     return compareCoordinates(selectedCourt, courtInfo);
   }, [selectedCourt]);
-
+  
   return (
     <>
       <Marker 

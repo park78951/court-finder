@@ -10,7 +10,6 @@ const SideBarWrapper = styled.div`
   background-color: white;
   width: 380px;
   box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.5);
-  opacity: 0.9;
   overflow: hidden;
 `;
 

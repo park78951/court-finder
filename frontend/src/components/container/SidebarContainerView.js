@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import Loader from '../Loader';
@@ -16,7 +16,7 @@ const SidebarListContainer = () => {
     searchedCourts, 
     isSearching, 
     isError, 
-    totalCourts, 
+    // totalCourts, 
     userInput } = useSelector(state => state.storeOnSearch);
   const { filterInput } = useSelector(state => state.storeOnFilter);
   const dispatch = useDispatch();
@@ -26,23 +26,23 @@ const SidebarListContainer = () => {
       userInput, 
       filterInput, 
       page,
-    }))
+    }));
   };
 
   return (
     <>
-      {/* <HelperNav /> */}
+      <HelperNav />
       <Style.SideBarContentsWrapper>
-      {
-        isError
-          ? <Refetch />
-          : (searchedCourts.length
-            ? <CourtList />
-            : <NoResult />)
-      }
-      {isSearching && <Loader />}
+        {
+          isError
+            ? <Refetch />
+            : (!searchedCourts.length && !isSearching
+              ? <NoResult />
+              : <CourtList />)
+        }
+        { isSearching && <Loader /> }
       </Style.SideBarContentsWrapper>
-      {searchedCourts.length && (
+      { searchedCourts.length > 0 && (
         <Pagination 
           clickHandler={ changeCurrentPage }
           totalCourts={ 10 }
@@ -50,7 +50,7 @@ const SidebarListContainer = () => {
           userInput={ userInput }
           filterInput={ filterInput }
         />
-      )}
+      ) }
     </>
   );
 };

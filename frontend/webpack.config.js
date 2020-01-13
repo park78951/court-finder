@@ -40,18 +40,31 @@ module.exports = {
         test: /\.(js)$/,
         exclude: /node_modules/,
         use: ['babel-loader']
-      }
+      },
+      {
+        test: /\.(jpg|jpeg|gif|png|svg|ico|woff|woff2|eot|ttf|otf)?$/,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 10000,
+              fallback: 'file-loader',
+              name: 'assets/images/[name]-[hash].[ext]',
+            },
+          },
+        ],
+      },
     ]
   },
   devServer: {
     publicPath: '/',
     historyApiFallback: true,
-    contentBase: path.join(__dirname, 'public')
+    contentBase: path.join(__dirname, 'src/assets')
   },
   plugins: [
     new HtmlWebPackPlugin({
       template: 'public/index.html',
-      favicon: 'public/img/favicon.png'
+      favicon: 'public/favicon.png'
     }),
     new webpack.EnvironmentPlugin({
       KEY: dotenv.parsed.GOOGLE_API_KEY,

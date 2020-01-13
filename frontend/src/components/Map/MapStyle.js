@@ -32,6 +32,11 @@ const MapContainer = styled.div`
         margin: 0;
         padding: 0;
       }
+      
+      & > h2 {
+        font-weight: bold;
+        font-size: 1.05rem;
+      }
     }
   }
 `;

@@ -26,6 +26,12 @@ const ReviewInfoWrapper = styled.div`
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
     background-color: #555;
   }
+
+  & > h2 {
+    font-weight: bold;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
 `;
 
 export default { ReviewInfoWrapper };
