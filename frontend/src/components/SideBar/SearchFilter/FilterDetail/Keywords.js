@@ -7,7 +7,7 @@ import { filterConfig } from '../../../../config/initConfig';
 import { FILTER_OPTIONS_TYPES } from '../../../../config/constants';
 import { storeKeywords } from '../../../../myUtil';
 
-const Keywords = ({ setFilterData }) => {
+const Keywords = ({ setFilterInput }) => {
   const keywordsDetails = filterConfig.keywords.details;
   const keywords = Object.keys(keywordsDetails);
   const [keywordFilter, setKeywordFilter] = useState({});
@@ -31,7 +31,7 @@ const Keywords = ({ setFilterData }) => {
   });
 
   useEffect(() => {
-    setFilterData(keywordFilter);
+    setFilterInput(keywordFilter);
   }, [keywordFilter]);
 
   return (
@@ -42,7 +42,7 @@ const Keywords = ({ setFilterData }) => {
 };
 
 Location.propTypes = {
-  setFilterData: PropTypes.func
+  setFilterInput: PropTypes.func
 };
 
 export default React.memo(Keywords);

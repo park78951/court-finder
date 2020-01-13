@@ -45,7 +45,8 @@ module.exports = {
   },
   devServer: {
     publicPath: '/',
-    historyApiFallback: true
+    historyApiFallback: true,
+    contentBase: path.join(__dirname, 'public')
   },
   plugins: [
     new HtmlWebPackPlugin({

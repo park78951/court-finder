@@ -11,10 +11,10 @@ function searchCourtsAPI(body) {
 }
 
 function* searchCourts(action) {
-  const { userInput, filterInput } = action.payload;
+  const { userInput, filterInput, page } = action.payload;
   const body = {
-    "page": 1,
-    "size": 10,
+    "page": page,
+    "size": 6,
     "query": {
       "match": userInput,
       "filter":{}

@@ -3,7 +3,7 @@ import FilterType from './FilterType';
 import { filterConfig} from '../../../../config/initConfig';
 import PropTypes from 'prop-types';
 
-const Location = ({ setFilterData }) => {
+const Location = ({ setFilterInput }) => {
   const locationDetail = filterConfig.location.options;
   const cities = Object.keys(locationDetail);
 
@@ -11,7 +11,7 @@ const Location = ({ setFilterData }) => {
   const [district, setDistrict] = useState('');
 
   useEffect(() => {
-    setFilterData({
+    setFilterInput({
       city,
       district
     });
@@ -37,7 +37,7 @@ const Location = ({ setFilterData }) => {
 };
 
 Location.propTypes = {
-  setFilterData: PropTypes.func
+  setFilterInput: PropTypes.func
 };
 
 export default React.memo(Location);

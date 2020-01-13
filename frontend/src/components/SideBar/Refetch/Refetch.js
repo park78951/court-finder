@@ -12,15 +12,19 @@ import Style from './RefetchStyle';
 const Refetch = () => {
   const { color, size } = refetchBtnStyle;
   const dispatch = useDispatch();
-  const { userInput, filterData } = useSelector(state => ({
+  const { userInput, filterInput } = useSelector(state => ({
     userInput: state.storeOnSearch.userInput,
-    filterData: state.storeOnFilter.filterData
+    filterInput: state.storeOnFilter.filterInput
   }));
 
   const refetchRequestor = useCallback(() => {
-    dispatch(startSearchingCourts(userInput, filterData));
+    dispatch(startSearchingCourts({
+      userInput, 
+      filterInput, 
+      page: 1
+    }));
     getUserInput(userInput);
-  }, [userInput, filterData]);
+  }, [userInput, filterInput]);
 
   return (
     <ThemeProvider theme={ buttonTheme }>

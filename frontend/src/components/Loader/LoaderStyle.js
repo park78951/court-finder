@@ -1,7 +1,9 @@
 import styled, { css } from 'styled-components';
 
 const LoaderContainer = styled.div`
-  flex: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
   display: flex;
   justify-content: center;
   align-items: center;

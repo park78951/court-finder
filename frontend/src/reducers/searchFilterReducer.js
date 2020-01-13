@@ -1,20 +1,20 @@
 import { initFilterInfo } from './initalState';
 import { 
-  SEND_FILTER_DATA,
-  INIT_FILTER_DATA
+  SEND_FILTER_INPUT,
+  INIT_FILTER_INPUT
 } from '../actions/types';
 
 const searchFilterReducer = (state = initFilterInfo, { type, payload }) => {
   switch (type) {
-    case SEND_FILTER_DATA:
+    case SEND_FILTER_INPUT:
       return {
         ...state,
-        filterData: payload
+        filterInput: payload
       };
-    case INIT_FILTER_DATA:
+    case INIT_FILTER_INPUT:
       return  {
         ...state,
-        filterData: {}
+        filterInput: {}
       };
     default:
       return state;

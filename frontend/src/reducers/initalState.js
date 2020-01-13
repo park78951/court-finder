@@ -21,7 +21,7 @@ export const initUIToggleInfo = {
 };
 
 export const initFilterInfo = {
-  filterData: {}
+  filterInput: {}
 };
 
 export const initSubmitList = {

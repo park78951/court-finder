@@ -1,14 +1,14 @@
 import { hot } from 'react-hot-loader/root';
 import React from 'react';
 import { createGlobalStyle } from 'styled-components';
-import { normalize } from 'styled-normalize';
+import reset from 'styled-reset';
 import { Provider } from 'react-redux';
 
 import App from './components';
 import store from './store';
 
 const GlobalStyle = createGlobalStyle`
-  ${ normalize }
+  ${ reset }
 
   *{
    box-sizing: border-box; 

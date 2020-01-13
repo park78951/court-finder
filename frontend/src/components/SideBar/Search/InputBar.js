@@ -9,7 +9,7 @@ import Style from './InputBarStyle';
 
 const InputBar = () => {
   const [term, setTerm] = useState('');
-  const { filterData } = useSelector(({ storeOnFilter}) => storeOnFilter);
+  const { filterInput } = useSelector(({ storeOnFilter}) => storeOnFilter);
   const dispatch = useDispatch();
   const history = useHistory();
   const { pathname } = useLocation();
@@ -23,11 +23,15 @@ const InputBar = () => {
     evt.preventDefault();
     
     dispatch(unselectCourt());
-    dispatch(startSearchingCourts(term, filterData));
+    dispatch(startSearchingCourts({
+      userInput: term, 
+      filterInput,
+      page: 1
+    }));
     setTerm('');
 
     if(pathname !== '/search') history.push('/search');
-  }, [term, filterData, pathname]);
+  }, [term, filterInput, pathname]);
 
   return (
     <Style.InputContainer onSubmit={ inputSubmit }>

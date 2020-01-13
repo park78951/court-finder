@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 import { useDispatch } from 'react-redux';
-import { removeFilterData } from '../../../actions';
+import { removeFilterInput } from '../../../actions';
 import { useHistory } from 'react-router-dom';
 import Style from './HelperNavStyle';
 
@@ -13,7 +13,7 @@ const HelperNav = () => {
   }, []);
 
   const initializeFilter = useCallback(() => {
-    dispatch(removeFilterData());
+    dispatch(removeFilterInput());
     alert('필터를 초기화했습니다.');
   }, []);
 

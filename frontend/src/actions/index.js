@@ -8,18 +8,19 @@ import {
   CLOSE_COURTADDITION,
   TOGGLE_SIDEBAR,
   USER_INPUT,
-  SEND_FILTER_DATA,
-  INIT_FILTER_DATA,
+  SEND_FILTER_INPUT,
+  INIT_FILTER_INPUT,
   DELETE_COURTS,
   MOUSEOVER_LIST,
   UNSELECT_COURT,
 } from './types';
 
-export const startSearchingCourts = (userInput, filterInput) => ({
+export const startSearchingCourts = ({ userInput, filterInput, page }) => ({
   type: SEARCH_COURTS_REQUEST,
   payload: {
     userInput,
     filterInput,
+    page
   }
 });
 
@@ -68,13 +69,13 @@ export const getUserInput = input => ({
   payload: input,
 });
 
-export const getFilterData = filterData => ({
-  type: SEND_FILTER_DATA,
-  payload: filterData,
+export const getFilterInput = filterInput => ({
+  type: SEND_FILTER_INPUT,
+  payload: filterInput,
 });
 
-export const removeFilterData = () => ({
-  type: INIT_FILTER_DATA,
+export const removeFilterInput = () => ({
+  type: INIT_FILTER_INPUT,
 });
 
 export const getMouseOverList = mouseoverList => ({

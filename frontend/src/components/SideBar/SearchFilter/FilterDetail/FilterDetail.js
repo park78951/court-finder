@@ -8,7 +8,7 @@ import Keywords from './Keywords';
 import Recommendation from './Recommendation';
 import Level from './Level';
 import Style from './FilterDetailStyle';
-import { getFilterData, removeFilterData } from '../../../../actions';
+import { getFilterInput, removeFilterInput } from '../../../../actions';
 import { Button } from '../../../lib';
 import { filterButton, buttonTheme } from '../../../../config/initConfig';
 import { FILTER_NOT_WORKING, FILTER_APPLIED } from '../../../../config/constants';
@@ -18,22 +18,22 @@ const FilterDetail = ({ isFilterOpen, activeBtn }) => {
   const { apply, initialize } = filterButton;
   const dispatch = useDispatch();
 
-  const [filterData, setFilterData] = useState({});
+  const [filterInput, setFilterInput] = useState({});
 
-  const sendFilterData = useCallback(e => {
+  const sendFilterInput = useCallback(e => {
     e.stopPropagation();
     if(activeBtn !== 'location') {
       alert(FILTER_NOT_WORKING);
       return;
     }
 
-    const polishedFilterData = deleteObjProps(filterData);
-    dispatch(getFilterData(polishedFilterData));
+    const polishedFilterInput = deleteObjProps(filterInput);
+    dispatch(getFilterInput(polishedFilterInput));
     alert(FILTER_APPLIED);
-  }, [activeBtn, filterData]);
+  }, [activeBtn, filterInput]);
 
   const initFilters = useCallback(() => {
-    dispatch(removeFilterData());
+    dispatch(removeFilterInput());
   }, []);
 
   const filterDetailRenderer = useMemo(() => {
@@ -41,25 +41,25 @@ const FilterDetail = ({ isFilterOpen, activeBtn }) => {
       case 'location':
         return (
           <Location 
-            setFilterData={ setFilterData }
+            setFilterInput={ setFilterInput }
           />
         );
       case 'keywords':
         return (
           <Keywords 
-            setFilterData={ setFilterData }
+            setFilterInput={ setFilterInput }
           />
         );
       case 'recommendation':
         return (
           <Recommendation
-            setFilterData={ setFilterData }
+            setFilterInput={ setFilterInput }
           />
         );
       case 'level':
         return (
           <Level 
-            setFilterData={ setFilterData }
+            setFilterInput={ setFilterInput }
           />
         );
       default:
@@ -75,7 +75,7 @@ const FilterDetail = ({ isFilterOpen, activeBtn }) => {
           <Button 
             size={ apply.size }
             color={ apply.color }
-            onClick={ sendFilterData }
+            onClick={ sendFilterInput }
           >
             필터적용
           </Button>

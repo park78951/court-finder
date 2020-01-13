@@ -2,11 +2,11 @@ import styled from 'styled-components';
 
 const HamburgerWrapper = styled.button`
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   position: absolute;
-  top: 2px;
-  left: 2px;
+  top: 4px;
+  left: 4px;
   width: 60px;
   height: 55px;
   z-index: 10;

@@ -3,33 +3,37 @@ import _ from 'lodash';
 import { MdNavigateBefore, MdNavigateNext } from "react-icons/md";
 import Style from './PaginationStyle';
 
-const Pagination = ({ courtsPerPage, numbersOnList, totalCourts, clickHandler }) => {
+const Pagination = ({ 
+  courtsPerPage, 
+  numbersOnList, 
+  totalCourts, 
+  clickHandler,
+  userInput,
+  filterInput
+}) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [currentPages, setCurrentPages] = useState([]);
-
-  const totalPage = Math.floor(totalCourts / courtsPerPage);
+  const totalPage = Math.ceil(totalCourts / courtsPerPage);
   const totalNumbers = _.fill(Array(totalPage), 0)
     .map((_, idx) => idx + 1);
 
-  const clickNext = useCallback((event) => {
+  const clickNext = useCallback(() => {
     if(currentPage === totalPage) return;
-    clickHandler(event);
+    clickHandler(userInput, filterInput, currentPage + 1);
     setCurrentPage(prevState => prevState + 1);
-  }, [currentPage]);
+  }, [currentPage, userInput, filterInput]);
 
-  const clickBefore = useCallback((event) => {
+  const clickBefore = useCallback(() => {
     if(currentPage === 1) return;
-    clickHandler(event);
-    setCurrentPage(prevState => prevState - 1);
-  }, [currentPage]);
+    clickHandler(userInput, filterInput, currentPage - 1);
+    setCurrentPage(currentPage - 1);
+  }, [currentPage, userInput, filterInput]);
 
   const clickNumber = useCallback(({ target }) => {
     const targetNumber = Number(target.closest('button').textContent);
-    if(currentPage === targetNumber) return;
-    console.log(targetNumber);
-    // clickHandler(target);
+    clickHandler(userInput, filterInput, targetNumber);
     setCurrentPage(targetNumber);
-  }, [currentPage]);
+  }, [currentPage, userInput, filterInput]);
 
   const numberList = useMemo(() => {
     const pageList = currentPages.map(pageNumber => (
@@ -37,7 +41,6 @@ const Pagination = ({ courtsPerPage, numbersOnList, totalCourts, clickHandler })
         { pageNumber }
       </button>
     ));
-
     return (
       <div className='number-btns'>
         { pageList }
@@ -49,7 +52,6 @@ const Pagination = ({ courtsPerPage, numbersOnList, totalCourts, clickHandler })
     const pageDivision = Math.floor((currentPage - 1) / numbersOnList);
     const numberStartingFromOnList = pageDivision * numbersOnList;
     const numberEndingBeforeOnList = (pageDivision + 1) * numbersOnList;
-
     setCurrentPages(totalNumbers.slice(
       numberStartingFromOnList, 
       numberEndingBeforeOnList

@@ -6,7 +6,7 @@ import { storeKeywords } from '../../../../myUtil';
 import PropTypes from 'prop-types';
 
 
-const Level = ({ setFilterData }) => {
+const Level = ({ setFilterInput }) => {
   const levelDetails = filterConfig.level.details;
   const levelOptions = Object.keys(levelDetails);
   const [levelFilter, setLevelFilter] = useState({});
@@ -30,7 +30,7 @@ const Level = ({ setFilterData }) => {
   });
 
   useEffect(() => {
-    setFilterData(levelFilter);
+    setFilterInput(levelFilter);
   }, [levelFilter]);
 
   return (
@@ -41,7 +41,7 @@ const Level = ({ setFilterData }) => {
 };
 
 Level.propTypes = {
-  setFilterData: PropTypes.func
+  setFilterInput: PropTypes.func
 };
 
 export default React.memo(Level);

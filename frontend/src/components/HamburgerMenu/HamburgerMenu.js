@@ -19,7 +19,7 @@ const HamburgerMenu = () => {
       onClick={ sidebarClickHandler }
       isSidebarHidden={ isSidebarHidden }
     >
-      <FaBars size={33} />
+      <FaBars size={25} />
     </Style.HamburgerWrapper>
   );
 };

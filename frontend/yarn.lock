@@ -6297,10 +6297,10 @@ styled-components@^4.3.2:
     stylis-rule-sheet "^0.0.10"
     supports-color "^5.5.0"
 
-styled-normalize@^8.0.6:
-  version "8.0.6"
-  resolved "https://registry.yarnpkg.com/styled-normalize/-/styled-normalize-8.0.6.tgz#f27f87292f46aa79ad6db6339aff5db529df3c91"
-  integrity sha512-tOnAD1+wV04aiVy6chaQA4u/EtkGiGZPlIBYvEfWlZQBrDqRhu9EdPyXlFzLWxpOmANoQelJqSOMlV3QNCDKkw==
+styled-reset@^4.0.9:
+  version "4.0.9"
+  resolved "https://registry.yarnpkg.com/styled-reset/-/styled-reset-4.0.9.tgz#cfbcb84f1fefb0a86353571bd36a13a6544c22cb"
+  integrity sha512-CPd35acmsdrJpR3j1eAKlwPuLY+JEN+5uc1pvUD+7Ped7j8nXFTqXWJaFkLScqCsRNoaON/pSutD85dDX7IwGg==
 
 stylis-rule-sheet@^0.0.10:
   version "0.0.10"
