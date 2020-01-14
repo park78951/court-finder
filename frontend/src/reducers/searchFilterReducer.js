@@ -9,7 +9,7 @@ const searchFilterReducer = (state = initFilterInfo, { type, payload }) => {
     case SEND_FILTER_INPUT:
       return {
         ...state,
-        filterInput: payload
+        filterInput: { ...payload }
       };
     case INIT_FILTER_INPUT:
       return  {
