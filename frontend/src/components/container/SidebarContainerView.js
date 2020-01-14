@@ -16,7 +16,7 @@ const SidebarListContainer = () => {
     searchedCourts, 
     isSearching, 
     isError, 
-    // totalCourts, 
+    totalCourts, 
     userInput } = useSelector(state => state.storeOnSearch);
   const { filterInput } = useSelector(state => state.storeOnFilter);
   const dispatch = useDispatch();
@@ -45,7 +45,7 @@ const SidebarListContainer = () => {
       { searchedCourts.length > 0 && (
         <Pagination 
           clickHandler={ changeCurrentPage }
-          totalCourts={ 10 }
+          totalCourts={ totalCourts }
           { ...paginationConfig }
           userInput={ userInput }
           filterInput={ filterInput }

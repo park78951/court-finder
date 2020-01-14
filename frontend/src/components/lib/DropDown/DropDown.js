@@ -2,7 +2,7 @@ import React from 'react';
 import Style from './DropDownStyle';
 import PropTypes from 'prop-types';
 
-const CustomDropDown = ({ optionValues = [], size, ...rest }) => {
+const CustomDropDown = ({ optionValues = [], size, placeholder = true, ...rest }) => {
   const selectOptions = optionValues.map( optionValue => {
     return (
       <option value={ optionValue } key={ optionValue } >{optionValue}</option>
@@ -14,12 +14,13 @@ const CustomDropDown = ({ optionValues = [], size, ...rest }) => {
       size={ size }
       { ...rest }
     >
-      <option 
-        defaultValue='' 
-        value=''
-      >
-        선택해주세요
-      </option>
+      {
+        placeholder && (
+          <option defaultValue='' value=''>
+            선택해주세요
+          </option>
+        ) 
+      }
       { selectOptions }
     </Style.DropDown>
   );

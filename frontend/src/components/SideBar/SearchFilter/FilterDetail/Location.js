@@ -1,43 +1,46 @@
-import React, { useState, useEffect } from 'react';
-import FilterType from './FilterType';
-import { filterConfig} from '../../../../config/initConfig';
-import PropTypes from 'prop-types';
+import React, { useState, useCallback } from 'react';
+import { useDispatch } from 'react-redux';
 
-const Location = ({ setFilterInput }) => {
+import FilterType from './FilterType';
+import { getFilterInput } from '../../../../actions';
+import { filterConfig } from '../../../../config/initConfig';
+
+const Location = () => {
   const locationDetail = filterConfig.location.options;
   const cities = Object.keys(locationDetail);
 
-  const [city, setCity] = useState('');
-  const [district, setDistrict] = useState('');
+  const dispatch = useDispatch();
+  // 추후 data 양 증가에 따른 data set 변경
+  const [city, setCity] = useState(cities[0]);
 
-  useEffect(() => {
-    setFilterInput({
+  // 추후 data 양 증가에 따른 payload 넘겨주는 data 변경
+  // 현재는 onChange가 될 일이 없음
+  const setCityFilter = useCallback(({ target }) => {
+    setCity(target);
+  }, []);
+
+  const setDistrictFilter = useCallback(({ target }) => {
+    dispatch(getFilterInput({
       city,
-      district
-    });
-    if(!city) {
-      setDistrict('');
-    }
-  }, [city, district]);
-
+      district: target.value,
+    }));
+  }, []);
+  
   return (
     <div className='dropdown__menus'>
       <FilterType 
         menuTitle='도시명'
-        onChange={ ({ target }) => setCity(target.value) }
+        onChange={ setCityFilter }
         optionValues={ cities }
+        placeholder={ false }
       />
       <FilterType 
         menuTitle='군/구'
-        onChange={ ({ target }) => setDistrict(target.value)}
+        onChange={ setDistrictFilter }
         optionValues={ locationDetail[city] }
       />
     </div>
   );
-};
-
-Location.propTypes = {
-  setFilterInput: PropTypes.func
 };
 
 export default React.memo(Location);

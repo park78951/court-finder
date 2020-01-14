@@ -24,9 +24,9 @@ export const startSearchingCourts = ({ userInput, filterInput, page }) => ({
   }
 });
 
-export const completeSearchCourts = courtsData => ({
+export const completeSearchCourts = (totalCourts, courtsData) => ({
   type: SEARCH_COURTS_SUCCESS,
-  payload: courtsData,
+  payload: { totalCourts, courtsData },
 });
 
 export const catchErrorOnSearch = error => ({
