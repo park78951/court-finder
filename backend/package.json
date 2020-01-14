@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "cross-env NODE_ENV=production pm2 ./bin/www",
+    "start": "cross-env NODE_ENV=production pm2 start ecosystem.config.js",
     "dev": "nodemon ./bin/www"
   },
   "dependencies": {
