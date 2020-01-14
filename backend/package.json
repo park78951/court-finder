@@ -3,12 +3,11 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "cross-env NODE_ENV=production pm2 ./bin/www",
+    "start": "cross-env NODE_ENV=production pm2 start ecosystem.config.js",
     "dev": "nodemon ./bin/www"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
-    "cors": "^2.8.5",
     "cross-env": "^6.0.3",
     "debug": "~2.6.9",
     "dotenv": "^8.2.0",
