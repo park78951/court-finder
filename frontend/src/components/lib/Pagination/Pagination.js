@@ -2,6 +2,7 @@ import React, { useState, useMemo, useCallback, useEffect } from 'react';
 import _ from 'lodash';
 import { MdNavigateBefore, MdNavigateNext } from "react-icons/md";
 import PropTypes from 'prop-types';
+import { getCurrentPageNumbers } from '../../../myUtil';
 import Style from './PaginationStyle';
 
 const Pagination = ({ 
@@ -15,7 +16,7 @@ const Pagination = ({
   const [currentPage, setCurrentPage] = useState(1);
   const [currentPages, setCurrentPages] = useState([]);
   const totalPage = Math.ceil(totalCourts / courtsPerPage);
-  const totalNumbers = _.fill(Array(totalPage), 0)
+  const totalPageNumbers = _.fill(Array(totalPage), 0)
     .map((_, idx) => idx + 1);
 
   const clickNext = useCallback(() => {
@@ -50,13 +51,16 @@ const Pagination = ({
   }, [currentPages]);
 
   useEffect(() => {
-    const pageDivision = Math.floor((currentPage - 1) / numbersOnList);
-    const numberStartingFromOnList = pageDivision * numbersOnList;
-    const numberEndingBeforeOnList = (pageDivision + 1) * numbersOnList;
-    setCurrentPages(totalNumbers.slice(
-      numberStartingFromOnList, 
-      numberEndingBeforeOnList
-    ));
+    setCurrentPage(1);
+  }, [totalCourts]);
+
+  useEffect(() => {
+    const currentPageNumbers = getCurrentPageNumbers({
+      currentPage,
+      itemsToShow: numbersOnList,
+      totalPageNumbers
+    })
+    setCurrentPages(currentPageNumbers);
   }, [totalCourts, currentPage]);
 
   return (

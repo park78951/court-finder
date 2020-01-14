@@ -23,8 +23,8 @@ function* searchCourts(action) {
   if (filterInput) body.query.filter = filterInput;
   try {
     const response = yield call(searchCourtsAPI, body);
-    console.log(response);
-    yield put(completeSearchCourts(response.data.courts));
+    const { totalCount, courts } = response.data;
+    yield put(completeSearchCourts(totalCount, courts));
   } catch (err) {
     console.error(err);
     yield put(catchErrorOnSearch(err));

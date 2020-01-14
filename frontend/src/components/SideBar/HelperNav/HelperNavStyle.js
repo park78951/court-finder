@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 const HelperNavWrapper = styled.div`
+  flex: 0 0 auto;
   height: 2.5rem;
   width: 100%;
   display: flex;

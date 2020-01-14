@@ -9,10 +9,12 @@ import {
 const searchReducer = (state = searchInfo, { type, payload}) => {
   switch (type) {
     case SEARCH_COURTS_SUCCESS:
+      const { totalCourts, courtsData } = payload;
       return {
         ...state,
         isSearching: false,
-        searchedCourts: [...payload]
+        totalCourts,
+        searchedCourts: [...courtsData],
       };
 
     case SEARCH_COURTS_REQUEST:
