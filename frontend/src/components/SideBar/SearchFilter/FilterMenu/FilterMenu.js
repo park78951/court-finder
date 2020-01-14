@@ -1,8 +1,8 @@
 import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
-import { filterConfig } from '../../../../config/initConfig';
-import { MdExpandMore } from 'react-icons/lib/md';
 import Style from './FilterMenuStyle';
+import { filterConfig } from '../../../../config/initConfig';
+import { MdExpandMore } from 'react-icons/md';
 
 const FilterMenu = ({ isFilterOpen, setIsFilterOpen, activeBtn, setActiveBtn }) => {
   const filterToggler = useCallback(() => {

@@ -1,10 +1,9 @@
 import styled from 'styled-components';
-import { flexBox } from '../../../../styles';
 
 const MenuWrapper = styled.div`
-  ${ flexBox.displayFlex() };
-  ${ flexBox.justifyContent('space-between') };
-  ${ flexBox.alignItems('center') };
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   height: 4rem;
   width: 100%;
   border: solid 1px #D3D3D3;
@@ -16,6 +15,7 @@ const MenuWrapper = styled.div`
     background-color: transparent;
     border: none;
     cursor: pointer;
+    font-size: 0.9rem;
   }
 
   .filter__types {

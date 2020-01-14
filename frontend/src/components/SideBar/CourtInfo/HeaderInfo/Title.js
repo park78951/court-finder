@@ -3,11 +3,11 @@ import GoBackBtn from './GoBackBtn';
 import Style from './TitleStyle';
 import PropTypes from 'prop-types';
 
-const Title = ({ locationName }) => {
+const Title = ({ name }) => {
   return (
     <Style.HeaderTitleStyle>
       <GoBackBtn />
-      <p>{ locationName }</p>
+      <p>{ name }</p>
     </Style.HeaderTitleStyle>
   );
 };

@@ -2,11 +2,9 @@ import React from 'react';
 import Style from './PhotosStyle';
 
 const Photos = () => {
-  // 보여줄 사진에 대한 index 정보를 위해 setState 사용 예정
-
   return (
     <Style.PhotosWrapper>
-      <div></div>
+      <p>사진 정보 없음</p>
     </Style.PhotosWrapper>
   );
 };

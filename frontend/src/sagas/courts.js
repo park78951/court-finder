@@ -1,27 +1,30 @@
 import { fork, put, takeLatest, call, all } from 'redux-saga/effects';
 import courtsApi from '../apis';
-import { filterCourtsByInput } from '../myUtil';
 import {
   completeSearchCourts,
   catchErrorOnSearch,
 } from '../actions';
 import { SEARCH_COURTS_REQUEST } from '../actions/types';
 
-function searchCourtsAPI() {
-  return courtsApi.get('/seoulCourt.json');
+function searchCourtsAPI(body) {
+  return courtsApi.post('/courts/search', body);
 }
 
 function* searchCourts(action) {
-  const { userInput, filterData } = action.payload;
+  const { userInput, filterInput, page } = action.payload;
+  const body = {
+    "page": page,
+    "size": 6,
+    "query": {
+      "match": userInput,
+      "filter":{}
+    }
+  };
+  if (filterInput) body.query.filter = filterInput;
   try {
-    const fetchedData = yield call(searchCourtsAPI);
-    const courtsData = fetchedData.data.body;
-    const filteredCourts = filterCourtsByInput({
-      userInput, 
-      courtsData,
-      filterData
-    });
-    yield put(completeSearchCourts(filteredCourts));
+    const response = yield call(searchCourtsAPI, body);
+    console.log(response);
+    yield put(completeSearchCourts(response.data.courts));
   } catch (err) {
     console.error(err);
     yield put(catchErrorOnSearch(err));

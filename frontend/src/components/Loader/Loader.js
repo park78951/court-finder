@@ -1,5 +1,5 @@
 import React from 'react';
-import { DotLoader } from 'react-spinners';
+import { ClipLoader } from 'react-spinners';
 import { loaderConfig } from '../../config/initConfig';
 import Styled, { loaderStyle } from './LoaderStyle';
 
@@ -12,7 +12,7 @@ const Loader = () => {
 
   return (
     <Styled.LoaderContainer>
-      <DotLoader 
+      <ClipLoader 
         sizeUnit={ sizeUnit }
         size={ size }
         color={ color }

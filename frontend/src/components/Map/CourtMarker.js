@@ -10,11 +10,11 @@ const CourtMarker = ({
 }) => {
   const { marker } = defaultMapOptions;
   const { selectedCourt } = useSelector(state => state.storeOnSelection);
-
+  
   const isSelectedCourt = useMemo(() => {
     return compareCoordinates(selectedCourt, courtInfo);
   }, [selectedCourt]);
-
+  
   return (
     <>
       <Marker 

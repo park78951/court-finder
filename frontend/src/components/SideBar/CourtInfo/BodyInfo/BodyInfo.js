@@ -10,7 +10,7 @@ import {
   MdAccessTime,
   MdDirectionsTransit,
   MdLocalParking,
-} from 'react-icons/lib/md';
+} from 'react-icons/md';
 import Style from './BodyInfoStyle';
 import PropTypes from 'prop-types';
 
@@ -25,7 +25,7 @@ const BodyInfo = () => {
       web,
       phone,
       fee,
-      in_out,
+      isIndoor,
       availableTime,
       transportation,
       parkingLot,
@@ -56,7 +56,7 @@ const BodyInfo = () => {
         </div>
         <div>
           <MdHome size={ iconSize.bodyInfo } />
-          <span>실내여부: { in_out ? in_out : NO_DATA }</span>
+          <span>실내여부: { isIndoor ? '실내' : '실외' }</span>
         </div>
         <div>
           <MdAccessTime size={ iconSize.bodyInfo } />

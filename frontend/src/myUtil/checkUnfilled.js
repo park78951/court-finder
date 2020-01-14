@@ -1,5 +1,3 @@
-const checkUnfilled = collection => {
+export default collection => {
   return Object.values(collection).every(val => val);
 };
-
-export default checkUnfilled;

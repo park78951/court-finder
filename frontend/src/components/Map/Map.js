@@ -10,16 +10,17 @@ import {
   InfoBox
 } from '@react-google-maps/api';
 import { useSelector } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
+import _ from 'lodash';
 import PropTypes from 'prop-types';
 
 import { defaultMapOptions } from '../../config/initConfig';
-import { createFullCoordinate, keyMaker, getCenterPosition } from '../../myUtil';
+import { createFullCoordinate, getCenterPosition } from '../../myUtil';
 import CourtMarker from './CourtMarker';
 import Style from './MapStyle';
 
-const Map = ({ location }) => {
-  const { pathname } = location;
+const Map = () => {
+  const { pathname } = useLocation();
   const { 
     center, 
     defaultZoom,
@@ -30,7 +31,7 @@ const Map = ({ location }) => {
     infoBoxWidth,
     infoBoxMarginTop,
   } = defaultMapOptions;
-
+  
   const [curCenter, setCurCenter] = useState(center);
   const [curZoom, setCurZoom] = useState(defaultZoom);
   const [mouseoverMarker, setMouseoverMarker] = useState(null);
@@ -40,6 +41,7 @@ const Map = ({ location }) => {
     selectedCourt: state.storeOnSelection.selectedCourt,
     mouseoverList: state.storeOnSelection.mouseoverList,
   }));
+
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: process.env.KEY
   });
@@ -50,10 +52,10 @@ const Map = ({ location }) => {
 
   const markers = useMemo(() => {
     return searchedCourts.map((courtInfo) => {
-      const { locationName } = courtInfo;
+      const { name } = courtInfo;
       return (
         <CourtMarker
-          key={ keyMaker(locationName) }
+          key={ _.uniqueId(name) }
           courtInfo={ courtInfo }
           mouseOverOutHandler={ onMouseOverAndOutOfMarker }
         />            
@@ -72,7 +74,7 @@ const Map = ({ location }) => {
         }}
       >
         <div className='infoBox__container'>
-          <h2>{ onMouseOverCourt.locationName }</h2>
+          <h2>{ onMouseOverCourt.name }</h2>
           <p>{ onMouseOverCourt.address }</p>
         </div>
       </InfoBox>
@@ -112,4 +114,4 @@ Map.propTypes = {
   searchedCourts: PropTypes.array,
 };
 
-export default React.memo(withRouter(Map));
+export default React.memo(Map);

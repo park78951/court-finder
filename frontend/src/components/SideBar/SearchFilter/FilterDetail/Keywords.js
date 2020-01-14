@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import FilterMenu from './FilterType';
+import PropTypes from 'prop-types';
+
+import FilterType from './FilterType';
+import _ from 'lodash';
 import { filterConfig } from '../../../../config/initConfig';
 import { FILTER_OPTIONS_TYPES } from '../../../../config/constants';
 import { storeKeywords } from '../../../../myUtil';
-import PropTypes from 'prop-types';
 
-const Keywords = ({ setFilterData }) => {
+const Keywords = ({ setFilterInput }) => {
   const keywordsDetails = filterConfig.keywords.details;
   const keywords = Object.keys(keywordsDetails);
   const [keywordFilter, setKeywordFilter] = useState({});
@@ -13,8 +15,8 @@ const Keywords = ({ setFilterData }) => {
   const dropdownList = keywords.map(keyword => {
     const keywordType = FILTER_OPTIONS_TYPES[keyword];
     return(
-      <FilterMenu 
-        key={ keyword }
+      <FilterType 
+        key={ _.uniqueId(keyword) }
         menuTitle={ keyword }
         optionValues={ keywordsDetails[keyword] }
         onChange={ 
@@ -29,7 +31,7 @@ const Keywords = ({ setFilterData }) => {
   });
 
   useEffect(() => {
-    setFilterData(keywordFilter);
+    setFilterInput(keywordFilter);
   }, [keywordFilter]);
 
   return (
@@ -40,7 +42,7 @@ const Keywords = ({ setFilterData }) => {
 };
 
 Location.propTypes = {
-  setFilterData: PropTypes.func
+  setFilterInput: PropTypes.func
 };
 
 export default React.memo(Keywords);

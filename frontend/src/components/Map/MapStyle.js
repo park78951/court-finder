@@ -1,5 +1,4 @@
 import styled, { keyframes } from 'styled-components';
-import { flexBox } from '../../styles';
 
 const appear = keyframes`
   0% {
@@ -19,9 +18,9 @@ const MapContainer = styled.div`
     animation: ${ appear } 1s;
 
     .infoBox__container {
-      ${ flexBox.displayFlex() };
-      ${ flexBox.justifyContent('center') };
-      ${ flexBox.flexDirection('column') };
+      display: flex;
+      justify-content: center;
+      flex-flow: column;
       background: white;
       border: 1px solid #ccc;
       padding-left: 0.5rem;
@@ -32,6 +31,11 @@ const MapContainer = styled.div`
       & > p, h2 {
         margin: 0;
         padding: 0;
+      }
+      
+      & > h2 {
+        font-weight: bold;
+        font-size: 1.05rem;
       }
     }
   }

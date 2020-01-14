@@ -1,14 +1,13 @@
 import styled from 'styled-components';
-import { flexBox } from '../../../../styles';
 
 const AddressStyle = styled.div`
-  ${ flexBox.displayFlex() };
-  ${ flexBox.justifyContent('center') };
-  ${ flexBox.alignItems('center') };
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-weight: bold;
   margin: 5px 0;
     & > div {
-      ${ flexBox.displayFlex() };
+      display: flex;
       font-weight: bold;
       width: fit-content;
     }

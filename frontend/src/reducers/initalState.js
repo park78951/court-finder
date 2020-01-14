@@ -2,7 +2,8 @@ export const searchInfo = {
   searchedCourts: [],
   isSearching: false,
   isError: false,
-  userInput: null
+  userInput: null,
+  totalCourts: null,
 };
 
 export const selectionInfo = {
@@ -20,7 +21,7 @@ export const initUIToggleInfo = {
 };
 
 export const initFilterInfo = {
-  filterData: {}
+  filterInput: {}
 };
 
 export const initSubmitList = {

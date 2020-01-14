@@ -1,4 +1,4 @@
-const storeKeywords = (keywordType, state, setState) => (
+export default (keywordType, state, setState) => (
   ({ target }) => {
     const value = target.value === '선택해주세요' ? '' : target.value;
     
@@ -8,5 +8,3 @@ const storeKeywords = (keywordType, state, setState) => (
     });
   }
 );
-
-export default storeKeywords;

@@ -1,12 +1,11 @@
 import styled from 'styled-components';
-import { flexBox } from '../../../styles';
 
 const RefetchWrapper = styled.div`
   height: 100%;
-  ${ flexBox.displayFlex() };
-  ${ flexBox.justifyContent('center') };
-  ${ flexBox.alignItems('center') };
-  ${ flexBox.flexDirection('column') };
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column;
 
   & > p {
     text-align: center;

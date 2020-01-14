@@ -6,7 +6,7 @@ import { storeKeywords } from '../../../../myUtil';
 import PropTypes from 'prop-types';
 
 
-const Recommendation = ({ setFilterData }) => {
+const Recommendation = ({ setFilterInput }) => {
   const recommendDetails = filterConfig.recommendation.details;
   const recommendations = Object.keys(recommendDetails);
   const [recommendFilter, setRecommendFilter] = useState({});
@@ -30,7 +30,7 @@ const Recommendation = ({ setFilterData }) => {
   });
 
   useEffect(() => {
-    setFilterData(recommendFilter);
+    setFilterInput(recommendFilter);
   }, [recommendFilter]);
 
   return (
@@ -41,7 +41,7 @@ const Recommendation = ({ setFilterData }) => {
 };
 
 Location.propTypes = {
-  setFilterData: PropTypes.func
+  setFilterInput: PropTypes.func
 };
 
 export default React.memo(Recommendation);

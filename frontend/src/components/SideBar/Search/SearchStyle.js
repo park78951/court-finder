@@ -1,9 +1,8 @@
 import styled from 'styled-components';
-import { flexBox } from '../../../styles';
 
 const SearchContainer = styled.div`
-  ${ flexBox.displayFlex() };
-  ${ flexBox.justifyContent('flex-end') };
+  display: flex;
+  justify-content: flex-end;
   background-color: white;
   width: 100%;
   height: 4rem;

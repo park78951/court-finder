@@ -1,3 +1,5 @@
+import markerImg from '../assets/images/basketball_marker.png';
+
 export const defaultMapOptions = {
   center: {
     lat: 37.531058,
@@ -14,8 +16,7 @@ export const defaultMapOptions = {
   },
   mapTypeId: 'roadmap',
   marker: {
-    // path: 'M0-48c-9.8 0-17.7 7.8-17.7 17.4 0 15.5 17.7 30.6 17.7 30.6s17.7-15.4 17.7-30.6c0-9.6-7.9-17.4-17.7-17.4z',
-    url: 'public/img/basketball_marker.png',
+    url: markerImg,
     fillColor: "#ff1919",
     fillOpacity: 1.0,
     strokeWeight: 3,
@@ -45,13 +46,18 @@ export const iconSize = {
 
 export const loaderConfig = {
   sizeUnit: 'rem',
-  size: 4,
-  color: '#505050'
+  size: 5,
+  color: '#5CDB95'
 };
 
 export const refetchBtnStyle = {
   size: 'medium',
   color: 'cancel'
+};
+
+export const paginationConfig = {
+  courtsPerPage: 6,
+  numbersOnList: 5,
 };
 
 export const filterButton = {

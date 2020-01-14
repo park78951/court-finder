@@ -1,30 +1,5 @@
-// Fetching Data
-export const BEFORE_WORK = 'Before Work';
-export const LOADING = 'Loading';
-export const DONE = 'Done';
-
-// Court Info Reducer
-export const COMPLETE_SEARCH_COURTS = 'SEARCH_COURTS_SUCCESS';
-export const SEARCHING_COURTS = 'SEARCH_COURTS_REQUEST';
-export const CATCHING_ERROR = 'SEARCH_COURTS_FAILURE';
-
-export const ADD_COURTS = 'ADD_COURTS';
-export const DELETE_COURTS = 'DELETE_SEARCHED_COURTS';
-export const SELECT_COURT = 'SELECT_COURT';
-export const REMOVE_SELECT_COURT = 'REMOVE_SELECT_COURT';
-export const USER_INPUT = 'USER_INPUT';
-
-// UI Controlling Reducer
-export const TOGGLE_SIDEBAR = 'TOGGLE_SIDEBAR';
-export const OPEN_COURTADDITION = 'OPEN_COURTADDITION';
-export const CLOSE_COURTADDITION = 'CLOSE_COURTADDITION';
-export const TOGGLE_FILTER = 'TOGGLE_FILTER';
+// UI Controlling
 export const NO_DATA = '정보없음';
-
-// Filter Info Reducer
-export const ACTIVE_BUTTON = 'ACTIVE_BUTTON';
-export const SEND_FILTER_DATA = 'SEND_FILTER_DATA';
-export const INIT_FILTER_DATA = 'INIT_FILTER_DATA';
 
 // Data for drop down
 export const INDOOR_OR_OUTDOOR = ['실내코트', '야외코트'];
@@ -35,6 +10,16 @@ export const TIME_DIVISION_HOURS = [...Array(24)].map((_, idx) => `${(idx).toStr
 export const TIME_DIVISION_MINUTES = ['00', '30'];
 export const EXISTENCE_NONEXISTENCE = ['유', '무'];
 
+// Request URL
+export const DEVLOPMENT_HOST = 'http://localhost:3000/';
+export const PRODUCTION_HOST = 'http://13.124.209.33/';
+export const LOCALMOCK = './public/mock';
+
+// alert
+export const FILTER_NOT_WORKING = '해당 기능은 준비중입니다.';
+export const FILTER_APPLIED = '필터가 적용 되었습니다.';
+
+// Placeholders
 export const PLACEHOLDER_TRANSPORT_STOP = 'ex) 정거장 / 역이름';
 export const PLACEHOLDER_TRANSPORT_DETAIL = 'ex) 3004번 / 2호선';
 export const PLACEHOLDER_WEB_URL = 'ex) https://www.court-finder.com';

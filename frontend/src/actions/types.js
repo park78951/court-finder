@@ -1,9 +1,9 @@
-// Court Info Reducer
 // Async Request
 export const SEARCH_COURTS_REQUEST = 'SEARCH_COURTS_REQUEST';
 export const SEARCH_COURTS_SUCCESS = 'SEARCH_COURTS_SUCCESS';
 export const SEARCH_COURTS_FAILURE = 'SEARCH_COURTS_FAILURE';
 
+// Court Info Reducer
 export const ADD_COURTS = 'ADD_COURTS';
 export const DELETE_COURTS = 'DELETE_SEARCHED_COURTS';
 export const SELECT_COURT = 'SELECT_COURT';
@@ -19,5 +19,5 @@ export const CLOSE_COURTADDITION = 'CLOSE_COURTADDITION';
 export const NO_DATA = '정보없음';
 
 // Filter Info Reducer
-export const SEND_FILTER_DATA = 'SEND_FILTER_DATA';
-export const INIT_FILTER_DATA = 'INIT_FILTER_DATA';
+export const SEND_FILTER_INPUT = 'SEND_FILTER_INPUT';
+export const INIT_FILTER_INPUT = 'INIT_FILTER_INPUT';

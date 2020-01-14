@@ -1,6 +1,6 @@
-const deleteObjProps = obj => {
+export default (obj) => {
   const duplicateObj = {...obj};
-  const objectKeys = Object.keys(obj);
+  const objectKeys = Object.keys(duplicateObj);
   
   objectKeys.forEach(objKey => {
     if(!duplicateObj[objKey]) delete duplicateObj[objKey];
@@ -8,5 +8,3 @@ const deleteObjProps = obj => {
 
   return duplicateObj;
 };
-
-export default deleteObjProps;

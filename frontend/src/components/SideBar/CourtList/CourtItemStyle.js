@@ -5,7 +5,7 @@ const CourtItemWrapper = styled.div`
   height: 7.5rem;
   box-sizing: border-box;
   border-bottom: solid 1px #D3D3D3;
-  padding-left: 5px;
+  padding: 1.5rem 1rem;
 
   &:hover {
     background-color: #F8F8F8;
@@ -16,7 +16,8 @@ const CourtItemWrapper = styled.div`
   
   & > h3 {
     display: inline-block;
-    margin: 10px 0;
+    font-size: 1.2rem;
+    font-weight: bold;
   }
   
   & > span {

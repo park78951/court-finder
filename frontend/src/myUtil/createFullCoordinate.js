@@ -1,7 +1,6 @@
-const createFullCoordinate = ({ lat, lng}) =>  {
-  const numLat = Number(lat);
-  const numLng = Number(lng);
+export default ({ latitude, longitude}) =>  {
+  const numLat = Number(latitude);
+  const numLng = Number(longitude);
+  
   return { lat: numLat, lng: numLng };
 };
-
-export default createFullCoordinate;
