@@ -20,6 +20,7 @@ const MapContainer = styled.div`
     .infoBox__container {
       display: flex;
       justify-content: center;
+      align-items: center;
       flex-flow: column;
       background: white;
       border: 1px solid #ccc;
@@ -27,6 +28,7 @@ const MapContainer = styled.div`
       padding-right: 0.5rem;
       width: ${({ infoBoxWidth }) => `${ infoBoxWidth }px` };
       height: 3rem;
+      border-radius: 25px;
 
       & > p, h2 {
         margin: 0;
@@ -35,7 +37,7 @@ const MapContainer = styled.div`
       
       & > h2 {
         font-weight: bold;
-        font-size: 1.05rem;
+        font-size: 1rem;
       }
     }
   }

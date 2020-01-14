@@ -23,7 +23,7 @@ export const defaultMapOptions = {
     strokeColor: '#fff',
     scale: 0.8,
   },
-  infoBoxWidth: 200,
+  infoBoxWidth: 250,
   infoBoxMarginTop: 5,
 };
 
