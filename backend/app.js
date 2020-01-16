@@ -25,7 +25,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', router);
 // catch 404 and redirect to home
 app.use(function(req, res, next) {
-  res.redirect('/');
+  res.status(404).send();
 });
 
 // error handler
