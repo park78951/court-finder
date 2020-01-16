@@ -1,0 +1,26 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "park78951",
+      "name": "Sangkyu Park",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/37759759?v=4",
+      "profile": "https://github.com/park78951",
+      "contributions": [
+        "code",
+        "content",
+        "ideas"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "court-finder",
+  "projectOwner": "park78951",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}
