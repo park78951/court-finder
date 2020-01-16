@@ -1,6 +1,6 @@
 # Court Finder Korea
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 ![github Readme](https://user-images.githubusercontent.com/37759759/71223442-5d043c00-2317-11ea-8646-8d174857a531.gif)
 
@@ -53,6 +53,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <table>
   <tr>
     <td align="center"><a href="https://github.com/park78951"><img src="https://avatars2.githubusercontent.com/u/37759759?v=4" width="100px;" alt=""/><br /><sub><b>Sangkyu Park</b></sub></a><br /><a href="https://github.com/park78951/court-finder/commits?author=park78951" title="Code">💻</a> <a href="#content-park78951" title="Content">🖋</a> <a href="#ideas-park78951" title="Ideas, Planning, & Feedback">🤔</a></td>
+    <td align="center"><a href="https://github.com/gminiy"><img src="https://avatars3.githubusercontent.com/u/25456956?v=4" width="100px;" alt=""/><br /><sub><b>gminiy</b></sub></a><br /><a href="https://github.com/park78951/court-finder/commits?author=gminiy" title="Code">💻</a> <a href="#content-gminiy" title="Content">🖋</a> <a href="#ideas-gminiy" title="Ideas, Planning, & Feedback">🤔</a> <a href="#infra-gminiy" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a></td>
   </tr>
 </table>
 
