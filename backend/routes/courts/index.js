@@ -16,29 +16,28 @@
  *      prodeces:
  *      - "application/json"
  *      parameters:
- *      - in: "body"
- *        name: "options"
- *        description: "코트 검색 조건"
+ *      - in: "query"
+ *        name: "page"
+ *        description: "최소 1 이상의 값이어야 합니다."
+ *        type: number
  *        required: true
- *        schema:
- *          type: "object"
- *          properties:
- *            page:
- *              type: number
- *            size:
- *              type: number
- *            query:
- *              type: object
- *              properties:
- *                match:
- *                  type: string
- *                filter:
- *                  type: object
- *                  properties:
- *                    city:
- *                      type: string
- *                    district:
- *                      type: string        
+ *      - in: "query"
+ *        name: "size"
+ *        description: "최소 1 이상의 값이어야 합니다."
+ *        type: number
+ *        required: true
+ *      - in: "query"
+ *        name: "match"
+ *        description: "검색어"
+ *        type: string
+ *      - in: "query"
+ *        name: "city"
+ *        description: "필터링할 도시 이름"
+ *        type: string
+ *      - in: "query"
+ *        name: "district"
+ *        description: "필터링할 군/구 이름"
+ *        type: string
  *      responses:
  *        200:
  *          description: "Success"
