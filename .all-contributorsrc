@@ -15,6 +15,18 @@
         "content",
         "ideas"
       ]
+    },
+    {
+      "login": "gminiy",
+      "name": "gminiy",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/25456956?v=4",
+      "profile": "https://github.com/gminiy",
+      "contributions": [
+        "code",
+        "content",
+        "ideas",
+        "infra"
+      ]
     }
   ],
   "contributorsPerLine": 7,
