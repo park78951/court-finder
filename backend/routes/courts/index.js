@@ -57,6 +57,33 @@
  */
 /**
  *  @swagger
+ *  /courts/{id}:
+ *    get:
+ *      tags:
+ *      - "courts"
+ *      summary: "get a court info with id of court"
+ *      prodeces:
+ *      - "application/json"
+ *      parameters:
+ *      - in: "path"
+ *        name: "id"
+ *        description: "court 의 id"
+ *        type: string
+ *        required: true
+ *      responses:
+ *        200:
+ *          description: "Success"
+ *          schema:
+ *            $ref: "#/definitions/Court"
+ *        204:
+ *          description: "해당 아이디를 가진 court가 없습니다."
+ *        400:
+ *          description: "id parameter가 없습니다"
+ *        500:
+ *          description: "Internal Server Error"
+ */
+/**
+ *  @swagger
  *  definitions:
  *    Court:
  *      type: "object"
