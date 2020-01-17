@@ -13,7 +13,7 @@ exports.search = async (req, res, next) => {
   const config = {
     offset: (page -1 ) * size,
     limit: size,
-    attribute: { exclude: ['createdAt', 'updatedAt', 'deletedAt'] }
+    attributes: { exclude: ['createdAt', 'updatedAt', 'deletedAt'] }
   };
 
   if (match) config.where = { 
@@ -44,3 +44,24 @@ exports.search = async (req, res, next) => {
     next(error);
   }
 };
+
+exports.readCourt = async (req, res, next) => {
+  const { id } = req.params;
+
+  if (!id) return next(createError(400, "ID is required"));
+
+  try {
+    const court = await Court.findOne({
+      where: { id },
+      attributes: {
+        exclude: ['createdAt', 'updatedAt', 'deletedAt']
+      }
+    });
+
+    if (!court) return res.status(204).send();
+
+    return res.json(court);
+  } catch (error) {
+    return next(error);
+  }
+}

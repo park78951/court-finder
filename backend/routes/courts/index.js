@@ -116,8 +116,9 @@
 
 const express = require('express');
 const router = express.Router();
-const { search } = require('./courts-ctrl');
+const { search, readCourt } = require('./courts-ctrl');
 
+router.get('/:id', readCourt);
 router.post('/search', search);
 
 module.exports = router;
