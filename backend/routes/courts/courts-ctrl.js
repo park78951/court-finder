@@ -3,13 +3,13 @@ const createError = require('http-errors');
 
 exports.search = async (req, res, next) => {
   const { match, city, district } = req.query;
-
+  const page = parseInt(req.query.page);
+  const size = parseInt(req.query.size);
+  
   if (!page || !size) return next(
     createError(400, "page and size should be defined minimum 1")
   );
-
-  const page = parseInt(req.query.page);
-  const size = parseInt(req.query.size);
+  
   const config = {
     offset: (page -1 ) * size,
     limit: size,
