@@ -1,0 +1,86 @@
+{
+  "presets": [
+    ["next/babel", {
+      "preset-env": {
+        "targets": {
+          "browsers": [
+            "chrome >= 61",
+            "edge >= 15",
+            "firefox >= 52",
+            "ie >= 11"
+          ]
+        }
+      }
+    }]
+  ],
+  "plugins": [
+    [
+      "styled-components",
+      {
+        "ssr": true,
+        "displayName": true,
+        "preprocess": false
+      }
+    ],
+    [
+      "module-resolver", {
+        "alias": {
+          "@styles": "./src/styles",
+          // "@theme": "./styles/theme",
+          "@pages": "./pages",
+          "@components": "./src/components",
+          "@reducers": "./src/reducers",
+          "@sagas": "./src/sagas",
+          "@myUtils": "./src/myUtils",
+          "@constants": "./src/config/constants.js",
+          "@initConfig": "./src/config/initConfig.js"
+        }
+      }
+    ],
+    ["lodash"]
+  ]
+}
+// module.exports = (api) => {
+//   api.cache(true);
+
+//   const presets = [
+//     ["@babel/preset-env", 
+//       {
+//         "useBuiltIns": "entry",
+//         "corejs": "3.0.0",
+//         "targets": {
+//           "browsers": [
+//             "chrome >= 61",
+//             "edge >= 15",
+//             "firefox >= 52",
+//             "ie >= 11",
+//           ]
+//         }
+//       }
+//     ],
+//     ["@babel/preset-react"],
+//   ];
+//   const plugins = [
+//     "babel-plugin-styled-components",
+//     "react-hot-loader/babel",
+//     "@babel/plugin-transform-runtime",
+//     "lodash",
+//     [
+//       "module-resolver", {
+//         "alias": {
+//           "@styles": "./styles",
+//           "@theme": "./styles/theme",
+//           "@pages": "./pages",
+//           "@components": "./components",
+//           "@reducers": "./reducers",
+//           "@constants": "./helper/constants"
+//         }
+//       }
+//     ]
+//   ];
+
+//   return {
+//     presets,
+//     plugins
+//   };
+// };
