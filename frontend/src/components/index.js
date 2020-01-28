@@ -9,23 +9,23 @@ import MapContextMenu from './ContextMenu';
 import { ModalContainer } from './container';
 
 const App = () => {
-  const courtAdditionFlag = useSelector(state => {
-    return state.storeOnFlag.courtAdditionFlag;
-  });
+  // const courtAdditionFlag = useSelector(state => {
+  //   return state.storeOnFlag.courtAdditionFlag;
+  // });
   
   return (
     <>
       <Router>
-        <MapContextMenu>
+        {/* <MapContextMenu> */}
           <Map />
-        </MapContextMenu>
+        {/* </MapContextMenu> */}
         <HamburgerMenu />
         <SideBar />
-        { courtAdditionFlag && (
+        {/* { courtAdditionFlag && (
           <ModalContainer>
             <CourtAddition />
           </ModalContainer>
-        ) }
+        ) } */}
       </Router>
     </>
   );

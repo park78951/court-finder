@@ -3,7 +3,7 @@ import { ThemeProvider } from 'styled-components';
 
 import Location from './Location';
 import Style from './FilterDetailStyle';
-import { buttonTheme } from '../../../../config/initConfig';
+import { buttonTheme } from '@initConfig';
 
 const FilterDetail = () => {
   return (

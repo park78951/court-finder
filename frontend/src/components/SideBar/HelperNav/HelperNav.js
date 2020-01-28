@@ -1,15 +1,15 @@
 import React, { useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 import { removeFilterInput } from '../../../actions';
-import { useHistory } from 'react-router-dom';
+import { useRouter } from 'next/router';
 import Style from './HelperNavStyle';
 
 const HelperNav = () => {
   const dispatch = useDispatch();
-  const history = useHistory();
+  const router = useRouter();
 
   const goHome = useCallback(() => {
-    history.push('/');
+    router.push('/');
   }, []);
 
   const initializeFilter = useCallback(() => {

@@ -11,16 +11,17 @@ import {
 } from '@react-google-maps/api';
 import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
+import { useRouter } from 'next/router'
 import _ from 'lodash';
 import PropTypes from 'prop-types';
 
-import { defaultMapOptions } from '../../config/initConfig';
+import { defaultMapOptions } from '@initConfig';
 import { createFullCoordinate, getCenterPosition } from '../../myUtil';
 import CourtMarker from './CourtMarker';
 import Style from './MapStyle';
 
 const Map = () => {
-  const { pathname } = useLocation();
+  const { route } = useRouter();
   const { 
     center, 
     defaultZoom,
@@ -103,7 +104,7 @@ const Map = () => {
         mapTypeId={ mapTypeId }
         options={ options }
       >
-        { pathname !== '/' && markers }
+        { route !== '/' && markers }
         { infoBox }
       </GoogleMap>
     </Style.MapContainer>

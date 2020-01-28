@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import { NO_DATA } from '../../../../config/constants';
-import { iconSize } from '../../../../config/initConfig';
+import { iconSize } from '@initConfig';
 import { 
   MdLanguage,
   MdPhone,
@@ -18,7 +18,6 @@ const BodyInfo = () => {
   const selectedCourt = useSelector(state => {
     return state.storeOnSelection.selectedCourt;
   });
-  const courtData = selectedCourt || JSON.parse(localStorage.getItem('selectCourt'));
 
   const renderOnData = useMemo(() => {
     const {
@@ -29,7 +28,7 @@ const BodyInfo = () => {
       availableTime,
       transportation,
       parkingLot,
-    } = courtData;
+    } = selectedCourt;
 
     return (
       <>
@@ -80,9 +79,9 @@ const BodyInfo = () => {
         </div>
       </>
     );
-  }, [courtData]);
+  }, [selectedCourt]);
 
-  return courtData && (
+  return selectedCourt && (
     <Style.BodyInfoWrapper>
       { renderOnData }
     </Style.BodyInfoWrapper>

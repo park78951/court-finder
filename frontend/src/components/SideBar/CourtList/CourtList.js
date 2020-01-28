@@ -1,11 +1,12 @@
 import React, { useMemo } from 'react';
 import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import _ from 'lodash';
 import PropTypes from 'prop-types';
 
 import CourtItem from './CourtItem';
-import { routes } from '../../../config/initConfig';
+import { routes } from '@initConfig';
 import Style from './CourtListStyle';
 
 const CourtList = () => {
@@ -17,11 +18,13 @@ const CourtList = () => {
     return searchedCourts.map(searchedCourt => (
       <Link 
         key={_.uniqueId(searchedCourt.name)} 
-        to={ infoDetail }
+        href={ infoDetail }
       >
-        <CourtItem 
-          searchedInfo={ searchedCourt }
-        />
+        <a>
+          <CourtItem 
+            searchedInfo={ searchedCourt }
+          />
+        </a>
       </Link>
     ));
   }, [searchedCourts]);

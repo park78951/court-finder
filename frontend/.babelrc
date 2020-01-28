@@ -33,7 +33,9 @@
           "@sagas": "./src/sagas",
           "@myUtils": "./src/myUtils",
           "@constants": "./src/config/constants.js",
-          "@initConfig": "./src/config/initConfig.js"
+          "@initConfig": "./src/config/initConfig.js",
+          "@store": "./src/store",
+          "@assets": "./src/assets"
         }
       }
     ],

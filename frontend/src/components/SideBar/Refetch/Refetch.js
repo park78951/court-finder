@@ -6,7 +6,7 @@ import { ThemeProvider } from 'styled-components';
 import { 
   buttonTheme,
   refetchBtnStyle
-} from '../../../config/initConfig';
+} from '@initConfig';
 import Style from './RefetchStyle';
 
 const Refetch = () => {

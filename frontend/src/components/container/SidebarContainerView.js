@@ -8,7 +8,7 @@ import HelperNav from '../SideBar/HelperNav';
 import NoResult from '../NoResult';
 import { Pagination } from '../lib';
 import { startSearchingCourts } from '../../actions';
-import { paginationConfig } from '../../config/initConfig';
+import { paginationConfig } from '@initConfig';
 import Style from './SidebarContainerStyle';
 
 const SidebarListContainer = () => {

@@ -6,14 +6,15 @@ import { Route } from 'react-router-dom';
 import Style from './CourtInfoStyle';
 import PropTypes from 'prop-types';
 
-const CourtInfo = ({ match }) => {
+const CourtInfo = ({ match, children }) => {
   const { path } = match;
 
   return (
     <Style.CourtInfoWrapper >
       <HeaderInfo />
-      <Route path={`${ path }/detail`} component={ BodyInfo } />
-      <Route path={`${ path }/review`} component={ ReviewInfo } />
+      {/* <Route path={`${ path }/detail`} component={ BodyInfo } />
+      <Route path={`${ path }/review`} component={ ReviewInfo } /> */}
+      {children}
     </Style.CourtInfoWrapper>
   );
 };

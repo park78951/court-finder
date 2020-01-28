@@ -4,7 +4,7 @@ import AdditionalForm from './AdditionalForm';
 import SummaryForm from './SummaryForm';
 import { useSelector, useDispatch } from 'react-redux';
 import { closeCourtAddtionForm, addCourts } from '../../actions';
-import { buttonTheme, cancelBtnSizeOfAddForm } from '../../config/initConfig';
+import { buttonTheme, cancelBtnSizeOfAddForm } from '@initConfig';
 import { MdCancel } from 'react-icons/md';
 import { ThemeProvider } from 'styled-components';
 import Styles from './CourtAdditionStyle';

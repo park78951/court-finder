@@ -1,1 +1,1 @@
-export const borderLine = '#D3D3D3';
+export { default as GlobalStyle } from './globalStyle';

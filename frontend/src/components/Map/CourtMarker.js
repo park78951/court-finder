@@ -2,7 +2,7 @@ import React, { useMemo } from 'react';
 import { Marker } from '@react-google-maps/api';
 import { useSelector } from 'react-redux';
 import { createFullCoordinate, compareCoordinates } from '../../myUtil';
-import { defaultMapOptions } from '../../config/initConfig';
+import { defaultMapOptions } from '@initConfig';
 
 const CourtMarker = ({
   mouseOverOutHandler,

@@ -1,18 +1,17 @@
 import React, { useCallback } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useRouter } from 'next/router';
 import { useDispatch } from 'react-redux';
 import { MdArrowBack } from 'react-icons/md';
 import { selectCourt } from '../../../../actions';
-import { iconSize } from '../../../../config/initConfig';
+import { iconSize } from '@initConfig';
 
 const GoBackBtn = () => {
   const { headerInfo_goback } = iconSize;
   const dispatch = useDispatch();
-  const history = useHistory();
+  const router = useRouter();
 
   const goBack = useCallback(() => {
-    history.goBack();
-    dispatch(selectCourt());
+    router.back();
   }, []);
 
   return (
