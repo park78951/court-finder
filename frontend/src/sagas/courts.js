@@ -5,6 +5,7 @@ import {
   catchErrorOnSearch,
 } from '../actions';
 import { SEARCH_COURTS_REQUEST } from '../actions/types';
+import { LAST_SEARCH } from '@constants';
 
 function searchCourtsAPI(body) {
   return courtsApi.post('/courts/search', body);
@@ -22,6 +23,7 @@ function* searchCourts(action) {
   };
   if (filterInput) body.query.filter = filterInput;
   try {
+    console.log(localStorage);
     const response = yield call(searchCourtsAPI, body);
     const { totalCount, courts } = response.data;
     yield put(completeSearchCourts(totalCount, courts));

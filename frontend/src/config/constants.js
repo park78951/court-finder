@@ -1,5 +1,6 @@
 // UI Controlling
 export const NO_DATA = '정보없음';
+export const LAST_SEARCH = 'lastSearch';
 
 // Data for drop down
 export const INDOOR_OR_OUTDOOR = ['실내코트', '야외코트'];

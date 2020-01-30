@@ -3,6 +3,7 @@ import { HelmetProvider } from 'react-helmet-async';
 // import Head from 'next/head';
 import { Provider } from 'react-redux';
 import withRedux from 'next-redux-wrapper';
+import { PersistGate } from 'redux-persist/integration/react';
 import PropTypes from 'prop-types';
 import AppLayout from '@components/AppLayout';
 import configureStore from '@store';
@@ -11,15 +12,16 @@ import { GlobalStyle } from '@styles'
 const helmetContext = {};
 
 const CourtFinder = ({ Component, store }) => {
-  console.log(Component);
   return (
     <Provider store={store}>
-      <HelmetProvider context={helmetContext}>
-        <GlobalStyle />
-        <AppLayout>
-          <Component />
-        </AppLayout>
-      </HelmetProvider>
+      <PersistGate persistor={store.__PERSISTOR} loading={null}>
+        <HelmetProvider context={helmetContext}>
+          <GlobalStyle />
+          <AppLayout>
+            <Component />
+          </AppLayout>
+        </HelmetProvider>
+      </PersistGate>
     </Provider>
   );
 };

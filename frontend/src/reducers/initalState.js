@@ -4,6 +4,7 @@ export const searchInfo = {
   isError: false,
   userInput: null,
   totalCourts: null,
+  currentPage: null,
 };
 
 export const selectionInfo = {

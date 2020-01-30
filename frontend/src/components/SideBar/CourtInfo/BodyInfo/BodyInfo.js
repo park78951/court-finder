@@ -20,6 +20,7 @@ const BodyInfo = () => {
   });
 
   const renderOnData = useMemo(() => {
+    if(!selectedCourt) return;
     const {
       web,
       phone,

@@ -1,13 +1,9 @@
 import React, { useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import { useRouter } from 'next/router'
-import { Route, Switch, useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import Search from './Search';
-import CourtInfo from './CourtInfo';
-import { SidebarContainerView } from '../container';
-import SearchFilter from './SearchFilter';
 import Style from './SideBarStyle';
 import NotFound from '../NotFound';
 import HeaderInfo from './CourtInfo/HeaderInfo';

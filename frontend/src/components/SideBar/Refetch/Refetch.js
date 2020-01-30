@@ -12,16 +12,17 @@ import Style from './RefetchStyle';
 const Refetch = () => {
   const { color, size } = refetchBtnStyle;
   const dispatch = useDispatch();
-  const { userInput, filterInput } = useSelector(state => ({
+  const { userInput, filterInput, page } = useSelector(state => ({
     userInput: state.storeOnSearch.userInput,
-    filterInput: state.storeOnFilter.filterInput
+    page: state.storeOnSearch.currentPage,
+    filterInput: state.storeOnFilter.filterInput,
   }));
 
   const refetchRequestor = useCallback(() => {
     dispatch(startSearchingCourts({
       userInput, 
       filterInput, 
-      page: 1
+      page: page || 1,
     }));
     getUserInput(userInput);
   }, [userInput, filterInput]);

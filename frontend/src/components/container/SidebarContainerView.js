@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import Loader from '../Loader';
@@ -9,6 +9,7 @@ import NoResult from '../NoResult';
 import { Pagination } from '../lib';
 import { startSearchingCourts } from '../../actions';
 import { paginationConfig } from '@initConfig';
+import { LAST_SEARCH } from '@constants';
 import Style from './SidebarContainerStyle';
 
 const SidebarListContainer = () => {
@@ -17,17 +18,36 @@ const SidebarListContainer = () => {
     isSearching, 
     isError, 
     totalCourts, 
-    userInput } = useSelector(state => state.storeOnSearch);
+    userInput,
+    currentPage 
+  } = useSelector(state => state.storeOnSearch);
   const { filterInput } = useSelector(state => state.storeOnFilter);
   const dispatch = useDispatch();
 
-  const changeCurrentPage = (userInput, filterInput, page) => {
+  const changeCurrentPage = useCallback(({userInput, filterInput, page}) => {
     dispatch(startSearchingCourts({
       userInput, 
       filterInput, 
       page,
     }));
-  };
+  }, [currentPage, userInput]);
+
+  useEffect(() => {
+    const lastSearchData = JSON.parse(sessionStorage.getItem(LAST_SEARCH)) || {};
+    const isSameWithPreviousKey = lastSearchData.hasOwnProperty(userInput);
+    
+    if(!isSameWithPreviousKey) sessionStorage.removeItem(LAST_SEARCH);
+
+    sessionStorage.setItem(
+      LAST_SEARCH, 
+      JSON.stringify({
+        [userInput]: {
+          ...lastSearchData[userInput],
+          [currentPage]: searchedCourts
+        }
+      }
+    ));
+  }, [searchedCourts]);
 
   return (
     <>
@@ -36,7 +56,7 @@ const SidebarListContainer = () => {
         {
           isError
             ? <Refetch />
-            : (!searchedCourts.length && !isSearching
+            : (searchedCourts.length <= 0 && !isSearching
               ? <NoResult />
               : <CourtList />)
         }
@@ -49,6 +69,7 @@ const SidebarListContainer = () => {
           { ...paginationConfig }
           userInput={ userInput }
           filterInput={ filterInput }
+          lastPage={ currentPage }
         />
       ) }
     </>

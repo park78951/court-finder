@@ -22,7 +22,8 @@ const searchReducer = (state = searchInfo, { type, payload}) => {
         ...state,
         isError: false,
         isSearching: true,
-        userInput: payload.userInput
+        userInput: payload.userInput,
+        currentPage: payload.page,
       };
 
     case SEARCH_COURTS_FAILURE:

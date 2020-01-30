@@ -1,8 +1,5 @@
 import React from 'react';
 import HeaderInfo from './HeaderInfo';
-import BodyInfo from './BodyInfo/BodyInfo';
-import ReviewInfo from './ReviewInfo';
-import { Route } from 'react-router-dom';
 import Style from './CourtInfoStyle';
 import PropTypes from 'prop-types';
 
@@ -12,8 +9,6 @@ const CourtInfo = ({ match, children }) => {
   return (
     <Style.CourtInfoWrapper >
       <HeaderInfo />
-      {/* <Route path={`${ path }/detail`} component={ BodyInfo } />
-      <Route path={`${ path }/review`} component={ ReviewInfo } /> */}
       {children}
     </Style.CourtInfoWrapper>
   );

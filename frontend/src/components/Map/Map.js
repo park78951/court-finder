@@ -10,7 +10,6 @@ import {
   InfoBox
 } from '@react-google-maps/api';
 import { useSelector } from 'react-redux';
-import { useLocation } from 'react-router-dom';
 import { useRouter } from 'next/router'
 import _ from 'lodash';
 import PropTypes from 'prop-types';
@@ -105,14 +104,10 @@ const Map = () => {
         options={ options }
       >
         { route !== '/' && markers }
-        { infoBox }
+        { window.google && infoBox }
       </GoogleMap>
     </Style.MapContainer>
   );
-};
-
-Map.propTypes = {
-  searchedCourts: PropTypes.array,
 };
 
 export default React.memo(Map);

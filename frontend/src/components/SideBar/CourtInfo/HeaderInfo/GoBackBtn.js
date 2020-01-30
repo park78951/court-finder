@@ -12,6 +12,7 @@ const GoBackBtn = () => {
 
   const goBack = useCallback(() => {
     router.back();
+    dispatch(selectCourt());
   }, []);
 
   return (

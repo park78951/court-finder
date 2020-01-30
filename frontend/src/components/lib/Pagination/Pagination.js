@@ -12,8 +12,10 @@ const Pagination = ({
   clickHandler,
   userInput,
   filterInput,
+  lastPage,
 }) => {
   const [currentPage, setCurrentPage] = useState(1);
+  console.log(currentPage)
   const [currentPages, setCurrentPages] = useState([]);
   const totalPage = Math.ceil(totalCourts / courtsPerPage);
   const totalPageNumbers = _.fill(Array(totalPage), 0)
@@ -21,19 +23,31 @@ const Pagination = ({
 
   const clickNext = useCallback(() => {
     if(currentPage === totalPage) return;
-    clickHandler(userInput, filterInput, currentPage + 1);
+    clickHandler({
+      userInput, 
+      filterInput, 
+      page: currentPage + 1
+    });
     setCurrentPage(prevState => prevState + 1);
   }, [currentPage, userInput, filterInput]);
 
   const clickBefore = useCallback(() => {
     if(currentPage === 1) return;
-    clickHandler(userInput, filterInput, currentPage - 1);
+    clickHandler({
+      userInput, 
+      filterInput, 
+      page: currentPage - 1
+    });
     setCurrentPage(currentPage - 1);
   }, [currentPage, userInput, filterInput]);
 
   const clickNumber = useCallback(({ target }) => {
     const targetNumber = Number(target.closest('button').textContent);
-    clickHandler(userInput, filterInput, targetNumber);
+    clickHandler({
+      userInput, 
+      filterInput, 
+      page: targetNumber
+    });
     setCurrentPage(targetNumber);
   }, [currentPage, userInput, filterInput]);
 
@@ -51,8 +65,8 @@ const Pagination = ({
   }, [currentPages]);
 
   useEffect(() => {
-    setCurrentPage(1);
-  }, [totalCourts]);
+    setCurrentPage(lastPage);
+  }, [lastPage]);
 
   useEffect(() => {
     const currentPageNumbers = getCurrentPageNumbers({
@@ -85,6 +99,7 @@ Pagination.propTypes = {
   clickHandler: PropTypes.func,
   userInput: PropTypes.string,
   filterInput: PropTypes.object,
+  lastPage: PropTypes.number,
 };
 
 export default Pagination;
