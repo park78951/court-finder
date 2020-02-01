@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
 import { useDispatch } from 'react-redux';
-import { removeFilterInput } from '../../../actions';
 import { useRouter } from 'next/router';
+import { removeFilterInput } from '@actions';
 import Style from './HelperNavStyle';
 
 const HelperNav = () => {

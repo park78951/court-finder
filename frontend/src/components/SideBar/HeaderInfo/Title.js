@@ -1,7 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import GoBackBtn from './GoBackBtn';
 import Style from './TitleStyle';
-import PropTypes from 'prop-types';
 
 const Title = ({ name }) => {
   return (

@@ -47,3 +47,6 @@ export const initSubmitList = {
   parkingLot: null,
   tags: []
 };
+
+export const prevSearchItems = {};
+export const prevSearchItem = {};

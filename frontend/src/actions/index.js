@@ -24,7 +24,7 @@ export const startSearchingCourts = ({ userInput, filterInput, page }) => ({
   }
 });
 
-export const completeSearchCourts = (totalCourts, courtsData) => ({
+export const completeSearchCourts = ({ totalCourts, courtsData }) => ({
   type: SEARCH_COURTS_SUCCESS,
   payload: { totalCourts, courtsData },
 });

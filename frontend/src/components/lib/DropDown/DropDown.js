@@ -1,6 +1,6 @@
 import React from 'react';
-import Style from './DropDownStyle';
 import PropTypes from 'prop-types';
+import Style from './DropDownStyle';
 
 const CustomDropDown = ({ optionValues = [], size, placeholder = true, ...rest }) => {
   const selectOptions = optionValues.map( optionValue => {

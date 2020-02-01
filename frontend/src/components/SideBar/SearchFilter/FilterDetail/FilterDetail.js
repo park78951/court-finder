@@ -1,6 +1,5 @@
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
-
 import Location from './Location';
 import Style from './FilterDetailStyle';
 import { buttonTheme } from '@initConfig';

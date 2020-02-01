@@ -1,6 +1,6 @@
 import React from 'react';
-import ActiveLink from '@components/lib/ActiveLink';
 import { MdInfo, MdAssignment } from 'react-icons/md';
+import ActiveLink from '@components/lib/ActiveLink';
 import { routes, iconSize } from '@initConfig';
 import Style from './NavBtnStyle';
 

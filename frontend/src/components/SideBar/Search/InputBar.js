@@ -3,8 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useRouter } from 'next/router';
 import { IoIosSearch } from 'react-icons/io';
 import PropTypes from 'prop-types';
-
-import { startSearchingCourts, unselectCourt } from '../../../actions';
+import { startSearchingCourts, unselectCourt } from '@actions';
 import Style from './InputBarStyle';
 
 const InputBar = () => {

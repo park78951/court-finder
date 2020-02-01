@@ -1,4 +1,4 @@
-import { searchInfo } from './initalState';
+import { searchInfo } from './initialState';
 import { 
   SEARCH_COURTS_SUCCESS,
   SEARCH_COURTS_REQUEST,

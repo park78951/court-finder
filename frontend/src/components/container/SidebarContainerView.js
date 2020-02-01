@@ -7,9 +7,8 @@ import CourtList from '../SideBar/CourtList';
 import HelperNav from '../SideBar/HelperNav';
 import NoResult from '../NoResult';
 import { Pagination } from '../lib';
-import { startSearchingCourts } from '../../actions';
+import { startSearchingCourts } from '@actions';
 import { paginationConfig } from '@initConfig';
-import { LAST_SEARCH } from '@constants';
 import Style from './SidebarContainerStyle';
 
 const SidebarListContainer = () => {
@@ -31,23 +30,6 @@ const SidebarListContainer = () => {
       page,
     }));
   }, [currentPage, userInput]);
-
-  useEffect(() => {
-    const lastSearchData = JSON.parse(sessionStorage.getItem(LAST_SEARCH)) || {};
-    const isSameWithPreviousKey = lastSearchData.hasOwnProperty(userInput);
-    
-    if(!isSameWithPreviousKey) sessionStorage.removeItem(LAST_SEARCH);
-
-    sessionStorage.setItem(
-      LAST_SEARCH, 
-      JSON.stringify({
-        [userInput]: {
-          ...lastSearchData[userInput],
-          [currentPage]: searchedCourts
-        }
-      }
-    ));
-  }, [searchedCourts]);
 
   return (
     <>

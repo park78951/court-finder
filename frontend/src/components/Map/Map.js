@@ -15,7 +15,7 @@ import _ from 'lodash';
 import PropTypes from 'prop-types';
 
 import { defaultMapOptions } from '@initConfig';
-import { createFullCoordinate, getCenterPosition } from '../../myUtil';
+import { createFullCoordinate, getCenterPosition } from '@myUtils';
 import CourtMarker from './CourtMarker';
 import Style from './MapStyle';
 

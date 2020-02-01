@@ -1,7 +1,5 @@
 import React, { useMemo } from 'react';
 import { useSelector } from 'react-redux';
-import { NO_DATA } from '../../../../config/constants';
-import { iconSize } from '@initConfig';
 import { 
   MdLanguage,
   MdPhone,
@@ -12,6 +10,8 @@ import {
   MdLocalParking,
 } from 'react-icons/md';
 import Style from './BodyInfoStyle';
+import { NO_DATA } from '@constants';
+import { iconSize } from '@initConfig';
 import PropTypes from 'prop-types';
 
 const BodyInfo = () => {

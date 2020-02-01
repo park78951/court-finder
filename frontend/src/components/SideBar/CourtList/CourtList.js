@@ -3,7 +3,6 @@ import { useSelector } from 'react-redux';
 import Link from 'next/link';
 import _ from 'lodash';
 import PropTypes from 'prop-types';
-
 import CourtItem from './CourtItem';
 import { routes } from '@initConfig';
 import Style from './CourtListStyle';

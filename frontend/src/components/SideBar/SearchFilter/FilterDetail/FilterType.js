@@ -1,5 +1,5 @@
 import React from 'react';
-import { DropDown } from '../../../lib';
+import { DropDown } from '@components/lib';
 
 const FilterMenu = ({ menuTitle, ...rest }) => {
   return (

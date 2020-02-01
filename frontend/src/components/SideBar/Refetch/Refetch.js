@@ -1,8 +1,8 @@
 import React, { useCallback } from 'react';
-import { Button } from '../../lib';
 import { useDispatch, useSelector } from 'react-redux';
-import { startSearchingCourts, getUserInput } from '../../../actions';
 import { ThemeProvider } from 'styled-components';
+import { Button } from '@components/lib';
+import { startSearchingCourts, getUserInput } from '@actions';
 import { 
   buttonTheme,
   refetchBtnStyle

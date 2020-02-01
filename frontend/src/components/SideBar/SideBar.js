@@ -2,11 +2,10 @@ import React, { useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import { useRouter } from 'next/router'
 import PropTypes from 'prop-types';
-
 import Search from './Search';
 import Style from './SideBarStyle';
 import NotFound from '../NotFound';
-import HeaderInfo from './CourtInfo/HeaderInfo';
+import HeaderInfo from './HeaderInfo';
 
 const SideBar = ({ children }) => {
   const isSidebarHidden = useSelector(state => {
@@ -23,13 +22,7 @@ const SideBar = ({ children }) => {
     >
       <Search />
       {headerInfo}
-      {/* <Switch>
-        <Route path='/' exact component={ SearchFilter } />
-        <Route path='/search' exact component={ SidebarContainerView } />
-        <Route path='/courtinfo' component={ CourtInfo } />
-        <Route component={ NotFound } />
-      </Switch> */}
-    {children}
+      {children}
     </Style.SideBarWrapper>
   );
 };

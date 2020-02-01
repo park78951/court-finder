@@ -3,7 +3,7 @@ import {
   OPEN_COURTADDITION,
   CLOSE_COURTADDITION,
 } from '../actions/types';
-import { initUIToggleInfo } from './initalState';
+import { initUIToggleInfo } from './initialState';
 
 const uiReducers = (state = initUIToggleInfo, { type }) => {
   switch(type) {

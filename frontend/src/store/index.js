@@ -15,6 +15,7 @@ export default () => {
       applyMiddleware(...middleWares),
       typeof window !== 'undefined' && typeof window.__REDUX_DEVTOOLS_EXTENSION__ !== 'undefined' ? window.__REDUX_DEVTOOLS_EXTENSION__() : (f) => f,
     );
+    
   if(isClient) {
     const {persistReducer} = require('redux-persist');
     const storage = require('redux-persist/lib/storage').default;
