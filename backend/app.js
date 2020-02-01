@@ -7,7 +7,6 @@ const sequelize = require('./models').sequelize;
 const router = require('./routes');
 const swaggerUi = require('swagger-ui-express');
 const swaggerSpec = require('./src/swagger/swagger-definition');
-const cors = require('cors');
 
 const app = express();
 sequelize.sync();
@@ -15,8 +14,9 @@ sequelize.sync();
 if (process.env.NODE_ENV === 'production') {
   app.use(mrgan('combined'));
 } else {
-  app.use(logger('dev'));
+  const cors = require('cors');
   app.use(cors());
+  app.use(logger('dev'));
 }
 
 app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
