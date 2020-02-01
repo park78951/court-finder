@@ -1,18 +1,16 @@
 import React, { useState, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useHistory, useLocation } from 'react-router-dom';
+import { useRouter } from 'next/router';
 import { IoIosSearch } from 'react-icons/io';
 import PropTypes from 'prop-types';
-
-import { startSearchingCourts, unselectCourt } from '../../../actions';
+import { startSearchingCourts, unselectCourt } from '@actions';
 import Style from './InputBarStyle';
 
 const InputBar = () => {
   const [term, setTerm] = useState('');
   const { filterInput } = useSelector(({ storeOnFilter}) => storeOnFilter);
   const dispatch = useDispatch();
-  const history = useHistory();
-  const { pathname } = useLocation();
+  const router = useRouter();
 
   const setInput = useCallback(({ target }) => {
     const { value } = target;
@@ -30,8 +28,8 @@ const InputBar = () => {
     }));
     setTerm('');
 
-    if(pathname !== '/search') history.push('/search');
-  }, [term, filterInput, pathname]);
+    if(router.route !== '/search') router.push('/search');
+  }, [term, filterInput, router.route]);
 
   return (
     <Style.InputContainer onSubmit={ inputSubmit }>

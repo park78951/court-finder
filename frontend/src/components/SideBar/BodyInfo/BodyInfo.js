@@ -1,7 +1,5 @@
 import React, { useMemo } from 'react';
 import { useSelector } from 'react-redux';
-import { NO_DATA } from '../../../../config/constants';
-import { iconSize } from '../../../../config/initConfig';
 import { 
   MdLanguage,
   MdPhone,
@@ -12,15 +10,17 @@ import {
   MdLocalParking,
 } from 'react-icons/md';
 import Style from './BodyInfoStyle';
+import { NO_DATA } from '@constants';
+import { iconSize } from '@initConfig';
 import PropTypes from 'prop-types';
 
 const BodyInfo = () => {
   const selectedCourt = useSelector(state => {
     return state.storeOnSelection.selectedCourt;
   });
-  const courtData = selectedCourt || JSON.parse(localStorage.getItem('selectCourt'));
 
   const renderOnData = useMemo(() => {
+    if(!selectedCourt) return;
     const {
       web,
       phone,
@@ -29,7 +29,7 @@ const BodyInfo = () => {
       availableTime,
       transportation,
       parkingLot,
-    } = courtData;
+    } = selectedCourt;
 
     return (
       <>
@@ -80,9 +80,9 @@ const BodyInfo = () => {
         </div>
       </>
     );
-  }, [courtData]);
+  }, [selectedCourt]);
 
-  return courtData && (
+  return selectedCourt && (
     <Style.BodyInfoWrapper>
       { renderOnData }
     </Style.BodyInfoWrapper>

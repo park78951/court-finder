@@ -1,5 +1,7 @@
 // UI Controlling
 export const NO_DATA = '정보없음';
+export const LAST_SEARCH_ITEMS = 'LAST_SEARCH_ITEMS';
+export const LAST_SEARCH_ITEM = 'LAST_SEARCH_ITEM'; 
 
 // Data for drop down
 export const INDOOR_OR_OUTDOOR = ['실내코트', '야외코트'];
@@ -13,7 +15,6 @@ export const EXISTENCE_NONEXISTENCE = ['유', '무'];
 // Request URL
 export const DEVLOPMENT_HOST = 'http://localhost:3000/';
 export const PRODUCTION_HOST = 'http://13.124.209.33/';
-export const LOCALMOCK = './public/mock';
 
 // alert
 export const FILTER_NOT_WORKING = '해당 기능은 준비중입니다.';

@@ -1,27 +1,28 @@
 import React, { useCallback } from 'react';
-import { Button } from '../../lib';
 import { useDispatch, useSelector } from 'react-redux';
-import { startSearchingCourts, getUserInput } from '../../../actions';
 import { ThemeProvider } from 'styled-components';
+import { Button } from '@components/lib';
+import { startSearchingCourts, getUserInput } from '@actions';
 import { 
   buttonTheme,
   refetchBtnStyle
-} from '../../../config/initConfig';
+} from '@initConfig';
 import Style from './RefetchStyle';
 
 const Refetch = () => {
   const { color, size } = refetchBtnStyle;
   const dispatch = useDispatch();
-  const { userInput, filterInput } = useSelector(state => ({
+  const { userInput, filterInput, page } = useSelector(state => ({
     userInput: state.storeOnSearch.userInput,
-    filterInput: state.storeOnFilter.filterInput
+    page: state.storeOnSearch.currentPage,
+    filterInput: state.storeOnFilter.filterInput,
   }));
 
   const refetchRequestor = useCallback(() => {
     dispatch(startSearchingCourts({
       userInput, 
       filterInput, 
-      page: 1
+      page: page || 1,
     }));
     getUserInput(userInput);
   }, [userInput, filterInput]);

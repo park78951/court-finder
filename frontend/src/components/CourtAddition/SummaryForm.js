@@ -1,6 +1,6 @@
 import React from 'react';
-import { Button } from '../lib';
 import PropTypes from 'prop-types';
+import { Button } from '../lib';
 
 const SummaryForm = ({ 
   submitHandler, 

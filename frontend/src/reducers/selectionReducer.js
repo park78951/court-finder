@@ -1,4 +1,4 @@
-import { selectionInfo } from './initalState';
+import { selectionInfo } from './initialState';
 import { 
   SELECT_COURT,
   MOUSEOVER_LIST,

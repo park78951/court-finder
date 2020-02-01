@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { 
   selectCourt, 
   getMouseOverList, 
-} from '../../../actions';
+} from '@actions';
 import Style from './CourtItemStyle';
 
 const CourtItem = ({ searchedInfo }) => {

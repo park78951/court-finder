@@ -4,6 +4,7 @@ export const searchInfo = {
   isError: false,
   userInput: null,
   totalCourts: null,
+  currentPage: null,
 };
 
 export const selectionInfo = {
@@ -46,3 +47,6 @@ export const initSubmitList = {
   parkingLot: null,
   tags: []
 };
+
+export const prevSearchItems = {};
+export const prevSearchItem = {};

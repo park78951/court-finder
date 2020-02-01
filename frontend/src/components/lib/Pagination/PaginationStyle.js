@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { borderLine } from '../../../styles';
+import { borderLine } from '@styles/theme';
 
 const styleNthChild = function(idx) {
   return css`

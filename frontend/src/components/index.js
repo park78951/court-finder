@@ -1,6 +1,5 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { BrowserRouter as Router } from 'react-router-dom';
 import Map from './Map';
 import HamburgerMenu from './HamburgerMenu';
 import SideBar from './SideBar';
@@ -9,23 +8,23 @@ import MapContextMenu from './ContextMenu';
 import { ModalContainer } from './container';
 
 const App = () => {
-  const courtAdditionFlag = useSelector(state => {
-    return state.storeOnFlag.courtAdditionFlag;
-  });
+  // const courtAdditionFlag = useSelector(state => {
+  //   return state.storeOnFlag.courtAdditionFlag;
+  // });
   
   return (
     <>
       <Router>
-        <MapContextMenu>
+        {/* <MapContextMenu> */}
           <Map />
-        </MapContextMenu>
+        {/* </MapContextMenu> */}
         <HamburgerMenu />
         <SideBar />
-        { courtAdditionFlag && (
+        {/* { courtAdditionFlag && (
           <ModalContainer>
             <CourtAddition />
           </ModalContainer>
-        ) }
+        ) } */}
       </Router>
     </>
   );

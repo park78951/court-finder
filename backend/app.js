@@ -13,6 +13,8 @@ sequelize.sync();
 if (process.env.NODE_ENV === 'production') {
   app.use(mrgan('combined'));
 } else {
+  const cors = require('cors');
+  app.use(cors());
   app.use(logger('dev'));
 }
 

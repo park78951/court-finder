@@ -1,6 +1,6 @@
 import React from 'react';
-import Style from './InputStyle';
 import PropTypes from 'prop-types';
+import Style from './InputStyle';
 
 const Input  = ({ placeholder, size, type, ...rest }) => {
   return (

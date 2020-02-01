@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 
 import FilterType from './FilterType';
 import { getFilterInput } from '../../../../actions';
-import { filterConfig } from '../../../../config/initConfig';
+import { filterConfig } from '@initConfig';
 
 const Location = () => {
   const locationDetail = filterConfig.location.options;

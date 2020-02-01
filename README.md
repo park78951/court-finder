@@ -33,8 +33,8 @@ Court Finder Korea를 만든 목적은 이러한 불편함을 해소하기 위�
 - [Backend](https://github.com/park78951/court-finder/tree/master/backend)
 
 ## Contributors ✨
-농구는 신장이 아닌 심장으로 하는 것이다!
-한국 아마추어 농구 및 모든 한국 농구의 활발한 교류에 도움이 되었으면 좋겠습니다.
+농구는 신장이 아닌 심장으로 하는 것이다!<br>
+한국 아마추어 농구 및 모든 한국 농구의 활발한 교류에 도움이 되었으면 좋겠습니다. <br>
 Court Finder Korea goes with these wonderful people who try making things better ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->

@@ -1,4 +1,4 @@
-import { additionInfo } from './initalState';
+import { additionInfo } from './initialState';
 import { ADD_COURTS } from '../actions/types';
 
 const additionReducer = (state = additionInfo, { type, payload}) => {

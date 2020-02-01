@@ -1,6 +1,6 @@
 import React from 'react';
 import { ClipLoader } from 'react-spinners';
-import { loaderConfig } from '../../config/initConfig';
+import { loaderConfig } from '@initConfig';
 import Styled, { loaderStyle } from './LoaderStyle';
 
 const Loader = () => {

@@ -1,32 +1,28 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { useSelector } from 'react-redux';
-import { Route, Switch, useLocation } from 'react-router-dom';
+import { useRouter } from 'next/router'
 import PropTypes from 'prop-types';
-
 import Search from './Search';
-import CourtInfo from './CourtInfo';
-import { SidebarContainerView } from '../container';
-import SearchFilter from './SearchFilter';
 import Style from './SideBarStyle';
 import NotFound from '../NotFound';
+import HeaderInfo from './HeaderInfo';
 
-const SideBar = () => {
+const SideBar = ({ children }) => {
   const isSidebarHidden = useSelector(state => {
     return state.storeOnFlag.isSidebarHidden;
   });
-  const { pathname } = useLocation();
+  const { route } = useRouter();
+  const headerInfo = useMemo(() => {
+    return route.startsWith('/court') && <HeaderInfo />
+  }, [route.startsWith('/court')]);
 
   return !isSidebarHidden && (
     <Style.SideBarWrapper 
-      curPath={ pathname }
+      curPath={ route }
     >
       <Search />
-      <Switch>
-        <Route path='/' exact component={ SearchFilter } />
-        <Route path='/search' exact component={ SidebarContainerView } />
-        <Route path='/courtinfo' component={ CourtInfo } />
-        <Route component={ NotFound } />
-      </Switch>
+      {headerInfo}
+      {children}
     </Style.SideBarWrapper>
   );
 };

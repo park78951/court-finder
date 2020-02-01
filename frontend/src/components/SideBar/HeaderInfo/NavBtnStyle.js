@@ -11,6 +11,17 @@ const NavBtnStyle = styled.div`
     align-items: center;
     position: relative;
     width: 50%;
+    color: #000;
+
+    &:visited { text-decoration: none; }
+    &:hover { text-decoration: none; }
+    &:focus { text-decoration: none; }
+    &:hover, &:active { text-decoration: none; }
+
+    &.selected {
+      background-color: white;
+      border-radius: 15px 15px 0 0;
+    }
 
     & > button {
       position: absolute;
@@ -24,11 +35,6 @@ const NavBtnStyle = styled.div`
       height: 90%;
       width: 90%;
     }
-  }
-
-  .nav__selected {
-    background-color: white;
-    border-radius: 15px 15px 0 0;
   }
 `;
 

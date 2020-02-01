@@ -1,4 +1,4 @@
-import { searchInfo } from './initalState';
+import { searchInfo } from './initialState';
 import { 
   SEARCH_COURTS_SUCCESS,
   SEARCH_COURTS_REQUEST,
@@ -22,7 +22,8 @@ const searchReducer = (state = searchInfo, { type, payload}) => {
         ...state,
         isError: false,
         isSearching: true,
-        userInput: payload.userInput
+        userInput: payload.userInput,
+        currentPage: payload.page,
       };
 
     case SEARCH_COURTS_FAILURE:

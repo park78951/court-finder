@@ -1,4 +1,4 @@
-import { initFilterInfo } from './initalState';
+import { initFilterInfo } from './initialState';
 import { 
   SEND_FILTER_INPUT,
   INIT_FILTER_INPUT

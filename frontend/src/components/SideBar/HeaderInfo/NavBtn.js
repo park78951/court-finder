@@ -1,7 +1,7 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
 import { MdInfo, MdAssignment } from 'react-icons/md';
-import { routes, iconSize } from '../../../../config/initConfig';
+import ActiveLink from '@components/lib/ActiveLink';
+import { routes, iconSize } from '@initConfig';
 import Style from './NavBtnStyle';
 
 const NavBtn = () => {
@@ -10,30 +10,26 @@ const NavBtn = () => {
 
   return (
     <Style.NavBtnStyle>
-      <NavLink 
-        exact
-        to={ infoDetail }
-        activeClassName='nav__selected'
-        replace={ true }
+      <ActiveLink
+        href={ infoDetail }
+        replace
       >
-        <button>
+        <a className='link'>
           <MdInfo 
             size={ headerInfo_nav }
           />
-        </button>
-      </NavLink>
-      <NavLink 
-        exact
-        to={ review }
-        activeClassName='nav__selected'
-        replace={ true }
+        </a>
+      </ActiveLink>
+      <ActiveLink 
+        href={ review }
+        replace
       >
-        <button>
+        <a className='link'>
           <MdAssignment 
             size={ headerInfo_nav }
           />
-        </button>
-      </NavLink>
+        </a>
+      </ActiveLink>
     </Style.NavBtnStyle>
   );
 };

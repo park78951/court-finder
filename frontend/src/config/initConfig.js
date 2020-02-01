@@ -1,4 +1,5 @@
 import markerImg from '../assets/images/basketball_marker.png';
+// const markerImg = require('@assets/images/basketball_marker.png');
 
 export const defaultMapOptions = {
   center: {
@@ -73,9 +74,8 @@ export const filterButton = {
 
 export const routes = {
   search: '/search',
-  courtInfo: '/courtInfo',
-  review: '/courtinfo/review',
-  infoDetail: '/courtinfo/detail'
+  review: '/court/review',
+  infoDetail: '/court/detail',
 };
 
 export const filterConfig = {

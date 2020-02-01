@@ -1,0 +1,1 @@
+export const borderLine = '#D3D3D3';

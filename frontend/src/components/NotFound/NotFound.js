@@ -1,8 +1,9 @@
 import React from 'react';
-import { Redirect } from 'react-router-dom';
+// import { Redirect } from 'react-router-dom';
 
 const NotFound = () => {
-  return <Redirect to='/' />;
+  // return <Redirect to='/' />;
+  return;
 };
 
 export default NotFound;

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { Button, Input, DropDown } from '../lib';
 import { 
   TRANSPORTATION, 
@@ -7,9 +8,8 @@ import {
   PLACEHOLDER_TRANSPORT_DETAIL,
   PLACEHOLDER_TRANSPORT_STOP,
   PLACEHOLDER_WEB_URL,
-} from '../../config/constants';
+} from '@constants';
 import Style from './AdditionalFormStyle';
-import PropTypes from 'prop-types';
 
 const AdditionalForm = ({ 
   moveNext, 

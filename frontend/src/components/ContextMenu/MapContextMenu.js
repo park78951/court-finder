@@ -5,7 +5,7 @@ import {
   ContextMenuTrigger 
 } from 'react-contextmenu';
 import { useDispatch } from 'react-redux';
-import { openCourtAddtionForm } from '../../actions';
+import { openCourtAddtionForm } from '@actions';
 import Style from './MapContextMenuStyle';
 
 const MapContextMenu = ({ children }) => {

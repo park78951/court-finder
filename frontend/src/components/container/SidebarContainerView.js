@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import Loader from '../Loader';
@@ -7,8 +7,8 @@ import CourtList from '../SideBar/CourtList';
 import HelperNav from '../SideBar/HelperNav';
 import NoResult from '../NoResult';
 import { Pagination } from '../lib';
-import { startSearchingCourts } from '../../actions';
-import { paginationConfig } from '../../config/initConfig';
+import { startSearchingCourts } from '@actions';
+import { paginationConfig } from '@initConfig';
 import Style from './SidebarContainerStyle';
 
 const SidebarListContainer = () => {
@@ -17,17 +17,19 @@ const SidebarListContainer = () => {
     isSearching, 
     isError, 
     totalCourts, 
-    userInput } = useSelector(state => state.storeOnSearch);
+    userInput,
+    currentPage 
+  } = useSelector(state => state.storeOnSearch);
   const { filterInput } = useSelector(state => state.storeOnFilter);
   const dispatch = useDispatch();
 
-  const changeCurrentPage = (userInput, filterInput, page) => {
+  const changeCurrentPage = useCallback(({userInput, filterInput, page}) => {
     dispatch(startSearchingCourts({
       userInput, 
       filterInput, 
       page,
     }));
-  };
+  }, [currentPage, userInput]);
 
   return (
     <>
@@ -36,7 +38,7 @@ const SidebarListContainer = () => {
         {
           isError
             ? <Refetch />
-            : (!searchedCourts.length && !isSearching
+            : (searchedCourts.length <= 0 && !isSearching
               ? <NoResult />
               : <CourtList />)
         }
@@ -49,6 +51,7 @@ const SidebarListContainer = () => {
           { ...paginationConfig }
           userInput={ userInput }
           filterInput={ filterInput }
+          lastPage={ currentPage }
         />
       ) }
     </>

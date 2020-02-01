@@ -1,6 +1,6 @@
 import React from 'react';
-import Style from './AdditionalStyle';
 import PropTypes from 'prop-types';
+import Style from './AdditionalStyle';
 
 const Additional = ({ ratings }) => {
   const ratingInfo = () => {
