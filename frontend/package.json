@@ -52,6 +52,7 @@
     "dotenv-webpack": "^1.7.0",
     "eslint": "^6.4.0",
     "eslint-plugin-react": "^7.14.3",
+    "jest": "^25.1.0",
     "lodash-webpack-plugin": "^0.11.5",
     "webpack": "^4.39.1",
     "webpack-manifest-plugin": "^2.2.0"

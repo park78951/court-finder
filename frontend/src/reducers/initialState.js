@@ -22,7 +22,10 @@ export const initUIToggleInfo = {
 };
 
 export const initFilterInfo = {
-  filterInput: {}
+  filterInput: {
+    city: "",
+    district: "",
+  }
 };
 
 export const initSubmitList = {

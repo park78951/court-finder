@@ -17,13 +17,16 @@ export default () => {
     );
     
   if(isClient) {
-    const {persistReducer} = require('redux-persist');
+    const { persistReducer } = require('redux-persist');
     const storage = require('redux-persist/lib/storage').default;
 
     const persistConfig = {
       'key': 'root',
-      storage
+      storage,
+      'whitelist': ['storeOnSearch'],
     }
+
+    
 
     store = createStore(
       persistReducer(persistConfig, rootReducer), 

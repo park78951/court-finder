@@ -14,7 +14,7 @@ const searchReducer = (state = searchInfo, { type, payload}) => {
         ...state,
         isSearching: false,
         totalCourts,
-        searchedCourts: [...courtsData],
+        // searchedCourts: [...courtsData],
       };
 
     case SEARCH_COURTS_REQUEST:

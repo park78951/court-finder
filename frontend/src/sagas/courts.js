@@ -8,27 +8,30 @@ import {
 import { SEARCH_COURTS_REQUEST } from '../actions/types';
 import { prevSearchItems, prevSearchItem } from '@reducers/initialState';
 
-function searchCourtsAPI(body) {
-  return courtsApi.post('/courts/search', body);
+function searchCourtsAPI(query) {
+  const { page, size, match, city, district } = query;
+  return courtsApi.get(
+    `/courts/search?page=${page}&size=${size}&match=${match}&city=${city}&district=${district}`
+  );
 }
 
 function* searchCourts(action) {
+  console.log(localStorage);
   const searchCode = Base64.encode(JSON.stringify(action.payload));
   try {
     if(prevSearchItems.hasOwnProperty(searchCode)) {
       yield put(completeSearchCourts(prevSearchItems[searchCode]));
     } else {
       const { userInput, filterInput, page } = action.payload;
-      const body = {
+      const query = {
         "page": page,
         "size": 6,
-        "query": {
-          "match": userInput,
-          "filter":{}
-        }
+        "match": userInput,
+        "city": filterInput.city,
+        "district": filterInput.district,
       };
-      if (filterInput) body.query.filter = filterInput;
-      const response = yield call(searchCourtsAPI, body);
+      const response = yield call(searchCourtsAPI, query);
+      console.log(response);
       const { totalCount, courts } = response.data;
       yield put(completeSearchCourts({ totalCourts: totalCount, courtsData: courts }));
       prevSearchItems[searchCode] = {totalCourts: totalCount, courtsData: courts};

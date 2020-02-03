@@ -3,7 +3,8 @@
 ## Tech
 - Javascript (ES2015+)
 - React Functional Components with Hooks
-- Routing with react-router-dom
+- Routing with react-router-dom (Previously)
+- Next.js for Server Side Rendering (Currently)
 - Styled-components for the css style
 - Axios to get data asynchronously
 - State Management by Hooks API with Context API (Previously)
@@ -32,10 +33,10 @@
 - [x] 검색마다 가장 멀리있는 Marker의 거리에 따른 Map Center 조정
 - [x] 검색 정보 클릭시 해당 위치로 zoom in 후 빠져나갈 때 zoom out 기능 추가
 - [x] 검색 정보 클릭시 유저가 식별하기 쉽도록 해당 Marker만 변경
+- [x] 기존 Client Side Rendering에서 Server Side Rendering으로 변경
 
 ## Things to do
 - [ ] 회원가입 & 로그인 기능 구현
 - [ ] 사진 및 유저 리뷰 추가 기능 구현
 - [ ] Test Code 추가
 - [ ] 검색 필터기능 구현 (추천별)
-- [ ] Server Side Rendering을 통한 검색 정보를 직접 routing으로 접근 가능 (SEO 향상)
