@@ -4,6 +4,7 @@ import courtsApi from '../apis';
 import {
   completeSearchCourts,
   catchErrorOnSearch,
+  getUserInput,
 } from '../actions';
 import { SEARCH_COURTS_REQUEST } from '../actions/types';
 import { prevSearchItems, prevSearchItem } from '@reducers/initialState';
@@ -30,8 +31,8 @@ function* searchCourts(action) {
         "city": filterInput.city,
         "district": filterInput.district,
       };
+      yield put(getUserInput(userInput));
       const response = yield call(searchCourtsAPI, query);
-      console.log(response);
       const { totalCount, courts } = response.data;
       yield put(completeSearchCourts({ totalCourts: totalCount, courtsData: courts }));
       prevSearchItems[searchCode] = {totalCourts: totalCount, courtsData: courts};

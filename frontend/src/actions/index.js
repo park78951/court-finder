@@ -7,8 +7,8 @@ import {
   OPEN_COURTADDITION,
   CLOSE_COURTADDITION,
   TOGGLE_SIDEBAR,
-  USER_INPUT,
-  SEND_FILTER_INPUT,
+  GET_SEARCH_INPUT,
+  GET_FILTER_INPUT,
   INIT_FILTER_INPUT,
   DELETE_COURTS,
   MOUSEOVER_LIST,
@@ -65,12 +65,12 @@ export const closeCourtAddtionForm = () => ({
 });
 
 export const getUserInput = input => ({
-  type: USER_INPUT,
+  type: GET_SEARCH_INPUT,
   payload: input,
 });
 
 export const getFilterInput = filterInput => ({
-  type: SEND_FILTER_INPUT,
+  type: GET_FILTER_INPUT,
   payload: filterInput,
 });
 

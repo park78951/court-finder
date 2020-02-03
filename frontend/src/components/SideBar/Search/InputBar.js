@@ -24,7 +24,7 @@ const InputBar = () => {
     dispatch(startSearchingCourts({
       userInput: term, 
       filterInput,
-      page: 1
+      page: 1,
     }));
     setTerm('');
 

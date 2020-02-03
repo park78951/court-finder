@@ -17,10 +17,9 @@ const SidebarListContainer = () => {
     isSearching, 
     isError, 
     totalCourts, 
-    userInput,
     currentPage 
   } = useSelector(state => state.storeOnSearch);
-  const { filterInput } = useSelector(state => state.storeOnFilter);
+  const { userInput, filterInput } = useSelect(state => state.storeOnInput);
   const dispatch = useDispatch();
 
   const changeCurrentPage = useCallback(({userInput, filterInput, page}) => {
@@ -29,7 +28,7 @@ const SidebarListContainer = () => {
       filterInput, 
       page,
     }));
-  }, [currentPage, userInput]);
+  }, [currentPage, userInput, filterInput]);
 
   return (
     <>

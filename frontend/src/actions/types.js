@@ -10,7 +10,6 @@ export const SELECT_COURT = 'SELECT_COURT';
 export const UNSELECT_COURT = 'UNSELECT_COURT';
 export const REMOVE_SELECT_COURT = 'REMOVE_SELECT_COURT';
 export const MOUSEOVER_LIST = 'MOUSEOVER_LIST';
-export const USER_INPUT = 'USER_INPUT';
 
 // UI Controlling Reducer
 export const TOGGLE_SIDEBAR = 'TOGGLE_SIDEBAR';
@@ -19,5 +18,6 @@ export const CLOSE_COURTADDITION = 'CLOSE_COURTADDITION';
 export const NO_DATA = '정보없음';
 
 // Filter Info Reducer
-export const SEND_FILTER_INPUT = 'SEND_FILTER_INPUT';
+export const GET_FILTER_INPUT = 'GET_FILTER_INPUT';
+export const GET_SEARCH_INPUT = 'GET_SEARCH_INPUT';
 export const INIT_FILTER_INPUT = 'INIT_FILTER_INPUT';
