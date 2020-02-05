@@ -8,7 +8,7 @@ import { routes } from '@initConfig';
 import Style from './CourtListStyle';
 
 const CourtList = () => {
-  const { searchedCourts } = useSelector(state => state.storeOnSearch);
+  const { searchedCourts } = useSelector(({ courtStore }) => courtStore);
 
   const { infoDetail } = routes;
 
@@ -16,7 +16,8 @@ const CourtList = () => {
     return searchedCourts.map(searchedCourt => (
       <Link 
         key={_.uniqueId(searchedCourt.name)} 
-        href={ infoDetail }
+        href={ `${infoDetail}/[id]` }
+        as={`${infoDetail}/${searchedCourt.id}`}
       >
         <a>
           <CourtItem 

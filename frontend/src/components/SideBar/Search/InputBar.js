@@ -3,12 +3,12 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useRouter } from 'next/router';
 import { IoIosSearch } from 'react-icons/io';
 import PropTypes from 'prop-types';
-import { startSearchingCourts, unselectCourt } from '@actions';
+import { requestCourts, unselectCourt } from '@actions';
 import Style from './InputBarStyle';
 
 const InputBar = () => {
   const [term, setTerm] = useState('');
-  const { filterInput } = useSelector(({ storeOnFilter}) => storeOnFilter);
+  const { filterInput } = useSelector(({ storeOnInput}) => storeOnInput);
   const dispatch = useDispatch();
   const router = useRouter();
 
@@ -21,7 +21,7 @@ const InputBar = () => {
     evt.preventDefault();
     
     dispatch(unselectCourt());
-    dispatch(startSearchingCourts({
+    dispatch(requestCourts({
       userInput: term, 
       filterInput,
       page: 1,

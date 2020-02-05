@@ -3,7 +3,7 @@ import {
   GET_FILTER_INPUT,
   GET_SEARCH_INPUT,
   INIT_FILTER_INPUT
-} from '../actions/types';
+} from '@actions/types';
 
 const searchFilterReducer = (state = initInputInfo, { type, payload }) => {
   switch (type) {

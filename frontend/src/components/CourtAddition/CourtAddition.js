@@ -17,7 +17,7 @@ const CourtAddition = () => {
     courtAdditionFlag,
     addedInfo
   } = useSelector(state => ({
-    courtAdditionFlag: state.storeOnFlag.courtAdditionFlag,
+    courtAdditionFlag: state.flagStore.courtAdditionFlag,
     addedInfo: state.storeOnAddition.addedInfo
   }));
 

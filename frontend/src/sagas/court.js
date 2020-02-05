@@ -2,11 +2,13 @@ import { fork, put, takeLatest, call, all } from 'redux-saga/effects';
 import { Base64 } from 'js-base64';
 import courtsApi from '../apis';
 import {
-  completeSearchCourts,
-  catchErrorOnSearch,
+  completeGettingCourts,
+  failGettingCourts,
   getUserInput,
+  completeGettingCourt,
+  failGettingCourt,
 } from '../actions';
-import { SEARCH_COURTS_REQUEST } from '../actions/types';
+import { SEARCH_COURTS_REQUEST, SEARCH_COURT_REQUEST } from '../actions/types';
 import { prevSearchItems, prevSearchItem } from '@reducers/initialState';
 
 function searchCourtsAPI(query) {
@@ -17,11 +19,10 @@ function searchCourtsAPI(query) {
 }
 
 function* searchCourts(action) {
-  console.log(localStorage);
   const searchCode = Base64.encode(JSON.stringify(action.payload));
   try {
     if(prevSearchItems.hasOwnProperty(searchCode)) {
-      yield put(completeSearchCourts(prevSearchItems[searchCode]));
+      yield put(completeGettingCourts(prevSearchItems[searchCode]));
     } else {
       const { userInput, filterInput, page } = action.payload;
       const query = {
@@ -33,13 +34,14 @@ function* searchCourts(action) {
       };
       yield put(getUserInput(userInput));
       const response = yield call(searchCourtsAPI, query);
+      console.log(response)
       const { totalCount, courts } = response.data;
-      yield put(completeSearchCourts({ totalCourts: totalCount, courtsData: courts }));
+      yield put(completeGettingCourts({ totalCourts: totalCount, courtsData: courts }));
       prevSearchItems[searchCode] = {totalCourts: totalCount, courtsData: courts};
     }
   } catch (err) {
     console.error(err);
-    yield put(catchErrorOnSearch(err));
+    yield put(failGettingCourts(err));
   }
 }
 
@@ -50,8 +52,37 @@ function* watchSearchCourts() {
   );
 }
 
-export default function* searchCourtsSaga() {
+function searchCourtAPI(id) {
+  return courtsApi.get(`/courts/${id}`);
+}
+
+function* searchCourt(action) {
+  const id = action.payload;
+  const searchCode = Base64.encode(JSON.stringify(id));
+  try {
+    if(prevSearchItem.hasOwnProperty(searchCode)) {
+      yield put(completeGettingCourt(prevSearchItem[searchCode]));
+    } else {
+      const { data } = yield call(searchCourtAPI, id);
+      yield put(completeGettingCourt({ courtData: data }));
+      prevSearchItem[searchCode] = {courtData: data};
+    }
+  } catch (err) {
+    console.error(err);
+    yield put(failGettingCourt(err));
+  }
+}
+
+function* watchSearchCourt() {
+  yield takeLatest(
+    SEARCH_COURT_REQUEST,
+    searchCourt,
+  );
+}
+
+export default function* courtSaga() {
   yield all([
     fork(watchSearchCourts),
+    fork(watchSearchCourt),
   ]);
 }

@@ -23,7 +23,7 @@ export default () => {
     const persistConfig = {
       'key': 'root',
       storage,
-      'whitelist': ['storeOnSearch'],
+      'whitelist': ['courtStore'],
     }
 
     store = createStore(

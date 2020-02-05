@@ -1,9 +1,12 @@
 import { 
   SEARCH_COURTS_SUCCESS,
-  ADD_COURTS,
-  SELECT_COURT,
   SEARCH_COURTS_REQUEST,
   SEARCH_COURTS_FAILURE,
+  SEARCH_COURT_SUCCESS,
+  SEARCH_COURT_REQUEST,
+  SEARCH_COURT_FAILURE,
+  ADD_COURTS,
+  SELECT_COURT,
   OPEN_COURTADDITION,
   CLOSE_COURTADDITION,
   TOGGLE_SIDEBAR,
@@ -15,7 +18,7 @@ import {
   UNSELECT_COURT,
 } from './types';
 
-export const startSearchingCourts = ({ userInput, filterInput, page }) => ({
+export const requestCourts = ({ userInput, filterInput, page }) => ({
   type: SEARCH_COURTS_REQUEST,
   payload: {
     userInput,
@@ -24,13 +27,28 @@ export const startSearchingCourts = ({ userInput, filterInput, page }) => ({
   }
 });
 
-export const completeSearchCourts = ({ totalCourts, courtsData }) => ({
+export const completeGettingCourts = ({ totalCourts, courtsData }) => ({
   type: SEARCH_COURTS_SUCCESS,
   payload: { totalCourts, courtsData },
 });
 
-export const catchErrorOnSearch = error => ({
+export const failGettingCourts = error => ({
   type: SEARCH_COURTS_FAILURE,
+  payload: error,
+});
+
+export const requestCourt = (id) => ({
+  type: SEARCH_COURT_REQUEST,
+  payload: id,
+});
+
+export const completeGettingCourt = ({ courtData }) => ({
+  type: SEARCH_COURT_SUCCESS,
+  payload: courtData,
+});
+
+export const failGettingCourt = error => ({
+  type: SEARCH_COURT_FAILURE,
   payload: error,
 });
 

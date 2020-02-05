@@ -6,7 +6,7 @@ import Style from './HamburgerMenuStyle';
 
 const HamburgerMenu = () => {
   const isSidebarHidden = useSelector(state => {
-    return state.storeOnFlag.isSidebarHidden;
+    return state.flagStore.isSidebarHidden;
   });
   const dispatch = useDispatch();
 

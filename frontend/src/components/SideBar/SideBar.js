@@ -4,12 +4,11 @@ import { useRouter } from 'next/router'
 import PropTypes from 'prop-types';
 import Search from './Search';
 import Style from './SideBarStyle';
-import NotFound from '../NotFound';
 import HeaderInfo from './HeaderInfo';
 
 const SideBar = ({ children }) => {
   const isSidebarHidden = useSelector(state => {
-    return state.storeOnFlag.isSidebarHidden;
+    return state.flagStore.isSidebarHidden;
   });
   const { route } = useRouter();
   const headerInfo = useMemo(() => {

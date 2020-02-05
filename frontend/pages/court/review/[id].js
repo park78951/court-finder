@@ -1,10 +1,10 @@
 import React from 'react';
-import Bodyinfo from '@components/SideBar/ReviewInfo';
+import Reviewinfo from '@components/SideBar/ReviewInfo';
 
 const Review = () => {
   return (
     <>
-      <Bodyinfo /> 
+      <Reviewinfo /> 
     </>
   );
 };

@@ -1,5 +1,6 @@
 import React from 'react';
 import { MdInfo, MdAssignment } from 'react-icons/md';
+import { useSelector } from 'react-redux';
 import ActiveLink from '@components/lib/ActiveLink';
 import { routes, iconSize } from '@initConfig';
 import Style from './NavBtnStyle';
@@ -7,11 +8,13 @@ import Style from './NavBtnStyle';
 const NavBtn = () => {
   const { review, infoDetail } = routes;
   const { headerInfo_nav } = iconSize;
+  const { selectedCourt } = useSelector(({ courtStore }) => courtStore);
 
   return (
     <Style.NavBtnStyle>
       <ActiveLink
-        href={ infoDetail }
+        href={ `${infoDetail}/[id]` }
+        as={`${infoDetail}/${selectedCourt.id}`}
         replace
       >
         <a className='link'>
@@ -21,7 +24,8 @@ const NavBtn = () => {
         </a>
       </ActiveLink>
       <ActiveLink 
-        href={ review }
+        href={ `${review}/[id]` }
+        as={`${review}/${selectedCourt.id}`}
         replace
       >
         <a className='link'>

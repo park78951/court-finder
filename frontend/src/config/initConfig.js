@@ -7,7 +7,7 @@ export const defaultMapOptions = {
     lng: 126.929067
   },
   defaultZoom: 12,
-  selectedZoom:15,
+  selectedZoom:13,
   mapStyle: {
     height: "100vh",
     width: "100%"

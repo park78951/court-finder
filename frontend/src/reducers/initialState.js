@@ -4,9 +4,6 @@ export const searchInfo = {
   isError: false,
   totalCourts: null,
   currentPage: null,
-};
-
-export const selectionInfo = {
   selectedCourt: null,
   mouseoverList: null,
 };

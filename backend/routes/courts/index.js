@@ -8,7 +8,7 @@
 /**
  *  @swagger
  *  /courts/search:
- *    post:
+ *    get:
  *      tags:
  *      - "courts"
  *      summary: "search courts"
@@ -118,7 +118,7 @@ const express = require('express');
 const router = express.Router();
 const { search, readCourt } = require('./courts-ctrl');
 
-router.get('/:id', readCourt);
 router.get('/search', search);
+router.get('/:id', readCourt);
 
 module.exports = router;

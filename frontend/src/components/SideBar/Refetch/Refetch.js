@@ -2,7 +2,7 @@ import React, { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { ThemeProvider } from 'styled-components';
 import { Button } from '@components/lib';
-import { startSearchingCourts } from '@actions';
+import { requestCourts } from '@actions';
 import { 
   buttonTheme,
   refetchBtnStyle
@@ -15,17 +15,16 @@ const Refetch = () => {
   const { userInput, filterInput, page } = useSelector(state => ({
     userInput: state.storeOnInput.userInput,
     filterInput: state.storeOnInput.filterInput,
-    page: state.storeOnSearch.currentPage,
+    page: state.courtStore.currentPage,
   }));
 
   const refetchRequestor = useCallback(() => {
-    dispatch(startSearchingCourts({
+    dispatch(requestCourts({
       userInput, 
       filterInput, 
       page: page || 1,
-      userInput: userInput,
     }));
-  }, [userInput, filterInput]);
+  }, [userInput, filterInput, page]);
 
   return (
     <ThemeProvider theme={ buttonTheme }>

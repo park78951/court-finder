@@ -1,19 +1,19 @@
-import searchReducer from '../searchReducer';
+import courtReducer from '../courtReducer';
 import { searchInfo } from '../initialState'
 import * as types from '@actions/types';
 import * as mock from './mock';
 
-describe('test searchReducers', () => {
+describe('test courtReducer', () => {
   let searchState = {};
 
   it('should have the initial state', () => {
-    searchState = searchReducer(undefined, {});
+    searchState = courtReducer(undefined, {});
     expect(searchState).toEqual(searchInfo);
   });
   
   it('should handle SEARCH_COURTS_REQUEST', () => {
     const previousState = {...searchState};
-    searchState = searchReducer(previousState, {
+    searchState = courtReducer(previousState, {
       type: types.SEARCH_COURTS_REQUEST,
       payload: {...mock.newInput}
     });
@@ -28,7 +28,7 @@ describe('test searchReducers', () => {
 
   it('should handle SEARCH_COURTS_SUCCESS with searchedCourts', () => {
     const previousState = {...searchState};
-    searchState = searchReducer(previousState, {
+    searchState = courtReducer(previousState, {
       type: types.SEARCH_COURTS_SUCCESS,
       payload: {
         ...mock.newCourtsData
@@ -45,7 +45,7 @@ describe('test searchReducers', () => {
 
   it('should handle SEARCH_COURTS_FAILURE with error message', () => {
     const previousState = {...searchState};
-    searchState = searchReducer(previousState, {
+    searchState = courtReducer(previousState, {
       type: types.SEARCH_COURTS_FAILURE,
       payload: mock.errorMessage,
     });
@@ -56,6 +56,44 @@ describe('test searchReducers', () => {
       isSearching: false,
       searchedCourts: [],
       errorMessage: mock.errorMessage,
+    });
+  });
+
+  it('should handle SELECT_COURT', () => {
+    const previousState = {...searchState};
+    searchState = courtReducer(previousState, {
+      type: types.SELECT_COURT,
+      payload: mock.selectedCourtsData,
+    });
+
+    expect(searchState).toEqual({
+      ...previousState,
+      selectedCourt: mock.selectedCourtsData,
+    });
+  });
+
+  it('should handle UNSELECT_COURT', () => {
+    const previousState = {...searchState};
+    searchState = courtReducer(previousState, {
+      type: types.UNSELECT_COURT,
+    });
+
+    expect(searchState).toEqual({
+      ...previousState,
+      selectedCourt: null,
+    });
+  });
+
+  it('should handle MOUSEOVER_LIST when mouse over list', () => {
+    const previousState = {...searchState};
+    searchState = courtReducer(previousState, {
+      type: types.MOUSEOVER_LIST,
+      payload: mock.selectedCourtsData,
+    });
+
+    expect(searchState).toEqual({
+      ...previousState,
+      mouseoverList: mock.selectedCourtsData,
     });
   });
 });
