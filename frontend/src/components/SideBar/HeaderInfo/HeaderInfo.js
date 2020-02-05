@@ -9,7 +9,7 @@ import Style from './HeaderInfoStyle';
 import { selectCourt } from '@actions';
 
 const HeaderInfo = () => {
-  const { selectedCourt } = useSelector(({ courtStore }) => courtStore);
+  const { selectedCourt } = useSelector(({ courts }) => courts);
   const dispatch = useDispatch();
 
   useEffect(() => {

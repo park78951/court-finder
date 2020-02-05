@@ -8,16 +8,16 @@ import { routes } from '@initConfig';
 import Style from './CourtListStyle';
 
 const CourtList = () => {
-  const { searchedCourts } = useSelector(({ courtStore }) => courtStore);
+  const { searchedCourts } = useSelector(({ courts }) => courts);
 
-  const { infoDetail } = routes;
+  const { court } = routes;
 
   const searchedItems = useMemo(() => {
     return searchedCourts.map(searchedCourt => (
       <Link 
         key={_.uniqueId(searchedCourt.name)} 
-        href={ `${infoDetail}/[id]` }
-        as={`${infoDetail}/${searchedCourt.id}`}
+        href={ `${court}/[id]/detail` }
+        as={`${court}/${searchedCourt.id}/detail`}
       >
         <a>
           <CourtItem 

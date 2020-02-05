@@ -6,15 +6,15 @@ import { routes, iconSize } from '@initConfig';
 import Style from './NavBtnStyle';
 
 const NavBtn = () => {
-  const { review, infoDetail } = routes;
+  const { court } = routes;
   const { headerInfo_nav } = iconSize;
-  const { selectedCourt } = useSelector(({ courtStore }) => courtStore);
+  const { selectedCourt } = useSelector(({ courts }) => courts);
 
   return (
     <Style.NavBtnStyle>
       <ActiveLink
-        href={ `${infoDetail}/[id]` }
-        as={`${infoDetail}/${selectedCourt.id}`}
+        href={ `${court}/[id]/detail` }
+        as={`${court}/${selectedCourt.id}/detail`}
         replace
       >
         <a className='link'>
@@ -24,8 +24,8 @@ const NavBtn = () => {
         </a>
       </ActiveLink>
       <ActiveLink 
-        href={ `${review}/[id]` }
-        as={`${review}/${selectedCourt.id}`}
+        href={ `${court}/[id]/review` }
+        as={`${court}/${selectedCourt.id}/review`}
         replace
       >
         <a className='link'>

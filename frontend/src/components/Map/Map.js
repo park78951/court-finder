@@ -34,7 +34,7 @@ const Map = () => {
   const [curZoom, setCurZoom] = useState(defaultZoom);
   const [mouseoverMarker, setMouseoverMarker] = useState(null);
 
-  const { searchedCourts, selectedCourt, mouseoverList } = useSelector(({ courtStore }) => courtStore);
+  const { searchedCourts, selectedCourt, mouseoverList } = useSelector(({ courts }) => courts);
 
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: process.env.KEY

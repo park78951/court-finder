@@ -74,9 +74,12 @@ export const filterButton = {
 
 export const routes = {
   search: '/search',
-  review: '/court/review',
-  infoDetail: '/court/detail',
+  court: '/court',
 };
+
+export const createSearchQuery = ({userInput, city, district, page }) => {
+  return `/search?userInput=${userInput}&city=${city}&district=${district}&page=${page}`;
+}
 
 export const filterConfig = {
   location: {

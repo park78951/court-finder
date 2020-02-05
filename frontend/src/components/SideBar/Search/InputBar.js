@@ -4,11 +4,12 @@ import { useRouter } from 'next/router';
 import { IoIosSearch } from 'react-icons/io';
 import PropTypes from 'prop-types';
 import { requestCourts, unselectCourt } from '@actions';
+import { createSearchQuery } from '@initConfig';
 import Style from './InputBarStyle';
 
 const InputBar = () => {
   const [term, setTerm] = useState('');
-  const { filterInput } = useSelector(({ storeOnInput}) => storeOnInput);
+  const { filterInput } = useSelector(({ input}) => input);
   const dispatch = useDispatch();
   const router = useRouter();
 
@@ -28,7 +29,13 @@ const InputBar = () => {
     }));
     setTerm('');
 
-    if(router.route !== '/search') router.push('/search');
+    const searchRoute = createSearchQuery({
+      userInput: term,
+      city: filterInput.city,
+      district: filterInput.district,
+      page: 1,
+    });
+    router.push(searchRoute);
   }, [term, filterInput, router.route]);
 
   return (

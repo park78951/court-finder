@@ -11,6 +11,28 @@ const styleNthChild = function(idx) {
   `;
 };
 
+const preventEvent = function(currentPage, lastPage) {
+  const preventingStyle = css`
+    color: #C0C0C0;
+    pointer-events: none;
+  `;
+  if(currentPage === 1) {
+    return css`
+      .arrow-btn__prev {
+        ${preventingStyle};
+      }
+    `;
+  }
+
+  if(currentPage === lastPage) {
+    return css`
+      .arrow-btn__next {
+        ${preventingStyle};
+      }
+    `;
+  }
+};
+
 const PaginationWrapper = styled.div`
   flex: 0 0 auto;
   display: flex;
@@ -47,6 +69,8 @@ const PaginationWrapper = styled.div`
       align-items: center;
       justify-content: center;
     }
+
+    ${ ({currentPage, lastPage}) => preventEvent(currentPage, lastPage) };
 
     .number-btns {
       flex: 1;

@@ -5,8 +5,8 @@ import additionReducer from './additionReducer';
 import inputReducer from './inputReducer';
 
 export default combineReducers({
-  courtStore: courtReducer,
-  flagStore: flagReducer,
+  courts: courtReducer,
+  flags: flagReducer,
   storeOnAddition: additionReducer,
-  storeOnInput: inputReducer
+  input: inputReducer
 });

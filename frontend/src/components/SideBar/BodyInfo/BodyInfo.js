@@ -15,7 +15,7 @@ import { iconSize } from '@initConfig';
 import PropTypes from 'prop-types';
 
 const BodyInfo = () => {
-  const { selectedCourt } = useSelector(({ courtStore }) => courtStore);
+  const { selectedCourt } = useSelector(({ courts }) => courts);
 
   const renderOnData = useMemo(() => {
     if(!selectedCourt) return;

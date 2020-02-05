@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 import { Marker } from '@react-google-maps/api';
 import { useSelector } from 'react-redux';
 import { createFullCoordinate, compareCoordinates } from '@myUtils';
@@ -9,7 +9,7 @@ const CourtMarker = ({
   courtInfo,
 }) => {
   const { marker } = defaultMapOptions;
-  const { selectedCourt } = useSelector(({ courtStore }) => courtStore);
+  const { selectedCourt } = useSelector(({ courts }) => courts);
   
   return (
     <>

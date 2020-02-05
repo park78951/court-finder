@@ -73,13 +73,18 @@ const Pagination = ({
       itemsToShow: numbersOnList,
       totalPageNumbers
     })
+    console.log(totalPageNumbers);
     setCurrentPages(currentPageNumbers);
   }, [totalCourts, currentPage]);
 
   return (
-    <Style.PaginationWrapper currentPage={ currentPage } numbersOnList={ numbersOnList }>
+    <Style.PaginationWrapper 
+      currentPage={ currentPage } 
+      numbersOnList={ numbersOnList }
+      lastPage={ totalPageNumbers.length }
+    >
       <div>
-        <button onClick={ clickBefore } className='arrow-btn arrow-btn__before'>
+        <button onClick={ clickBefore } className='arrow-btn arrow-btn__prev'>
           <MdNavigateBefore size={20}/>
         </button>
         { numberList }
@@ -101,4 +106,4 @@ Pagination.propTypes = {
   lastPage: PropTypes.number,
 };
 
-export default Pagination;
+export default React.memo(Pagination);

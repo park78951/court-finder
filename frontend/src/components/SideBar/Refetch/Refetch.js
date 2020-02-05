@@ -13,9 +13,9 @@ const Refetch = () => {
   const { color, size } = refetchBtnStyle;
   const dispatch = useDispatch();
   const { userInput, filterInput, page } = useSelector(state => ({
-    userInput: state.storeOnInput.userInput,
-    filterInput: state.storeOnInput.filterInput,
-    page: state.courtStore.currentPage,
+    userInput: state.input.userInput,
+    filterInput: state.input.filterInput,
+    page: state.courts.currentPage,
   }));
 
   const refetchRequestor = useCallback(() => {
