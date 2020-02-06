@@ -6,28 +6,32 @@ const getDistanceBetweenTwo = (position1, position2) => {
     createFullCoordinate(position1),
     createFullCoordinate(position2),
   );
-
+  
   return distance;
 };
 
-const getFarthestCourts = (courts) => {
-  const courtsForm = {
-    distance: 0,
-    courtInfo: [],
-  };
+export const getFarthestCourts = (courts) => {
+  const { farthestCourts } = courts.reduce((prevResult, courtInfo, idx, arr) => {
+    if (idx === arr.length) return prevResult;
 
-  const farthestCourts = courts.reduce((courts, courtInfo, idx, arr) => {
-    if (idx + 1 === arr.length) return courts;
+    let comparedCourts = {
+      distance: 0,
+      farthestCourts: [],
+    };
 
-    const distance = getDistanceBetweenTwo(courtInfo, arr[idx + 1]);
+    for(let i = idx + 1; i < arr.length; i++) {
+      const distance = getDistanceBetweenTwo(courtInfo, arr[i]);
+
+      if(comparedCourts.distance < distance) {
+        comparedCourts.distance = distance;
+        comparedCourts.farthestCourts = [courtInfo, arr[i]];
+      }
+    }
     
-    return distance < courts.distance 
-      ? courts 
-      : {
-        distance,
-        courtInfo: [courtInfo, arr[idx + 1]],
-      };
-  }, courtsForm);
+    return comparedCourts.distance < prevResult.distance 
+      ? prevResult 
+      : comparedCourts;
+  }, {});
   
   return farthestCourts;
 };
@@ -35,11 +39,12 @@ const getFarthestCourts = (courts) => {
 export default courts => {
   if (courts.length === 1) return createFullCoordinate(courts[0]);
 
-  const { courtInfo } = getFarthestCourts(courts);
+  const farthestCourts = getFarthestCourts(courts);
   
-  const centerPosition = courtInfo.reduce((court1, court2) => {
+  const centerPosition = farthestCourts.reduce((court1, court2) => {
     const court1Position = createFullCoordinate(court1);
     const court2Position = createFullCoordinate(court2);
+
     const lngBenchmark = Math.max(court1Position.lng, court2Position.lng);
     const latBenchmark = Math.max(court1Position.lat, court2Position.lat);
     
