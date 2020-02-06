@@ -8,7 +8,8 @@ import HelperNav from '../SideBar/HelperNav';
 import NoResult from '../NoResult';
 import { Pagination } from '../lib';
 import { requestCourts } from '@actions';
-import { paginationConfig, createSearchQuery } from '@initConfig';
+import { paginationConfig } from '@initConfig';
+import { getSearchQueries } from '@myUtils';
 import Style from './SidebarContainerStyle';
 
 const SidebarListContainer = () => {
@@ -30,7 +31,7 @@ const SidebarListContainer = () => {
       page,
     }));
 
-    const searchRoute = createSearchQuery({
+    const searchRoute = getSearchQueries({
       userInput: userInput,
       city: filterInput.city,
       district: filterInput.district,

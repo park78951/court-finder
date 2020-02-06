@@ -77,10 +77,6 @@ export const routes = {
   court: '/court',
 };
 
-export const createSearchQuery = ({userInput, city, district, page }) => {
-  return `/search?userInput=${userInput}&city=${city}&district=${district}&page=${page}`;
-}
-
 export const filterConfig = {
   location: {
     name: '지역별',

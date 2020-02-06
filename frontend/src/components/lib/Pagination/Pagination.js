@@ -73,7 +73,6 @@ const Pagination = ({
       itemsToShow: numbersOnList,
       totalPageNumbers
     })
-    console.log(totalPageNumbers);
     setCurrentPages(currentPageNumbers);
   }, [totalCourts, currentPage]);
 

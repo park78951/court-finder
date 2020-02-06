@@ -36,7 +36,8 @@
           "@initConfig": "./src/config/initConfig.js",
           "@store": "./src/store",
           "@assets": "./src/assets",
-          "@hooks": "./src/hooks"
+          "@hooks": "./src/hooks",
+          "@public": "./public"
         }
       }
     ],

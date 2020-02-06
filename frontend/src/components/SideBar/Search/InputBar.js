@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 import { IoIosSearch } from 'react-icons/io';
 import PropTypes from 'prop-types';
 import { requestCourts, unselectCourt } from '@actions';
-import { createSearchQuery } from '@initConfig';
+import { getSearchQueries } from '@myUtils';
 import Style from './InputBarStyle';
 
 const InputBar = () => {
@@ -29,7 +29,7 @@ const InputBar = () => {
     }));
     setTerm('');
 
-    const searchRoute = createSearchQuery({
+    const searchRoute = getSearchQueries({
       userInput: term,
       city: filterInput.city,
       district: filterInput.district,

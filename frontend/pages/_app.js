@@ -1,11 +1,9 @@
 import React from 'react';
 import { HelmetProvider } from 'react-helmet-async';
-import { Provider, useSelector, useDispatch } from 'react-redux';
-import { useRouter } from 'next/router';
+import { Provider } from 'react-redux';
 import withRedux from 'next-redux-wrapper';
 import { PersistGate } from 'redux-persist/integration/react';
 import PropTypes from 'prop-types';
-import { requestCourt } from '@actions';
 import AppLayout from '@components/AppLayout';
 import configureStore from '@store';
 import { GlobalStyle } from '@styles'
@@ -33,7 +31,6 @@ CourtFinder.propTypes = {
 };
 
 CourtFinder.getInitialProps = async context => {
-  console.log('a');
   const { ctx } = context;
   let pageProps = {};
   if (context.Component.getInitialProps) {

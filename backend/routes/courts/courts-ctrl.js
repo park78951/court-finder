@@ -2,7 +2,6 @@ const { Court, Sequelize: { Op } } = require('../../models');
 const createError = require('http-errors');
 
 exports.search = async (req, res, next) => {
-  console.log(req.query);
   const { match, city, district } = req.query;
   const page = parseInt(req.query.page);
   const size = parseInt(req.query.size);

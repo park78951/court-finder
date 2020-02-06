@@ -34,7 +34,6 @@ function* searchCourts(action) {
       };
       yield put(getUserInput(userInput));
       const response = yield call(searchCourtsAPI, query);
-      console.log(response)
       const { totalCount, courts } = response.data;
       yield put(completeGettingCourts({ totalCourts: totalCount, courtsData: courts }));
       prevSearchItems[searchCode] = {totalCourts: totalCount, courtsData: courts};
