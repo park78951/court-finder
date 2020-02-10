@@ -1,4 +1,3 @@
-require('dotenv').config();
 const withImages = require('next-images');
 const Dotenv = require('dotenv-webpack');
 const path = require('path');
