@@ -1,11 +1,16 @@
 import axios from 'axios';
-import { DEVLOPMENT_HOST, PRODUCTION_HOST } from '../config/constants';
+import { 
+  LOCAL_HOST, 
+  MAIN_HOST, 
+  WAITING_TIME 
+} from '@constants';
 
-const apiURL = process.env.NODE_ENV === 'development' 
-  ? DEVLOPMENT_HOST 
-  : PRODUCTION_HOST;
-
-export default axios.create({
-  baseURL: apiURL,
-  timeout: 3000,
+export const apiForLocal = axios.create({
+  baseURL: LOCAL_HOST,
+  timeout: WAITING_TIME,
+});
+  
+export const apiForServer = axios.create({
+  baseURL: MAIN_HOST,
+  timeout: WAITING_TIME,
 });

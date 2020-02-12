@@ -1,6 +1,6 @@
 import { fork, put, takeLatest, call, all } from 'redux-saga/effects';
 import { Base64 } from 'js-base64';
-import courtsApi from '../apis';
+import { apiForLocal, apiForServer } from '../apis';
 import {
   completeGettingCourts,
   failGettingCourts,
@@ -14,7 +14,11 @@ import { courtsPageConfig } from '@initConfig';
 import { getSearchQueries } from '@myUtils';
 
 function searchCourtsAPI(query) {
+  const courtsApi = typeof window === 'undefined'
+   ? apiForServer
+   : apiForLocal;
   const searchQuery = getSearchQueries(query);
+
   return courtsApi.get(`/courts${searchQuery}`);
 }
 
@@ -52,6 +56,10 @@ function* watchSearchCourts() {
 }
 
 function searchCourtAPI(id) {
+  const courtsApi = typeof window === 'undefined'
+   ? apiForServer
+   : apiForLocal;
+   
   return courtsApi.get(`/courts/${id}`);
 }
 
