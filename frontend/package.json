@@ -4,11 +4,11 @@
   "main": "src/index.js",
   "repository": "https://github.com/park78951/court-finder.git",
   "scripts": {
+    "dev": "nodemon",
     "eslint": "eslint ./",
     "build": "next build",
     "prestart": "yarn build",
-    "start": "cross-env NODE_ENV=production pm2 start server.js",
-    "dev": "cross-env NODE_ENV=production node server.js",
+    "start": "cross-env NODE_ENV=development pm2 start server.js",
     "test": "jest"
   },
   "browserslist": [
