@@ -56,7 +56,7 @@ export const refetchBtnStyle = {
   color: 'cancel'
 };
 
-export const paginationConfig = {
+export const courtsPageConfig = {
   courtsPerPage: 6,
   numbersOnList: 5,
 };

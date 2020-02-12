@@ -8,7 +8,7 @@ import HelperNav from '../SideBar/HelperNav';
 import NoResult from '../NoResult';
 import { Pagination } from '../lib';
 import { requestCourts } from '@actions';
-import { paginationConfig } from '@initConfig';
+import { courtsPageConfig } from '@initConfig';
 import { getSearchQueries } from '@myUtils';
 import Style from './SidebarContainerStyle';
 
@@ -37,6 +37,7 @@ const SidebarListContainer = () => {
       district: filterInput.district,
       page: page,
     });
+
     router.push(searchRoute);
   }, [currentPage, userInput, filterInput]);
 
@@ -57,7 +58,7 @@ const SidebarListContainer = () => {
         <Pagination 
           clickHandler={ changeCurrentPage }
           totalCourts={ totalCourts }
-          { ...paginationConfig }
+          { ...courtsPageConfig }
           userInput={ userInput }
           filterInput={ filterInput }
           lastPage={ currentPage }

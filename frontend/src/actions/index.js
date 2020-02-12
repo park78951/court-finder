@@ -22,7 +22,8 @@ export const requestCourts = ({ userInput, filterInput, page }) => ({
   type: SEARCH_COURTS_REQUEST,
   payload: {
     userInput,
-    filterInput,
+    city: filterInput.city ? filterInput.city : '',
+    district: filterInput.district ? filterInput.district : '',
     page
   }
 });

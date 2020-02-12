@@ -10,12 +10,12 @@ import {
 } from '../actions';
 import { SEARCH_COURTS_REQUEST, SEARCH_COURT_REQUEST } from '../actions/types';
 import { prevSearchItems, prevSearchItem } from '@reducers/initialState';
+import { courtsPageConfig } from '@initConfig';
+import { getSearchQueries } from '@myUtils';
 
 function searchCourtsAPI(query) {
-  const { page, size, match, city, district } = query;
-  return courtsApi.get(
-    `/courts/search?page=${page}&size=${size}&match=${match}&city=${city}&district=${district}`
-  );
+  const searchQuery = getSearchQueries(query);
+  return courtsApi.get(`/courts${searchQuery}`);
 }
 
 function* searchCourts(action) {
@@ -24,13 +24,13 @@ function* searchCourts(action) {
     if(prevSearchItems.hasOwnProperty(searchCode)) {
       yield put(completeGettingCourts(prevSearchItems[searchCode]));
     } else {
-      const { userInput, filterInput, page } = action.payload;
+      const { userInput, city, district, page } = action.payload;
       const query = {
-        "page": page,
-        "size": 6,
+        page,
+        "size": courtsPageConfig.courtsPerPage,
         "match": userInput,
-        "city": filterInput.city,
-        "district": filterInput.district,
+        city,
+        district,
       };
       yield put(getUserInput(userInput));
       const response = yield call(searchCourtsAPI, query);

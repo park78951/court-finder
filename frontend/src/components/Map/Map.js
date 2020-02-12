@@ -37,7 +37,7 @@ const Map = () => {
   const { searchedCourts, selectedCourt, mouseoverList } = useSelector(({ courts }) => courts);
 
   const { isLoaded } = useLoadScript({
-    googleMapsApiKey: process.env.KEY
+    googleMapsApiKey: process.env.GOOGLE_MAP_KEY
   });
 
   const onMouseOverAndOutOfMarker = useCallback((courtInfo) => () => {
@@ -45,6 +45,7 @@ const Map = () => {
   }, [searchedCourts]);
 
   const markers = useMemo(() => {
+    if(!searchedCourts.length) return null;
     return searchedCourts.map((courtInfo) => {
       const { name } = courtInfo;
       return (
