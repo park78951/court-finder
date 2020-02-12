@@ -5,6 +5,6 @@ files:
     destination: /home/ec2-user/
 hooks:
   AfterInstall:
-    - location: /home/ec2-user/init/init-env.sh
+    - location: init/init-env.sh
       timeout: 300
       runas: root
