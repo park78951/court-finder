@@ -1,0 +1,10 @@
+version: 0.0
+os: linux
+files:
+  - source: /
+    destination: /home/ec2-user/
+hooks:
+  AfterInstall:
+    - location: /home/ec2-user/init/init-env.sh
+      timeout: 3000
+      runas: root
