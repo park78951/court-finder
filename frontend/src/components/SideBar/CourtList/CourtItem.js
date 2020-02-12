@@ -14,7 +14,6 @@ const CourtItem = ({ searchedInfo }) => {
   const selectCourtInfo = useCallback(() => {
     dispatch(selectCourt(searchedInfo));
     dispatch(getMouseOverList());
-    localStorage.setItem('selectCourt', JSON.stringify(searchedInfo));
   }, [searchedInfo]);
 
   const onMouseOverOut = useCallback(courtInfo => () => {

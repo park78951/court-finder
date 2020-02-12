@@ -7,7 +7,7 @@ export const defaultMapOptions = {
     lng: 126.929067
   },
   defaultZoom: 12,
-  selectedZoom:15,
+  selectedZoom:13,
   mapStyle: {
     height: "100vh",
     width: "100%"
@@ -56,7 +56,7 @@ export const refetchBtnStyle = {
   color: 'cancel'
 };
 
-export const paginationConfig = {
+export const courtsPageConfig = {
   courtsPerPage: 6,
   numbersOnList: 5,
 };
@@ -74,8 +74,7 @@ export const filterButton = {
 
 export const routes = {
   search: '/search',
-  review: '/court/review',
-  infoDetail: '/court/detail',
+  court: '/court',
 };
 
 export const filterConfig = {

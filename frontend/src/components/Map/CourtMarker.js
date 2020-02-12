@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 import { Marker } from '@react-google-maps/api';
 import { useSelector } from 'react-redux';
 import { createFullCoordinate, compareCoordinates } from '@myUtils';
@@ -9,11 +9,7 @@ const CourtMarker = ({
   courtInfo,
 }) => {
   const { marker } = defaultMapOptions;
-  const { selectedCourt } = useSelector(state => state.storeOnSelection);
-  
-  const isSelectedCourt = useMemo(() => {
-    return compareCoordinates(selectedCourt, courtInfo);
-  }, [selectedCourt]);
+  const { selectedCourt } = useSelector(({ courts }) => courts);
   
   return (
     <>
@@ -22,8 +18,8 @@ const CourtMarker = ({
         onMouseOver={ mouseOverOutHandler(courtInfo) }
         onMouseOut={ mouseOverOutHandler() }
         cursor='pointer'
-        icon={ isSelectedCourt ? null : marker }
-        animation={ isSelectedCourt && 2 }
+        icon={ compareCoordinates(selectedCourt, courtInfo) ? null : marker }
+        animation={ compareCoordinates(selectedCourt, courtInfo) && 2 }
       /> 
     </>
   );

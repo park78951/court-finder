@@ -2,14 +2,10 @@ export const searchInfo = {
   searchedCourts: [],
   isSearching: false,
   isError: false,
-  userInput: null,
   totalCourts: null,
   currentPage: null,
-};
-
-export const selectionInfo = {
   selectedCourt: null,
-  listOverCourt: null,
+  mouseoverList: null,
 };
 
 export const additionInfo = {
@@ -21,8 +17,12 @@ export const initUIToggleInfo = {
   courtAdditionFlag: false,
 };
 
-export const initFilterInfo = {
-  filterInput: {}
+export const initInputInfo = {
+  userInput: null,
+  filterInput: {
+    city: "",
+    district: "",
+  }
 };
 
 export const initSubmitList = {

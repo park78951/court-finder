@@ -12,8 +12,6 @@ import {
 import { useSelector } from 'react-redux';
 import { useRouter } from 'next/router'
 import _ from 'lodash';
-import PropTypes from 'prop-types';
-
 import { defaultMapOptions } from '@initConfig';
 import { createFullCoordinate, getCenterPosition } from '@myUtils';
 import CourtMarker from './CourtMarker';
@@ -36,14 +34,10 @@ const Map = () => {
   const [curZoom, setCurZoom] = useState(defaultZoom);
   const [mouseoverMarker, setMouseoverMarker] = useState(null);
 
-  const { searchedCourts, selectedCourt, mouseoverList } = useSelector(state => ({
-    searchedCourts: state.storeOnSearch.searchedCourts,
-    selectedCourt: state.storeOnSelection.selectedCourt,
-    mouseoverList: state.storeOnSelection.mouseoverList,
-  }));
+  const { searchedCourts, selectedCourt, mouseoverList } = useSelector(({ courts }) => courts);
 
   const { isLoaded } = useLoadScript({
-    googleMapsApiKey: process.env.KEY
+    googleMapsApiKey: process.env.GOOGLE_MAP_KEY
   });
 
   const onMouseOverAndOutOfMarker = useCallback((courtInfo) => () => {
@@ -51,6 +45,7 @@ const Map = () => {
   }, [searchedCourts]);
 
   const markers = useMemo(() => {
+    if(!searchedCourts.length) return null;
     return searchedCourts.map((courtInfo) => {
       const { name } = courtInfo;
       return (
@@ -62,6 +57,16 @@ const Map = () => {
       );
     });
   }, [searchedCourts]);
+
+  const marker = useMemo(() => {
+    return (
+      <CourtMarker
+        key={ _.uniqueId(name) }
+        courtInfo={ selectedCourt }
+        mouseOverOutHandler={ onMouseOverAndOutOfMarker }
+      />            
+    );
+  }, [!searchedCourts.length && selectedCourt]);
 
   const infoBox = useMemo(() => {
     const onMouseOverCourt = mouseoverList || mouseoverMarker;
@@ -82,7 +87,7 @@ const Map = () => {
   }, [mouseoverList, mouseoverMarker]);
   
   useEffect(() => {
-    if (!searchedCourts.length) return;
+    if (!selectedCourt && !searchedCourts.length) return;
 
     if (selectedCourt) setCurCenter(createFullCoordinate(selectedCourt));
     else setCurCenter(getCenterPosition(searchedCourts));
@@ -90,8 +95,7 @@ const Map = () => {
 
   useEffect(() => {
     if (selectedCourt) setCurZoom(selectedZoom);
-    else setCurZoom(defaultZoom);
-    
+    else setCurZoom(defaultZoom);   
   }, [selectedCourt]);
 
   return isLoaded && (
@@ -104,6 +108,10 @@ const Map = () => {
         options={ options }
       >
         { route !== '/' && markers }
+        { route !== '/' 
+          && !searchedCourts.length 
+          && selectedCourt 
+          && marker }
         { window.google && infoBox }
       </GoogleMap>
     </Style.MapContainer>

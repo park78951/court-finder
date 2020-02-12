@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import Title from './Title';
@@ -9,9 +9,7 @@ import Style from './HeaderInfoStyle';
 import { selectCourt } from '@actions';
 
 const HeaderInfo = () => {
-  const courtData = useSelector(state => {
-    return state.storeOnSelection.selectedCourt;
-  });
+  const { selectedCourt } = useSelector(({ courts }) => courts);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -20,10 +18,10 @@ const HeaderInfo = () => {
     }
   }, []);
   
-  return (
+  return selectedCourt && (
     <Style.HeaderWrapper>
-      <Title { ...courtData } />
-      <Address { ...courtData } />
+      <Title { ...selectedCourt } />
+      <Address { ...selectedCourt } />
       <Additional />
       <NavBtn />
     </Style.HeaderWrapper>

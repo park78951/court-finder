@@ -1,14 +1,12 @@
 import { combineReducers } from 'redux';
-import searchReducer from './searchReducer';
+import courtReducer from './courtReducer';
 import flagReducer from './flagReducer';
-import selectionReducer from './selectionReducer';
 import additionReducer from './additionReducer';
-import searchFilterReducer from './searchFilterReducer';
+import inputReducer from './inputReducer';
 
 export default combineReducers({
-  storeOnSearch: searchReducer,
-  storeOnFlag: flagReducer,
-  storeOnSelection: selectionReducer,
+  courts: courtReducer,
+  flags: flagReducer,
   storeOnAddition: additionReducer,
-  storeOnFilter: searchFilterReducer
+  input: inputReducer
 });

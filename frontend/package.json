@@ -4,11 +4,12 @@
   "main": "src/index.js",
   "repository": "https://github.com/park78951/court-finder.git",
   "scripts": {
-    "dev": "next -p 8080",
-    "build": "next build",
-    "start": "next start",
+    "dev": "nodemon",
     "eslint": "eslint ./",
-    "test": "exit"
+    "build": "next build",
+    "prestart": "yarn build",
+    "start": "cross-env NODE_ENV=production node server.js",
+    "test": "jest"
   },
   "browserslist": [
     "> 1%",
@@ -21,12 +22,17 @@
     "@material-ui/core": "^4.4.3",
     "@react-google-maps/api": "^1.7.5",
     "axios": "^0.19.0",
+    "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.4",
     "dotenv": "^8.1.0",
+    "express": "^4.17.1",
     "js-base64": "^2.5.1",
     "lodash": "^4.17.15",
     "next": "^9.2.0",
     "next-images": "^1.3.0",
+    "next-redux-saga": "^4.1.2",
     "next-redux-wrapper": "^4.0.1",
+    "pm2": "^4.2.3",
     "polished": "^3.4.1",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
@@ -45,14 +51,21 @@
     "styled-reset": "^4.0.9"
   },
   "devDependencies": {
+    "@testing-library/dom": "^6.12.2",
     "babel-eslint": "^10.0.3",
     "babel-plugin-lodash": "^3.3.4",
     "babel-plugin-module-resolver": "^4.0.0",
     "babel-plugin-styled-components": "^1.10.6",
+    "cross-env": "^7.0.0",
     "dotenv-webpack": "^1.7.0",
     "eslint": "^6.4.0",
     "eslint-plugin-react": "^7.14.3",
+    "fetch-mock": "^9.0.0-beta.2",
+    "jest": "^25.1.0",
     "lodash-webpack-plugin": "^0.11.5",
+    "nodemon": "^2.0.2",
+    "redux-mock-store": "^1.5.4",
+    "redux-saga-test-plan": "^4.0.0-rc.3",
     "webpack": "^4.39.1",
     "webpack-manifest-plugin": "^2.2.0"
   }

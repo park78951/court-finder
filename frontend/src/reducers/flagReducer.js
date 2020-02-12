@@ -2,7 +2,7 @@ import {
   TOGGLE_SIDEBAR,
   OPEN_COURTADDITION,
   CLOSE_COURTADDITION,
-} from '../actions/types';
+} from '@actions/types';
 import { initUIToggleInfo } from './initialState';
 
 const uiReducers = (state = initUIToggleInfo, { type }) => {

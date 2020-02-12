@@ -1,14 +1,15 @@
-import React, { useCallback, useEffect } from 'react';
+import React, { useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-
+import { useRouter } from 'next/router';
 import Loader from '../Loader';
 import Refetch from '../SideBar/Refetch';
 import CourtList from '../SideBar/CourtList';
 import HelperNav from '../SideBar/HelperNav';
 import NoResult from '../NoResult';
 import { Pagination } from '../lib';
-import { startSearchingCourts } from '@actions';
-import { paginationConfig } from '@initConfig';
+import { requestCourts } from '@actions';
+import { courtsPageConfig } from '@initConfig';
+import { getSearchQueries } from '@myUtils';
 import Style from './SidebarContainerStyle';
 
 const SidebarListContainer = () => {
@@ -17,19 +18,28 @@ const SidebarListContainer = () => {
     isSearching, 
     isError, 
     totalCourts, 
-    userInput,
     currentPage 
-  } = useSelector(state => state.storeOnSearch);
-  const { filterInput } = useSelector(state => state.storeOnFilter);
+  } = useSelector(({ courts }) => courts);
+  const { userInput, filterInput } = useSelector(({ input }) => input);
   const dispatch = useDispatch();
+  const router = useRouter();
 
   const changeCurrentPage = useCallback(({userInput, filterInput, page}) => {
-    dispatch(startSearchingCourts({
+    dispatch(requestCourts({
       userInput, 
       filterInput, 
       page,
     }));
-  }, [currentPage, userInput]);
+
+    const searchRoute = getSearchQueries({
+      userInput: userInput,
+      city: filterInput.city,
+      district: filterInput.district,
+      page: page,
+    });
+
+    router.push(searchRoute);
+  }, [currentPage, userInput, filterInput]);
 
   return (
     <>
@@ -48,7 +58,7 @@ const SidebarListContainer = () => {
         <Pagination 
           clickHandler={ changeCurrentPage }
           totalCourts={ totalCourts }
-          { ...paginationConfig }
+          { ...courtsPageConfig }
           userInput={ userInput }
           filterInput={ filterInput }
           lastPage={ currentPage }
