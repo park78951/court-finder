@@ -5,9 +5,10 @@
   "repository": "https://github.com/park78951/court-finder.git",
   "scripts": {
     "dev": "nodemon",
-    "build": "next build",
-    "start": "next start",
     "eslint": "eslint ./",
+    "build": "next build",
+    "prestart": "yarn build",
+    "start": "cross-env NODE_ENV=production node server.js",
     "test": "jest"
   },
   "browserslist": [
@@ -54,6 +55,7 @@
     "babel-plugin-lodash": "^3.3.4",
     "babel-plugin-module-resolver": "^4.0.0",
     "babel-plugin-styled-components": "^1.10.6",
+    "cross-env": "^7.0.0",
     "dotenv-webpack": "^1.7.0",
     "eslint": "^6.4.0",
     "eslint-plugin-react": "^7.14.3",

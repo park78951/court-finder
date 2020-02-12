@@ -15,6 +15,7 @@ Search.getInitialProps = async context => {
 
   const { store, query } = context;
   const { userInput, filterInput, page } = query;
+  
   store.dispatch(requestCourts({
     userInput,
     filterInput: filterInput ? filterInput : {},
