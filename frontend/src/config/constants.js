@@ -13,7 +13,7 @@ export const TIME_DIVISION_MINUTES = ['00', '30'];
 export const EXISTENCE_NONEXISTENCE = ['유', '무'];
 
 // Axios & Request URL
-export const LOCAL_HOST = 'http://localhost:3000';
+export const LOCAL_HOST = 'http://localhost:3000/api';
 export const MAIN_HOST = 'http://13.125.179.255/api';
 export const WAITING_TIME = 4000;
 
