@@ -17,8 +17,8 @@ function searchCourtsAPI(query) {
   const courtsApi = typeof window !== 'undefined'
    ? apiForServer
    : apiForLocal;
-  const searchQuery = getSearchQueries(query);
-
+  const searchQuery = encodeURI(getSearchQueries(query));
+  console.log(searchQuery);
   return courtsApi.get(`/courts${searchQuery}`);
 }
 
