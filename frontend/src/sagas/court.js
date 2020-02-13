@@ -18,7 +18,6 @@ function searchCourtsAPI(query) {
    ? apiForServer
    : apiForLocal;
   const searchQuery = encodeURI(getSearchQueries(query));
-  console.log(searchQuery);
   return courtsApi.get(`/courts${searchQuery}`);
 }
 
