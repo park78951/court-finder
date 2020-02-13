@@ -5,4 +5,4 @@ npm install --prefix /home/ec2-user/backend
 npm install --prefix /home/ec2-user/frontend
 
 # ssr server build & start
-npm start --prefix /home/ec2-user/frontend
+sudo npm run build --prefix /home/ec2-user/build/frontend
