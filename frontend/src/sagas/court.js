@@ -14,7 +14,7 @@ import { courtsPageConfig } from '@initConfig';
 import { getSearchQueries } from '@myUtils';
 
 function searchCourtsAPI(query) {
-  const courtsApi = typeof window === 'undefined'
+  const courtsApi = typeof window !== 'undefined'
    ? apiForServer
    : apiForLocal;
   const searchQuery = getSearchQueries(query);
@@ -56,7 +56,7 @@ function* watchSearchCourts() {
 }
 
 function searchCourtAPI(id) {
-  const courtsApi = typeof window === 'undefined'
+  const courtsApi = typeof window !== 'undefined'
    ? apiForServer
    : apiForLocal;
    

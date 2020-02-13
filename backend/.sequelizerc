@@ -1,7 +1,7 @@
 const path = require('path');
 
 module.exports = {
-    'config' : path.resolve('config', 'sequelize.js'),
+    'config' : path.resolve('../../config', 'sequelize.js'),
     'seeders-path' : path.resolve('src/sequelize', 'seeders'),
     'migrations-path' : path.resolve('src/sequelize', 'migrations')
 }

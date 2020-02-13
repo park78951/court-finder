@@ -21,7 +21,7 @@ app.prepare().then(() => {
     return handle(req, res);
   });
 
-  const port = prod ? process.env.PORT : 8080;
+  const port = 8080;
 
   server.listen(port, () => {
     console.log(`next+express running on port: ${port}`);

@@ -6,9 +6,9 @@
   "scripts": {
     "dev": "nodemon",
     "eslint": "eslint ./",
-    "build": "next build",
+    "build": "./build.sh",
     "prestart": "yarn build",
-    "start": "cross-env NODE_ENV=production node server.js",
+    "start": "cross-env NODE_ENV=development pm2 start server.js",
     "test": "jest"
   },
   "browserslist": [

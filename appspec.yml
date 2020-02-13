@@ -1,0 +1,10 @@
+version: 0.0
+os: linux
+files:
+  - source: /
+    destination: /home/ec2-user/build
+hooks:
+  AfterInstall:
+    - location: init/allow-permission.sh
+    - location: init/init-env.sh
+      timeout: 1800
