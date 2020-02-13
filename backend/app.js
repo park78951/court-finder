@@ -11,7 +11,7 @@ const app = express();
 sequelize.sync();
 
 if (process.env.NODE_ENV === 'production') {
-  app.use(mrgan('combined'));
+  app.use(logger('combined'));
 } else {
   app.use(logger('dev'));
 }
