@@ -1,5 +1,6 @@
 const express = require('express');
 const path = require('path');
+const dotenv = require('dotenv');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const sequelize = require('./models').sequelize;
@@ -8,6 +9,8 @@ const swaggerUi = require('swagger-ui-express');
 const swaggerSpec = require('./src/swagger/swagger-definition');
 const cors = require('cors');
 const app = express();
+
+dotenv.config({ path: path.join(__dirname, '../../.env') });
 sequelize.sync();
 
 if (process.env.NODE_ENV === 'production') {
