@@ -48,7 +48,9 @@
     "spherical-geometry-js": "^2.0.0",
     "styled-components": "^4.3.2",
     "styled-normalize": "^8.0.6",
-    "styled-reset": "^4.0.9"
+    "styled-reset": "^4.0.9",
+    "winston": "^3.2.1",
+    "winston-daily-rotate-file": "^4.4.2"
   },
   "devDependencies": {
     "@testing-library/dom": "^6.12.2",

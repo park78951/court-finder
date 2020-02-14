@@ -3,9 +3,9 @@ const next = require('next');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const path = require('path');
+const {onSendingErrorMsg, onStart} = require('./log');
 
 const dev = process.env.NODE_ENV !== 'production';
-const prod = process.env.NODE_ENV === 'production';
 const app = next({ dev });
 const handle = app.getRequestHandler();
 
@@ -21,9 +21,13 @@ app.prepare().then(() => {
     return handle(req, res);
   });
 
+  server.use((err, req, res, next) => {
+    onSendingErrorMsg(err);
+  });
+
   const port = 8080;
 
   server.listen(port, () => {
-    console.log(`next+express running on port: ${port}`);
+    onStart(`next+express running on port: ${port}`);
   });
 });
