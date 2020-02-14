@@ -6,22 +6,27 @@ const jwt = require('jsonwebtoken');
 const MAX_AGE = 1000*60*60*24*30;
 
 exports.login = async (req, res, next) => {
-  const { kakaoId } = req.body;
+  const { kakaoId, kakaoNickname } = req.body;
   
-  if (!kakaoId) return next(createError(400, "kakaoId is required"));
+  if (!kakaoId && !kakaoNickname) return next(createError(400, "kakaoId, Nickname are required"));
 
   try {
     const [user] = await User.findOrCreate({
       where: { kakaoId },
+      defaults: { nickname: kakaoNickname }
     });
     
     const token = generateToken({
       kakaoId: user.kakaoId,
+      nickname: user.nickname
     });
     
     res.cookie('court-finder-jwt', token, { path: '/', httpOnly: true, maxAge: MAX_AGE });
 
-    return res.json({ kakaoId: user.kakaoId })
+    return res.json({ 
+      kakaoId: user.kakaoId,
+      nickname: user.nickname
+    });
   } catch (error) {
     return next(error);
   }

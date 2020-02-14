@@ -7,6 +7,11 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       unique: true,
     },
+    nickname: {
+      type: DataTypes.STRING(40),
+      allowNull: false,
+      unique: true,
+    },
   },
   {
     timestamps: true,

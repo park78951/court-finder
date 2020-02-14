@@ -12,7 +12,7 @@
  *      tags:
  *      - "auth"
  *      summary: "user login"
- *      description: "kakaoId 를 통한 회원 가입 및 로그인"
+ *      description: "kakaoId 를 통한 회원 가입 및 로그인\n 아직 등록안된 회원이면 kakaoNickname으로 자동 회원 가입"
  *      prodeces:
  *      - "application/json"
  *      parameters:
@@ -20,15 +20,20 @@
  *        name: "body"
  *        description: "로그인을 위한 회원 정보"
  *        schema:
- *          $ref: "#/definitions/User"
+ *          type: "object"
+ *          properties:
+ *            kakaoId:
+ *              type: string
+ *            kakaoNickname:
+ *              type: string
  *        required: true
  *      responses:
  *        200:
- *          description: "Success"
+ *          description: "Success\n token이 cookie로 전달됨"
  *          schema:
  *            $ref: "#/definitions/User"
  *        400:
- *          description: "page and size should be defined minimum 1"
+ *          description: "kakaoId 혹은 kakaoNickname이 없음"
  *        500:
  *          description: "Internal Server Error"
  */
@@ -39,6 +44,8 @@
  *      type: "object"
  *      properties:
  *        kakaoId:
+ *          type: string
+ *        nickname:
  *          type: string
  */
 
