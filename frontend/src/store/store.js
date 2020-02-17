@@ -7,7 +7,6 @@ import rootSaga from '@sagas';
 export default (initialState, options) => {
   let store = null;
   const sagaMiddleware = createSagaMiddelware();
-  const isClient = typeof window !== 'undefined';
   const middleWares = [sagaMiddleware];
   const enhancer = process.env.NODE_ENV === 'production'
     ? compose(applyMiddleware(...middleWares))
@@ -18,14 +17,14 @@ export default (initialState, options) => {
         : (f) => f,
     );
 
-  if(isClient) {
+  if(!options.isServer) {
     const { persistReducer } = require('redux-persist');
     const storage = require('redux-persist/lib/storage').default;
 
     const persistConfig = {
       'key': 'root',
       storage,
-      'whitelist': ['courts'],
+      'whitelist': ['user'],
     }
 
     store = createStore(
@@ -36,7 +35,7 @@ export default (initialState, options) => {
 
     store.__PERSISTOR = persistStore(store);
   } else {
-    store = createStore(rootReducer, {}, enhancer);
+    store = createStore(rootReducer, initialState, enhancer);
   }
 
   store.sagaTask = sagaMiddleware.run(rootSaga);

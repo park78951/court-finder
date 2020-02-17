@@ -16,7 +16,7 @@ export const MAIN_HOST = 'http://13.125.124.214/api';
 export const WAITING_TIME = 4000;
 
 // AUTH
-export const KAKAO_API_URL_PROFILE = '/v2/user/me';
+export const KAKAO_API_PROFILE_URL = '/v2/user/me';
 
 // alert
 export const FILTER_APPLIED = '필터가 적용 되었습니다.';

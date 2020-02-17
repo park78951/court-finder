@@ -49,7 +49,7 @@ export const initSubmitList = {
 };
 
 export const userInfo = {
-  id: null,
+  userId: null,
   nickname: null,
   email: null,
   isLogginIn: false,

@@ -16,6 +16,9 @@ import {
   DELETE_COURTS,
   MOUSEOVER_LIST,
   UNSELECT_COURT,
+  LOG_IN_REQUEST,
+  LOG_IN_SUCCESS,
+  LOG_IN_FAILURE,
 } from './types';
 
 export const requestCourts = ({ userInput, filterInput, page }) => ({
@@ -100,4 +103,22 @@ export const removeFilterInput = () => ({
 export const getMouseOverList = mouseoverList => ({
   type: MOUSEOVER_LIST,
   payload: mouseoverList
+});
+
+export const requestLogin = () => ({
+  type: LOG_IN_REQUEST,
+});
+
+export const login = ({ nickname, email, userId }) => ({
+  type: LOG_IN_SUCCESS,
+  payload: {
+    nickname,
+    email,
+    userId
+  },
+});
+
+export const failLogin = (payload) => ({
+  type: LOG_IN_SUCCESS,
+  payload,
 });
