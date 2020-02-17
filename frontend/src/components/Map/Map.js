@@ -12,7 +12,7 @@ import {
 import { useSelector } from 'react-redux';
 import { useRouter } from 'next/router'
 import _ from 'lodash';
-import { defaultMapOptions } from '@initConfig';
+import { defaultMapOptions } from '@config';
 import { createFullCoordinate, getCenterPosition } from '@myUtils';
 import CourtMarker from './CourtMarker';
 import Style from './MapStyle';

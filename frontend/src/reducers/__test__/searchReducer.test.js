@@ -11,7 +11,7 @@ describe('test courtReducer', () => {
     expect(searchState).toEqual(searchInfo);
   });
   
-  it('should handle SEARCH_COURTS_REQUEST', () => {
+  it('should request search courts', () => {
     const previousState = {...searchState};
     searchState = courtReducer(previousState, {
       type: types.SEARCH_COURTS_REQUEST,
@@ -26,7 +26,7 @@ describe('test courtReducer', () => {
     });
   });
 
-  it('should handle SEARCH_COURTS_SUCCESS with searchedCourts', () => {
+  it('should get courts information', () => {
     const previousState = {...searchState};
     searchState = courtReducer(previousState, {
       type: types.SEARCH_COURTS_SUCCESS,
@@ -43,7 +43,7 @@ describe('test courtReducer', () => {
     });
   });
 
-  it('should handle SEARCH_COURTS_FAILURE with error message', () => {
+  it('should get error message without courts information', () => {
     const previousState = {...searchState};
     searchState = courtReducer(previousState, {
       type: types.SEARCH_COURTS_FAILURE,

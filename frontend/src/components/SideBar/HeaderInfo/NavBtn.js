@@ -2,7 +2,7 @@ import React from 'react';
 import { MdInfo, MdAssignment } from 'react-icons/md';
 import { useSelector } from 'react-redux';
 import ActiveLink from '@components/lib/ActiveLink';
-import { routes, iconSize } from '@initConfig';
+import { routes, iconSize } from '@config';
 import Style from './NavBtnStyle';
 
 const NavBtn = () => {

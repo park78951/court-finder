@@ -7,7 +7,7 @@ import AdditionalForm from './AdditionalForm';
 import SummaryForm from './SummaryForm';
 import Styles from './CourtAdditionStyle';
 import { closeCourtAddtionForm, addCourts } from '@actions';
-import { buttonTheme, cancelBtnSizeOfAddForm } from '@initConfig';
+import { buttonTheme, cancelBtnSizeOfAddForm } from '@config';
 
 const CourtAddition = () => {
   const [curPage, setcurPage] = useState(1);

@@ -48,5 +48,14 @@ export const initSubmitList = {
   tags: []
 };
 
+export const userInfo = {
+  id: null,
+  nickname: null,
+  email: null,
+  isLogginIn: false,
+  isLoggedIn: false,
+  errorMsg: '',
+};
+
 export const prevSearchItems = {};
 export const prevSearchItem = {};

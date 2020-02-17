@@ -1,7 +1,5 @@
 // UI Controlling
 export const NO_DATA = '정보없음';
-export const LAST_SEARCH_ITEMS = 'LAST_SEARCH_ITEMS';
-export const LAST_SEARCH_ITEM = 'LAST_SEARCH_ITEM'; 
 
 // Data for drop down
 export const INDOOR_OR_OUTDOOR = ['실내코트', '야외코트'];
@@ -17,8 +15,10 @@ export const LOCAL_HOST = 'http://localhost:3000/api';
 export const MAIN_HOST = 'http://13.125.124.214/api';
 export const WAITING_TIME = 4000;
 
+// AUTH
+export const KAKAO_API_URL_PROFILE = '/v2/user/me';
+
 // alert
-export const FILTER_NOT_WORKING = '해당 기능은 준비중입니다.';
 export const FILTER_APPLIED = '필터가 적용 되었습니다.';
 
 // Placeholders

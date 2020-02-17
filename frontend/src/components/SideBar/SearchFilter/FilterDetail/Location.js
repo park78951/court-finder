@@ -2,7 +2,7 @@ import React, { useState, useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 import FilterType from './FilterType';
 import { getFilterInput } from '@actions';
-import { filterConfig } from '@initConfig';
+import { filterConfig } from '@config';
 import { useOnChange } from '@hooks';
 
 

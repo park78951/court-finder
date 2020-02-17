@@ -10,7 +10,7 @@ import {
 } from '../actions';
 import { SEARCH_COURTS_REQUEST, SEARCH_COURT_REQUEST } from '../actions/types';
 import { prevSearchItems, prevSearchItem } from '@reducers/initialState';
-import { courtsPageConfig } from '@initConfig';
+import { courtsPageConfig } from '@config';
 import { getSearchQueries } from '@myUtils';
 
 function searchCourtsAPI(query) {
@@ -18,6 +18,7 @@ function searchCourtsAPI(query) {
    ? apiForServer
    : apiForLocal;
   const searchQuery = encodeURI(getSearchQueries(query));
+  
   return courtsApi.get(`/courts${searchQuery}`);
 }
 

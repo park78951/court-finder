@@ -8,7 +8,7 @@ import HelperNav from '../SideBar/HelperNav';
 import NoResult from '../NoResult';
 import { Pagination } from '../lib';
 import { requestCourts } from '@actions';
-import { courtsPageConfig } from '@initConfig';
+import { courtsPageConfig } from '@config';
 import { getSearchQueries } from '@myUtils';
 import Style from './SidebarContainerStyle';
 
