@@ -42,9 +42,6 @@ CourtFinder.propTypes = {
 CourtFinder.getInitialProps = async context => {
   const { ctx, Component} = context;
   let pageProps = {};
-  if (context.Component.getInitialProps) {
-    pageProps = await context.Component.getInitialProps(ctx);
-  }
   if(Component.getInitialProps) {
     pageProps = await Component.getInitialProps(ctx) || {};
   }

@@ -105,11 +105,12 @@ export const getMouseOverList = mouseoverList => ({
   payload: mouseoverList
 });
 
-export const requestLogin = () => ({
+export const requestLogin = (payload) => ({
   type: LOG_IN_REQUEST,
+  payload,
 });
 
-export const login = ({ nickname, email, userId }) => ({
+export const succeedLogin = ({ nickname, email, userId }) => ({
   type: LOG_IN_SUCCESS,
   payload: {
     nickname,
@@ -119,6 +120,6 @@ export const login = ({ nickname, email, userId }) => ({
 });
 
 export const failLogin = (payload) => ({
-  type: LOG_IN_SUCCESS,
+  type: LOG_IN_FAILURE,
   payload,
 });

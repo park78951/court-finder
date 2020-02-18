@@ -7,8 +7,8 @@ import {
   getUserInput,
   completeGettingCourt,
   failGettingCourt,
-} from '../actions';
-import { SEARCH_COURTS_REQUEST, SEARCH_COURT_REQUEST } from '../actions/types';
+} from '@actions';
+import { SEARCH_COURTS_REQUEST, SEARCH_COURT_REQUEST } from '@actions/types';
 import { prevSearchItems, prevSearchItem } from '@reducers/initialState';
 import { courtsPageConfig } from '@config';
 import { getSearchQueries } from '@myUtils';
