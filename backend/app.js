@@ -9,6 +9,7 @@ const swaggerUi = require('swagger-ui-express');
 const swaggerSpec = require('./src/swagger/swagger-definition');
 const cors = require('cors');
 const app = express();
+const decodeJWT = require('./middlewares/decode-jwt');
 
 dotenv.config({ path: path.join(__dirname, '../../.env') });
 sequelize.sync();
@@ -24,6 +25,7 @@ app.use('/api/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(decodeJWT);
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/api', router);
 
@@ -34,6 +36,7 @@ app.use(function(req, res, next) {
 
 // error handler
 app.use(function(err, req, res, next) {
+  console.log(err);
   res.status(err.status || 500);
   res.send(err)
 });
