@@ -21,7 +21,7 @@ exports.login = async (req, res, next) => {
       nickname: user.nickname
     });
     
-    res.cookie('court-finder-jwt', token, { path: '/', httpOnly: true, maxAge: MAX_AGE });
+    res.cookie('courtFinderJwt', token, { path: '/', httpOnly: true, maxAge: MAX_AGE });
 
     return res.json({ 
       kakaoId: user.kakaoId,
