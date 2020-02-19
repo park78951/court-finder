@@ -5,20 +5,19 @@ import { LOG_IN_REQUEST } from '@actions/types';
 import { succeedLogin, failLogin } from '@actions';
 
 function loginAPI(userInfo) {
-  // const userApi = typeof window !== 'undefined'
-  //  ? apiForServer
-  //  : apiForLocal;
-  const userApi = apiForLocal;
+  const userApi = typeof window !== 'undefined'
+   ? apiForServer
+   : apiForLocal;
+  // const userApi = apiForLocal;
 
   return userApi.post('/auth/login', userInfo);
 }
 
 function* login(action) {
   const userInfo = action.payload;
-  console.log(userInfo);
   try {
-    const userResponse = yield loginAPI(userInfo);
-    console.log(userResponse);
+    const { data } = yield call(loginAPI, userInfo);
+    yield put(succeedLogin({ userId: data.kakaoId, nickname: data.nickname }));
   } catch (err) {
     console.error(err);
     yield put(failLogin(err.message));

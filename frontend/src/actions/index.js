@@ -110,11 +110,10 @@ export const requestLogin = (payload) => ({
   payload,
 });
 
-export const succeedLogin = ({ nickname, email, userId }) => ({
+export const succeedLogin = ({ nickname, userId }) => ({
   type: LOG_IN_SUCCESS,
   payload: {
     nickname,
-    email,
     userId
   },
 });

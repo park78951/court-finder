@@ -51,7 +51,6 @@ export const initSubmitList = {
 export const userInfo = {
   userId: null,
   nickname: null,
-  email: null,
   isLogginIn: false,
   isLoggedIn: false,
   errorMsg: '',

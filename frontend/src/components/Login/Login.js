@@ -11,10 +11,11 @@ const User = () => {
     dispatch(failLogin(error));
   }
 
-  const onSuccessOauth = () => {
+  const onSuccessOauth = (authobj) => {
     window.Kakao.API.request({
       url: KAKAO_API_PROFILE_URL,
       success: (res) => {
+        console.log(res);
         const { id, kakao_account } = res;
         dispatch(requestLogin({
           kakaoId: id,

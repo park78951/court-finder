@@ -14,12 +14,11 @@ export default (state = userInfo, { type, payload} ) => {
       }
     
     case LOG_IN_SUCCESS:
-      const { userId, nickname, email } = payload;
+      const { userId, nickname } = payload;
       return {
         ...state,
         userId: userId,
         nickname: nickname,
-        email: email,
         isLogginIn: false,
         isLoggedIn: true,
       }
