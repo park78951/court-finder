@@ -30,7 +30,7 @@ export const defaultMapOptions = {
 
 export const buttonTheme = {
   colors: {
-    acceptance: '#0d98ba',
+    acceptance: '#0080FF',
     cancel: '#DC143C'
   }
 };

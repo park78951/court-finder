@@ -1,6 +1,6 @@
 import { fork, put, takeLatest, call, all } from 'redux-saga/effects';
 import { Base64 } from 'js-base64';
-import { apiForLocal, apiForServer } from '../apis';
+import { apiForLocal, apiForServer } from '@apis';
 import {
   completeGettingCourts,
   failGettingCourts,
@@ -44,7 +44,7 @@ function* searchCourts(action) {
     }
   } catch (err) {
     console.error(err);
-    yield put(failGettingCourts(err));
+    yield put(failGettingCourts(err.message));
   }
 }
 

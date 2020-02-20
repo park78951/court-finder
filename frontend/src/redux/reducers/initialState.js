@@ -14,7 +14,7 @@ export const additionInfo = {
 
 export const initUIToggleInfo = {
   isSidebarHidden: false,
-  courtAdditionFlag: false,
+  isOpenNicknameChanger: false,
 };
 
 export const initInputInfo = {

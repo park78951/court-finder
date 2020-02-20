@@ -8,14 +8,13 @@ const User = () => {
   const dispatch = useDispatch();
 
   const onFail = (error) => {
-    dispatch(failLogin(error));
+    dispatch(failLogin(error.message));
   }
 
   const onSuccessOauth = (authobj) => {
     window.Kakao.API.request({
       url: KAKAO_API_PROFILE_URL,
       success: (res) => {
-        console.log(res);
         const { id, kakao_account } = res;
         dispatch(requestLogin({
           kakaoId: id,
@@ -27,7 +26,9 @@ const User = () => {
   }
 
   const clickLogin = useCallback(() => {
-    window.Kakao.init(process.env.OAUTH_KEY);
+    if(!window.Kakao.isInitialized()) {
+      window.Kakao.init(process.env.OAUTH_KEY);
+    }
     window.Kakao.Auth.login({
       success: onSuccessOauth,
       fail: onFail,

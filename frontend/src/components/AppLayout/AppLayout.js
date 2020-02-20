@@ -2,17 +2,26 @@ import React from 'react';
 import Map from '@components/Map';
 import HamburgerMenu from '@components/HamburgerMenu';
 import SideBar from '@components/SideBar';
-import { AuthContainerView } from '@components/container';
+import NickChanger from '../NickChanger';
+import { AuthContainerView, ModalContainer } from '@components/container';
+
+import { ThemeProvider } from 'styled-components';
+import { buttonTheme } from '@config';
 
 const AppLayout = ({ children }) => {
   return (
     <>
-      <Map />
-      <HamburgerMenu />
-      <AuthContainerView />
-      <SideBar>
-        {children}
-      </SideBar>
+      <ThemeProvider theme={ buttonTheme }>
+        <Map />
+        <HamburgerMenu />
+        <AuthContainerView />
+        <SideBar>
+          {children}
+        </SideBar>
+        <ModalContainer>
+          <NickChanger />
+        </ModalContainer>
+      </ThemeProvider>
     </>
   );
 };
