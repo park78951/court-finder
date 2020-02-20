@@ -20,7 +20,10 @@ if (process.env.NODE_ENV === 'production') {
   app.use(logger('dev'));
 }
 
-app.use(cors({ origin: 'http://localhost:8080' }));
+app.use(cors({
+    origin: 'http://localhost:8080',
+    credentials: true
+}));
 app.use('/api/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));

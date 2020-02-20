@@ -37,6 +37,24 @@
  *        500:
  *          description: "Internal Server Error"
  */
+
+ /**
+ *  @swagger
+ *  /auth/logout:
+ *    post:
+ *      tags:
+ *      - "auth"
+ *      summary: "user logout"
+ *      description: "쿠키에서 토큰 삭제"
+ *      prodeces:
+ *      - "application/json"
+ *      responses:
+ *        200:
+ *          description: "Success\n"
+ *        500:
+ *          description: "Internal Server Error"
+ */
+
 /**
  *  @swagger
  *  definitions:
@@ -51,8 +69,9 @@
 
 const express = require('express');
 const router = express.Router();
-const { login } = require('./auth-ctrl');
+const { login, logout } = require('./auth-ctrl');
 
 router.post('/login', login);
+router.post('/logout', logout);
 
 module.exports = router;
