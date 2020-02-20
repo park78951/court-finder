@@ -32,6 +32,12 @@ exports.login = async (req, res, next) => {
   }
 };
 
+exports.logout = (req, res, next) => {
+  res.clearCookie('courtFinderJwt', { path: '/' });
+
+  return res.send();
+}
+
 const generateToken = dataObj => {
   const token = jwt.sign(
     dataObj,
