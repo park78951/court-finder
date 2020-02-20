@@ -10,15 +10,18 @@ function loginAPI(userInfo) {
    : apiForLocal;
   // const userApi = apiForLocal;
 
-  return userApi.post('/auth/login', userInfo);
+  const axiosOptions = typeof window !== 'undefined'
+    ? { withCredentials: true }
+    : {};
+
+  return userApi.post('/auth/login', userInfo, axiosOptions);
 }
 
 function* login(action) {
   const userInfo = action.payload;
   try {
-    const response = yield call(loginAPI, userInfo);
-    console.log(response);
-    // yield put(succeedLogin({ userId: data.kakaoId, nickname: data.nickname }));
+    const { data } = yield call(loginAPI, userInfo);
+    yield put(succeedLogin({ userId: data.kakaoId, nickname: data.nickname }));
   } catch (err) {
     console.error(err);
     yield put(failLogin(err.message));

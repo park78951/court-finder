@@ -19,6 +19,8 @@ import {
   LOG_IN_REQUEST,
   LOG_IN_SUCCESS,
   LOG_IN_FAILURE,
+  OPEN_NICKNAME_CHANGER,
+  CLOSE_NICKNAME_CHANGER,
 } from './types';
 
 export const requestCourts = ({ userInput, filterInput, page }) => ({
@@ -121,4 +123,12 @@ export const succeedLogin = ({ nickname, userId }) => ({
 export const failLogin = (payload) => ({
   type: LOG_IN_FAILURE,
   payload,
+});
+
+export const openNicknameChanger = () => ({
+  type: OPEN_NICKNAME_CHANGER,
+});
+
+export const closeNicknameChanger = () => ({
+  type: CLOSE_NICKNAME_CHANGER,
 });

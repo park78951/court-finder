@@ -15,6 +15,7 @@ const NickChangerModal = styled.form`
     position: absolute;
     top: 0.5rem;
     right: 0.5rem;
+    cursor: pointer;
   }
 
   & > p {
@@ -25,8 +26,8 @@ const NickChangerModal = styled.form`
 
   & input {
     width: 100%;
-    border: 1px solid ${({ isValidate }) => isValidate ? '#1E90FF' : '#b20000'};
-    box-shadow: 0px 0px 3px 4px ${({ isValidate }) => isValidate ? '#73C2FB' : '#fdbcb4'};
+    border: 1px solid ${({ isValid }) => isValid ? '#1E90FF' : '#b20000'};
+    box-shadow: 0px 0px 3px 4px ${({ isValid }) => isValid ? '#73C2FB' : '#fdbcb4'};
     border-radius: 0.2rem;
     margin-bottom: 1rem;
   }

@@ -19,5 +19,4 @@ export const newErrorMessage = 'This is Error Message for test';
 export const userMock = {
   userId: 1281,
   nickname: '상큐',
-  email: 'park7@yahoo.co.kr',
 }
