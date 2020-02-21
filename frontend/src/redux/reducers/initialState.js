@@ -8,10 +8,6 @@ export const searchInfo = {
   mouseoverList: null,
 };
 
-export const additionInfo = {
-  addedInfo:{}
-};
-
 export const initUIToggleInfo = {
   isSidebarHidden: false,
   isOpenNicknameChanger: false,
@@ -53,6 +49,8 @@ export const userInfo = {
   nickname: null,
   isLogginIn: false,
   isLoggedIn: false,
+  isLogginOut: false,
+  isUserMenuOpen: false,
   errorMsg: '',
 };
 

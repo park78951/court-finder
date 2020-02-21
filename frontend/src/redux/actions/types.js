@@ -11,6 +11,10 @@ export const LOG_IN_REQUEST = 'LOG_IN_REQUEST';
 export const LOG_IN_SUCCESS = 'LOG_IN_SUCCESS';
 export const LOG_IN_FAILURE = 'LOG_IN_FAILURE';
 
+export const LOG_OUT_REQUEST = 'LOG_OUT_REQUEST';
+export const LOG_OUT_SUCCESS = 'LOG_OUT_SUCCESS';
+export const LOG_OUT_FAILURE = 'LOG_OUT_FAILURE';
+
 // Court Info Reducer
 export const ADD_COURTS = 'ADD_COURTS';
 export const DELETE_COURTS = 'DELETE_SEARCHED_COURTS';
@@ -21,10 +25,9 @@ export const MOUSEOVER_LIST = 'MOUSEOVER_LIST';
 
 // UI Controlling Reducer
 export const TOGGLE_SIDEBAR = 'TOGGLE_SIDEBAR';
-export const OPEN_COURTADDITION = 'OPEN_COURTADDITION';
-export const CLOSE_COURTADDITION = 'CLOSE_COURTADDITION';
 export const OPEN_NICKNAME_CHANGER = 'OPEN_NICKNAME_CHANGER';
 export const CLOSE_NICKNAME_CHANGER = 'CLOSE_NICKNAME_CHANGER';
+export const TOGGLE_USER_MENU = 'TOGGLE_USER_MENU';
 export const NO_DATA = '정보없음';
 
 // Filter Info Reducer

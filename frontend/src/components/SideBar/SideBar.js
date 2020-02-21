@@ -8,7 +8,7 @@ import HeaderInfo from './HeaderInfo';
 
 const SideBar = ({ children }) => {
   const isSidebarHidden = useSelector(state => {
-    return state.flags.isSidebarHidden;
+    return state.uiController.isSidebarHidden;
   });
   const { route } = useRouter();
   const headerInfo = useMemo(() => {

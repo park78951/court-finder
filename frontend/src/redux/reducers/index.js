@@ -1,14 +1,12 @@
 import { combineReducers } from 'redux';
 import courtReducer from './courtReducer';
-import flagReducer from './flagReducer';
-import additionReducer from './additionReducer';
+import uiReducer from './uiReducer';
 import inputReducer from './inputReducer';
 import userReducer from './userReducer';
 
 export default combineReducers({
   courts: courtReducer,
-  flags: flagReducer,
-  storeOnAddition: additionReducer,
+  uiController: uiReducer,
   input: inputReducer,
   user: userReducer,
 });

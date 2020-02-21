@@ -8,9 +8,9 @@ const AuthContainer = () => {
   const { isLoggedIn } = useSelector(({ user }) => user);
   return (
     <Style.AuthContainerWrapper>
-      {isLoggedIn ? <User /> : <Login />}
+      { isLoggedIn ? <User /> : <Login /> }
     </Style.AuthContainerWrapper>
   );
 };
 
-export default AuthContainer;
+export default React.memo(AuthContainer);

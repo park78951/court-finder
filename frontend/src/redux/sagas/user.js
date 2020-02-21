@@ -1,14 +1,18 @@
 import { fork, put, takeLatest, call, all } from 'redux-saga/effects';
-import { Base64 } from 'js-base64';
 import { apiForLocal, apiForServer } from '@apis';
-import { LOG_IN_REQUEST } from '@actions/types';
-import { succeedLogin, failLogin } from '@actions';
+import { LOG_IN_REQUEST, LOG_OUT_REQUEST } from '@actions/types';
+import { 
+  succeedLogin, 
+  failLogin,
+  succeedLogout, 
+  failLogout,
+  toggleUserMenu,
+} from '@actions';
 
 function loginAPI(userInfo) {
   const userApi = typeof window !== 'undefined'
    ? apiForServer
    : apiForLocal;
-  // const userApi = apiForLocal;
 
   const axiosOptions = typeof window !== 'undefined'
     ? { withCredentials: true }
@@ -35,8 +39,36 @@ function* watchLogin() {
   )
 }
 
+function logoutAPI() {
+  const userApi = typeof window !== 'undefined'
+   ? apiForServer
+   : apiForLocal;
+
+  return userApi.post('/auth/logout', {}, { withCredentials: true });
+}
+
+function* logout() {
+  try {
+    const { status } = yield call(logoutAPI);
+
+    if(status === 200) yield put(succeedLogout());
+    else throw status;
+  } catch (err) {
+    console.error(err);
+    yield put(failLogout(err.message));
+  }
+}
+
+function* watchLogout() {
+  yield takeLatest(
+    LOG_OUT_REQUEST,
+    logout
+  )
+}
+
 export default function* userSaga() {
   yield all([
     fork(watchLogin),
+    fork(watchLogout),
   ])
 }

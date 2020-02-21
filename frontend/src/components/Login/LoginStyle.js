@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const LoginWrapper = styled.div`
-  /* display: flex;
+  display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
@@ -9,7 +9,7 @@ const LoginWrapper = styled.div`
   background-color: #F5F5F5;
   font-size: 0.8rem;
   font-weight: bold;
-  cursor: pointer; */
+  cursor: pointer;
 `;
 
 export default { LoginWrapper };

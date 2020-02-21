@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import Link from 'next/link';
-import _ from 'lodash';
+import { uniqueId } from 'lodash';
 import PropTypes from 'prop-types';
 import CourtItem from './CourtItem';
 import { routes } from '@config';
@@ -15,7 +15,7 @@ const CourtList = () => {
   const searchedItems = useMemo(() => {
     return searchedCourts.map(searchedCourt => (
       <Link 
-        key={_.uniqueId(searchedCourt.name)} 
+        key={uniqueId(searchedCourt.name)} 
         href={ `${court}/[id]/detail` }
         as={`${court}/${searchedCourt.id}/detail`}
       >

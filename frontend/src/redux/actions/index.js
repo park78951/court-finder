@@ -19,8 +19,12 @@ import {
   LOG_IN_REQUEST,
   LOG_IN_SUCCESS,
   LOG_IN_FAILURE,
+  LOG_OUT_REQUEST,
+  LOG_OUT_SUCCESS,
+  LOG_OUT_FAILURE,
   OPEN_NICKNAME_CHANGER,
   CLOSE_NICKNAME_CHANGER,
+  TOGGLE_USER_MENU,
 } from './types';
 
 export const requestCourts = ({ userInput, filterInput, page }) => ({
@@ -80,14 +84,6 @@ export const toggleSidebar = () => ({
   type: TOGGLE_SIDEBAR,
 });
 
-export const openCourtAddtionForm = () => ({
-  type: OPEN_COURTADDITION,
-});
-
-export const closeCourtAddtionForm = () => ({
-  type: CLOSE_COURTADDITION,
-});
-
 export const getUserInput = input => ({
   type: GET_SEARCH_INPUT,
   payload: input,
@@ -125,10 +121,27 @@ export const failLogin = (payload) => ({
   payload,
 });
 
+export const requestLogout = () => ({
+  type: LOG_OUT_REQUEST,
+});
+
+export const succeedLogout = () => ({
+  type: LOG_OUT_SUCCESS,
+});
+
+export const failLogout = (payload) => ({
+  type: LOG_OUT_FAILURE,
+  payload,
+});
+
 export const openNicknameChanger = () => ({
   type: OPEN_NICKNAME_CHANGER,
 });
 
 export const closeNicknameChanger = () => ({
   type: CLOSE_NICKNAME_CHANGER,
+});
+
+export const toggleUserMenu = () => ({
+  type: TOGGLE_USER_MENU,
 });

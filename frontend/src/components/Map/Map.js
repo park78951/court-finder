@@ -11,7 +11,7 @@ import {
 } from '@react-google-maps/api';
 import { useSelector } from 'react-redux';
 import { useRouter } from 'next/router'
-import _ from 'lodash';
+import { uniqueId } from 'lodash';
 import { defaultMapOptions } from '@config';
 import { createFullCoordinate, getCenterPosition } from '@myUtils';
 import CourtMarker from './CourtMarker';
@@ -50,7 +50,7 @@ const Map = () => {
       const { name } = courtInfo;
       return (
         <CourtMarker
-          key={ _.uniqueId(name) }
+          key={ uniqueId(name) }
           courtInfo={ courtInfo }
           mouseOverOutHandler={ onMouseOverAndOutOfMarker }
         />            
@@ -61,7 +61,7 @@ const Map = () => {
   const marker = useMemo(() => {
     return (
       <CourtMarker
-        key={ _.uniqueId(name) }
+        key={ uniqueId(name) }
         courtInfo={ selectedCourt }
         mouseOverOutHandler={ onMouseOverAndOutOfMarker }
       />            
