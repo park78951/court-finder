@@ -6,7 +6,7 @@ import {
   failLogin,
   succeedLogout, 
   failLogout,
-  toggleUserMenu,
+  openNicknameChanger,
 } from '@actions';
 
 function loginAPI(userInfo) {
@@ -18,7 +18,7 @@ function loginAPI(userInfo) {
     ? { withCredentials: true }
     : {};
 
-  return userApi.post('/auth/login', userInfo, axiosOptions);
+  return userApi.post('/auth/login', {kakaoId: '12445', kakaoNickname: '쌍큐'}, axiosOptions);
 }
 
 function* login(action) {
@@ -28,7 +28,12 @@ function* login(action) {
     yield put(succeedLogin({ userId: data.kakaoId, nickname: data.nickname }));
   } catch (err) {
     console.error(err);
-    yield put(failLogin(err.message));
+    console.dir(err);
+    if(err.response.status === 409) {
+      yield put(openNicknameChanger());
+    } else {
+      yield put(failLogin(err.response));
+    }
   }
 }
 
