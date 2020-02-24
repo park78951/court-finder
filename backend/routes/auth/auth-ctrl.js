@@ -8,7 +8,7 @@ const MAX_AGE = 1000*60*60*24*30;
 exports.login = async (req, res, next) => {
   const { kakaoId, kakaoNickname } = req.body;
   
-  if (!kakaoId && !kakaoNickname) return next(createError(400, "kakaoId, Nickname are required"));
+  if (!kakaoId && !kakaoNickname) return next(createError(400, 'kakaoId, Nickname are required'));
 
   try {
     const [user] = await User.findOrCreate({
@@ -42,6 +42,22 @@ exports.logout = (req, res, next) => {
   res.clearCookie('courtFinderJwt', { path: '/' });
 
   return res.send();
+};
+
+exports.validateNicknameConflict = async (req, res, next) => {
+  const { nickname } = req.params;
+
+  if (!nickname) return next(createError(400, 'nickname is required'));
+
+  const user = await User.findOne({ 
+    where: { nickname },
+    attributes: ['kakaoId']
+  });
+  let isConflict = false;
+  
+  if (user) isConflict = true;
+
+  return res.json({ isConflict });
 }
 
 const generateToken = dataObj => {
