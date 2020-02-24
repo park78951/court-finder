@@ -3,7 +3,7 @@ const getJwtInCookie = require('../src/lib/getJwtInCookie');
 const renewToken = (req, res, next) => {
   if (!req.decoded) return next();
   // 갱신 기준 일수
-  const CRITERIA_PERIOD = 40;
+  const CRITERIA_PERIOD = 10;
   const { kakaoId, nickname } = req.decoded;
 
   try {
