@@ -1,3 +1,4 @@
-export { default as ModalContainer } from './ModalContainer';
-export { default as SidebarContainerView } from './SidebarContainerView';
-export { default as AuthContainerView } from './AuthContainerView';
+export { default as ModalContainer } from './ModalContainerView';
+export { default as SidebarContainer } from './SidebarContainerView';
+export { default as AuthContainer } from './AuthContainerView';
+export { default as MapContainer } from './MapContainerView';

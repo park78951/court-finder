@@ -11,7 +11,7 @@ const WholeAppWrapper = styled.div`
   background: rgba(40, 40, 40, 0.7);
 `;
 
-const ModalContainer = ({ children }) => {
+const ModalContainerView = ({ children }) => {
   return (
     <WholeAppWrapper>
       { children }
@@ -19,9 +19,8 @@ const ModalContainer = ({ children }) => {
   );
 };
 
-ModalContainer.propTypes = {
-  courtAdditionFlag: PropTypes.func,
+ModalContainerView.propTypes = {
   children: PropTypes.object
 };
 
-export default ModalContainer;
+export default ModalContainerView;

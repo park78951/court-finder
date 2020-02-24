@@ -7,8 +7,9 @@ const LoginWrapper = styled.div`
   width: 100%;
   height: 100%;
   background-color: #F5F5F5;
-  font-size: 0.8rem;
+  font-size: 0.7rem;
   font-weight: bold;
+  border: 1px solid #000019;
   cursor: pointer;
 `;
 

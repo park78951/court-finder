@@ -9,7 +9,7 @@ const appear = keyframes`
   }
 `;
 
-const MapContainer = styled.div`
+const MapContainerWrapper = styled.div`
   height: 100vh;
   width: 100%;
 
@@ -43,4 +43,4 @@ const MapContainer = styled.div`
   }
 `;
 
-export default { MapContainer };
+export default { MapContainerWrapper };

@@ -1,47 +1,19 @@
-import React, { useCallback } from 'react';
-import { useDispatch } from 'react-redux';
-import { KAKAO_API_PROFILE_URL } from '@constants';
-import { requestLogin, failLogin } from '@actions';
+import React from 'react';
+import PropTypes from 'prop-types';
 import Style from './LoginStyle';
 
-const User = () => {
-  const dispatch = useDispatch();
-
-  const onFail = (error) => {
-    dispatch(failLogin(error.message));
-  }
-
-  const onSuccessOauth = (authobj) => {
-    window.Kakao.API.request({
-      url: KAKAO_API_PROFILE_URL,
-      success: (res) => {
-        const { id, kakao_account } = res;
-        dispatch(requestLogin({
-          kakaoId: id,
-          kakaoNickname: kakao_account.profile.nickname,
-        }));
-      },
-      fail: onFail,
-    })
-  }
-
-  const clickLogin = useCallback(() => {
-    if(!window.Kakao.isInitialized()) {
-      window.Kakao.init(process.env.OAUTH_KEY);
-    }
-    window.Kakao.Auth.login({
-      success: onSuccessOauth,
-      fail: onFail,
-    });
-  }, []);
-
+const Login = ({ onLogin }) => {
   return (
     <Style.LoginWrapper 
-      onClick={clickLogin}
+      onClick={onLogin}
     >
-      Login
+      LOGIN
     </Style.LoginWrapper>
   );
 };
 
-export default User;
+Login.propTypes = {
+  onLogin: PropTypes.func.isRequired,
+}
+
+export default Login;

@@ -14,28 +14,28 @@ import { useRouter } from 'next/router'
 import { uniqueId } from 'lodash';
 import { defaultMapOptions } from '@config';
 import { createFullCoordinate, getCenterPosition } from '@myUtils';
-import CourtMarker from './CourtMarker';
-import Style from './MapStyle';
+import { CourtMarker, InfoBoxContent } from '@components/Map';
+import Style from './MapContainerStyle';
 
-const Map = () => {
-  const { route } = useRouter();
-  const { 
-    center, 
-    defaultZoom,
-    selectedZoom,
-    mapStyle, 
-    options, 
-    mapTypeId,
-    infoBoxWidth,
-    infoBoxMarginTop,
-  } = defaultMapOptions;
-  
+const { 
+  center, 
+  defaultZoom,
+  selectedZoom,
+  mapStyle, 
+  options, 
+  mapTypeId,
+  infoBoxWidth,
+  infoBoxMarginTop,
+  marker,
+} = defaultMapOptions;
+
+const MapContainerView = () => {
   const [curCenter, setCurCenter] = useState(center);
   const [curZoom, setCurZoom] = useState(defaultZoom);
   const [mouseoverMarker, setMouseoverMarker] = useState(null);
-
+  
+  const { route } = useRouter();
   const { searchedCourts, selectedCourt, mouseoverList } = useSelector(({ courts }) => courts);
-
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: process.env.GOOGLE_MAP_KEY
   });
@@ -44,13 +44,12 @@ const Map = () => {
     setMouseoverMarker(courtInfo);
   }, [searchedCourts]);
 
-  const markers = useMemo(() => {
+  const markersOnSearch = useMemo(() => {
     if(!searchedCourts.length) return null;
     return searchedCourts.map((courtInfo) => {
-      const { name } = courtInfo;
       return (
         <CourtMarker
-          key={ uniqueId(name) }
+        key={ uniqueId(courtInfo.name) }
           courtInfo={ courtInfo }
           mouseOverOutHandler={ onMouseOverAndOutOfMarker }
         />            
@@ -58,7 +57,7 @@ const Map = () => {
     });
   }, [searchedCourts]);
 
-  const marker = useMemo(() => {
+  const markerOnSelected = useMemo(() => {
     return (
       <CourtMarker
         key={ uniqueId(name) }
@@ -78,17 +77,16 @@ const Map = () => {
           closeBoxURL: "", 
         }}
       >
-        <div className='infoBox__container'>
-          <h2>{ onMouseOverCourt.name }</h2>
-          <p>{ onMouseOverCourt.address }</p>
-        </div>
+        <InfoBoxContent 
+          name={ onMouseOverCourt.name }
+          address={ onMouseOverCourt.address }
+        />
       </InfoBox>
     );
   }, [mouseoverList, mouseoverMarker]);
   
   useEffect(() => {
     if (!selectedCourt && !searchedCourts.length) return;
-
     if (selectedCourt) setCurCenter(createFullCoordinate(selectedCourt));
     else setCurCenter(getCenterPosition(searchedCourts));
   }, [searchedCourts, selectedCourt]);
@@ -99,23 +97,23 @@ const Map = () => {
   }, [selectedCourt]);
 
   return isLoaded && (
-    <Style.MapContainer infoBoxWidth={ infoBoxWidth }>
-      <GoogleMap
+    <Style.MapContainerWrapper infoBoxWidth={ infoBoxWidth }>
+      {isLoaded && <GoogleMap
         zoom={ curZoom }
         center={ curCenter }
         mapContainerStyle={ mapStyle }
         mapTypeId={ mapTypeId }
         options={ options }
       >
-        { route !== '/' && markers }
+        { route !== '/' && markersOnSearch }
         { route !== '/' 
           && !searchedCourts.length 
           && selectedCourt 
-          && marker }
+          && markerOnSelected }
         { window.google && infoBox }
-      </GoogleMap>
-    </Style.MapContainer>
+      </GoogleMap>}
+    </Style.MapContainerWrapper>
   );
 };
 
-export default React.memo(Map);
+export default React.memo(MapContainerView);

@@ -12,7 +12,7 @@ import { courtsPageConfig } from '@config';
 import { getSearchQueries } from '@myUtils';
 import Style from './SidebarContainerStyle';
 
-const SidebarListContainer = () => {
+const SidebarContainerView = () => {
   const { 
     searchedCourts, 
     isSearching, 
@@ -68,4 +68,4 @@ const SidebarListContainer = () => {
   );
 };
 
-export default React.memo(SidebarListContainer);
+export default React.memo(SidebarContainerView);

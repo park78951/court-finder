@@ -1,16 +1,8 @@
-import React, { useCallback } from 'react';
-import { useDispatch } from 'react-redux';
+import React from 'react';
 import { AiOutlineLogout } from "react-icons/ai";
-import { requestLogout } from '@actions';
 import Style from './UserMenuStyle';
 
-const UserMenu = () => {
-  const dispatch = useDispatch();
-
-  const onLogout = useCallback(() => {
-    dispatch(requestLogout());
-  }, [])
-
+const UserMenu = ({ onLogout }) => {
   return (
     <Style.UserMenuWrapper>
       <div
@@ -18,7 +10,7 @@ const UserMenu = () => {
       >
         <div 
           className='log-out'
-          onClick={ onLogout }
+          onClick={onLogout}
         >
           <div>
             LOGOUT

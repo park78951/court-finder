@@ -1,29 +1,35 @@
-import React, { useCallback } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { AiOutlineUser } from "react-icons/ai";
-import { toggleUserMenu } from '@actions';
+import React from 'react';
+import PropTypes from 'prop-types';
 import UserMenu from './UserMenu';
 import Style from './UserStyle';
 
-const User = () => {
-  const { isUserMenuOpen } = useSelector(({ user }) => user);
-  const dispatch = useDispatch();
-
-  const onClickUser = useCallback(() => {
-    dispatch(toggleUserMenu())
-  }, [])
-
+const User = ({ 
+  onClickUser, 
+  isUserMenuOpen, 
+  onLogout,
+  nickname,
+}) => {
   return (
     <Style.UserWrapper>
       <div 
-        className='user__icon'
-        onClick={ onClickUser }
+        className='user__name'
+        onClick={onClickUser}
       >
-        <AiOutlineUser size={25} />
+        { nickname[0] }
       </div>
-      { isUserMenuOpen && <UserMenu /> }
+      { isUserMenuOpen && (
+        <UserMenu 
+          onLogout={onLogout}
+        />
+      )}
     </Style.UserWrapper>
   );
+};
+
+User.propTypes = {
+  onClickUser: PropTypes.func.isRequired,
+  isUserMenuOpen: PropTypes.bool.isRequired,
+  nickname: PropTypes.string.isRequired,
 };
 
 export default User;

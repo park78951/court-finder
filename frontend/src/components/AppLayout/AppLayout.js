@@ -1,11 +1,14 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { ThemeProvider } from 'styled-components';
-import Map from '@components/Map';
 import HamburgerMenu from '@components/HamburgerMenu';
 import SideBar from '@components/SideBar';
 import NickChanger from '../NickChanger';
-import { AuthContainerView, ModalContainer } from '@components/container';
+import { 
+  AuthContainer, 
+  ModalContainer, 
+  MapContainer,
+} from '@components/container';
 import { buttonTheme } from '@config';
 
 const AppLayout = ({ children }) => {
@@ -14,9 +17,9 @@ const AppLayout = ({ children }) => {
   return (
     <>
       <ThemeProvider theme={ buttonTheme }>
-        <Map />
+        <MapContainer />
         <HamburgerMenu />
-        <AuthContainerView />
+        <AuthContainer />
         <SideBar>
           {children}
         </SideBar>
