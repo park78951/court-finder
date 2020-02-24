@@ -57,6 +57,37 @@
  *          description: "Internal Server Error"
  */
 
+ /**
+ *  @swagger
+ *  /auth/validate/conflict/nickname/{nickname}:
+ *    get:
+ *      tags:
+ *      - "auth"
+ *      summary: "nickname 중복 검사"
+ *      description: "이미 존재하는 nickname인지 확인한다."
+ *      prodeces:
+ *      - "application/json"
+ *      parameters:
+ *      - in: "path"
+ *        name: "nickname"
+ *        description: "중복 검사할 닉네임"
+ *        schema:
+ *          type: "string"
+ *        required: true
+ *      responses:
+ *        200:
+ *          description: "Success\n"
+ *          schema:
+ *            type: "object"
+ *            properties:
+ *              isConflict:
+ *                type: boolean
+ *        400:
+ *          description: "nickname이 없음"
+ *        500:
+ *          description: "Internal Server Error"
+ */
+
 /**
  *  @swagger
  *  definitions:
