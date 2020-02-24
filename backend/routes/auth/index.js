@@ -34,6 +34,8 @@
  *            $ref: "#/definitions/User"
  *        400:
  *          description: "kakaoId 혹은 kakaoNickname이 없음"
+ *        409:
+ *          description: "kakao nickname이 중복됨"
  *        500:
  *          description: "Internal Server Error"
  */

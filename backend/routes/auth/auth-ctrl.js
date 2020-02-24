@@ -28,6 +28,12 @@ exports.login = async (req, res, next) => {
       nickname: user.nickname
     });
   } catch (error) {
+    const { errors } = error;
+    
+    if (errors[0].type === 'unique violation' && errors[0].path === 'users.nickname') {
+      return res.status(409).send();
+    }
+
     return next(error);
   }
 };
