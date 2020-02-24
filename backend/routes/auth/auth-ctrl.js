@@ -1,9 +1,6 @@
 const { User } = require('../../models');
 const createError = require('http-errors');
-const jwt = require('jsonwebtoken');
-
-//token, cookie 30일 유지.
-const MAX_AGE = 1000*60*60*24*30;
+const getJwtInCookie = require('../../src/lib/getJwtInCookie');
 
 exports.login = async (req, res, next) => {
   const { kakaoId, kakaoNickname } = req.body;
@@ -16,20 +13,22 @@ exports.login = async (req, res, next) => {
       defaults: { nickname: kakaoNickname }
     });
     
-    const token = generateToken({
+    const tokenData = {
       kakaoId: user.kakaoId,
       nickname: user.nickname
-    });
-    
-    res.cookie('courtFinderJwt', token, { path: '/', httpOnly: true, maxAge: MAX_AGE });
+    };
 
+    getJwtInCookie({ res, data: tokenData });
+    
     return res.json({ 
       kakaoId: user.kakaoId,
       nickname: user.nickname
     });
   } catch (error) {
     const { errors } = error;
-    
+
+    if (!errors) return next(error);
+
     if (errors[0].type === 'unique violation' && errors[0].path === 'users.nickname') {
       return res.status(409).send();
     }
@@ -58,16 +57,4 @@ exports.validateNicknameConflict = async (req, res, next) => {
   if (user) isConflict = true;
 
   return res.json({ isConflict });
-}
-
-const generateToken = dataObj => {
-  const token = jwt.sign(
-    dataObj,
-    process.env.JWT_SECRET,
-    {
-      expiresIn: `${MAX_AGE}`
-    }
-  );
-  
-  return token;
-}
+};

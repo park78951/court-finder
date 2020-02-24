@@ -10,6 +10,7 @@ const swaggerSpec = require('./src/swagger/swagger-definition');
 const cors = require('cors');
 const app = express();
 const decodeJWT = require('./middlewares/decode-jwt');
+const renewJWT = require('./middlewares/renew-jwt');
 
 dotenv.config({ path: path.join(__dirname, '../../.env') });
 sequelize.sync();
@@ -29,6 +30,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(decodeJWT);
+app.use(renewJWT);
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/api', router);
 
