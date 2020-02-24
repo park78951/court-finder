@@ -5,6 +5,8 @@ import getBytesFromString from './getBytesFromString'
  * 특수문자 불가
  */
 export default (strValue, bytesLimit) => {
+  if(!strValue) return false;
+
   let result = true;
   const inValidKorean = /[ㄱ-ㅎ|ㅏ-ㅣ]/; 
   const specialChar = /[\{\}\[\]\/?.,;:|\)*~`!^\-+<>@\#$%&\\\=\(\'\"]/gi;

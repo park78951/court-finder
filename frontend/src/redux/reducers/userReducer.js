@@ -12,16 +12,17 @@ import {
 export default (state = userInfo, { type, payload} ) => {
   switch(type) {
     case LOG_IN_REQUEST:
+      const { kakaoId } = payload;
       return {
         ...state,
         isLogginIn: true,
+        userId: kakaoId,
       }
     
     case LOG_IN_SUCCESS:
-      const { userId, nickname } = payload;
+      const { nickname } = payload;
       return {
         ...state,
-        userId: userId,
         nickname: nickname,
         isLogginIn: false,
         isLoggedIn: true,

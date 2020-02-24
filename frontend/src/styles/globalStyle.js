@@ -6,8 +6,8 @@ const GlobalStyle = createGlobalStyle`
 
   @font-face {
     font-family: 'Nanum Gothic Coding', monospace;
-    src: url('./assets/fonts/NanumGothicCoding-Bold.ttf'),
-      url('./assets/fonts/NanumGothicCoding-Regular.ttf');
+    src: url('/fonts/NanumGothicCoding-Bold.ttf'),
+      url('/fonts/NanumGothicCoding-Regular.ttf');
   }
 
   *{

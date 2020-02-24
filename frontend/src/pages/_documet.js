@@ -30,6 +30,12 @@ export default class MyDocument extends Document {
             name="viewport"
             content="user-scalable=0, initial-scale=1, minimum-scale=1, width=device-width, height=device-height"
           />
+          <link
+            rel="preload"
+            href="/fonts/NanumGothicCoding-Bold.ttf"
+            as="font"
+            crossOrigin=""
+          />
           {helmetContext.helmet.meta.toComponent()}
           {helmetContext.helmet.link.toComponent()}
           {helmetContext.helmet.title.toComponent()}

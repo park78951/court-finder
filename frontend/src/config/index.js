@@ -77,6 +77,10 @@ export const routes = {
   court: '/court',
 };
 
+export const apiRoutes = {
+  checkDuplicate: '/auth/validate/conflict/nickname',
+};
+
 export const filterConfig = {
   location: {
     name: '지역별',

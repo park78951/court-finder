@@ -1,38 +1,40 @@
-import React, { useCallback, useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useCallback, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { IoIosClose } from "react-icons/io";
 import { Input, Button } from '../lib/index';
-import { closeNicknameChanger} from '@actions';
-import { useDebounceValue } from '@hooks';
-import { isValidString } from '@myUtils';
+import { closeNicknameChanger, requestLogin } from '@actions';
+import { useDebounceValue, useNicknameChecker } from '@hooks';
 import Style from './NickChangerStyle';
 
 const NickChanger = () => {
   const [term, setTerm] = useState('');
-  const [isValid, setIsValid] = useState(false);
   const debouncedTerm = useDebounceValue(term, 500);
+  const { isValid } = useNicknameChecker(debouncedTerm);
   const dispatch = useDispatch();
-
-  const submitNickname = useCallback(evt => {
-    evt.preventDefault();
-    // nickname change request
-  }, []);
+  const { errorMsg, userId } = useSelector(({ user }) => user);
+  
+  const closeModal = useCallback(() => {
+    dispatch(closeNicknameChanger());
+  });
 
   const inputText = useCallback(evt => {
     setTerm(evt.target.value);
   }, [term]);
 
-  const closeModal = useCallback(() => {
-    dispatch(closeNicknameChanger());
-  });
+  const submitNickname = useCallback(evt => {
+    evt.preventDefault();
+    if(!isValid) return;
 
-  useEffect(() => {
-    const isValidTermLength = isValidString(debouncedTerm, 40);
-    if(isValidTermLength) {
-      // fetch data to backend api
-      setIsValid(false);
+    console.log(debouncedTerm)
+    console.log(term)
+    if(errorMsg === 409) {
+      dispatch(requestLogin({
+        kakaoId: userId,
+        kakaoNickname: debouncedTerm,
+      }));
+      closeModal();
     }
-  }, [debouncedTerm]);
+  }, [debouncedTerm, userId, isValid]);
 
   return (
     <Style.NickChangerModal
@@ -46,11 +48,22 @@ const NickChanger = () => {
           size={40}
         />
       </div>
+      <h3>닉네임을 변경해주세요.</h3>
       <Input 
         size='large'
         placeholder='닉네임'
         onChange={ inputText }
-        />
+      />
+      <div>
+        { isValid
+            ? <p className='nickname__possible'>
+                이 닉네임은 사용 가능합니다.
+              </p>
+            : <p className='nickname__impossible'>
+                이 닉네임은 사용할 수 없습니다.
+              </p>
+        }
+      </div>
       <Button
         color='acceptance'
         onClick={ submitNickname }

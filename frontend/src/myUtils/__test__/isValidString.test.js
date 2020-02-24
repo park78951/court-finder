@@ -2,6 +2,15 @@ import isValidString from '../isValidString';
 
 describe('test isValidString', () => {
   it(
+    'should get false with empty string',
+    () => {
+      const emptyString = '';
+
+      expect(isValidString(emptyString)).toBe(false);
+    }
+  );
+
+  it(
     'should get false when string includes only korean consonant or vowel',
     () => {
       const invalidShortName = 'ㄴ나노';
