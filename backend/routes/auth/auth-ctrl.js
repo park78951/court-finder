@@ -29,7 +29,7 @@ exports.login = async (req, res, next) => {
 
     if (!errors) return next(error);
 
-    if (errors[0].type === 'unique violation' && errors[0].path === 'users.nickname') {
+    if (errors[0].type === 'unique violation' && errors[0].path.includes('nickname')) {
       return res.status(409).send();
     }
 
