@@ -6,7 +6,7 @@ import { requestCourts } from '@actions';
 import { 
   buttonTheme,
   refetchBtnStyle
-} from '@initConfig';
+} from '@config';
 import Style from './RefetchStyle';
 
 const Refetch = () => {

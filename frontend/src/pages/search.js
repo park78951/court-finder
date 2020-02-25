@@ -1,11 +1,11 @@
 import React from 'react';
-import { SidebarContainerView } from '@components/container';
+import { SidebarContainer } from '@components/container';
 import { requestCourts } from '@actions';
 
 const Search = () => {
   return (
     <>
-      <SidebarContainerView />
+      <SidebarContainer />
     </>
   );
 };

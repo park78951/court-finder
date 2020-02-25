@@ -1,8 +1,9 @@
 import React from 'react';
 import { Marker } from '@react-google-maps/api';
 import { useSelector } from 'react-redux';
+import PropTypes from 'prop-types';
 import { createFullCoordinate, compareCoordinates } from '@myUtils';
-import { defaultMapOptions } from '@initConfig';
+import { defaultMapOptions } from '@config';
 
 const CourtMarker = ({
   mouseOverOutHandler,
@@ -24,5 +25,10 @@ const CourtMarker = ({
     </>
   );
 };
+
+CourtMarker.propTypes = {
+  mouseOverOutHandler: PropTypes.func.isRequired,
+  courtInfo: PropTypes.object.isRequired,
+}
 
 export default React.memo(CourtMarker);

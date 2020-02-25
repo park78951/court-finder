@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { borderLine } from '@styles/theme';
+import { defaultTheme } from '@styles';
 
 const styleNthChild = function(idx) {
   return css`
@@ -39,7 +39,7 @@ const PaginationWrapper = styled.div`
   justify-content: center;
   height: 2.3rem;
   background-color: #fff;
-  border: 0.1rem solid ${ borderLine };
+  border: 0.1rem solid ${ defaultTheme.borderLine };
   width: 100%;
 
   & > div {
@@ -60,7 +60,7 @@ const PaginationWrapper = styled.div`
 
       
       &:hover {
-        background-color: ${ borderLine };
+        background-color: ${ defaultTheme.borderLine };
       }
     }
 

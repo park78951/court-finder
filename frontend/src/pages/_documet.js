@@ -1,6 +1,5 @@
 import React from 'react';
-import Document, { Main, NextScript } from 'next/document';
-import { Helmet } from 'react-helmet-async'
+import Document, { Head, Main, NextScript } from 'next/document';
 import { ServerStyleSheet } from 'styled-components';
 
 export default class MyDocument extends Document {
@@ -25,22 +24,23 @@ export default class MyDocument extends Document {
 
     return (
       <html lang='ko' dir='ltr'>
-        <Helmet>
+        <Head>
           <meta charSet="utf-8" />
           <meta
             name="viewport"
             content="user-scalable=0, initial-scale=1, minimum-scale=1, width=device-width, height=device-height"
           />
-          <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-          <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-          <link rel="shortcut icon" href="/favicon.ico" />
-          <link rel="manifest" href="/site.webmanifest" />
+          <link
+            rel="preload"
+            href="/fonts/NanumGothicCoding-Bold.ttf"
+            as="font"
+            crossOrigin=""
+          />
           {helmetContext.helmet.meta.toComponent()}
           {helmetContext.helmet.link.toComponent()}
           {helmetContext.helmet.title.toComponent()}
           {helmetContext.helmet.script.toComponent()}
-          <title>Court Finder Korea</title>
-        </Helmet>
+        </Head>
         <body>
           <Main />
           <NextScript />

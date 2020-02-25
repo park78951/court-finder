@@ -1,14 +1,13 @@
 import { createGlobalStyle } from 'styled-components';
-// import { Normalize } from 'styled-normalize';
 import reset from 'styled-reset';
 
 const GlobalStyle = createGlobalStyle`
-  ${ reset }
+  ${ reset };
 
   @font-face {
     font-family: 'Nanum Gothic Coding', monospace;
-    src: url('./assets/fonts/NanumGothicCoding-Bold.ttf'),
-      url('./assets/fonts/NanumGothicCoding-Regular.ttf');
+    src: url('/fonts/NanumGothicCoding-Bold.ttf'),
+      url('/fonts/NanumGothicCoding-Regular.ttf');
   }
 
   *{

@@ -1,12 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import GoBackBtn from './GoBackBtn';
 import Style from './TitleStyle';
 
 const Title = ({ name }) => {
   return (
-    <Style.HeaderTitleStyle>
-      <GoBackBtn />
+    <Style.HeaderTitleStyle> 
       <p>{ name }</p>
     </Style.HeaderTitleStyle>
   );

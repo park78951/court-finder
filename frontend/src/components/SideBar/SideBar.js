@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 import { useSelector } from 'react-redux';
 import { useRouter } from 'next/router'
 import PropTypes from 'prop-types';
@@ -8,19 +8,16 @@ import HeaderInfo from './HeaderInfo';
 
 const SideBar = ({ children }) => {
   const isSidebarHidden = useSelector(state => {
-    return state.flags.isSidebarHidden;
+    return state.uiController.isSidebarHidden;
   });
   const { route } = useRouter();
-  const headerInfo = useMemo(() => {
-    return route.startsWith('/court') && <HeaderInfo />
-  }, [route.startsWith('/court')]);
 
   return !isSidebarHidden && (
     <Style.SideBarWrapper 
       curPath={ route }
     >
       <Search />
-      {headerInfo}
+      {route.startsWith('/court') && <HeaderInfo />}
       {children}
     </Style.SideBarWrapper>
   );

@@ -2,14 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Style from './InputStyle';
 
-const Input  = ({ placeholder, size, type, ...rest }) => {
+const Input  = ({ placeholder, size, type, children, ...rest }) => {
   return (
     <Style.CustomInput 
       placeholder={ placeholder } 
       size={ size }
       type={ type }
       { ...rest }
-    />
+    >
+      { children }
+    </Style.CustomInput>
   );
 };
 

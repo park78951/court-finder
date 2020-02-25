@@ -6,11 +6,13 @@ const AddressStyle = styled.div`
   align-items: center;
   font-weight: bold;
   margin: 5px 0;
+
     & > div {
       display: flex;
       font-weight: bold;
       width: fit-content;
     }
+    
     & > p {
       display: inline-block;
       margin: 0 5px;;

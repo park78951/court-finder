@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
 import { useRouter } from 'next/router';
 import { MdArrowBack } from 'react-icons/md';
-import { iconSize } from '@initConfig';
+import { iconSize } from '@config';
 
 const GoBackBtn = () => {
   const { headerInfo_goback } = iconSize;

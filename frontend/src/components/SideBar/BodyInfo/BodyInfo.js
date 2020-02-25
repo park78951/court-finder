@@ -11,7 +11,7 @@ import {
 } from 'react-icons/md';
 import Style from './BodyInfoStyle';
 import { NO_DATA } from '@constants';
-import { iconSize } from '@initConfig';
+import { iconSize } from '@config';
 import PropTypes from 'prop-types';
 
 const BodyInfo = () => {

@@ -26,18 +26,19 @@
       "module-resolver", {
         "alias": {
           "@styles": "./src/styles",
-          "@actions": "./src/actions",
+          "@actions": "./src/redux/actions",
           "@pages": "./pages",
           "@components": "./src/components",
-          "@reducers": "./src/reducers",
-          "@sagas": "./src/sagas",
+          "@reducers": "./src/redux/reducers",
+          "@sagas": "./src/redux/sagas",
           "@myUtils": "./src/myUtils",
-          "@constants": "./src/config/constants.js",
-          "@initConfig": "./src/config/initConfig.js",
-          "@store": "./src/store",
+          "@constants": "./src/constants",
+          "@config": "./src/config",
+          "@store": "./src/redux/store",
           "@assets": "./src/assets",
           "@hooks": "./src/hooks",
-          "@public": "./public"
+          "@public": "./public",
+          "@apis": "./src/apis"
         }
       }
     ],
