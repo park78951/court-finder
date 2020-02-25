@@ -29,8 +29,8 @@ const AuthContainer = () => {
       success: (res) => {
         const { id, kakao_account } = res;
         dispatch(requestLogin({
-          kakaoId: id,
-          kakaoNickname: kakao_account.profile.nickname,
+          userId: id,
+          nickname: kakao_account.profile.nickname,
         }));
       },
       fail: onFail,

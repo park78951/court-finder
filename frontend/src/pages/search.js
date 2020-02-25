@@ -11,22 +11,20 @@ const Search = () => {
 };
 
 Search.getInitialProps = async context => {
-  if(typeof window !== "undefined") return;
-
-  const { store, query } = context;
-  const { userInput, city, district, page } = query;
-  const filterInput = {
-    city: city ? city : '',
-    district: district ? district : '',
-  };
-  
-  store.dispatch(requestCourts({
-    userInput,
-    filterInput: filterInput,
-    page: parseInt(page, 10),
-  }));
-
-  return { userInput, filterInput, page };
+  if(context.isServer) {
+    const { store, query } = context;
+    const { userInput, city, district, page } = query;
+    const filterInput = {
+      city: city ? city : '',
+      district: district ? district : '',
+    };
+    
+    store.dispatch(requestCourts({
+      userInput,
+      filterInput: filterInput,
+      page: parseInt(page, 10),
+    }));
+  }
 }
 
 export default Search;

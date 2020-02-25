@@ -22,7 +22,10 @@ function loginAPI(userInfo) {
 }
 
 function* login(action) {
-  const userInfo = action.payload;
+  const userInfo = {
+    kakaoId: action.payload.userId,
+    kakaoNickname: action.payload.nickname,
+  }
   try {
     const { data } = yield call(loginAPI, userInfo);
     yield put(succeedLogin({ nickname: data.nickname }));

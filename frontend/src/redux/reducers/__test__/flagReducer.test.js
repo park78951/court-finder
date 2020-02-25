@@ -22,27 +22,27 @@ describe('test uiReducer', () => {
     });
   });
 
-  it('should handle OPEN_COURTADDITION', () => {
+  it('should open nickname changer', () => {
     const previousState = {...uiControllerState};
     uiControllerState = uiReducer(previousState, {
-      type: types.OPEN_COURTADDITION,
+      type: types.OPEN_NICKNAME_CHANGER,
     });
 
     expect(uiControllerState).toEqual({
       ...previousState,
-      courtAdditionuiController: true,
+      isOpenNicknameChanger: true,
     });
   });
 
-  it('should handle INIT_FILTER_INPUT', () => {
+  it('should close nickname changer', () => {
     const previousState = {...uiControllerState};
     uiControllerState = uiReducer(previousState, {
-      type: types.CLOSE_COURTADDITION,
+      type: types.CLOSE_NICKNAME_CHANGER,
     });
 
     expect(uiControllerState).toEqual({
       ...previousState,
-      courtAdditionuiController: false,
+      isOpenNicknameChanger: false,
     });
   });
 })

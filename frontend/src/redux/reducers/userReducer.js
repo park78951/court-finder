@@ -7,41 +7,56 @@ import {
   LOG_OUT_SUCCESS,
   LOG_OUT_FAILURE,
   TOGGLE_USER_MENU,
+  AUTO_LOG_IN,
 } from '@actions/types';
 
 export default (state = userInfo, { type, payload} ) => {
   switch(type) {
-    case LOG_IN_REQUEST:
-      const { kakaoId } = payload;
+    case LOG_IN_REQUEST: {
+      const { userId } = payload;
       return {
         ...state,
         isLogginIn: true,
-        userId: kakaoId,
+        userId
       }
+    }
     
-    case LOG_IN_SUCCESS:
+    case LOG_IN_SUCCESS: {
       const { nickname } = payload;
       return {
         ...state,
-        nickname: nickname,
+        nickname,
         isLogginIn: false,
         isLoggedIn: true,
       }
+    }
     
-    case LOG_IN_FAILURE:
+    case LOG_IN_FAILURE: {
       return {
         ...state,
         isLogginIn: false,
         errorMsg: payload,
       }
+    }
 
-    case LOG_OUT_REQUEST:
+    case AUTO_LOG_IN: {
+      const { userId, nickname } = payload;
+      return {
+        ...state,
+        userId,
+        nickname,
+        isLoggedIn: true,
+      }
+    }
+
+    case LOG_OUT_REQUEST: {
       return {
         ...state,
         isLogginOut: true,
       }
+    }
     
-    case LOG_OUT_SUCCESS:
+    case LOG_OUT_SUCCESS: {
       return {
         ...state,
         userId: '',
@@ -50,23 +65,27 @@ export default (state = userInfo, { type, payload} ) => {
         isLoggedIn: false,
         isUserMenuOpen: false,
       }
+    }
     
-    case LOG_OUT_FAILURE:
+    case LOG_OUT_FAILURE: {
       return {
         ...state,
         isLogginOut: false,
         errorMsg: payload,
       }
+    }
 
-    case TOGGLE_USER_MENU:
+    case TOGGLE_USER_MENU: {
       return {
         ...state,
         isUserMenuOpen: !state.isUserMenuOpen,
       };  
+    }
     
-    default: 
+    default: {
       return {
         ...state,
       }
+    }
   }
 }

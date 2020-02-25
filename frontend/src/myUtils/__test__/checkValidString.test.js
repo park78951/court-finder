@@ -1,12 +1,12 @@
-import isValidString from '../isValidString';
+import checkValidString from '../checkValidString';
 
-describe('test isValidString', () => {
+describe('test checkValidString', () => {
   it(
     'should get false with empty string',
     () => {
       const emptyString = '';
 
-      expect(isValidString(emptyString)).toBe(false);
+      expect(checkValidString(emptyString)).toBe(false);
     }
   );
 
@@ -16,8 +16,8 @@ describe('test isValidString', () => {
       const invalidShortName = 'ㄴ나노';
       const validShortName = '나노';
 
-      expect(isValidString(invalidShortName)).toBe(false);
-      expect(isValidString(validShortName)).toBe(true);
+      expect(checkValidString(invalidShortName)).toBe(false);
+      expect(checkValidString(validShortName)).toBe(true);
     }
   );
 
@@ -28,9 +28,9 @@ describe('test isValidString', () => {
       const invalidLongName = '$돈줘^^웃는다!)';
       const validShortName = '돈줘';
 
-      expect(isValidString(invalidShortName)).toBe(false);
-      expect(isValidString(invalidLongName)).toBe(false);
-      expect(isValidString(validShortName)).toBe(true);
+      expect(checkValidString(invalidShortName)).toBe(false);
+      expect(checkValidString(invalidLongName)).toBe(false);
+      expect(checkValidString(validShortName)).toBe(true);
     }
   );
 
@@ -42,10 +42,10 @@ describe('test isValidString', () => {
       const validKoreanName = '안녕하세요';
       const validEnglishName = 'hello';
 
-      expect(isValidString(invalidKoreanName, 40)).toBe(false);
-      expect(isValidString(invalidEnglishName, 40)).toBe(false);
-      expect(isValidString(validKoreanName, 40)).toBe(true);
-      expect(isValidString(validEnglishName, 40)).toBe(true);
+      expect(checkValidString(invalidKoreanName, 40)).toBe(false);
+      expect(checkValidString(invalidEnglishName, 40)).toBe(false);
+      expect(checkValidString(validKoreanName, 40)).toBe(true);
+      expect(checkValidString(validEnglishName, 40)).toBe(true);
     }
   );
 });

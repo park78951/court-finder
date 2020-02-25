@@ -19,6 +19,7 @@ import {
   LOG_OUT_REQUEST,
   LOG_OUT_SUCCESS,
   LOG_OUT_FAILURE,
+  AUTO_LOG_IN,
   OPEN_NICKNAME_CHANGER,
   CLOSE_NICKNAME_CHANGER,
   TOGGLE_USER_MENU,
@@ -123,6 +124,14 @@ export const succeedLogout = () => ({
 export const failLogout = (payload) => ({
   type: LOG_OUT_FAILURE,
   payload,
+});
+
+export const autoLogin = ({ kakaoId, nickname }) => ({
+  type: AUTO_LOG_IN,
+  payload: {
+    userId: kakaoId,
+    nickname,
+  },
 });
 
 export const openNicknameChanger = () => ({

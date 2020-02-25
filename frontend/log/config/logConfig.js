@@ -5,7 +5,7 @@ const fs = require('fs');
 const env = process.env.NODE_ENV;
 const logDir = "data";
 
-if(!fs.existsSync(logDir)) {
+if(!fs.existsSync(`./log/${logDir}`)) {
   fs.mkdirSync(`./log/${logDir}`);
 }
 
