@@ -1,6 +1,6 @@
 {
   "watch": [
-    "server/index.js",
+    "./server/index.js",
     "nodemon.json"
   ],
   "exec": "node server/index.js",

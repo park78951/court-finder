@@ -17,19 +17,20 @@ function loginAPI(userInfo) {
   const axiosOptions = typeof window !== 'undefined'
     ? { withCredentials: true }
     : {};
-    console.log(userInfo);
+
   return userApi.post('/auth/login', userInfo, axiosOptions);
 }
 
 function* login(action) {
-  const userInfo = action.payload;
+  const userInfo = {
+    kakaoId: action.payload.userId,
+    kakaoNickname: action.payload.nickname,
+  }
   try {
     const { data } = yield call(loginAPI, userInfo);
-    console.log(data);
     yield put(succeedLogin({ nickname: data.nickname }));
   } catch (err) {
     console.error(err);
-    console.dir(err);
     if(err.response.status === 409) {
       yield put(failLogin(err.response.status));
       yield put(openNicknameChanger());

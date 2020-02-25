@@ -22,9 +22,7 @@ const useNicknameChecker = (nickname) => {
         .then(({ isConflict }) => setIsValid(!isConflict));
       } catch (err) {
         console.error(err)
-        console.dir(err)
       }
-      console.log(isValid);
     } else {
       setIsValid(false);
     }

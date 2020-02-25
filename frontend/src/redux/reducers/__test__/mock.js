@@ -1,10 +1,19 @@
-export const newInput = {
+export const newInput1 = {
   userInput: '한강',
   filterInput: {
     city: '서울시',
     district: '강남구'
   },
   page: 1,
+};
+
+export const newInput2 = {
+  userInput: '한강',
+  filterInput: {
+    city: '',
+    district: ''
+  },
+  page: 3,
 };
 
 export const newCourtsData = {

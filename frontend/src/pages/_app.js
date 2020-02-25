@@ -7,7 +7,8 @@ import { PersistGate } from 'redux-persist/integration/react';
 import PropTypes from 'prop-types';
 import AppLayout from '@components/AppLayout';
 import configureStore from '@store';
-import { GlobalStyle } from '@styles'
+import { autoLogin } from '@actions';
+import { GlobalStyle } from '@styles';
 
 const helmetContext = {};
 
@@ -41,6 +42,16 @@ CourtFinder.propTypes = {
 
 CourtFinder.getInitialProps = async context => {
   const { ctx, Component } = context;
+  if(ctx.isServer) {
+    if(ctx.req.user) {
+      const { store } = ctx;
+      store.dispatch(autoLogin({
+        userId: ctx.req.user.kakaoId,
+        nickname: ctx.req.user.nickname,
+      }));
+    }
+  }
+
   let pageProps = {};
   if(Component.getInitialProps) {
     pageProps = await Component.getInitialProps(ctx) || {};

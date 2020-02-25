@@ -15,15 +15,36 @@ describe('test courtReducer', () => {
     const previousState = {...searchState};
     searchState = courtReducer(previousState, {
       type: types.SEARCH_COURTS_REQUEST,
-      payload: {...mock.newInput}
+      payload: {...mock.newInput1}
     });
 
     expect(searchState).toEqual({
       ...previousState,
       currentPage: 1,
+      userInput: mock.newInput1.userInput,
+      filterInput: {...mock.newInput1.filterInput},
       isSearching: true,
       isError: false,
     });
+  });
+  
+  it(
+    'should request search courts with empty string in properties in filterInput', 
+    () => {
+      const previousState = {...searchState};
+      searchState = courtReducer(previousState, {
+        type: types.SEARCH_COURTS_REQUEST,
+        payload: {...mock.newInput2}
+      });
+
+      expect(searchState).toEqual({
+        ...previousState,
+        currentPage: mock.newInput2.page,
+        userInput: mock.newInput1.userInput,
+        filterInput: {city: '', district: ''},
+        isSearching: true,
+        isError: false,
+      });
   });
 
   it('should get courts information', () => {
@@ -94,6 +115,19 @@ describe('test courtReducer', () => {
     expect(searchState).toEqual({
       ...previousState,
       mouseoverList: mock.selectedCourtsData,
+    });
+  });
+
+  it('should get filterInput', () => {
+    const previousState = {...searchState};
+    searchState = courtReducer(previousState, {
+      type: types.GET_FILTER_INPUT,
+      payload: {...mock.newInput1.filterInput},
+    });
+
+    expect(searchState).toEqual({
+      ...previousState,
+      filterInput: {...mock.newInput1.filterInput},
     });
   });
 });

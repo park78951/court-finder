@@ -7,16 +7,17 @@ import Style from './HelperNavStyle';
 const HelperNav = () => {
   const dispatch = useDispatch();
   const router = useRouter();
-
-  const goHome = useCallback(() => {
-    router.push('/');
-  }, []);
-
+  
   const initializeFilter = useCallback(() => {
     dispatch(removeFilterInput());
     alert('필터를 초기화했습니다.');
   }, []);
-
+  
+  const goHome = useCallback(() => {
+    dispatch(removeFilterInput());
+    router.push('/');
+  }, []);
+  
   return (
     <Style.HelperNavWrapper>
       <button

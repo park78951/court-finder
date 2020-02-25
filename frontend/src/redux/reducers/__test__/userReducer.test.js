@@ -15,11 +15,15 @@ describe('test userRedcuer', () => {
     const previousState = {...userState};
     userState = userReducer(previousState, {
       type: types.LOG_IN_REQUEST,
+      payload: {
+        userId: mock.userMock.userId,
+      }
     });
 
     expect(userState).toEqual({
       ...previousState,
       isLogginIn: true,
+      userId: mock.userMock.userId,
     });
   });
 
@@ -27,7 +31,7 @@ describe('test userRedcuer', () => {
     const previousState = {...userState};
     userState = userReducer(previousState, {
       type: types.LOG_IN_SUCCESS,
-      payload: mock.userMock,
+      payload: {...mock.userMock},
     });
 
     expect(userState).toEqual({
@@ -49,6 +53,45 @@ describe('test userRedcuer', () => {
       ...previousState,
       isLogginIn: false,
       errorMsg: 'Cannot get user information',
+    });
+  });
+
+  it('should open and close user menu', () => {
+    const previousState = {...userState};
+    userState = userReducer(previousState, {
+      type: types.TOGGLE_USER_MENU,
+    });
+
+    expect(userState).toEqual({
+      ...previousState,
+      isUserMenuOpen: !previousState.isUserMenuOpen,
+    });
+
+    userState = userReducer(previousState, {
+      type: types.TOGGLE_USER_MENU,
+    });
+
+    expect(userState).toEqual({
+      ...previousState,
+      isUserMenuOpen: !previousState.isUserMenuOpen,
+    });
+  });
+
+  it('should auto log in', () => {
+    const previousState = {...userState};
+    userState = userReducer(previousState, {
+      type: types.AUTO_LOG_IN,
+      payload: {
+        userId: mock.userMock.userId,
+        nickname: mock.userMock.nickname,
+      },
+    });
+
+    expect(userState).toEqual({
+      ...previousState,
+      userId: mock.userMock.userId,
+      nickname: mock.userMock.nickname,
+      isLoggedIn: true,
     });
   });
 });

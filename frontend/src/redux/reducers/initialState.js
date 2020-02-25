@@ -6,19 +6,16 @@ export const searchInfo = {
   currentPage: null,
   selectedCourt: null,
   mouseoverList: null,
+  userInput: null,
+  filterInput: {
+    city: "",
+    district: "",
+  },
 };
 
 export const initUIToggleInfo = {
   isSidebarHidden: false,
   isOpenNicknameChanger: false,
-};
-
-export const initInputInfo = {
-  userInput: null,
-  filterInput: {
-    city: "",
-    district: "",
-  }
 };
 
 export const initSubmitList = {

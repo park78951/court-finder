@@ -4,7 +4,6 @@ import { apiForLocal, apiForServer } from '@apis';
 import {
   completeGettingCourts,
   failGettingCourts,
-  getUserInput,
   completeGettingCourt,
   failGettingCourt,
 } from '@actions';
@@ -28,15 +27,14 @@ function* searchCourts(action) {
     if(prevSearchItems.hasOwnProperty(searchCode)) {
       yield put(completeGettingCourts(prevSearchItems[searchCode]));
     } else {
-      const { userInput, city, district, page } = action.payload;
+      const { userInput, filterInput, page } = action.payload;
       const query = {
         page,
         "size": courtsPageConfig.courtsPerPage,
         "match": userInput,
-        city,
-        district,
+        city: filterInput.city,
+        district: filterInput.district,
       };
-      yield put(getUserInput(userInput));
       const response = yield call(searchCourtsAPI, query);
       const { totalCount, courts } = response.data;
       yield put(completeGettingCourts({ totalCourts: totalCount, courtsData: courts }));
