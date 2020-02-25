@@ -28,11 +28,10 @@ const AuthContainer = () => {
       url: KAKAO_API_PROFILE_URL,
       success: (res) => {
         const { id, kakao_account } = res;
-        dispatch(requestLogin({kakaoId: '12448', kakaoNickname: '쌍큐'}));
-        // dispatch(requestLogin({
-        //   kakaoId: id,
-        //   kakaoNickname: kakao_account.profile.nickname,
-        // }));
+        dispatch(requestLogin({
+          kakaoId: id,
+          kakaoNickname: kakao_account.profile.nickname,
+        }));
       },
       fail: onFail,
     });

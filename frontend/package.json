@@ -8,7 +8,7 @@
     "eslint": "eslint ./",
     "build": "./build.sh",
     "prestart": "yarn build",
-    "start": "cross-env NODE_ENV=development pm2 start server.js",
+    "start": "cross-env NODE_ENV=development pm2 start server/index.js",
     "test": "jest"
   },
   "browserslist": [
@@ -27,6 +27,7 @@
     "dotenv": "^8.1.0",
     "express": "^4.17.1",
     "js-base64": "^2.5.1",
+    "jsonwebtoken": "^8.5.1",
     "lodash": "^4.17.15",
     "next": "^9.2.0",
     "next-cookies": "^2.0.3",
