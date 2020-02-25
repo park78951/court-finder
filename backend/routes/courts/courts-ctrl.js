@@ -13,7 +13,8 @@ exports.search = async (req, res, next) => {
   const config = {
     offset: (page -1 ) * size,
     limit: size,
-    attributes: { exclude: ['createdAt', 'updatedAt', 'deletedAt'] }
+    attributes: { exclude: ['createdAt', 'updatedAt', 'deletedAt'] },
+    where: {}
   };
 
   if (match) config.where = { 
