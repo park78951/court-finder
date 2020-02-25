@@ -1,7 +1,6 @@
 const jwt = require('jsonwebtoken');
 
 const decodeJwt = (req, res, next) => {
-  console.log(res);
   if (!req.cookies || !req.cookies.courtFinderJwt) {
     return next();
   }

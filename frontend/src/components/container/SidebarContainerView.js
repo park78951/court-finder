@@ -18,16 +18,17 @@ const SidebarContainerView = () => {
     isSearching, 
     isError, 
     totalCourts, 
-    currentPage 
+    currentPage,
+    userInput,
+    filterInput
   } = useSelector(({ courts }) => courts);
-  const { userInput, filterInput } = useSelector(({ input }) => input);
   const dispatch = useDispatch();
   const router = useRouter();
 
   const changeCurrentPage = useCallback(({userInput, filterInput, page}) => {
     dispatch(requestCourts({
       userInput, 
-      filterInput, 
+      filterInput,
       page,
     }));
 

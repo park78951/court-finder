@@ -25,8 +25,6 @@ const NickChanger = () => {
     evt.preventDefault();
     if(!isValid) return;
 
-    console.log(debouncedTerm)
-    console.log(term)
     if(errorMsg === 409) {
       dispatch(requestLogin({
         kakaoId: userId,

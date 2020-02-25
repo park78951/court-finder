@@ -18,7 +18,6 @@ app.prepare().then(() => {
   server.use('/', express.static(path.join(__dirname, 'public')));
 
   server.get('*', (req, res) => {
-    console.log('server', req);
     return handle(req, res);
   });
 

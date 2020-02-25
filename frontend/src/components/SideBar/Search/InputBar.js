@@ -9,7 +9,7 @@ import Style from './InputBarStyle';
 
 const InputBar = () => {
   const [term, setTerm] = useState('');
-  const { filterInput } = useSelector(({ input}) => input);
+  const { filterInput } = useSelector(({ courts }) => courts);
   const dispatch = useDispatch();
   const router = useRouter();
 

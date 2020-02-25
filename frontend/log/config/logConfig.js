@@ -6,7 +6,7 @@ const env = process.env.NODE_ENV;
 const logDir = "data";
 
 if(!fs.existsSync(logDir)) {
-  fs.mkdirSync(logDir);
+  fs.mkdirSync(`./log/${logDir}`);
 }
 
 const dailyRotateFileTransport = new transports.DailyRotateFile({

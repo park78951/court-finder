@@ -8,7 +8,6 @@ import {
   ADD_COURTS,
   SELECT_COURT,
   TOGGLE_SIDEBAR,
-  GET_SEARCH_INPUT,
   GET_FILTER_INPUT,
   INIT_FILTER_INPUT,
   DELETE_COURTS,
@@ -29,8 +28,7 @@ export const requestCourts = ({ userInput, filterInput, page }) => ({
   type: SEARCH_COURTS_REQUEST,
   payload: {
     userInput,
-    city: filterInput.city ? filterInput.city : '',
-    district: filterInput.district ? filterInput.district : '',
+    filterInput,
     page
   }
 });
@@ -80,11 +78,6 @@ export const unselectCourt = () => ({
 
 export const toggleSidebar = () => ({
   type: TOGGLE_SIDEBAR,
-});
-
-export const getUserInput = input => ({
-  type: GET_SEARCH_INPUT,
-  payload: input,
 });
 
 export const getFilterInput = filterInput => ({

@@ -12,11 +12,7 @@ import Style from './RefetchStyle';
 const Refetch = () => {
   const { color, size } = refetchBtnStyle;
   const dispatch = useDispatch();
-  const { userInput, filterInput, page } = useSelector(state => ({
-    userInput: state.input.userInput,
-    filterInput: state.input.filterInput,
-    page: state.courts.currentPage,
-  }));
+  const { userInput, filterInput, page } = useSelector(({ courts }) => courts);
 
   const refetchRequestor = useCallback(() => {
     dispatch(requestCourts({

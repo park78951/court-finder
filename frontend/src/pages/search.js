@@ -14,11 +14,15 @@ Search.getInitialProps = async context => {
   if(typeof window !== "undefined") return;
 
   const { store, query } = context;
-  const { userInput, filterInput, page } = query;
+  const { userInput, city, district, page } = query;
+  const filterInput = {
+    city: city ? city : '',
+    district: district ? district : '',
+  };
   
   store.dispatch(requestCourts({
     userInput,
-    filterInput: filterInput ? filterInput : {},
+    filterInput: filterInput,
     page: parseInt(page, 10),
   }));
 
