@@ -1,6 +1,6 @@
 const { User } = require('../../models');
 const createError = require('http-errors');
-const getJwtInCookie = require('../../src/lib/getJwtInCookie');
+const getJwtInCookie = require('../../src/lib/get-jwt-in-cookie');
 
 exports.login = async (req, res, next) => {
   const { kakaoId, kakaoNickname } = req.body;

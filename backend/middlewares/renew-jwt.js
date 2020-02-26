@@ -1,4 +1,4 @@
-const getJwtInCookie = require('../src/lib/getJwtInCookie');
+const getJwtInCookie = require('../src/lib/get-jwt-in-cookie');
 
 const renewToken = (req, res, next) => {
   if (!req.decoded) return next();
