@@ -54,7 +54,8 @@
 const express = require('express');
 const router = express.Router();
 const { register } = require('./review-ctrl');
+const isLoggedIn = require('../../middlewares/is-logged-in');
 
-router.post('/', register);
+router.post('/', isLoggedIn, register);
 
 module.exports = router;
