@@ -7,7 +7,7 @@ const decodeJwt = (req, res, next) => {
     const secret = process.env.JWT_SECRET;
     const decodedToken = jwt.verify(req.cookies.courtFinderJwt, secret);
 
-    req.decoded = {
+    req.user = {
         kakaoId: decodedToken.kakaoId,
         nickname: decodedToken.nickname,
         exp: decodedToken.exp

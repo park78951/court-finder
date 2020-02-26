@@ -1,13 +1,13 @@
 const getJwtInCookie = require('../src/lib/get-jwt-in-cookie');
 
 const renewToken = (req, res, next) => {
-  if (!req.decoded) return next();
+  if (!req.user) return next();
   // 갱신 기준 일수
   const CRITERIA_PERIOD = 10;
-  const { kakaoId, nickname } = req.decoded;
+  const { kakaoId, nickname } = req.user;
 
   try {
-    const restDays = (req.decoded.exp * 1000 - Date.now()) / (1000 * 60 * 60 * 24); 
+    const restDays = (req.user.exp * 1000 - Date.now()) / (1000 * 60 * 60 * 24); 
     
     if (restDays > CRITERIA_PERIOD) return next();
 
