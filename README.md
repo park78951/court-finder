@@ -4,7 +4,7 @@
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 ## [Demo](http://13.125.124.214/)
-![2020-01-16_Demo](https://user-images.githubusercontent.com/37759759/72496845-2fef6e80-386e-11ea-8f40-d858ec2acdf0.gif)
+![court-finder-login](https://user-images.githubusercontent.com/37759759/75315468-2c57fa00-58a6-11ea-8606-a266a4544c30.gif)
 
 ## Introduction
 네이버, 구글, 카카오맵에 농구장을 쳐도 내가 농구장을 찾기는 쉽지 않았습니다. 특히, 실내 농구장을 사용하고 싶은 유저들은 정보를 얻기 위해 주변인이나 카페의 정보를 샅샅이 뒤지거나 직접 전화해야만 하는 불편함이 싫었습니다. 
