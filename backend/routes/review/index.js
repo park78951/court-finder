@@ -21,8 +21,14 @@
  *        required: true
  *        schema:
  *          type: "strging"
+ *      - in: "query"
+ *        name: "courtId"
+ *        description: "리뷰를 등록할 court id"
+ *        required: true
+ *        schema:
+ *          type: "strging"
  *      - in: "body"
- *        name: "review-info"
+ *        name: "reviewInfo"
  *        description: "등록할 리뷰 정보"
  *        schema:
  *          type: "object"
@@ -36,7 +42,9 @@
  *          schema:
  *            $ref: "#/definitions/review"
  *        400:
- *          description: "text 내용이 없음"
+ *          description: "text 내용이 없거나 courtId가 쿼리에 없음"
+ *        401:
+ *          description: "unauthorized, jwt가 없거나 잘못됨"
  *        500:
  *          description: "Internal Server Error"
  */
@@ -47,6 +55,8 @@
  *    review:
  *      type: "object"
  *      properties:
+ *        id:
+ *          type: number
  *        text:
  *          type: string
  */
