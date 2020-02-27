@@ -25,7 +25,7 @@ const SidebarContainerView = () => {
   const dispatch = useDispatch();
   const router = useRouter();
 
-  const changeCurrentPage = useCallback(({userInput, filterInput, page}) => {
+  const onChangePage = useCallback((page) => {
     dispatch(requestCourts({
       userInput, 
       filterInput,
@@ -57,12 +57,10 @@ const SidebarContainerView = () => {
       </Style.SideBarContentsWrapper>
       { searchedCourts.length > 0 && (
         <Pagination 
-          clickHandler={ changeCurrentPage }
-          totalCourts={ totalCourts }
-          { ...courtsPageConfig }
-          userInput={ userInput }
-          filterInput={ filterInput }
-          lastPage={ currentPage }
+          onChangePage={onChangePage}
+          totalCourts={totalCourts}
+          lastPage={currentPage}
+          {...courtsPageConfig}
         />
       ) }
     </>

@@ -9,9 +9,7 @@ const Pagination = ({
   courtsPerPage, 
   numbersOnList, 
   totalCourts, 
-  clickHandler,
-  userInput,
-  filterInput,
+  onChangePage,
   lastPage,
 }) => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -22,33 +20,21 @@ const Pagination = ({
 
   const clickNext = useCallback(() => {
     if(currentPage === totalPage) return;
-    clickHandler({
-      userInput, 
-      filterInput, 
-      page: currentPage + 1
-    });
+    onChangePage(currentPage + 1);
     setCurrentPage(prevState => prevState + 1);
-  }, [currentPage, userInput, filterInput]);
+  }, [currentPage]);
 
-  const clickBefore = useCallback(() => {
+  const clickPrev = useCallback(() => {
     if(currentPage === 1) return;
-    clickHandler({
-      userInput, 
-      filterInput, 
-      page: currentPage - 1
-    });
+    onChangePage(currentPage - 1);
     setCurrentPage(currentPage - 1);
-  }, [currentPage, userInput, filterInput]);
+  }, [currentPage]);
 
   const clickNumber = useCallback(({ target }) => {
     const targetNumber = Number(target.closest('button').textContent);
-    clickHandler({
-      userInput, 
-      filterInput, 
-      page: targetNumber
-    });
+    onChangePage(targetNumber);
     setCurrentPage(targetNumber);
-  }, [currentPage, userInput, filterInput]);
+  }, [currentPage]);
 
   const numberList = useMemo(() => {
     const pageList = currentPages.map(pageNumber => (
@@ -70,7 +56,7 @@ const Pagination = ({
   useEffect(() => {
     const currentPageNumbers = getCurrentPageNumbers({
       currentPage,
-      itemsToShow: numbersOnList,
+      numberOfItemsOnPage: numbersOnList,
       totalPageNumbers
     })
     setCurrentPages(currentPageNumbers);
@@ -83,7 +69,7 @@ const Pagination = ({
       lastPage={ totalPageNumbers.length }
     >
       <div>
-        <button onClick={ clickBefore } className='arrow-btn arrow-btn__prev'>
+        <button onClick={ clickPrev } className='arrow-btn arrow-btn__prev'>
           <MdNavigateBefore size={20}/>
         </button>
         { numberList }
@@ -99,9 +85,7 @@ Pagination.propTypes = {
   courtsPerPage: PropTypes.number,
   numbersOnList: PropTypes.number, 
   totalCourts: PropTypes.number, 
-  clickHandler: PropTypes.func,
-  userInput: PropTypes.string,
-  filterInput: PropTypes.object,
+  onChangePage: PropTypes.func,
   lastPage: PropTypes.number,
 };
 
