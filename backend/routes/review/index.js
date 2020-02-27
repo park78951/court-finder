@@ -78,12 +78,10 @@
  *            properties:
  *              hasNextPage:
  *                type: boolean
- *              writer:
- *                $ref: "#/definitions/writer"
  *              reviews:
  *                type: array
  *                items:
- *                  $ref: "#/definitions/review"
+ *                  $ref: "#/definitions/reviewWithWriter"
  *        204:
  *          description: "No content"
  *        400:
@@ -146,6 +144,20 @@
  *      properties:
  *        nickname:
  *          type: string
+ *    reviewWithWriter:
+ *      type: "object"
+ *      properties:
+ *        id:
+ *          type: number
+ *        text:
+ *          type: string
+ *        createdAt:
+ *          type: string
+ *        writer:
+ *          type: "object"
+ *          properties:
+ *            nickname:
+ *              type: string
  */
 
 const express = require('express');
@@ -153,10 +165,12 @@ const router = express.Router();
 const isLoggedIn = require('../../middlewares/is-logged-in');
 const {
   register,
-  getMyReview
+  getMyReview,
+  getReviews
 } = require('./review-ctrl');
 
-router.get('/mine', isLoggedIn, getMyReview);
+router.get('/',  getReviews);
 router.post('/', isLoggedIn, register);
+router.get('/mine', isLoggedIn, getMyReview);
 
 module.exports = router;

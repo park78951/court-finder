@@ -6,9 +6,9 @@ exports.search = async (req, res, next) => {
   const page = parseInt(req.query.page);
   const size = parseInt(req.query.size);
   
-  if (!page || !size) return next(
-    createError(400, "page and size should be defined minimum 1")
-  );
+  if (!page || !size) {
+    return next(createError(400, "wrong page, size"));
+  }
   
   const config = {
     offset: (page -1 ) * size,
