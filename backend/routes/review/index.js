@@ -47,6 +47,86 @@
  *          description: "unauthorized, jwt가 없거나 잘못됨"
  *        500:
  *          description: "Internal Server Error"
+ *    get:
+ *      tags:
+ *      - "review"
+ *      summary: "코트에 대한 리뷰들 읽어오기"
+ *      description: "코트에 대한 리뷰들 읽어오기"
+ *      prodeces:
+ *      - "application/json"
+ *      parameters:
+ *      - in: "query"
+ *        name: "page"
+ *        description: "최소 1 이상의 값이어야 합니다."
+ *        type: number
+ *        required: true
+ *      - in: "query"
+ *        name: "size"
+ *        description: "최소 1 이상의 값이어야 합니다."
+ *        type: number
+ *        required: true
+ *      - in: "query"
+ *        name: "courtId"
+ *        description: "리뷰를 가져올 court id"
+ *        type: string
+ *        required: true
+ *      responses:
+ *        200:
+ *          description: "Success"
+ *          schema:
+ *            type: "object"
+ *            properties:
+ *              hasNextPage:
+ *                type: boolean
+ *              writer:
+ *                $ref: "#/definitions/writer"
+ *              reviews:
+ *                type: array
+ *                items:
+ *                  $ref: "#/definitions/review"
+ *        204:
+ *          description: "No content"
+ *        400:
+ *          description: "Bad request\n page 는 최소 1, size는 최소 1, court id 필요"
+ *        500:
+ *          description: "Internal Server Error"
+ */
+
+ /**
+ *  @swagger
+ *  /myreview:
+ *    get:
+ *      tags:
+ *      - "review"
+ *      summary: "court에 대해 유저 본인이 작성한 리뷰"
+ *      prodeces:
+ *      - "application/json"
+ *      parameters:
+ *      - in: "cookie"
+ *        name: "courtFinderJwt"
+ *        description: "json web token"
+ *        required: true
+ *        schema:
+ *          type: "strging"
+ *      - in: "query"
+ *        name: "courtId"
+ *        description: "리뷰를 등록할 court id"
+ *        required: true
+ *        schema:
+ *          type: "strging"
+ *      responses:
+ *        200:
+ *          description: "Success\n"
+ *          schema:
+ *            $ref: "#/definitions/review"
+ *        204:
+ *          description: "작성한 리뷰가 없음"
+ *        400:
+ *          description: "courtId가 쿼리에 없음"
+ *        401:
+ *          description: "unauthorized, jwt가 없거나 잘못됨"
+ *        500:
+ *          description: "Internal Server Error"
  */
 
 /**
@@ -58,6 +138,11 @@
  *        id:
  *          type: number
  *        text:
+ *          type: string
+ *    writer:
+ *      type: "object"
+ *      properties:
+ *        nickname:
  *          type: string
  */
 
