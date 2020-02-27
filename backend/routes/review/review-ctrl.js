@@ -15,7 +15,37 @@ exports.register = async (req, res, next) => {
 
     const sendingData = {
       id: review.id,
-      text: review.text
+      text: review.text,
+      createdAt: review.createdAt
+    };
+
+    return res.json(sendingData);
+  }
+  catch(error) {
+    return next(error);
+  }
+};
+
+exports.getMyReview = async (req, res, next) => {
+  if (!req.query.courtId) {
+    return next(createError(400));
+  }
+  
+  try {
+    const review = await Review.findOne({
+      where: {
+        courtId: req.query.courtId,
+        writerId: req.user.kakaoId
+      },
+      attributes: ['id', 'text', 'createdAt']
+    });
+
+    if (review === null) return res.status(204).send();
+    
+    const sendingData = {
+      id: review.id,
+      text: review.text,
+      createdAt: review.createdAt
     };
 
     return res.json(sendingData);
