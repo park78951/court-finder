@@ -44,6 +44,11 @@ module.exports = (sequelize, DataTypes) => {
   });
   
   Court.associate = function(models) {
+    Court.hasMany(models.Review, {
+      foreignKey: 'courtId',
+      source: 'id',
+      as: 'reviews',
+    });
   };
   
   return Court;
