@@ -94,7 +94,7 @@
 
  /**
  *  @swagger
- *  /myreview:
+ *  /review/mine:
  *    get:
  *      tags:
  *      - "review"
@@ -110,13 +110,13 @@
  *          type: "strging"
  *      - in: "query"
  *        name: "courtId"
- *        description: "리뷰를 등록할 court id"
+ *        description: "리뷰를 가져올 court id"
  *        required: true
  *        schema:
  *          type: "strging"
  *      responses:
  *        200:
- *          description: "Success\n"
+ *          description: "Success\ncreatedAt example: '2020-02-27T03:57:44.000Z'"
  *          schema:
  *            $ref: "#/definitions/review"
  *        204:
@@ -139,6 +139,8 @@
  *          type: number
  *        text:
  *          type: string
+ *        createdAt:
+ *          type: string
  *    writer:
  *      type: "object"
  *      properties:
@@ -148,9 +150,13 @@
 
 const express = require('express');
 const router = express.Router();
-const { register } = require('./review-ctrl');
 const isLoggedIn = require('../../middlewares/is-logged-in');
+const {
+  register,
+  getMyReview
+} = require('./review-ctrl');
 
+router.get('/mine', isLoggedIn, getMyReview);
 router.post('/', isLoggedIn, register);
 
 module.exports = router;
