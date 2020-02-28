@@ -90,6 +90,37 @@
  *          description: "Internal Server Error"
  */
 
+/**
+ *  @swagger
+ *  /review/{reviewId}:
+ *    delete:
+ *      tags:
+ *      - "review"
+ *      summary: "review 삭제"
+ *      description: "id의 리뷰를 삭제한다."
+ *      prodeces:
+ *      - "application/json"
+ *      parameters:
+ *      - in: "cookie"
+ *        name: "courtFinderJwt"
+ *        description: "json web token"
+ *        required: true
+ *        schema:
+ *          type: "strging"
+ *      - in: "path"
+ *        name: "reviewId"
+ *        description: "삭제하고자 하는 리뷰의 id"
+ *        type: string
+ *        required: true
+ *      responses:
+ *        200:
+ *          description: "Success"
+ *        400:
+ *          description: "Bad request\n id가 없음"
+ *        500:
+ *          description: "Internal Server Error"
+ */
+
  /**
  *  @swagger
  *  /review/mine:
@@ -166,11 +197,13 @@ const isLoggedIn = require('../../middlewares/is-logged-in');
 const {
   register,
   getMyReview,
-  getReviews
+  getReviews,
+  deleteReview
 } = require('./review-ctrl');
 
 router.get('/',  getReviews);
 router.post('/', isLoggedIn, register);
 router.get('/mine', isLoggedIn, getMyReview);
+router.delete('/:id', isLoggedIn, deleteReview);
 
 module.exports = router;
