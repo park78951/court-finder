@@ -98,3 +98,26 @@ exports.getReviews = async (req, res, next) => {
     return next(error);
   }
 };
+
+exports.deleteReview = async (req, res, next) => {
+  if (!req.params.id) {
+    return next(createError(400))
+  }
+  try {
+    const isDeleted = await Review.destroy({
+      where: {
+        id: req.params.id,
+        writerId: req.user.kakaoId
+      }
+    });
+
+    if (!isDeleted) {
+      return next(createError(400, "Fail: delete review, Maybe There is no review with the id or written by user"));
+    }
+
+    return res.send();
+  }
+  catch(error) {
+    return next(error);
+  }
+};

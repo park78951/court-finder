@@ -197,11 +197,13 @@ const isLoggedIn = require('../../middlewares/is-logged-in');
 const {
   register,
   getMyReview,
-  getReviews
+  getReviews,
+  deleteReview
 } = require('./review-ctrl');
 
 router.get('/',  getReviews);
 router.post('/', isLoggedIn, register);
 router.get('/mine', isLoggedIn, getMyReview);
+router.delete('/:id', isLoggedIn, deleteReview);
 
 module.exports = router;
