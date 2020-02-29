@@ -1,16 +1,28 @@
 import React from 'react';
-import Profile from './Profile';
-import ReviewPost from './ReviewPost';
+import PropTypes from 'prop-types';
 import Style from './UserReviewStyle';
 
-const UserReview = () => {
+const UserReview = ({nickname, contents}) => {
   return (
     <Style.UserReviewWrapper>
-      <Profile />
-      <hr />
-      <ReviewPost />
+      <Style.UserProfile>
+        <Style.UserProfileAvatar>
+          {nickname[0]}
+        </Style.UserProfileAvatar>
+        <Style.UserProfileNickname>
+          {nickname}
+        </Style.UserProfileNickname>
+      </Style.UserProfile>
+      <Style.ReviewContents>
+        <span>{contents}</span>
+      </Style.ReviewContents>
     </Style.UserReviewWrapper>
   );
 };
+
+UserReview.propTypes = {
+  nickname: PropTypes.string,
+  contents: PropTypes.string,
+}
 
 export default UserReview;
