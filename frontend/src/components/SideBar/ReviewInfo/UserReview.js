@@ -1,8 +1,14 @@
-import React from 'react';
+import React, { useState, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import Style from './UserReviewStyle';
 
 const UserReview = ({nickname, contents}) => {
+  const [isContentsFolded, setIsContentsFolded] = useState()
+  
+  const onClickMoreView = useCallback(() => {
+    console.log('클릭')
+  }, []);
+
   return (
     <Style.UserReviewWrapper>
       <Style.UserProfile>
@@ -15,6 +21,11 @@ const UserReview = ({nickname, contents}) => {
       </Style.UserProfile>
       <Style.ReviewContents>
         <span>{contents}</span>
+        {!isContentsFolded && (
+          <div onClick={onClickMoreView}>
+            +더보기
+          </div>
+        )}
       </Style.ReviewContents>
     </Style.UserReviewWrapper>
   );
@@ -25,4 +36,4 @@ UserReview.propTypes = {
   contents: PropTypes.string,
 }
 
-export default UserReview;
+export default React.memo(UserReview);

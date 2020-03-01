@@ -35,7 +35,19 @@ const UserProfileNickname = styled.div`
 
 const ReviewContents = styled.div`
   & > span {
-    line-height: 1.3;
+    line-height: 1.3rem;
+  }
+
+  & > div {
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-weight: bold;
+    color: #17408B;
+    background-color: transparent;
+    margin: 0.3rem 0;
+    text-align: right;
+    padding: 0 1rem;
   }
 `;
 

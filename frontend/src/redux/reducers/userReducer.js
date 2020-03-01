@@ -83,9 +83,7 @@ export default (state = userInfo, { type, payload} ) => {
     }
     
     default: {
-      return {
-        ...state,
-      }
+      return state;
     }
   }
 }

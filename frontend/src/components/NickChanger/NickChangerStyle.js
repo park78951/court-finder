@@ -40,7 +40,7 @@ const NickChangerModal = styled.form`
 
   & > p {
     margin-top: 0.5rem;
-    color: ${ defaultTheme.explanation };
+    color: ${ defaultTheme.EXPLANATION };
     line-height: 1.3rem;
   }
 

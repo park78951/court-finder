@@ -103,9 +103,7 @@ const courtReducer = (state = searchInfo, { type, payload }) => {
       };
 
     default:
-      return {
-        ...state
-      };
+      return state;
   }
 };
 

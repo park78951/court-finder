@@ -39,7 +39,7 @@ const PaginationWrapper = styled.div`
   justify-content: center;
   height: 2.3rem;
   background-color: #fff;
-  border: 0.1rem solid ${ defaultTheme.borderLine };
+  border: 0.1rem solid ${ defaultTheme.BORDERLINE };
   width: 100%;
 
   & > div {
@@ -60,7 +60,7 @@ const PaginationWrapper = styled.div`
 
       
       &:hover {
-        background-color: ${ defaultTheme.borderLine };
+        background-color: ${ defaultTheme.BORDERLINE };
       }
     }
 

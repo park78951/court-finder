@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { MdRateReview } from "react-icons/md";
 import PropTypes from 'prop-types';
 import UserReview from './UserReview';

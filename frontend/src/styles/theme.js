@@ -1,4 +1,6 @@
 export default {
-  borderLine: '#D3D3D3',
-  explanation: '#D0D0D0',
+  BORDERLINE: '#D3D3D3',
+  EXPLANATION: '#D0D0D0',
+  LOGO_BACKGROUND: '#17408B',
+  LOGO_LETTER: '#C9082A',
 }
