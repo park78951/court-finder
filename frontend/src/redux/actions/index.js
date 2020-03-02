@@ -26,9 +26,9 @@ import {
   LOAD_ALLREVIEWS_REQUEST,
   LOAD_ALLREVIEWS_SUCCESS,
   LOAD_ALLREVIEWS_FAILURE,
-  MY_REVIEW_REQUEST,
-  MY_REVIEW_SUCCESS,
-  MY_REVIEW_FAILURE,
+  LOAD_MYREVIEW_REQUEST,
+  LOAD_MYREVIEW_SUCCESS,
+  LOAD_MYREVIEW_FAILURE,
 } from './types';
 
 export const requestCourts = ({ userInput, filterInput, page }) => ({
@@ -151,9 +151,9 @@ export const closeAddReviewForm = () => ({
   type: CLOSE_ADD_FORM,
 });
 
-export const requestAllReviews = ({ courtId, size }) => ({
+export const requestAllReviews = ({ courtId, size, page }) => ({
   type: LOAD_ALLREVIEWS_REQUEST,
-  payload: {courtId, size},
+  payload: {courtId, size, page},
 });
 
 export const completeAllReviews = ({ hasNextPage, reviews }) => ({
@@ -174,9 +174,12 @@ export const requestMyReview = ({ courtId }) => ({
   payload: {courtId},
 });
 
-export const completeMyReview = ({ myReview }) => ({
+export const completeMyReview = ({ text, createdAt }) => ({
   type: LOAD_MYREVIEW_SUCCESS,
-  payload: myReview,
+  payload: {
+    text,
+    createdAt,
+  },
 });
 
 export const failMyReview = ({ errorMsg }) => ({

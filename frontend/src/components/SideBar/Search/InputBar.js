@@ -35,7 +35,7 @@ const InputBar = () => {
       district: filterInput.district,
       page: 1,
     });
-    router.push(searchRoute);
+    router.push(`/search${searchRoute}`);
   }, [term, filterInput, router.route]);
 
   return (

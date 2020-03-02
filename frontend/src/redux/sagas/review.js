@@ -27,21 +27,23 @@ const mockReviews = {
   ],
 }
 
-function getAllReviewsAPI({courtId, size}) {
-  const userApi = typeof window !== 'undefined'
-   ? apiForServer
-   : apiForLocal;
+const mockMyReview = {
+  id: 0,
+  text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+  createdAt: '2020-01-01',
+}
 
-  // const axiosOptions = typeof window !== 'undefined'
-  //   ? { withCredentials: true }
-  //   : {};
+function getAllReviewsAPI({courtId, size, page}) {
+  // const userApi = typeof window !== 'undefined'
+  //  ? apiForServer
+  //  : apiForLocal;
+  
   const queryParams = getSearchQueries({
     courtId, 
     size,
-    page: 1
+    page,
   });
-  console.log(queryParams)
-  return userApi.get(
+  return apiForLocal.get(
     `/review${queryParams}`, 
   );
 }
@@ -49,6 +51,7 @@ function getAllReviewsAPI({courtId, size}) {
 function* getAllReviews(action) {
   try {
     // const { data } = yield call(getAllReviewsAPI, action.payload);
+    // console.log(data);
     yield put(completeAllReviews(mockReviews));
   } catch (err) {
     console.error(err);
@@ -63,8 +66,44 @@ function* watchGetAllReviews() {
   )
 }
 
+function getMyReviewAPI({ courtId }) {
+  // const userApi = typeof window !== 'undefined'
+  //  ? apiForServer
+  //  : apiForLocal;
+
+  const axiosOptions = typeof window !== 'undefined'
+    ? { withCredentials: true }
+    : {};
+
+  const queryParams = getSearchQueries({ courtId });
+  console.log(`/review/mine${queryParams}`)
+  return apiForLocal.get(
+    `/review/mine${queryParams}`,
+    axiosOptions
+  );
+}
+
+function* getMyReview(action) {
+  try {
+    // const { data } = yield call(getMyReviewAPI, action.payload);
+    // console.log(data);
+    yield put(completeMyReview(mockMyReview));
+  } catch (err) {
+    console.error(err);
+    put(failMyReview(err));
+  }
+}
+
+function* watchGetMyReview() {
+  yield takeLatest(
+    LOAD_MYREVIEW_REQUEST,
+    getMyReview
+  )
+}
+
 export default function* userSaga() {
   yield all([
     fork(watchGetAllReviews),
+    fork(watchGetMyReview),
   ])
 }

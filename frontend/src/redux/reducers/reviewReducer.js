@@ -31,10 +31,35 @@ const uiReducers = (state = initPosts, { type, payload }) => {
 
     case LOAD_ALLREVIEWS_SUCCESS: {
       const { allReviews } = payload;
-      console.log(allReviews);
       return {
         ...state,
         allReviews,
+      }
+    }
+
+    case LOAD_ALLREVIEWS_FAILURE: {
+      return {
+        ...state,
+        allReviewError: payload,
+      }
+    }
+
+    case LOAD_MYREVIEW_REQUEST:
+      return {
+        ...state,
+      }
+
+    case LOAD_MYREVIEW_SUCCESS: {
+      return {
+        ...state,
+        myReview: payload,
+      }
+    }
+
+    case LOAD_MYREVIEW_FAILURE: {
+      return {
+        ...state,
+        myReviewError: payload,
       }
     }
 

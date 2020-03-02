@@ -1,6 +1,5 @@
 import { createStore, compose, applyMiddleware } from 'redux';
 import createSagaMiddelware from 'redux-saga';
-import { persistStore } from 'redux-persist';
 import rootReducer from '@reducers';
 import rootSaga from '@sagas';
 
@@ -17,27 +16,7 @@ export default (initialState, options) => {
         : (f) => f,
     );
 
-  if(!options.isServer) {
-    const { persistReducer } = require('redux-persist');
-    const storage = require('redux-persist/lib/storage').default;
-
-    const persistConfig = {
-      'key': 'root',
-      storage,
-      'whitelist': ['user'],
-    }
-
-    store = createStore(
-      persistReducer(persistConfig, rootReducer), 
-      initialState, 
-      enhancer
-    );
-
-    store.__PERSISTOR = persistStore(store);
-  } else {
-    store = createStore(rootReducer, initialState, enhancer);
-  }
-
+  store = createStore(rootReducer, initialState, enhancer);
   store.sagaTask = sagaMiddleware.run(rootSaga);
   
   return store;

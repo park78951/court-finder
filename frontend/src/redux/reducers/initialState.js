@@ -33,6 +33,8 @@ export const initPosts = {
   allReviews: [],
   myReview: null,
   currentPage: 1,
+  allReviewError: null,
+  myReviewError: null,
 };
 
 export const prevSearchItems = {};

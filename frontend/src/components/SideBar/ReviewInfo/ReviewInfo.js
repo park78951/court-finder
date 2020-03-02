@@ -11,7 +11,11 @@ const ReviewInfo = ({
   myContent, 
 }) => {
   const dispatch = useDispatch();
-  const { allReviews } = useSelector(({ review }) => review);
+  const { allReviews, myReview } = useSelector((state) => ({
+    allReviews: state.review.allReviews,
+    myReview: state.review.myReview,
+    nickname: state.user.nickname,
+  }));
 
   const onClickAddReview = useCallback(() => {
     console.log('onClick');
@@ -24,7 +28,7 @@ const ReviewInfo = ({
         <h2>내가 작성한 리뷰</h2>
       </Style.CommentsHeader>
       <Style.MyReview>
-        {false && <UserReview 
+        {myReview && <UserReview 
           nickname={'쌍큐'}
           contents={'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'}
         />}

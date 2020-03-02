@@ -49,7 +49,7 @@ const MapContainerView = () => {
     return searchedCourts.map((courtInfo) => {
       return (
         <CourtMarker
-        key={ uniqueId(courtInfo.name) }
+          key={ uniqueId(courtInfo.name) }
           courtInfo={ courtInfo }
           mouseOverOutHandler={ onMouseOverAndOutOfMarker }
         />            
@@ -60,7 +60,6 @@ const MapContainerView = () => {
   const markerOnSelected = useMemo(() => {
     return (
       <CourtMarker
-        key={ uniqueId(name) }
         courtInfo={ selectedCourt }
         mouseOverOutHandler={ onMouseOverAndOutOfMarker }
       />            
@@ -107,8 +106,8 @@ const MapContainerView = () => {
       >
         { route !== '/' && markersOnSearch }
         { route !== '/' 
-          && !searchedCourts.length 
-          && selectedCourt 
+          && searchedCourts.length === 0
+          && selectedCourt
           && markerOnSelected }
         { window.google && infoBox }
       </GoogleMap>}
