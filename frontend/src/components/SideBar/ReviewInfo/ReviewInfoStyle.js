@@ -1,8 +1,8 @@
 import styled from 'styled-components';
+import { interfaceStyles } from '@styles';
 
 const ReviewInfoWrapper = styled.div`
   height: 74%;
-  overflow-y: scroll;
   background: /* Shadow covers */
   linear-gradient(white 30%, rgba(255, 255, 255, 0)), linear-gradient(rgba(255, 255, 255, 0), white 70%) 0 100%, /* Shadows */
   radial-gradient(50% 0, farthest-side, rgba(0, 0, 0, .2), rgba(0, 0, 0, 0)), radial-gradient(50% 100%, farthest-side, rgba(0, 0, 0, .2), rgba(0, 0, 0, 0)) 0 100%;
@@ -14,26 +14,8 @@ const ReviewInfoWrapper = styled.div`
   background-size: 100% 40px, 100% 40px, 100% 14px, 100% 14px;
   /* Opera doesn't support this in the shorthand */
   background-attachment: local, local, scroll, scroll;
-
-  &::-webkit-scrollbar-track {
-    box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-    border-radius: 10px;
-    background-color: #F5F5F5;
-  }
-
-  &::-webkit-scrollbar {
-    width: 5px;
-    height: 50%;
-    background-color: #F5F5F5;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    border-radius: 10px;
-    box-shadow: inset 0 0 6px rgba(0,0,0,.3);
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
-    background-color: #555;
-  }
+  ${interfaceStyles.slidebar}
+  
 
   & h2 {
     font-weight: bold;

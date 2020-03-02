@@ -1,7 +1,9 @@
-import React, { useMemo } from 'react';
+import React, { useCallback } from 'react';
+import { useDispatch } from 'react-redux';
 import { MdRateReview } from "react-icons/md";
 import PropTypes from 'prop-types';
 import UserReview from './UserReview';
+import { openAddReviewForm } from '@actions';
 import Style from './ReviewInfoStyle';
 
 const ReviewInfo = ({
@@ -9,6 +11,13 @@ const ReviewInfo = ({
   myContent, 
   allReviews,
 }) => {
+  const dispatch = useDispatch();
+
+  const onClickAddReview = useCallback(() => {
+    console.log('onClick');
+    dispatch(openAddReviewForm());
+  }, []);
+
   return (
     <Style.ReviewInfoWrapper>
       <Style.CommentsHeader>
@@ -20,7 +29,9 @@ const ReviewInfo = ({
           contents={'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'}
         />
         <Style.AddReviewBtn>
-          <button> <MdRateReview size={20} /> <span>리뷰 작성</span></button>
+          <button onClick={onClickAddReview}> 
+            <MdRateReview size={20} /> <span>리뷰 작성</span>
+          </button>
         </Style.AddReviewBtn>
       </Style.MyReview>
       <Style.CommentsHeader>

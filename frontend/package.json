@@ -39,6 +39,7 @@
     "react": "^16.8.6",
     "react-contextmenu": "^2.13.0",
     "react-dom": "^16.8.6",
+    "react-expanding-textarea": "^2.1.2",
     "react-helmet-async": "^1.0.4",
     "react-icons": "^3.8.0",
     "react-redux": "^7.1.3",

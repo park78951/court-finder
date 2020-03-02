@@ -4,6 +4,7 @@ import { ThemeProvider } from 'styled-components';
 import HamburgerMenu from '@components/HamburgerMenu';
 import SideBar from '@components/SideBar';
 import NickChanger from '../NickChanger';
+import AddReviewForm from '../AddReviewForm';
 import { 
   AuthContainer, 
   ModalContainer, 
@@ -12,7 +13,10 @@ import {
 import { buttonTheme } from '@config';
 
 const AppLayout = ({ children }) => {
-  const { isOpenNicknameChanger } = useSelector(({ uiController }) => uiController);
+  const { isOpenNicknameChanger, isAddFormOpen } = useSelector((state) => ({
+    uiController: state.uiController.isOpenNicknameChanger,
+    post: state.post.isAddFormOpen,
+  }));
 
   return (
     <>
@@ -26,6 +30,11 @@ const AppLayout = ({ children }) => {
         {isOpenNicknameChanger && (
           <ModalContainer>
             <NickChanger />
+          </ModalContainer>
+        )}
+        {( isAddFormOpen &&
+          <ModalContainer>
+            <AddReviewForm />
           </ModalContainer>
         )}
       </ThemeProvider>

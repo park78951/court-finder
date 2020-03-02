@@ -5,12 +5,10 @@ import {
   SEARCH_COURT_SUCCESS,
   SEARCH_COURT_REQUEST,
   SEARCH_COURT_FAILURE,
-  ADD_COURTS,
   SELECT_COURT,
   TOGGLE_SIDEBAR,
   GET_FILTER_INPUT,
   INIT_FILTER_INPUT,
-  DELETE_COURTS,
   MOUSEOVER_LIST,
   UNSELECT_COURT,
   LOG_IN_REQUEST,
@@ -23,6 +21,8 @@ import {
   OPEN_NICKNAME_CHANGER,
   CLOSE_NICKNAME_CHANGER,
   TOGGLE_USER_MENU,
+  OPEN_ADD_FORM,
+  CLOSE_ADD_FORM,
 } from './types';
 
 export const requestCourts = ({ userInput, filterInput, page }) => ({
@@ -57,15 +57,6 @@ export const completeGettingCourt = ({ courtData }) => ({
 export const failGettingCourt = error => ({
   type: SEARCH_COURT_FAILURE,
   payload: error,
-});
-
-export const deleteSearchedCourts = () => ({
-  type: DELETE_COURTS,
-});
-
-export const addCourts = addedInfo => ({
-  type: ADD_COURTS,
-  payload: addedInfo,
 });
 
 export const selectCourt = selectedCourt => ({
@@ -144,4 +135,12 @@ export const closeNicknameChanger = () => ({
 
 export const toggleUserMenu = () => ({
   type: TOGGLE_USER_MENU,
+});
+
+export const openAddReviewForm = () => ({
+  type: OPEN_ADD_FORM,
+});
+
+export const closeAddReviewForm = () => ({
+  type: CLOSE_ADD_FORM,
 });
