@@ -1,6 +1,6 @@
 import React from 'react';
 import ReviewInfo from '@components/SideBar/ReviewInfo';
-import { requestCourt } from '@actions';
+import { requestCourt, requestAllReviews } from '@actions';
 
 const Review = () => {
   return (
@@ -11,13 +11,16 @@ const Review = () => {
 };
 
 Review.getInitialProps = async context => {
-  if(typeof window !== "undefined") return;
-
   const { store, query } = context;
 
-  store.dispatch(requestCourt(query.id));
-  
-  return query.id;
+  if(context.isServer) {
+    store.dispatch(requestCourt(query.id));
+  }
+
+  store.dispatch(requestAllReviews({
+    courtId: query.id,
+    size: 6,
+  }));
 }
 
 export default Review;

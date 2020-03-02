@@ -30,6 +30,9 @@ export const userInfo = {
 
 export const initPosts = {
   isAddFormOpen: false,
+  allReviews: [],
+  myReview: null,
+  currentPage: 1,
 };
 
 export const prevSearchItems = {};

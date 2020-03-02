@@ -15,7 +15,7 @@ import { buttonTheme } from '@config';
 const AppLayout = ({ children }) => {
   const { isOpenNicknameChanger, isAddFormOpen } = useSelector((state) => ({
     uiController: state.uiController.isOpenNicknameChanger,
-    post: state.post.isAddFormOpen,
+    review: state.review.isAddFormOpen,
   }));
 
   return (

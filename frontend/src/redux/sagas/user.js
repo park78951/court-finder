@@ -2,9 +2,9 @@ import { fork, put, takeLatest, call, all } from 'redux-saga/effects';
 import { apiForLocal, apiForServer } from '@apis';
 import { LOG_IN_REQUEST, LOG_OUT_REQUEST } from '@actions/types';
 import { 
-  succeedLogin, 
+  completeLogin, 
   failLogin,
-  succeedLogout,
+  completeLogout,
   failLogout,
   openNicknameChanger,
 } from '@actions';
@@ -18,7 +18,11 @@ function loginAPI(userInfo) {
     ? { withCredentials: true }
     : {};
 
-  return userApi.post('/auth/login', userInfo, axiosOptions);
+  return userApi.post(
+    '/auth/login', 
+    userInfo, 
+    axiosOptions
+  );
 }
 
 function* login(action) {
@@ -28,7 +32,7 @@ function* login(action) {
   }
   try {
     const { data } = yield call(loginAPI, userInfo);
-    yield put(succeedLogin({ nickname: data.nickname }));
+    yield put(completeLogin({ nickname: data.nickname }));
   } catch (err) {
     console.error(err);
     if(err.response.status === 409) {
@@ -59,7 +63,7 @@ function* logout() {
   try {
     const { status } = yield call(logoutAPI);
 
-    if(status === 200) yield put(succeedLogout());
+    if(status === 200) yield put(completeLogout());
     else throw status;
   } catch (err) {
     console.error(err);

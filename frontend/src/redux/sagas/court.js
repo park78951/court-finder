@@ -18,7 +18,7 @@ function searchCourtsAPI(query) {
    : apiForLocal;
   const searchQuery = encodeURI(getSearchQueries(query));
   
-  return courtsApi.get(`/courts${searchQuery}`);
+  return courtsApi.get(`/courts/search${searchQuery}`);
 }
 
 function* searchCourts(action) {

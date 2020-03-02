@@ -23,6 +23,12 @@ import {
   TOGGLE_USER_MENU,
   OPEN_ADD_FORM,
   CLOSE_ADD_FORM,
+  LOAD_ALLREVIEWS_REQUEST,
+  LOAD_ALLREVIEWS_SUCCESS,
+  LOAD_ALLREVIEWS_FAILURE,
+  MY_REVIEW_REQUEST,
+  MY_REVIEW_SUCCESS,
+  MY_REVIEW_FAILURE,
 } from './types';
 
 export const requestCourts = ({ userInput, filterInput, page }) => ({
@@ -91,7 +97,7 @@ export const requestLogin = (payload) => ({
   payload,
 });
 
-export const succeedLogin = ({ nickname, userId }) => ({
+export const completeLogin = ({ nickname, userId }) => ({
   type: LOG_IN_SUCCESS,
   payload: {
     nickname,
@@ -108,7 +114,7 @@ export const requestLogout = () => ({
   type: LOG_OUT_REQUEST,
 });
 
-export const succeedLogout = () => ({
+export const completeLogout = () => ({
   type: LOG_OUT_SUCCESS,
 });
 
@@ -143,4 +149,37 @@ export const openAddReviewForm = () => ({
 
 export const closeAddReviewForm = () => ({
   type: CLOSE_ADD_FORM,
+});
+
+export const requestAllReviews = ({ courtId, size }) => ({
+  type: LOAD_ALLREVIEWS_REQUEST,
+  payload: {courtId, size},
+});
+
+export const completeAllReviews = ({ hasNextPage, reviews }) => ({
+  type: LOAD_ALLREVIEWS_SUCCESS,
+  payload: {
+    hasNextPage, 
+    allReviews: reviews
+  },
+});
+
+export const failAllReviews = ({ errorMsg }) => ({
+  type: LOAD_ALLREVIEWS_FAILURE,
+  payload: errorMsg,
+});
+
+export const requestMyReview = ({ courtId }) => ({
+  type: LOAD_MYREVIEW_REQUEST,
+  payload: {courtId},
+});
+
+export const completeMyReview = ({ myReview }) => ({
+  type: LOAD_MYREVIEW_SUCCESS,
+  payload: myReview,
+});
+
+export const failMyReview = ({ errorMsg }) => ({
+  type: LOAD_MYREVIEW_FAILURE,
+  payload: errorMsg,
 });

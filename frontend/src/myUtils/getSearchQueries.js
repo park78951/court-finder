@@ -1,4 +1,4 @@
-export default (requestData = { userInput, city, district, page, size }) => {
+export default (requestData) => {
   const filterRequestData = Object.entries(requestData).filter(dataSet => dataSet[1]);
 
   const requestQuery = filterRequestData.reduce((query, dataSet, idx) => {
@@ -6,7 +6,7 @@ export default (requestData = { userInput, city, district, page, size }) => {
     const [queryName, queryValue] = dataSet;
     
     return `${nextQuery}${queryName}=${queryValue}`;
-  }, '/search?');
+  }, '?');
 
   return requestQuery;
 }
