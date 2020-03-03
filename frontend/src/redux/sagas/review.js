@@ -1,11 +1,17 @@
 import { fork, put, takeLatest, call, all } from 'redux-saga/effects';
 import { apiForLocal, apiForServer } from '@apis';
-import { LOAD_ALLREVIEWS_REQUEST, LOAD_MYREVIEW_REQUEST } from '@actions/types';
+import { 
+  LOAD_ALLREVIEWS_REQUEST, 
+  LOAD_MYREVIEW_REQUEST,
+  UPLOAD_REVIEW_REQUEST,
+} from '@actions/types';
 import { 
   completeAllReviews, 
   failAllReviews,
   completeMyReview,
   failMyReview,
+  completeUploadReview,
+  failUploadReview,
 } from '@actions';
 import { getSearchQueries } from '@myUtils';
 
@@ -50,8 +56,8 @@ function getAllReviewsAPI({courtId, size, page}) {
 
 function* getAllReviews(action) {
   try {
-    // const { data } = yield call(getAllReviewsAPI, action.payload);
-    // console.log(data);
+    const { data } = yield call(getAllReviewsAPI, action.payload);
+    console.log(data);
     yield put(completeAllReviews(mockReviews));
   } catch (err) {
     console.error(err);
@@ -101,9 +107,47 @@ function* watchGetMyReview() {
   )
 }
 
+function uploadReviewAPI({ courtId, text }) {
+  // const userApi = typeof window !== 'undefined'
+  //  ? apiForServer
+  //  : apiForLocal;
+
+  const axiosOptions = typeof window !== 'undefined'
+    ? { withCredentials: true }
+    : {};
+
+  const queryParams = getSearchQueries({ courtId });
+
+  console.log(text);
+  return apiForLocal.post(
+    `/review${queryParams}`,
+    {text},
+    axiosOptions,
+  );
+}
+
+function* uploadReview(action) {
+  try {
+    const { data } = yield call(uploadReviewAPI, action.payload);
+    console.log(data);
+    // yield put(completeUploadReview(mockMyReview));
+  } catch (err) {
+    console.error(err);
+    put(failUploadReview(err));
+  }
+}
+
+function* watchUploadReview() {
+  yield takeLatest(
+    UPLOAD_REVIEW_REQUEST,
+    uploadReview
+  )
+}
+
 export default function* userSaga() {
   yield all([
     fork(watchGetAllReviews),
     fork(watchGetMyReview),
+    fork(watchUploadReview),
   ])
 }

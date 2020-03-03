@@ -14,8 +14,8 @@ import { buttonTheme } from '@config';
 
 const AppLayout = ({ children }) => {
   const { isOpenNicknameChanger, isAddFormOpen } = useSelector((state) => ({
-    uiController: state.uiController.isOpenNicknameChanger,
-    review: state.review.isAddFormOpen,
+    isOpenNicknameChanger: state.uiController.isOpenNicknameChanger,
+    isAddFormOpen: state.review.isAddFormOpen,
   }));
 
   return (
@@ -32,7 +32,7 @@ const AppLayout = ({ children }) => {
             <NickChanger />
           </ModalContainer>
         )}
-        {( isAddFormOpen &&
+        {isAddFormOpen && (
           <ModalContainer>
             <AddReviewForm />
           </ModalContainer>

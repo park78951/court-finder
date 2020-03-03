@@ -26,7 +26,6 @@ const {
   mapTypeId,
   infoBoxWidth,
   infoBoxMarginTop,
-  marker,
 } = defaultMapOptions;
 
 const MapContainerView = () => {

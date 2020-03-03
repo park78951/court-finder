@@ -7,6 +7,9 @@ import {
   LOAD_MYREVIEW_REQUEST,
   LOAD_MYREVIEW_SUCCESS,
   LOAD_MYREVIEW_FAILURE,
+  UPLOAD_REVIEW_REQUEST,
+  UPLOAD_REVIEW_SUCCESS,
+  UPLOAD_REVIEW_FAILURE,
 } from '@actions/types';
 import { initPosts } from './initialState';
 
@@ -60,6 +63,23 @@ const uiReducers = (state = initPosts, { type, payload }) => {
       return {
         ...state,
         myReviewError: payload,
+      }
+    }
+
+    case UPLOAD_REVIEW_REQUEST:
+      return state;
+
+    case UPLOAD_REVIEW_SUCCESS: {
+      return {
+        ...state,
+        myReview: payload,
+      }
+    }
+
+    case UPLOAD_REVIEW_FAILURE: {
+      return {
+        ...state,
+        uploadReviewError: payload,
       }
     }
 

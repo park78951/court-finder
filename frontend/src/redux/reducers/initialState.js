@@ -35,6 +35,7 @@ export const initPosts = {
   currentPage: 1,
   allReviewError: null,
   myReviewError: null,
+  uploadReviewError: null,
 };
 
 export const prevSearchItems = {};

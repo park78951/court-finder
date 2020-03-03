@@ -7,7 +7,6 @@ import { openAddReviewForm } from '@actions';
 import Style from './ReviewInfoStyle';
 
 const ReviewInfo = ({
-  myNickname, 
   myContent, 
 }) => {
   const dispatch = useDispatch();

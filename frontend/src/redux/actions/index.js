@@ -29,6 +29,9 @@ import {
   LOAD_MYREVIEW_REQUEST,
   LOAD_MYREVIEW_SUCCESS,
   LOAD_MYREVIEW_FAILURE,
+  UPLOAD_REVIEW_REQUEST,
+  UPLOAD_REVIEW_SUCCESS,
+  UPLOAD_REVIEW_FAILURE,
 } from './types';
 
 export const requestCourts = ({ userInput, filterInput, page }) => ({
@@ -176,13 +179,25 @@ export const requestMyReview = ({ courtId }) => ({
 
 export const completeMyReview = ({ text, createdAt }) => ({
   type: LOAD_MYREVIEW_SUCCESS,
-  payload: {
-    text,
-    createdAt,
-  },
+  payload: {text, createdAt},
 });
 
 export const failMyReview = ({ errorMsg }) => ({
   type: LOAD_MYREVIEW_FAILURE,
+  payload: errorMsg,
+});
+
+export const requestUploadReview = ({ text, courtId }) => ({
+  type: UPLOAD_REVIEW_REQUEST,
+  payload: {text, courtId},
+});
+
+export const completeUploadReview = ({ text, createdAt }) => ({
+  type: UPLOAD_REVIEW_SUCCESS,
+  payload: {text, createdAt},
+});
+
+export const failUploadReview = ({ errorMsg }) => ({
+  type: UPLOAD_REVIEW_FAILURE,
   payload: errorMsg,
 });
