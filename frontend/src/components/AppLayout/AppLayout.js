@@ -1,7 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { ThemeProvider } from 'styled-components';
-import HamburgerMenu from '@components/HamburgerMenu';
 import SideBar from '@components/SideBar';
 import NickChanger from '../NickChanger';
 import AddReviewForm from '../AddReviewForm';
@@ -22,12 +21,11 @@ const AppLayout = ({ children }) => {
     <>
       <ThemeProvider theme={ buttonTheme }>
         <MapContainer />
-        <HamburgerMenu />
         <AuthContainer />
         <SideBar>
           {children}
         </SideBar>
-        {isOpenNicknameChanger && (
+        { isOpenNicknameChanger && (
           <ModalContainer>
             <NickChanger />
           </ModalContainer>

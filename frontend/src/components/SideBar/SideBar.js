@@ -7,14 +7,11 @@ import Style from './SideBarStyle';
 import HeaderInfo from './HeaderInfo';
 
 const SideBar = ({ children }) => {
-  const isSidebarHidden = useSelector(state => {
-    return state.uiController.isSidebarHidden;
-  });
   const { route } = useRouter();
 
-  return !isSidebarHidden && (
+  return (
     <Style.SideBarWrapper 
-      curPath={ route }
+      curPath={route}
     >
       <Search />
       {route.startsWith('/court') && <HeaderInfo />}

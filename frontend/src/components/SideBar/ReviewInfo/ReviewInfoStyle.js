@@ -1,20 +1,10 @@
 import styled from 'styled-components';
-import { interfaceStyles } from '@styles';
+import { interfaceStyles, defaultTheme } from '@styles';
 
 const ReviewInfoWrapper = styled.div`
   height: 74%;
-  background: /* Shadow covers */
-  linear-gradient(white 30%, rgba(255, 255, 255, 0)), linear-gradient(rgba(255, 255, 255, 0), white 70%) 0 100%, /* Shadows */
-  radial-gradient(50% 0, farthest-side, rgba(0, 0, 0, .2), rgba(0, 0, 0, 0)), radial-gradient(50% 100%, farthest-side, rgba(0, 0, 0, .2), rgba(0, 0, 0, 0)) 0 100%;
-  background: /* Shadow covers */
-  linear-gradient(white 30%, rgba(255, 255, 255, 0)), linear-gradient(rgba(255, 255, 255, 0), white 70%) 0 100%, /* Shadows */
-  radial-gradient(farthest-side at 50% 0, rgba(0, 0, 0, .2), rgba(0, 0, 0, 0)), radial-gradient(farthest-side at 50% 100%, rgba(0, 0, 0, .2), rgba(0, 0, 0, 0)) 0 100%;
-  background-repeat: no-repeat;
-  background-color: white;
-  background-size: 100% 40px, 100% 40px, 100% 14px, 100% 14px;
-  /* Opera doesn't support this in the shorthand */
-  background-attachment: local, local, scroll, scroll;
-  ${interfaceStyles.slidebar}
+  ${interfaceStyles.shadowAboveOnScroll};
+  ${interfaceStyles.sidebar};
   
 
   & h2 {
@@ -36,7 +26,7 @@ const MyReview = styled.div`
     content: "";
     display: block;
     width: 100%;
-    border-bottom: 1px solid #D3D3D3;
+    border-bottom: 1px solid ${defaultTheme.BORDERLINE};
     margin-top: 1.5rem;
   }
 `;
@@ -47,19 +37,19 @@ const AddReviewBtn = styled.div`
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    border: 1px solid #D3D3D3;
+    border: 1px solid ${defaultTheme.BORDERLINE};
     border-radius: 25px;
-    background-color: #fff;
+    background-color: ${defaultTheme.WHITE};
     height: 2.5rem;
     width: 8rem;
     cursor: pointer;
 
     &:hover {
-      background-color: #F5F5F5;
+      background-color: ${defaultTheme.REVIEW_BUTTON_BACKGROUND};
     }
 
     & > svg {
-      color: #17408B;
+      color: ${defaultTheme.LOGO_BACKGROUND};
     }
 
     & > span {
@@ -77,7 +67,7 @@ const AllReviews = styled.div`
       content: "";
       display: block;
       width: 100%;
-      border-bottom: 1px solid #D3D3D3;
+      border-bottom: 1px solid ${defaultTheme.BORDERLINE};
       margin-top: 1.5rem;
     }
   }

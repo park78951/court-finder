@@ -38,8 +38,8 @@ const SidebarContainerView = () => {
       district: filterInput.district,
       page: page,
     });
-
-    router.push(searchRoute);
+    
+    router.push(`/search${searchRoute}`);
   }, [currentPage, userInput, filterInput]);
 
   return (

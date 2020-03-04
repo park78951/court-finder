@@ -73,10 +73,6 @@ export const selectCourt = selectedCourt => ({
   payload: selectedCourt,
 });
 
-export const unselectCourt = () => ({
-  type: UNSELECT_COURT,
-});
-
 export const toggleSidebar = () => ({
   type: TOGGLE_SIDEBAR,
 });

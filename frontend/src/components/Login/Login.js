@@ -1,4 +1,5 @@
 import React from 'react';
+import { FaUserAlt } from "react-icons/fa";
 import PropTypes from 'prop-types';
 import Style from './LoginStyle';
 
@@ -7,7 +8,9 @@ const Login = ({ onLogin }) => {
     <Style.LoginWrapper 
       onClick={onLogin}
     >
-      LOGIN
+      <FaUserAlt 
+        size={20}
+      />
     </Style.LoginWrapper>
   );
 };

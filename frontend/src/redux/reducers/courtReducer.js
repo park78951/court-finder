@@ -23,7 +23,8 @@ const courtReducer = (state = searchInfo, { type, payload }) => {
       isSearching: true,
       currentPage: page,
       userInput: userInput,
-      filterInput: filterInput
+      filterInput: filterInput,
+      selectedCourt: null,
     };
 
     case SEARCH_COURTS_SUCCESS:
@@ -72,12 +73,6 @@ const courtReducer = (state = searchInfo, { type, payload }) => {
       return {
         ...state,
         selectedCourt,
-      };
-
-    case UNSELECT_COURT:
-      return {
-        ...state,
-        selectedCourt: null,
       };
 
     case MOUSEOVER_LIST:

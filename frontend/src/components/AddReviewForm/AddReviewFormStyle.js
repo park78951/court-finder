@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { interfaceStyles } from '@styles';
+import { interfaceStyles, defaultTheme } from '@styles';
 
 const AddReviewFormWrapper = styled.div`
   position: absolute;
@@ -7,7 +7,7 @@ const AddReviewFormWrapper = styled.div`
   left: 50%;
   height: 30rem;
   width: 35rem;
-  background-color: #fff;
+  background-color: ${defaultTheme.WHITE};
   transform: translate(-50%, -50%);
   border-radius: 15px;
   padding: 2rem 1rem 1rem 1rem;
@@ -20,7 +20,7 @@ const AddReviewFormWrapper = styled.div`
 `;
 
 const PostUIWrapper = styled.div`
-  ${ interfaceStyles.slidebar };
+  ${ interfaceStyles.sidebar };
   max-height: 14rem;
   overflow-y: auto;
   padding: 1rem 0;
@@ -40,8 +40,8 @@ const UserProfileAvatar = styled.div`
   height: 80%;
   width: 2.5rem;
   top: 50%;
-  background-color: #17408B;
-  color: #C9082A;
+  background-color: ${defaultTheme.LOGO_BACKGROUND};
+  color: ${defaultTheme.LOGO_LETTER};
   border-radius: 50%;
   text-align: center;
   line-height: 2.4rem;
@@ -61,8 +61,8 @@ const TextForm = styled.div`
   white-space: nowrap;
 
   & > textarea {
-    background-color: #f8f8f8;
-    border-bottom: 2px solid #0080FF;
+    background-color: ${defaultTheme.POST_MODAL_BACKGROUND};
+    border-bottom: 2px solid ${defaultTheme.POST_MODAL_BORDER_BOTTOM};
     border-image: none 100% 1 0px stretch;
     border-left: none;
     border-right: none;

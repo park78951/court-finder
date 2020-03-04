@@ -27,7 +27,7 @@ const Pagination = ({
   const clickPrev = useCallback(() => {
     if(currentPage === 1) return;
     onChangePage(currentPage - 1);
-    setCurrentPage(currentPage - 1);
+    setCurrentPage(prevState => prevState - 1);
   }, [currentPage]);
 
   const clickNumber = useCallback(({ target }) => {

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { defaultTheme } from '@styles';
 
 const LoginWrapper = styled.div`
   display: flex;
@@ -6,10 +7,10 @@ const LoginWrapper = styled.div`
   align-items: center;
   width: 100%;
   height: 100%;
-  background-color: #F5F5F5;
   font-size: 0.7rem;
   font-weight: bold;
-  border: 1px solid #000019;
+  background-color: ${defaultTheme.WHITE};
+  border-radius: 50%;
   cursor: pointer;
 `;
 

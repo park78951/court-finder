@@ -5,7 +5,7 @@ const NickChangerModal = styled.form`
   width: 27rem;
   height: 18rem;
   padding: 2rem 3rem 1rem 3rem;
-  background-color: #fff;
+  background-color: ${defaultTheme.WHITE};
   position: absolute;
   top: 50%;
   left: 50%;
@@ -31,25 +31,30 @@ const NickChangerModal = styled.form`
   }
 
   & .nickname__possible {
-    color: #1034A6;
+    color: ${defaultTheme.PASS_LETTER};
   }
 
   & .nickname__impossible {
-    color: #CA3433;
+    color: ${defaultTheme.FAIL_LETTER};
   }
 
   & > p {
     margin-top: 0.5rem;
-    color: ${ defaultTheme.EXPLANATION };
+    color: ${defaultTheme.EXPLANATION};
     line-height: 1.3rem;
   }
 
   & input {
     width: 100%;
-    border: 1px solid ${({ isValid }) => isValid ? '#1E90FF' : '#b20000'};
-    box-shadow: 0px 0px 3px 4px ${({ isValid }) => isValid ? '#73C2FB' : '#fdbcb4'};
+    border: 1px solid ${({ isValid }) => isValid 
+      ? `${defaultTheme.PASS_BORDER}` 
+      : `${defaultTheme.FAIL_BORDER}`};
+    box-shadow: 0px 0px 3px 4px ${({ isValid }) => isValid 
+      ? `${defaultTheme.PASS_SHADOW}`
+      : `${defaultTheme.FAIL_SHADOW}`};
     border-radius: 0.2rem;
     margin-bottom: 0.5rem;
+    outline: none;
   }
 
   & button {

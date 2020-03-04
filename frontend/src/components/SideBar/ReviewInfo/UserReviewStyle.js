@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { defaultTheme } from '@styles';
 
 const UserReviewWrapper = styled.div`
   padding: 10px;
@@ -19,8 +20,8 @@ const UserProfileAvatar = styled.div`
   height: 80%;
   width: 2.5rem;
   top: 50%;
-  background-color: #17408B;
-  color: #C9082A;
+  background-color: ${defaultTheme.LOGO_BACKGROUND};
+  color: ${defaultTheme.LOGO_LETTER};
   border-radius: 50%;
   text-align: center;
   line-height: 2.4rem;
@@ -43,7 +44,7 @@ const ReviewContents = styled.div`
     outline: none;
     cursor: pointer;
     font-weight: bold;
-    color: #17408B;
+    color: ${defaultTheme.LOGO_BACKGROUND};
     background-color: transparent;
     margin: 0.3rem 0;
     text-align: right;

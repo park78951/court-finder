@@ -67,20 +67,22 @@ const MapContainerView = () => {
 
   const infoBox = useMemo(() => {
     const onMouseOverCourt = mouseoverList || mouseoverMarker;
-    return onMouseOverCourt && (
-      <InfoBox
-        position={ createFullCoordinate(onMouseOverCourt) }
-        options={{ 
-          pixelOffset: new window.google.maps.Size(-infoBoxWidth/2, infoBoxMarginTop),
-          closeBoxURL: "", 
-        }}
-      >
-        <InfoBoxContent 
-          name={ onMouseOverCourt.name }
-          address={ onMouseOverCourt.address }
-        />
-      </InfoBox>
-    );
+    return isLoaded 
+      && onMouseOverCourt 
+      && (
+        <InfoBox
+          position={ createFullCoordinate(onMouseOverCourt) }
+          options={{ 
+            pixelOffset: new window.google.maps.Size(-infoBoxWidth/2, infoBoxMarginTop),
+            closeBoxURL: "", 
+          }}
+        >
+          <InfoBoxContent 
+            name={ onMouseOverCourt.name }
+            address={ onMouseOverCourt.address }
+          />
+        </InfoBox>
+      );
   }, [mouseoverList, mouseoverMarker]);
   
   useEffect(() => {
