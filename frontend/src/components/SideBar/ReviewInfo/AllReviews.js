@@ -13,9 +13,9 @@ const AllReviews = ({ reviews }) => {
         {reviews.map((review, idx)=> (
           <UserReview 
             key={idx}
-            nickname={review.writer}
+            nickname={review.writer.nickname}
             contents={review.text}
-            createdAt={reviews.createdAt}
+            createdAt={review.createdAt}
           />)
         )}
       </Style.AllReviews>

@@ -34,8 +34,10 @@ function getAllReviewsAPI({courtId, size, page}) {
 function* getAllReviews(action) {
   try {
     const response = yield call(getAllReviewsAPI, action.payload);
-    console.log(response);
-    // yield put(completeAllReviews(mockReviews));
+
+    if(response.status === 204) return;
+    console.log(response.data);
+    yield put(completeAllReviews(response.data));
   } catch (err) {
     console.error(err);
     put(failAllReviews(err));
@@ -68,8 +70,10 @@ function getMyReviewAPI({ courtId }) {
 function* getMyReview(action) {
   try {
     const response = yield call(getMyReviewAPI, action.payload);
-    console.log(response);
-    // yield put(completeMyReview(mockMyReview));
+
+    if(response.status === 204) return;
+
+    yield put(completeMyReview(response.data));
   } catch (err) {
     console.error(err);
     put(failMyReview(err));
@@ -84,9 +88,9 @@ function* watchGetMyReview() {
 }
 
 function uploadReviewAPI({ courtId, text }) {
-  // const userApi = typeof window !== 'undefined'
-  //  ? apiForServer
-  //  : apiForLocal;
+  const userApi = typeof window !== 'undefined'
+   ? apiForServer
+   : apiForLocal;
 
   const axiosOptions = typeof window !== 'undefined'
     ? { withCredentials: true }
@@ -94,8 +98,8 @@ function uploadReviewAPI({ courtId, text }) {
 
   const queryParams = getSearchQueries({ courtId });
 
-  console.log(text);
-  return apiForLocal.post(
+  console.log(queryParams);
+  return userApi.post(
     `/review${queryParams}`,
     {text},
     axiosOptions,
@@ -104,8 +108,8 @@ function uploadReviewAPI({ courtId, text }) {
 
 function* uploadReview(action) {
   try {
-    const { data } = yield call(uploadReviewAPI, action.payload);
-    console.log(data);
+    const response = yield call(uploadReviewAPI, action.payload);
+    console.log(response);
     // yield put(completeUploadReview(mockMyReview));
   } catch (err) {
     console.error(err);

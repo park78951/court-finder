@@ -7,19 +7,6 @@ const UserReviewWrapper = styled.div`
 `;
 
 const ReviewContents = styled.div`
-  & > p {
-    width: 100%;
-    line-height: 1.3rem;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: normal;
-    text-align:left;
-    word-wrap:break-word;
-    display: -webkit-box;
-    -webkit-line-clamp:5;
-    -webkit-box-orient: vertical;
-  }
-
   & > div {
     border: none;
     outline: none;
@@ -33,7 +20,30 @@ const ReviewContents = styled.div`
   }
 `;
 
+const ContentsWrapper = styled.p`
+  width: 100%;
+  line-height: 1.3rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+  text-align:left;
+  word-wrap:break-word;
+  display: -webkit-box;
+  -webkit-line-clamp:5;
+  -webkit-box-orient: vertical;
+`;
+
+const DateWrapper = styled.p`
+  padding-right: 0.5rem;
+  text-align: right;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  color: gray;
+`;
+
 export default { 
   UserReviewWrapper,
   ReviewContents,
+  ContentsWrapper,
+  DateWrapper,
 };

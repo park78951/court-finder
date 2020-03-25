@@ -8,6 +8,7 @@ const UserReview = ({nickname, contents, createdAt}) => {
   const contentRef = useRef();
   
   const onClickMoreView = useCallback(() => {
+    console.log(createdAt);
     setIsContentFolded(true);
     contentRef.current.style.display = 'block';
     contentRef.current.style.webkitLineClamp = 'clip';
@@ -18,12 +19,14 @@ const UserReview = ({nickname, contents, createdAt}) => {
     <Style.UserReviewWrapper>
       <UserProfile nickname={nickname} />
       <Style.ReviewContents>
-        <p>{createdAt}</p>
-        <p ref={contentRef}>{contents}</p>
-        {!isContentFolded && (
-          <div onClick={onClickMoreView}>
-            +더보기
-          </div>
+        <Style.DateWrapper>{createdAt}</Style.DateWrapper>
+        <Style.ContentsWrapper ref={contentRef}>{contents}</Style.ContentsWrapper>
+        {contents.length > 200 
+          &&!isContentFolded 
+          && (
+            <div onClick={onClickMoreView}>
+              +더보기
+            </div>
         )}
       </Style.ReviewContents>
     </Style.UserReviewWrapper>
@@ -31,8 +34,9 @@ const UserReview = ({nickname, contents, createdAt}) => {
 };
 
 UserReview.propTypes = {
-  nickname: PropTypes.string,
-  contents: PropTypes.string,
+  nickname: PropTypes.string.isRequired,
+  contents: PropTypes.string.isRequired,
+  createdAt: PropTypes.string.isRequired,
 }
 
 export default React.memo(UserReview);

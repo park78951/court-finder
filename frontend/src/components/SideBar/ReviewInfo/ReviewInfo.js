@@ -38,9 +38,8 @@ const ReviewInfo = () => {
     myReview: state.review.myReview,
     nickname: state.user.nickname,
   }));
-
+  
   const onClickAddReview = useCallback(() => {
-    console.log('onClick');
     dispatch(openAddReviewForm());
   }, []);
 
@@ -50,7 +49,7 @@ const ReviewInfo = () => {
         {myReview && (
           <MyReview 
             nickname={nickname}
-            myReview={mockMyReview}
+            myReview={myReview}
           />
         )}
         <Style.AddReviewBtn>
@@ -60,16 +59,10 @@ const ReviewInfo = () => {
         </Style.AddReviewBtn>
       </Style.ReviewHeader>
       {allReviewData.length > 0 && (
-        <AllReviews reviews={mockReviews.reviews} />
+        <AllReviews reviews={allReviewData} />
       )}
     </Style.ReviewInfoWrapper>
   );
 };
-
-ReviewInfo.propTypes = {
-  myNickname: PropTypes.string,
-  myContent: PropTypes.string,
-  allReviews: PropTypes.array,
-}
 
 export default React.memo(ReviewInfo);
