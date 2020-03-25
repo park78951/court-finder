@@ -1,17 +1,40 @@
 import React, { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { MdRateReview } from "react-icons/md";
+import AllReviews from './AllReviews';
+import MyReview from './MyReview';
 import PropTypes from 'prop-types';
-import UserReview from './UserReview';
 import { openAddReviewForm } from '@actions';
 import Style from './ReviewInfoStyle';
 
-const ReviewInfo = ({
-  myContent, 
-}) => {
+const mockReviews = {
+  hasNextPage: true,
+  reviews: [
+    {
+      id: 1,
+      text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+      createdAt: '2020-01-01',
+      writer: '쌍큐',
+    },
+    {
+      id: 2,
+      text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+      createdAt: '2020-02-01',
+      writer: '잉글비',
+    },
+  ],
+}
+
+const mockMyReview = {
+  id: 0,
+  text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+  createdAt: '2020-01-01',
+}
+
+const ReviewInfo = () => {
   const dispatch = useDispatch();
-  const { allReviews, myReview } = useSelector((state) => ({
-    allReviews: state.review.allReviews,
+  const { allReviewData, myReview, nickname } = useSelector((state) => ({
+    allReviewData: state.review.allReviews,
     myReview: state.review.myReview,
     nickname: state.user.nickname,
   }));
@@ -23,32 +46,22 @@ const ReviewInfo = ({
 
   return (
     <Style.ReviewInfoWrapper>
-      <Style.CommentsHeader>
-        <h2>내가 작성한 리뷰</h2>
-      </Style.CommentsHeader>
-      <Style.MyReview>
-        {myReview && <UserReview 
-          nickname={'쌍큐'}
-          contents={'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'}
-        />}
+      <Style.ReviewHeader>
+        {myReview && (
+          <MyReview 
+            nickname={nickname}
+            myReview={mockMyReview}
+          />
+        )}
         <Style.AddReviewBtn>
           <button onClick={onClickAddReview}> 
             <MdRateReview size={20} /> <span>리뷰 작성</span>
           </button>
         </Style.AddReviewBtn>
-      </Style.MyReview>
-      <Style.CommentsHeader>
-        <h2>모든 리뷰</h2>
-      </Style.CommentsHeader>
-      <Style.AllReviews>
-        {allReviews.map( (review, idx)=> (
-          <UserReview 
-            key={idx}
-            nickname={review.writer}
-            contents={review.text}
-          />)
-        )}
-      </Style.AllReviews>
+      </Style.ReviewHeader>
+      {allReviewData.length > 0 && (
+        <AllReviews reviews={mockReviews.reviews} />
+      )}
     </Style.ReviewInfoWrapper>
   );
 };

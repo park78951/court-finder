@@ -2,7 +2,7 @@ import React, { useCallback } from 'react';
 import Textarea from 'react-expanding-textarea';
 import { useDispatch } from 'react-redux';
 import { useRouter } from 'next/router'
-import { Button } from '@components/lib';
+import { Button, UserProfile } from '@components/lib';
 import { closeAddReviewForm, requestUploadReview } from '@actions'
 import { useOnChange } from '@hooks';
 import Style from './AddReviewFormStyle';
@@ -32,14 +32,7 @@ const AddReviewForm = () => {
       <h2>
         {location}
       </h2>
-      <Style.UserProfile>
-        <Style.UserProfileAvatar>
-          {nickname[0]}
-        </Style.UserProfileAvatar>
-        <Style.UserProfileNickname>
-          {nickname}
-        </Style.UserProfileNickname>
-      </Style.UserProfile>
+      <UserProfile nickname={nickname} />
       <Style.PostUIWrapper>
         <Style.TextForm>
           <Textarea 

@@ -1,7 +1,7 @@
 import { css } from 'styled-components';
 import defaultTheme from './theme';
 
-const sidebar = css`
+const scrollbar = css`
   overflow-y: scroll;
 
   &::-webkit-scrollbar-track {
@@ -43,7 +43,7 @@ export const shadowAboveOnScroll = css`
 `;
 
 export default {
-  sidebar,
+  scrollbar,
   button,
   shadowAboveOnScroll,
 }

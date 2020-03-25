@@ -49,9 +49,9 @@ const SidebarContainerView = () => {
         {
           isError
             ? <Refetch />
-            : (searchedCourts.length <= 0 && !isSearching
-              ? <NoResult />
-              : <CourtList />)
+            : (searchedCourts.length === 0 && !isSearching
+                ? <NoResult />
+                : <CourtList />)
         }
         { isSearching && <Loader /> }
       </Style.SideBarContentsWrapper>

@@ -1,27 +1,26 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useRef } from 'react';
+import { UserProfile } from '@components/lib';
 import PropTypes from 'prop-types';
 import Style from './UserReviewStyle';
 
-const UserReview = ({nickname, contents}) => {
-  const [isContentsFolded, setIsContentsFolded] = useState()
+const UserReview = ({nickname, contents, createdAt}) => {
+  const [isContentFolded, setIsContentFolded] = useState(false);
+  const contentRef = useRef();
   
   const onClickMoreView = useCallback(() => {
-    console.log('클릭')
+    setIsContentFolded(true);
+    contentRef.current.style.display = 'block';
+    contentRef.current.style.webkitLineClamp = 'clip';
+    contentRef.current.style.webkitBoxOrient = 'horizontal';
   }, []);
 
   return (
     <Style.UserReviewWrapper>
-      <Style.UserProfile>
-        <Style.UserProfileAvatar>
-          {nickname[0]}
-        </Style.UserProfileAvatar>
-        <Style.UserProfileNickname>
-          {nickname}
-        </Style.UserProfileNickname>
-      </Style.UserProfile>
+      <UserProfile nickname={nickname} />
       <Style.ReviewContents>
-        <span>{contents}</span>
-        {!isContentsFolded && (
+        <p>{createdAt}</p>
+        <p ref={contentRef}>{contents}</p>
+        {!isContentFolded && (
           <div onClick={onClickMoreView}>
             +더보기
           </div>

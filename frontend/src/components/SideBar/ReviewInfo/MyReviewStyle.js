@@ -1,28 +1,14 @@
 import styled from 'styled-components';
-import { interfaceStyles, defaultTheme } from '@styles';
+import { defaultTheme } from '@styles';
 
-const ReviewInfoWrapper = styled.div`
-  height: 74%;
-  ${interfaceStyles.shadowAboveOnScroll};
-  ${interfaceStyles.scrollbar};
-  
-
-  & h2 {
-    font-weight: bold;
-    font-size: 1.2rem;
-  }
+const CommentsHeader = styled.div`
+  padding: 0 15px;
+  margin-top: 2rem;
 `;
 
-const ReviewHeader = styled.div`
-  margin-top: 2rem;
-
-  &:after {
-    content: "";
-    display: block;
-    width: 100%;
-    border-bottom: 1px solid ${defaultTheme.BORDERLINE};
-    margin-top: 1.5rem;
-  }
+const MyReview = styled.div`
+  margin-bottom: 1rem;
+  padding: 20px 15px 0 15px;
 `;
 
 const AddReviewBtn = styled.div`
@@ -53,4 +39,4 @@ const AddReviewBtn = styled.div`
   }
 `;
 
-export default { ReviewInfoWrapper, AddReviewBtn, ReviewHeader };
+export default { CommentsHeader, MyReview, AddReviewBtn }

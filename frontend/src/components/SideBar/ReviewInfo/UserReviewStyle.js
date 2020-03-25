@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { defaultTheme } from '@styles';
 
 const UserReviewWrapper = styled.div`
@@ -6,37 +6,18 @@ const UserReviewWrapper = styled.div`
   margin-bottom: 1rem;
 `;
 
-const UserProfile = styled.div`
-  position: relative;
-  width: 100%;
-  height: 3rem;
-  font-weight: bold;
-  font-size: 1.1rem;
-  margin-bottom: 1rem;
-`;
-
-const UserProfileAvatar = styled.div`
-  position: absolute;
-  height: 80%;
-  width: 2.5rem;
-  top: 50%;
-  background-color: ${defaultTheme.LOGO_BACKGROUND};
-  color: ${defaultTheme.LOGO_LETTER};
-  border-radius: 50%;
-  text-align: center;
-  line-height: 2.4rem;
-  font-size: 1.3rem;
-  transform: translateY(-50%);
-`;
-
-const UserProfileNickname = styled.div`
-  padding: 1rem 0 0.8rem 4rem;
-  height: 100%;
-`;
-
 const ReviewContents = styled.div`
-  & > span {
+  & > p {
+    width: 100%;
     line-height: 1.3rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+    text-align:left;
+    word-wrap:break-word;
+    display: -webkit-box;
+    -webkit-line-clamp:5;
+    -webkit-box-orient: vertical;
   }
 
   & > div {
@@ -54,8 +35,5 @@ const ReviewContents = styled.div`
 
 export default { 
   UserReviewWrapper,
-  UserProfile,
-  UserProfileAvatar,
-  UserProfileNickname,
   ReviewContents,
 };

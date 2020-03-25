@@ -33,10 +33,9 @@ const uiReducers = (state = initPosts, { type, payload }) => {
       }
 
     case LOAD_ALLREVIEWS_SUCCESS: {
-      const { allReviews } = payload;
       return {
         ...state,
-        allReviews,
+        allReviews: payload.allReviews,
       }
     }
 

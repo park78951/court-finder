@@ -12,7 +12,7 @@ const SearchContainer = styled.div`
 
 const homeButton = styled.div`
   position: absolute;
-  top: 1.1rem;
+  top: 1rem;
   left: 1.5rem;
   cursor: pointer;
 `;
