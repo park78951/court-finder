@@ -1,36 +1,41 @@
 import React, { useCallback } from 'react';
 import Textarea from 'react-expanding-textarea';
-import { useDispatch } from 'react-redux';
-import { useRouter } from 'next/router'
+import { useDispatch, useSelector } from 'react-redux';
+import { useRouter } from 'next/router';
 import { Button, UserProfile } from '@components/lib';
-import { closeAddReviewForm, requestUploadReview } from '@actions'
+import { closeAddReviewForm, requestUploadReview } from '@actions';
 import { useOnChange } from '@hooks';
 import Style from './AddReviewFormStyle';
 
-const nickname = '쌍큐';
-const location = '한강 농구장'
-
 const AddReviewForm = () => {
   const [text, setText] = useOnChange('');
+  const {nickname, courtName} = useSelector(state => ({
+    nickname: state.user.nickname,
+    courtName: state.courts.selectedCourt.name,
+  }));
   const dispatch = useDispatch();
   const { query } = useRouter();
 
-  const onSubmitReview = event => {
-    event.preventDefault();
-    dispatch(requestUploadReview({ 
-      text, 
-      courtId: query.id
-    }))
-  }
-  
   const onCloseAddForm = useCallback(() => {
     dispatch(closeAddReviewForm());
   }, []);
 
+  const onSubmitReview = event => {
+    event.preventDefault();
+
+    dispatch(requestUploadReview({ 
+      text, 
+      courtId: query.id,
+      nickname,
+    }));
+    dispatch(closeAddReviewForm());
+  };
+  
+
   return (
     <Style.AddReviewFormWrapper>
       <h2>
-        {location}
+        {courtName}
       </h2>
       <UserProfile nickname={nickname} />
       <Style.PostUIWrapper>

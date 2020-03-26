@@ -10,7 +10,6 @@ import {
   GET_FILTER_INPUT,
   INIT_FILTER_INPUT,
   MOUSEOVER_LIST,
-  UNSELECT_COURT,
   LOG_IN_REQUEST,
   LOG_IN_SUCCESS,
   LOG_IN_FAILURE,
@@ -32,6 +31,7 @@ import {
   UPLOAD_REVIEW_REQUEST,
   UPLOAD_REVIEW_SUCCESS,
   UPLOAD_REVIEW_FAILURE,
+  REMOVE_REVIEWS
 } from './types';
 
 export const requestCourts = ({ userInput, filterInput, page }) => ({
@@ -188,12 +188,16 @@ export const requestUploadReview = ({ text, courtId }) => ({
   payload: {text, courtId},
 });
 
-export const completeUploadReview = ({ text, createdAt }) => ({
+export const completeUploadReview = ({ id, text, createdAt }) => ({
   type: UPLOAD_REVIEW_SUCCESS,
-  payload: {text, createdAt},
+  payload: {text, createdAt, id},
 });
 
 export const failUploadReview = ({ errorMsg }) => ({
   type: UPLOAD_REVIEW_FAILURE,
   payload: errorMsg,
+});
+
+export const removeReviews = () => ({
+  type: REMOVE_REVIEWS,
 });

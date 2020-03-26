@@ -17,8 +17,8 @@ import { getSearchQueries } from '@myUtils';
 
 function getAllReviewsAPI({courtId, size, page}) {
   const userApi = typeof window !== 'undefined'
-   ? apiForServer
-   : apiForLocal;
+    ? apiForServer
+    : apiForLocal;
   
   const queryParams = getSearchQueries({
     courtId, 
@@ -48,13 +48,13 @@ function* watchGetAllReviews() {
   yield takeLatest(
     LOAD_ALLREVIEWS_REQUEST,
     getAllReviews
-  )
+  );
 }
 
 function getMyReviewAPI({ courtId }) {
   const userApi = typeof window !== 'undefined'
-   ? apiForServer
-   : apiForLocal;
+    ? apiForServer
+    : apiForLocal;
 
   const axiosOptions = typeof window !== 'undefined'
     ? { withCredentials: true }
@@ -84,13 +84,13 @@ function* watchGetMyReview() {
   yield takeLatest(
     LOAD_MYREVIEW_REQUEST,
     getMyReview
-  )
+  );
 }
 
 function uploadReviewAPI({ courtId, text }) {
   const userApi = typeof window !== 'undefined'
-   ? apiForServer
-   : apiForLocal;
+    ? apiForServer
+    : apiForLocal;
 
   const axiosOptions = typeof window !== 'undefined'
     ? { withCredentials: true }
@@ -106,11 +106,14 @@ function uploadReviewAPI({ courtId, text }) {
   );
 }
 
-function* uploadReview(action) {
+function* uploadReview({ payload }) {
   try {
-    const response = yield call(uploadReviewAPI, action.payload);
+    const response = yield call(uploadReviewAPI, payload);
     console.log(response);
-    // yield put(completeUploadReview(mockMyReview));
+    yield put(completeUploadReview({
+      ...response.data,
+      nickname: payload.nickname 
+    }));
   } catch (err) {
     console.error(err);
     put(failUploadReview(err));
@@ -121,7 +124,7 @@ function* watchUploadReview() {
   yield takeLatest(
     UPLOAD_REVIEW_REQUEST,
     uploadReview
-  )
+  );
 }
 
 export default function* userSaga() {
@@ -129,5 +132,5 @@ export default function* userSaga() {
     fork(watchGetAllReviews),
     fork(watchGetMyReview),
     fork(watchUploadReview),
-  ])
+  ]);
 }

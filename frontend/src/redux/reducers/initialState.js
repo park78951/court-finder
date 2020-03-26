@@ -37,6 +37,7 @@ export const initPosts = {
   myReviewError: null,
   uploadReviewError: null,
   hasNextPage: false,
+  isLoading: false,
 };
 
 export const prevSearchItems = {};

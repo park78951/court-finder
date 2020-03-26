@@ -3,7 +3,6 @@ import UserReview from './UserReview';
 import Style from './MyReviewStyle';
 
 const MyReview = ({ nickname, myReview }) => {
-  console.log(nickname);
   return (
     <>
       <Style.CommentsHeader>
@@ -22,4 +21,4 @@ const MyReview = ({ nickname, myReview }) => {
   );
 };
 
-export default MyReview;
+export default React.memo(MyReview);

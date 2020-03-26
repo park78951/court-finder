@@ -11,18 +11,23 @@ const SideBarWrapper = styled.div`
   background-color: white;
   width: 380px;
   box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.5);
-  overflow-y: hidden;
   margin-right: 1rem;
 `;
 
 const SidebarToggler = styled.div`
   position: absolute;
-  top: 50%;
-  left: 379px;
-  width: 1rem;
-  height: 3rem;
-  background-color: white;
-  z-index: 99;
+  top: 3%;
+  left: 100%;
+  z-index: 10;
+  border: inherit;
+
+  & > button {
+    width: 1.6rem;
+    height: 3rem;
+    border: none;
+    outline: none;
+    background-color: white;
+  }
 `;
 
 

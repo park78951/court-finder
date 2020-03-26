@@ -1,35 +1,10 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { MdRateReview } from "react-icons/md";
 import AllReviews from './AllReviews';
 import MyReview from './MyReview';
-import PropTypes from 'prop-types';
-import { openAddReviewForm } from '@actions';
+import { openAddReviewForm, removeReviews } from '@actions';
 import Style from './ReviewInfoStyle';
-
-const mockReviews = {
-  hasNextPage: true,
-  reviews: [
-    {
-      id: 1,
-      text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-      createdAt: '2020-01-01',
-      writer: '쌍큐',
-    },
-    {
-      id: 2,
-      text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-      createdAt: '2020-02-01',
-      writer: '잉글비',
-    },
-  ],
-}
-
-const mockMyReview = {
-  id: 0,
-  text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-  createdAt: '2020-01-01',
-}
 
 const ReviewInfo = () => {
   const dispatch = useDispatch();
@@ -41,6 +16,10 @@ const ReviewInfo = () => {
   
   const onClickAddReview = useCallback(() => {
     dispatch(openAddReviewForm());
+  }, []);
+
+  useEffect(() => {
+    return () => dispatch(removeReviews());
   }, []);
 
   return (

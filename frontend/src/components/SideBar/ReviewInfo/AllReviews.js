@@ -25,6 +25,6 @@ const AllReviews = ({ reviews }) => {
 
 AllReviews.propTypes = {
   reviews: PropTypes.array,
-}
+};
 
-export default AllReviews;
+export default React.memo(AllReviews);
