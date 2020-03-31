@@ -1,4 +1,4 @@
-import { fork, put, takeLatest, call, all } from 'redux-saga/effects';
+import { fork, put, takeLatest, call, all, select } from 'redux-saga/effects';
 import { getSearchQueries, cacheItem, getCacheKey } from '@myUtils';
 import { apiForLocal, apiForServer } from '@apis';
 import { 
@@ -14,6 +14,7 @@ import {
   completeUploadReview,
   failUploadReview,
 } from '@actions';
+import { requestSize } from '@config';
 
 const prevMyReview = {};
 const prevAllReviews = {};
@@ -36,14 +37,18 @@ function getAllReviewsAPI({courtId, size, page}) {
 
 function* getAllReviews({ payload }) {
   const cacheKey = getCacheKey(payload);
-  console.log(payload);
   try {
     if(prevAllReviews.hasOwnProperty(cacheKey)) {
       yield put(completeAllReviews(prevAllReviews[cacheKey]));
     } else {
-      const response = yield call(getAllReviewsAPI, payload);
+      const response = yield call(getAllReviewsAPI, {...payload, size: requestSize.reviews});
   
-      if(response.status === 204) return;
+      if(response.status === 204) {
+        yield put(completeAllReviews({
+          hasMoreReviews: false,
+          allReviews: [],
+        }));
+      }
   
       yield put(completeAllReviews(response.data));
       cacheItem({
@@ -88,8 +93,10 @@ function* getMyReview({ payload }) {
       yield put(completeMyReview(prevMyReview[cacheKey]));
     } else {
       const response = yield call(getMyReviewAPI, payload);
-      console.log(response);
-      if(response.status === 204) return;
+      
+      if(response.status === 204) {
+        yield put(completeMyReview(null));
+      }
   
       yield put(completeMyReview(response.data));
       cacheItem({
@@ -130,13 +137,17 @@ function uploadReviewAPI({ courtId, text }) {
   );
 }
 
+function getNickname({ user }) {
+  return user.nickname;
+}
+
 function* uploadReview({ payload }) {
   try {
+    const nickname = yield select(getNickname);
     const response = yield call(uploadReviewAPI, payload);
-    console.log(response);
     yield put(completeUploadReview({
       ...response.data,
-      nickname: payload.nickname 
+      nickname
     }));
   } catch (err) {
     console.error(err);

@@ -25,7 +25,7 @@ const UserReview = ({nickname, contents, createdAt}) => {
           {contents}
         </Style.ContentsWrapper>
         {contents.length > 200 
-          &&!isContentFolded 
+          && !isContentFolded 
           && (
             <div onClick={onClickMoreView}>
               +더보기

@@ -29,7 +29,6 @@ Review.getInitialProps = async context => {
 
   store.dispatch(requestAllReviews({
     courtId: query.id,
-    size: 6,
     page: 1,
   }));
 

@@ -1,5 +1,4 @@
 import markerImg from '../assets/images/basketball_marker.png';
-// const markerImg = require('@assets/images/basketball_marker.png');
 
 export const defaultMapOptions = {
   center: {
@@ -35,14 +34,11 @@ export const buttonTheme = {
   }
 };
 
-export const cancelBtnSizeOfAddForm = {
-  size: 40
-};
-
 export const iconSize = {
   bodyInfo: 30,
   headerInfo_goback: 35,
   headerInfo_nav: 40,
+  review_addition: 20,
 };
 
 export const loaderConfig = {
@@ -72,6 +68,11 @@ export const filterButton = {
   }
 };
 
+export const requestSize = {
+  reviews: 6,
+  courts: 8,
+};
+
 export const routes = {
   search: '/search',
   court: '/court',
@@ -79,6 +80,11 @@ export const routes = {
 
 export const apiRoutes = {
   checkDuplicate: '/auth/validate/conflict/nickname',
+};
+
+export const infiniteScroll = {
+  debouncerDelay: 100,
+  scrollDiff: 150,
 };
 
 export const filterConfig = {
@@ -113,34 +119,6 @@ export const filterConfig = {
         '중구',
         '중랑구',
       ],
-    }
-  },
-  keywords: {
-    name: '키워드별',
-    details: {
-      "도시명": ['서울시', '인천시', '부천시'],
-      "게임종류": ['반코트', '풀코트'],
-      "장소": ['학교실내', '학교야외', '공원', '고가아래', '공립체육관', '바다'],
-      "실내/야외": ['실내', '야외'],
-      "예약제도": ['유', '무']
-    }
-  },
-  recommendation: {
-    name: '유저추천',
-    details: {
-      "도시명": ['서울시', '인천시', '부천시'],
-      "추천수": [5, 10, 50, 100, 200, 300, 400, 500],
-      "평점": [1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5],
-      "검색갯수": [5, 10]
-    }
-  },
-  level: {
-    name: '수준별',
-    details: {
-      "도시명": ['서울시', '인천시', '부천시'],
-      "정확도": [50, 60, 70, 80, 90, 100],
-      "수준": ['상', '중상', '중', '중하', '하'],
-      "검색갯수": [5, 10]
     }
   },
 };

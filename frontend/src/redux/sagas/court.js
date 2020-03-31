@@ -8,7 +8,7 @@ import {
   failGettingCourt,
 } from '@actions';
 import { SEARCH_COURTS_REQUEST, SEARCH_COURT_REQUEST } from '@actions/types';
-import { courtsPageConfig } from '@config';
+import { requestSize } from '@config';
 
 const searchItemsCache = {};
 const searchItemCache = {};
@@ -31,7 +31,7 @@ function* searchCourts({ payload }) {
       const { userInput, filterInput, page } = payload;
       const query = {
         page,
-        size: courtsPageConfig.courtsPerPage,
+        size: requestSize.courts,
         match: userInput,
         city: filterInput.city,
         district: filterInput.district,

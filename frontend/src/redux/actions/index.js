@@ -153,9 +153,9 @@ export const closeAddReviewForm = () => ({
   type: CLOSE_ADD_FORM,
 });
 
-export const requestAllReviews = ({ courtId, size, page }) => ({
+export const requestAllReviews = ({ courtId, page }) => ({
   type: LOAD_ALLREVIEWS_REQUEST,
-  payload: {courtId, size, page},
+  payload: {courtId, page},
 });
 
 export const completeAllReviews = ({ hasNextPage, reviews }) => ({
@@ -176,9 +176,9 @@ export const requestMyReview = ({ courtId }) => ({
   payload: {courtId},
 });
 
-export const completeMyReview = ({ text, createdAt }) => ({
+export const completeMyReview = (payload) => ({
   type: LOAD_MYREVIEW_SUCCESS,
-  payload: {text, createdAt},
+  payload,
 });
 
 export const failMyReview = ({ errorMsg }) => ({
