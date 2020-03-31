@@ -43,9 +43,12 @@ export const requestCourts = ({ userInput, filterInput, page }) => ({
   }
 });
 
-export const completeGettingCourts = ({ totalCourts, courtsData }) => ({
+export const completeGettingCourts = ({ totalCount, courts }) => ({
   type: SEARCH_COURTS_SUCCESS,
-  payload: { totalCourts, courtsData },
+  payload: { 
+    totalCourts: totalCount,
+    courtsData: courts, 
+  },
 });
 
 export const failGettingCourts = error => ({
@@ -58,7 +61,7 @@ export const requestCourt = (id) => ({
   payload: id,
 });
 
-export const completeGettingCourt = ({ courtData }) => ({
+export const completeGettingCourt = (courtData) => ({
   type: SEARCH_COURT_SUCCESS,
   payload: courtData,
 });
@@ -183,14 +186,14 @@ export const failMyReview = ({ errorMsg }) => ({
   payload: errorMsg,
 });
 
-export const requestUploadReview = ({ text, courtId }) => ({
+export const requestUploadReview = ({ text, courtId, nickname }) => ({
   type: UPLOAD_REVIEW_REQUEST,
-  payload: {text, courtId},
+  payload: {text, courtId, nickname},
 });
 
-export const completeUploadReview = ({ id, text, createdAt }) => ({
+export const completeUploadReview = ({ id, text, createdAt, nickname }) => ({
   type: UPLOAD_REVIEW_SUCCESS,
-  payload: {text, createdAt, id},
+  payload: {text, createdAt, id, writer: {nickname}},
 });
 
 export const failUploadReview = ({ errorMsg }) => ({

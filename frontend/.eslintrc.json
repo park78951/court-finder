@@ -38,7 +38,8 @@
             "error", 
             "before"
         ],
-        "no-case-declarations": "off"
+        "no-case-declarations": "off",
+        "no-prototype-builtins": "off"
     },
     "parser": "babel-eslint"
 }

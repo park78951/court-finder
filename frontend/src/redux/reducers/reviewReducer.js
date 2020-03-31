@@ -83,15 +83,6 @@ const uiReducers = (state = initPosts, { type, payload }) => {
       return {
         ...state,
         myReview: payload,
-        allReviews: [
-          ...state.allReviews, 
-          {
-            id: payload.id,
-            text: payload.text,
-            createdAt: payload.createdAt, 
-            writer: {nickname: payload.nickname }
-          }
-        ],
         isLoading: false,
       };
     }

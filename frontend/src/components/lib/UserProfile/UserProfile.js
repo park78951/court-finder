@@ -17,6 +17,6 @@ const UserProfile = ({ nickname }) => {
 
 UserProfile.propTypes = {
   nickname: PropTypes.string.isRequired,
-}
+};
 
 export default React.memo(UserProfile);

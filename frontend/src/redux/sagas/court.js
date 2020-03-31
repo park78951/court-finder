@@ -1,6 +1,6 @@
 import { fork, put, takeLatest, call, all } from 'redux-saga/effects';
-import { Base64 } from 'js-base64';
 import { apiForLocal, apiForServer } from '@apis';
+import { getSearchQueries, cacheItem, getCacheKey } from '@myUtils';
 import {
   completeGettingCourts,
   failGettingCourts,
@@ -8,37 +8,41 @@ import {
   failGettingCourt,
 } from '@actions';
 import { SEARCH_COURTS_REQUEST, SEARCH_COURT_REQUEST } from '@actions/types';
-import { prevSearchItems, prevSearchItem } from '@reducers/initialState';
 import { courtsPageConfig } from '@config';
-import { getSearchQueries } from '@myUtils';
+
+const searchItemsCache = {};
+const searchItemCache = {};
 
 function searchCourtsAPI(query) {
   const courtsApi = typeof window !== 'undefined'
-   ? apiForServer
-   : apiForLocal;
+    ? apiForServer
+    : apiForLocal;
   const searchQuery = encodeURI(getSearchQueries(query));
   
   return courtsApi.get(`/courts/search${searchQuery}`);
 }
 
-function* searchCourts(action) {
-  const searchCode = Base64.encode(JSON.stringify(action.payload));
+function* searchCourts({ payload }) {
+  const cacheKey = getCacheKey(payload);
   try {
-    if(prevSearchItems.hasOwnProperty(searchCode)) {
-      yield put(completeGettingCourts(prevSearchItems[searchCode]));
+    if(searchItemsCache.hasOwnProperty(cacheKey)) {
+      yield put(completeGettingCourts(searchItemsCache[cacheKey]));
     } else {
-      const { userInput, filterInput, page } = action.payload;
+      const { userInput, filterInput, page } = payload;
       const query = {
         page,
-        "size": courtsPageConfig.courtsPerPage,
-        "match": userInput,
+        size: courtsPageConfig.courtsPerPage,
+        match: userInput,
         city: filterInput.city,
         district: filterInput.district,
       };
       const response = yield call(searchCourtsAPI, query);
-      const { totalCount, courts } = response.data;
-      yield put(completeGettingCourts({ totalCourts: totalCount, courtsData: courts }));
-      prevSearchItems[searchCode] = {totalCourts: totalCount, courtsData: courts};
+      yield put(completeGettingCourts(response.data));
+      cacheItem({ 
+        cache: searchItemsCache,
+        key: cacheKey,
+        item: response.data,
+      });
     }
   } catch (err) {
     console.error(err);
@@ -55,22 +59,25 @@ function* watchSearchCourts() {
 
 function searchCourtAPI(id) {
   const courtsApi = typeof window !== 'undefined'
-   ? apiForServer
-   : apiForLocal;
+    ? apiForServer
+    : apiForLocal;
    
   return courtsApi.get(`/courts/${id}`);
 }
 
-function* searchCourt(action) {
-  const id = action.payload;
-  const searchCode = Base64.encode(JSON.stringify(id));
+function* searchCourt({ payload }) {
+  const cacheKey = getCacheKey(payload);
   try {
-    if(prevSearchItem.hasOwnProperty(searchCode)) {
-      yield put(completeGettingCourt(prevSearchItem[searchCode]));
+    if(searchItemCache.hasOwnProperty(cacheKey)) {
+      yield put(completeGettingCourt(searchItemCache[cacheKey]));
     } else {
-      const { data } = yield call(searchCourtAPI, id);
-      yield put(completeGettingCourt({ courtData: data }));
-      prevSearchItem[searchCode] = {courtData: data};
+      const response = yield call(searchCourtAPI, payload);
+      yield put(completeGettingCourt(response.data));
+      cacheItem({
+        cache: searchItemCache,
+        key: cacheKey,
+        item: response.data,
+      });
     }
   } catch (err) {
     console.error(err);

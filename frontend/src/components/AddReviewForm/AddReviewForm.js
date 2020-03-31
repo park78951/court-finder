@@ -22,7 +22,7 @@ const AddReviewForm = () => {
 
   const onSubmitReview = event => {
     event.preventDefault();
-
+    
     dispatch(requestUploadReview({ 
       text, 
       courtId: query.id,

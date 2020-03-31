@@ -1,4 +1,5 @@
 import { fork, put, takeLatest, call, all } from 'redux-saga/effects';
+import { getSearchQueries, cacheItem, getCacheKey } from '@myUtils';
 import { apiForLocal, apiForServer } from '@apis';
 import { 
   LOAD_ALLREVIEWS_REQUEST, 
@@ -13,7 +14,9 @@ import {
   completeUploadReview,
   failUploadReview,
 } from '@actions';
-import { getSearchQueries } from '@myUtils';
+
+const prevMyReview = {};
+const prevAllReviews = {};
 
 function getAllReviewsAPI({courtId, size, page}) {
   const userApi = typeof window !== 'undefined'
@@ -31,13 +34,23 @@ function getAllReviewsAPI({courtId, size, page}) {
   );
 }
 
-function* getAllReviews(action) {
+function* getAllReviews({ payload }) {
+  const cacheKey = getCacheKey(payload);
   try {
-    const response = yield call(getAllReviewsAPI, action.payload);
-
-    if(response.status === 204) return;
-    console.log(response.data);
-    yield put(completeAllReviews(response.data));
+    if(prevAllReviews.hasOwnProperty(cacheKey)) {
+      yield put(completeAllReviews(prevAllReviews[cacheKey]));
+    } else {
+      const response = yield call(getAllReviewsAPI, payload);
+  
+      if(response.status === 204) return;
+  
+      yield put(completeAllReviews(response.data));
+      cacheItem({
+        cache: prevAllReviews,
+        key: cacheKey,
+        item: response.data,
+      });
+    }
   } catch (err) {
     console.error(err);
     put(failAllReviews(err));
@@ -67,13 +80,23 @@ function getMyReviewAPI({ courtId }) {
   );
 }
 
-function* getMyReview(action) {
+function* getMyReview({ payload }) {
+  const cacheKey = getCacheKey(payload);
   try {
-    const response = yield call(getMyReviewAPI, action.payload);
-
-    if(response.status === 204) return;
-
-    yield put(completeMyReview(response.data));
+    if(prevMyReview.hasOwnProperty(cacheKey)) {
+      yield put(completeMyReview(prevMyReview[cacheKey]));
+    } else {
+      const response = yield call(getMyReviewAPI, payload);
+      console.log(response);
+      if(response.status === 204) return;
+  
+      yield put(completeMyReview(response.data));
+      cacheItem({
+        cache: prevMyReview,
+        key: cacheKey,
+        item: response.data,
+      });
+    }
   } catch (err) {
     console.error(err);
     put(failMyReview(err));
