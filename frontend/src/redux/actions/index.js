@@ -161,7 +161,7 @@ export const requestAllReviews = ({ courtId, size, page }) => ({
 export const completeAllReviews = ({ hasNextPage, reviews }) => ({
   type: LOAD_ALLREVIEWS_SUCCESS,
   payload: {
-    hasNextPage, 
+    hasMoreReviews: hasNextPage, 
     allReviews: reviews
   },
 });

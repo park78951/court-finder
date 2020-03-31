@@ -9,9 +9,9 @@ import Style from './AddReviewFormStyle';
 
 const AddReviewForm = () => {
   const [text, setText] = useOnChange('');
-  const {nickname, courtName} = useSelector(state => ({
+  const {nickname, selectedCourt} = useSelector(state => ({
     nickname: state.user.nickname,
-    courtName: state.courts.selectedCourt.name,
+    selectedCourt: state.court.selectedCourt,
   }));
   const dispatch = useDispatch();
   const { query } = useRouter();
@@ -35,7 +35,7 @@ const AddReviewForm = () => {
   return (
     <Style.AddReviewFormWrapper>
       <h2>
-        {courtName}
+        {selectedCourt.name}
       </h2>
       <UserProfile nickname={nickname} />
       <Style.PostUIWrapper>

@@ -9,14 +9,10 @@ import Additional from './Additional';
 import NavBtn from './NavBtn';
 import Style from './HeaderInfoStyle';
 import { selectCourt } from '@actions';
-import { routes, iconSize } from '@config';
-
-const { 
-  headerInfo_goback,
-} = iconSize;
+import { iconSize } from '@config';
 
 const HeaderInfo = () => {
-  const { selectedCourt } = useSelector(({ courts }) => courts);
+  const { selectedCourt } = useSelector(({ court }) => court);
   const router = useRouter();
   const dispatch = useDispatch();
 
@@ -25,15 +21,13 @@ const HeaderInfo = () => {
   }, []);
 
   useEffect(() => {
-    return () => {
-      dispatch(selectCourt()); 
-    }
+    return () => dispatch(selectCourt());
   }, []);
   
   return selectedCourt && (
     <Style.HeaderWrapper>
       <button onClick={goBack}>
-        <MdArrowBack size={headerInfo_goback} />
+        <MdArrowBack size={iconSize.headerInfo_goback} />
       </button>
       <Title { ...selectedCourt } />
       <Address { ...selectedCourt } />

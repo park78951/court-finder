@@ -10,7 +10,7 @@ const CourtMarker = ({
   courtInfo,
 }) => {
   const { marker } = defaultMapOptions;
-  const { selectedCourt } = useSelector(({ courts }) => courts);
+  const { selectedCourt } = useSelector(({ court }) => court);
   
   return (
     <>
@@ -29,6 +29,6 @@ const CourtMarker = ({
 CourtMarker.propTypes = {
   mouseOverOutHandler: PropTypes.func.isRequired,
   courtInfo: PropTypes.object.isRequired,
-}
+};
 
 export default React.memo(CourtMarker);

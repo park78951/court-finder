@@ -36,7 +36,7 @@ export const initPosts = {
   allReviewError: null,
   myReviewError: null,
   uploadReviewError: null,
-  hasNextPage: false,
+  hasMoreReviews: false,
   isLoading: false,
 };
 

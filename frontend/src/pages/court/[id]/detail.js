@@ -18,6 +18,6 @@ Detail.getInitialProps = async context => {
   store.dispatch(requestCourt(query.id));
   
   return query.id;
-}
+};
 
 export default Detail;

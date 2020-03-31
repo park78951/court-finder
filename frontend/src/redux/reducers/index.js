@@ -5,7 +5,7 @@ import userReducer from './userReducer';
 import reviewReducer from './reviewReducer';
 
 export default combineReducers({
-  courts: courtReducer,
+  court: courtReducer,
   uiController: uiReducer,
   user: userReducer,
   review: reviewReducer,

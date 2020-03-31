@@ -36,6 +36,7 @@ function getAllReviewsAPI({courtId, size, page}) {
 
 function* getAllReviews({ payload }) {
   const cacheKey = getCacheKey(payload);
+  console.log(payload);
   try {
     if(prevAllReviews.hasOwnProperty(cacheKey)) {
       yield put(completeAllReviews(prevAllReviews[cacheKey]));

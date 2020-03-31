@@ -21,7 +21,7 @@ const SidebarContainerView = () => {
     currentPage,
     userInput,
     filterInput
-  } = useSelector(({ courts }) => courts);
+  } = useSelector(({ court }) => court);
   const dispatch = useDispatch();
   const router = useRouter();
 

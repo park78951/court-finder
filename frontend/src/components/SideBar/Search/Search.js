@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useRef } from 'react';
+import React, { useCallback, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useRouter } from 'next/router';
 import { AiOutlineHome } from "react-icons/ai";
@@ -11,7 +11,7 @@ import Style from './SearchStyle';
 const Search = () => {
   const inputRef = useRef();
   const [term, onChangeTerm] = useOnChange('');
-  const { filterInput } = useSelector(({ courts }) => courts);
+  const { filterInput } = useSelector(({ court }) => court);
   const dispatch = useDispatch();
   const router = useRouter();
   

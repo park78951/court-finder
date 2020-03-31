@@ -8,7 +8,7 @@ import { routes } from '@config';
 import Style from './CourtListStyle';
 
 const CourtList = () => {
-  const { searchedCourts } = useSelector(({ courts }) => courts);
+  const { searchedCourts } = useSelector(({ court }) => court);
 
   const { court } = routes;
 

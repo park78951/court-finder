@@ -6,10 +6,10 @@ import {
   requestMyReview,
 } from '@actions';
 
-const Review = () => {
+const Review = ({ courtId, page }) => {
   return (
     <>
-      <ReviewInfo />
+      <ReviewInfo courtId={courtId} page={page} />
     </>
   );
 };
@@ -32,6 +32,8 @@ Review.getInitialProps = async context => {
     size: 6,
     page: 1,
   }));
+
+  return {courtId: query.id, page: 1};
 };
 
 export default Review;
