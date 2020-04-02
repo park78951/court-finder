@@ -38,7 +38,7 @@ export const iconSize = {
   bodyInfo: 30,
   headerInfo_goback: 35,
   headerInfo_nav: 40,
-  review_addition: 20,
+  review: 20,
 };
 
 export const loaderConfig = {

@@ -1,4 +1,4 @@
-export const searchInfo = {
+export const courtState = {
   searchedCourts: [],
   isSearching: false,
   isError: false,
@@ -13,29 +13,32 @@ export const searchInfo = {
   },
 };
 
-export const initUIToggleInfo = {
+export const uiToggler = {
   isSidebarHidden: false,
   isOpenNicknameChanger: false,
+  isAddFormOpen: false,
+  isUserMenuOpen: false,
+  isDeleteReviewModalOpen: false,
+  isModalOpen: false,
 };
 
-export const userInfo = {
+export const userState = {
   userId: null,
   nickname: null,
   isLogginIn: false,
   isLoggedIn: false,
   isLogginOut: false,
-  isUserMenuOpen: false,
   errorMsg: '',
 };
 
-export const initPosts = {
-  isAddFormOpen: false,
+export const reviewState = {
   allReviews: [],
   myReview: null,
   currentPage: 1,
   allReviewError: null,
   myReviewError: null,
   uploadReviewError: null,
+  deleteReviewError: null,
   hasMoreReviews: false,
   isLoading: false,
 };

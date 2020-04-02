@@ -54,19 +54,19 @@ const NickChanger = () => {
       />
       <div>
         { isValid
-            ? <p className='nickname__possible'>
-                이 닉네임은 사용 가능합니다.
-              </p>
-            : <p className='nickname__impossible'>
-                이 닉네임은 사용할 수 없습니다.
-              </p>
+          ? <p className='nickname__possible'>
+              이 닉네임은 사용 가능합니다.
+            </p>
+          : <p className='nickname__impossible'>
+              이 닉네임은 사용할 수 없습니다.
+            </p>
         }
       </div>
       <Button
         color='acceptance'
         onClick={ submitNickname }
         type='submit'
-        >
+      >
         확인
       </Button>
       <p>닉네임은 영문 4자, 한글 2자 이상 중복되지 않도록 변경해주세요.</p>

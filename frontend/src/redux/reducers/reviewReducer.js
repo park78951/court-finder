@@ -1,6 +1,4 @@
 import { 
-  OPEN_ADD_FORM,
-  CLOSE_ADD_FORM,
   LOAD_ALLREVIEWS_REQUEST,
   LOAD_ALLREVIEWS_SUCCESS,
   LOAD_ALLREVIEWS_FAILURE,
@@ -10,24 +8,15 @@ import {
   UPLOAD_REVIEW_REQUEST,
   UPLOAD_REVIEW_SUCCESS,
   UPLOAD_REVIEW_FAILURE,
-  REMOVE_REVIEWS,
+  EMPTY_REVIEWS,
+  DELETE_MYREVIEW_REQUEST,
+  DELETE_MYREVIEW_SUCCESS,
+  DELETE_MYREVIEW_FAILURE,
 } from '@actions/types';
-import { initPosts } from './initialState';
+import { reviewState } from './initialState';
 
-const uiReducers = (state = initPosts, { type, payload }) => {
+const uiReducers = (state = reviewState, { type, payload }) => {
   switch(type) {
-    case OPEN_ADD_FORM:
-      return {
-        ...state,
-        isAddFormOpen: true,
-      };
-
-    case CLOSE_ADD_FORM:
-      return {
-        ...state,
-        isAddFormOpen: false,
-      };
-
     case LOAD_ALLREVIEWS_REQUEST:
       return {
         ...state,
@@ -86,18 +75,50 @@ const uiReducers = (state = initPosts, { type, payload }) => {
         ...state,
         myReview: payload,
         isLoading: false,
+        allReviews: state.hasMoreReviews 
+          ? state.allReviews 
+          : [...state.allReviews, payload]
       };
     }
 
     case UPLOAD_REVIEW_FAILURE: {
       return {
         ...state,
-        uploadReviewError: payload,
         isLoading: false,
+        uploadReviewError: payload,
       };
     }
 
-    case REMOVE_REVIEWS: {
+    case DELETE_MYREVIEW_REQUEST: {
+      return {
+        ...state,
+        isLoading: true,
+      };
+    }
+
+    case DELETE_MYREVIEW_SUCCESS: {
+      const filteredReviews = state.allReviews
+        .filter((review) => {
+          return review.id !== payload;
+        });
+
+      return {
+        ...state,
+        isLoading: false,
+        myReview: null,
+        allReviews: filteredReviews,
+      };
+    }
+
+    case DELETE_MYREVIEW_FAILURE: {
+      return {
+        ...state,
+        isLoading: false,
+        deleteReviewError: payload
+      };
+    }
+
+    case EMPTY_REVIEWS: {
       return {
         ...state,
         allReviews: [],

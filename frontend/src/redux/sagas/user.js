@@ -7,12 +7,13 @@ import {
   completeLogout,
   failLogout,
   openNicknameChanger,
+  closeUserMenu,
 } from '@actions';
 
 function loginAPI(userInfo) {
   const userApi = typeof window !== 'undefined'
-   ? apiForServer
-   : apiForLocal;
+    ? apiForServer
+    : apiForLocal;
 
   const axiosOptions = typeof window !== 'undefined'
     ? { withCredentials: true }
@@ -29,7 +30,8 @@ function* login(action) {
   const userInfo = {
     kakaoId: action.payload.userId,
     kakaoNickname: action.payload.nickname,
-  }
+  };
+
   try {
     const { data } = yield call(loginAPI, userInfo);
     yield put(completeLogin({ nickname: data.nickname }));
@@ -48,13 +50,13 @@ function* watchLogin() {
   yield takeLatest(
     LOG_IN_REQUEST,
     login
-  )
+  );
 }
 
 function logoutAPI() {
   const userApi = typeof window !== 'undefined'
-   ? apiForServer
-   : apiForLocal;
+    ? apiForServer
+    : apiForLocal;
 
   return userApi.post('/auth/logout', {}, { withCredentials: true });
 }
@@ -63,7 +65,10 @@ function* logout() {
   try {
     const { status } = yield call(logoutAPI);
 
-    if(status === 200) yield put(completeLogout());
+    if(status === 200) {
+      yield put(completeLogout());
+      yield put(closeUserMenu());
+    }
     else throw status;
   } catch (err) {
     console.error(err);
@@ -75,12 +80,12 @@ function* watchLogout() {
   yield takeLatest(
     LOG_OUT_REQUEST,
     logout
-  )
+  );
 }
 
 export default function* userSaga() {
   yield all([
     fork(watchLogin),
     fork(watchLogout),
-  ])
+  ]);
 }

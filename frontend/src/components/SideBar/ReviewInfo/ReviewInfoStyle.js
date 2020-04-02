@@ -25,8 +25,12 @@ const ReviewHeader = styled.div`
   }
 `;
 
-const AddReviewBtn = styled.div`
-  padding: 0 6.75rem;
+const ReviewButtons = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 3rem;
+  
   & > button {
     display: flex;
     justify-content: space-evenly;
@@ -42,10 +46,6 @@ const AddReviewBtn = styled.div`
       background-color: ${defaultTheme.REVIEW_BUTTON_BACKGROUND};
     }
 
-    & > svg {
-      color: ${defaultTheme.LOGO_BACKGROUND};
-    }
-
     & > span {
       font-weight: bold;
       font-size: 1rem;
@@ -53,4 +53,22 @@ const AddReviewBtn = styled.div`
   }
 `;
 
-export default { ReviewInfoWrapper, AddReviewBtn, ReviewHeader };
+const AddButton = styled.button`
+  & > svg {
+    color: ${defaultTheme.LOGO_BACKGROUND};
+  }
+`;
+
+const DeleteButton = styled.button`
+  & > svg {
+    color: ${defaultTheme.LOGO_LETTER};
+  }
+`;
+
+export default { 
+  ReviewInfoWrapper, 
+  ReviewButtons, 
+  ReviewHeader, 
+  AddButton, 
+  DeleteButton, 
+};

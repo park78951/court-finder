@@ -1,9 +1,9 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { MdRateReview } from "react-icons/md";
+import { MdRateReview, MdDelete } from "react-icons/md";
 import AllReviews from './AllReviews';
 import MyReview from './MyReview';
-import { openAddReviewForm, removeReviews, requestAllReviews } from '@actions';
+import { openAddReviewForm, emptyReviews, requestAllReviews, openReviewDeleter } from '@actions';
 import { iconSize, infiniteScroll } from '@config';
 import Style from './ReviewInfoStyle';
 
@@ -22,9 +22,9 @@ const ReviewInfo = ({ courtId, page }) => {
   const onClickReviewForm = useCallback(() => {
     dispatch(openAddReviewForm());
   }, []);
-
-  useEffect(() => {
-    return () => dispatch(removeReviews());
+  
+  const onClickReviewDeleter = useCallback(() => {
+    dispatch(openReviewDeleter());
   }, []);
 
   const onScrollHandler = useCallback(() => {
@@ -44,6 +44,10 @@ const ReviewInfo = ({ courtId, page }) => {
     }, infiniteScroll.debouncerDelay);
   }, [hasMoreReviews, currentPage]);
 
+  useEffect(() => {
+    return () => dispatch(emptyReviews());
+  }, []);
+
   return (
     <Style.ReviewInfoWrapper ref={reviewInfoRef} onScroll={onScrollHandler}>
       <Style.ReviewHeader>
@@ -53,11 +57,18 @@ const ReviewInfo = ({ courtId, page }) => {
             myReview={myReview}
           />
         )}
-        <Style.AddReviewBtn>
-          <button onClick={onClickReviewForm}> 
-            <MdRateReview size={iconSize.review_addition} /> <span>리뷰 작성</span>
-          </button>
-        </Style.AddReviewBtn>
+        <Style.ReviewButtons>
+          {!myReview && (
+            <Style.AddButton onClick={onClickReviewForm}> 
+              <MdRateReview size={iconSize.review} /> <span>리뷰 작성</span>
+            </Style.AddButton>
+          )}
+          {myReview && (
+            <Style.DeleteButton onClick={onClickReviewDeleter}> 
+              <MdDelete size={iconSize.review} /> <span>리뷰 삭제</span>
+            </Style.DeleteButton>
+          )}
+        </Style.ReviewButtons>
       </Style.ReviewHeader>
       {allReviewData.length > 0 && (
         <AllReviews reviews={allReviewData} />

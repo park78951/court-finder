@@ -1,10 +1,11 @@
 import { fork, put, takeLatest, call, all, select } from 'redux-saga/effects';
-import { getSearchQueries, cacheItem, getCacheKey } from '@myUtils';
+import { getSearchQueries } from '@myUtils';
 import { apiForLocal, apiForServer } from '@apis';
 import { 
   LOAD_ALLREVIEWS_REQUEST, 
   LOAD_MYREVIEW_REQUEST,
   UPLOAD_REVIEW_REQUEST,
+  DELETE_MYREVIEW_REQUEST,
 } from '@actions/types';
 import { 
   completeAllReviews, 
@@ -13,11 +14,11 @@ import {
   failMyReview,
   completeUploadReview,
   failUploadReview,
+  completeDeletingMyReview,
+  failDeletingMyReview,
+  closeReviewDeleter,
 } from '@actions';
 import { requestSize } from '@config';
-
-const prevMyReview = {};
-const prevAllReviews = {};
 
 function getAllReviewsAPI({courtId, size, page}) {
   const userApi = typeof window !== 'undefined'
@@ -36,27 +37,17 @@ function getAllReviewsAPI({courtId, size, page}) {
 }
 
 function* getAllReviews({ payload }) {
-  const cacheKey = getCacheKey(payload);
   try {
-    if(prevAllReviews.hasOwnProperty(cacheKey)) {
-      yield put(completeAllReviews(prevAllReviews[cacheKey]));
-    } else {
-      const response = yield call(getAllReviewsAPI, {...payload, size: requestSize.reviews});
-  
-      if(response.status === 204) {
-        yield put(completeAllReviews({
-          hasMoreReviews: false,
-          allReviews: [],
-        }));
-      }
-  
-      yield put(completeAllReviews(response.data));
-      cacheItem({
-        cache: prevAllReviews,
-        key: cacheKey,
-        item: response.data,
-      });
+    const response = yield call(getAllReviewsAPI, {...payload, size: requestSize.reviews});
+
+    if(response.status === 204) {
+      yield put(completeAllReviews({
+        hasMoreReviews: false,
+        allReviews: [],
+      }));
     }
+
+    yield put(completeAllReviews(response.data));
   } catch (err) {
     console.error(err);
     put(failAllReviews(err));
@@ -87,24 +78,14 @@ function getMyReviewAPI({ courtId }) {
 }
 
 function* getMyReview({ payload }) {
-  const cacheKey = getCacheKey(payload);
   try {
-    if(prevMyReview.hasOwnProperty(cacheKey)) {
-      yield put(completeMyReview(prevMyReview[cacheKey]));
-    } else {
-      const response = yield call(getMyReviewAPI, payload);
-      
-      if(response.status === 204) {
-        yield put(completeMyReview(null));
-      }
-  
-      yield put(completeMyReview(response.data));
-      cacheItem({
-        cache: prevMyReview,
-        key: cacheKey,
-        item: response.data,
-      });
+    const response = yield call(getMyReviewAPI, payload);
+    
+    if(response.status === 204) {
+      yield put(completeMyReview(null));
     }
+
+    yield put(completeMyReview(response.data));
   } catch (err) {
     console.error(err);
     put(failMyReview(err));
@@ -162,10 +143,44 @@ function* watchUploadReview() {
   );
 }
 
+function deleteReviewAPI({ reviewId }) {
+  const userApi = typeof window !== 'undefined'
+    ? apiForServer
+    : apiForLocal;
+
+  const axiosOptions = typeof window !== 'undefined'
+    ? { withCredentials: true }
+    : {};
+
+  return userApi.delete(
+    `/review/${reviewId}`,
+    axiosOptions,
+  );
+}
+
+function* deleteReview({ payload }) {
+  try {
+    yield call(deleteReviewAPI, payload);
+    yield put(completeDeletingMyReview(payload));
+    yield put(closeReviewDeleter());
+  } catch (err) {
+    console.error(err);
+    put(failDeletingMyReview(err));
+  }
+}
+
+function* watchDeleteReview() {
+  yield takeLatest(
+    DELETE_MYREVIEW_REQUEST,
+    deleteReview
+  );
+}
+
 export default function* userSaga() {
   yield all([
     fork(watchGetAllReviews),
     fork(watchGetMyReview),
     fork(watchUploadReview),
+    fork(watchDeleteReview),
   ]);
 }

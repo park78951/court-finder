@@ -1,4 +1,4 @@
-import { searchInfo } from './initialState';
+import { courtState } from './initialState';
 import { 
   SEARCH_COURTS_SUCCESS,
   SEARCH_COURTS_REQUEST,
@@ -8,24 +8,23 @@ import {
   SEARCH_COURT_FAILURE,
   SELECT_COURT,
   MOUSEOVER_LIST,
-  UNSELECT_COURT,
   GET_FILTER_INPUT,
   INIT_FILTER_INPUT,
 } from '@actions/types';
 
-const courtReducer = (state = searchInfo, { type, payload }) => {
+const courtReducer = (state = courtState, { type, payload }) => {
   switch (type) {
-  case SEARCH_COURTS_REQUEST:
-    const { userInput, page, filterInput } = payload;
-    return {
-      ...state,
-      isError: false,
-      isSearching: true,
-      currentPage: page,
-      userInput: userInput,
-      filterInput: filterInput,
-      selectedCourt: null,
-    };
+    case SEARCH_COURTS_REQUEST:
+      const { userInput, page, filterInput } = payload;
+      return {
+        ...state,
+        isError: false,
+        isSearching: true,
+        currentPage: page,
+        userInput: userInput,
+        filterInput: filterInput,
+        selectedCourt: null,
+      };
 
     case SEARCH_COURTS_SUCCESS:
       const { totalCourts, courtsData } = payload;

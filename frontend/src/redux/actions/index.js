@@ -20,8 +20,8 @@ import {
   OPEN_NICKNAME_CHANGER,
   CLOSE_NICKNAME_CHANGER,
   TOGGLE_USER_MENU,
-  OPEN_ADD_FORM,
-  CLOSE_ADD_FORM,
+  OPEN_ADD_REVIEW_FORM,
+  CLOSE_ADD_REVIEW_FORM,
   LOAD_ALLREVIEWS_REQUEST,
   LOAD_ALLREVIEWS_SUCCESS,
   LOAD_ALLREVIEWS_FAILURE,
@@ -31,7 +31,13 @@ import {
   UPLOAD_REVIEW_REQUEST,
   UPLOAD_REVIEW_SUCCESS,
   UPLOAD_REVIEW_FAILURE,
-  REMOVE_REVIEWS
+  EMPTY_REVIEWS,
+  CLOSE_USER_MENU,
+  OPEN_DELETE_REVIEW_MODAL,
+  CLOSE_DELETE_REVIEW_MODAL,
+  DELETE_MYREVIEW_REQUEST,
+  DELETE_MYREVIEW_SUCCESS,
+  DELETE_MYREVIEW_FAILURE,
 } from './types';
 
 export const requestCourts = ({ userInput, filterInput, page }) => ({
@@ -94,9 +100,9 @@ export const getMouseOverList = mouseoverList => ({
   payload: mouseoverList
 });
 
-export const requestLogin = (payload) => ({
+export const requestLogin = (userInfo) => ({
   type: LOG_IN_REQUEST,
-  payload,
+  payload: userInfo,
 });
 
 export const completeLogin = ({ nickname, userId }) => ({
@@ -107,9 +113,9 @@ export const completeLogin = ({ nickname, userId }) => ({
   },
 });
 
-export const failLogin = (payload) => ({
+export const failLogin = (errorMsg) => ({
   type: LOG_IN_FAILURE,
-  payload,
+  payload: errorMsg,
 });
 
 export const requestLogout = () => ({
@@ -120,9 +126,9 @@ export const completeLogout = () => ({
   type: LOG_OUT_SUCCESS,
 });
 
-export const failLogout = (payload) => ({
+export const failLogout = (errorMsg) => ({
   type: LOG_OUT_FAILURE,
-  payload,
+  payload: errorMsg,
 });
 
 export const autoLogin = ({ kakaoId, nickname }) => ({
@@ -145,12 +151,16 @@ export const toggleUserMenu = () => ({
   type: TOGGLE_USER_MENU,
 });
 
+export const closeUserMenu = () => ({
+  type: CLOSE_USER_MENU,
+});
+
 export const openAddReviewForm = () => ({
-  type: OPEN_ADD_FORM,
+  type: OPEN_ADD_REVIEW_FORM,
 });
 
 export const closeAddReviewForm = () => ({
-  type: CLOSE_ADD_FORM,
+  type: CLOSE_ADD_REVIEW_FORM,
 });
 
 export const requestAllReviews = ({ courtId, page }) => ({
@@ -201,6 +211,29 @@ export const failUploadReview = ({ errorMsg }) => ({
   payload: errorMsg,
 });
 
-export const removeReviews = () => ({
-  type: REMOVE_REVIEWS,
+export const emptyReviews = () => ({
+  type: EMPTY_REVIEWS,
+});
+
+export const requestDeletingMyReview = (reviewId) => ({
+  type: DELETE_MYREVIEW_REQUEST,
+  payload: {reviewId},
+});
+
+export const completeDeletingMyReview = ({ reviewId }) => ({
+  type: DELETE_MYREVIEW_SUCCESS,
+  payload: reviewId,
+});
+
+export const failDeletingMyReview = (errorMsg) => ({
+  type: DELETE_MYREVIEW_FAILURE,
+  payload: errorMsg,
+});
+
+export const openReviewDeleter = () => ({
+  type: OPEN_DELETE_REVIEW_MODAL,
+});
+
+export const closeReviewDeleter = () => ({
+  type: CLOSE_DELETE_REVIEW_MODAL,
 });

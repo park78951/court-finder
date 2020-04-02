@@ -1,4 +1,4 @@
-import { userInfo } from './initialState';
+import { userState } from './initialState';
 import {
   LOG_IN_REQUEST,
   LOG_IN_SUCCESS,
@@ -6,11 +6,10 @@ import {
   LOG_OUT_REQUEST,
   LOG_OUT_SUCCESS,
   LOG_OUT_FAILURE,
-  TOGGLE_USER_MENU,
   AUTO_LOG_IN,
 } from '@actions/types';
 
-export default (state = userInfo, { type, payload} ) => {
+export default (state = userState, { type, payload} ) => {
   switch(type) {
     case LOG_IN_REQUEST: {
       const { userId } = payload;
@@ -18,7 +17,7 @@ export default (state = userInfo, { type, payload} ) => {
         ...state,
         isLogginIn: true,
         userId
-      }
+      };
     }
     
     case LOG_IN_SUCCESS: {
@@ -28,7 +27,7 @@ export default (state = userInfo, { type, payload} ) => {
         nickname,
         isLogginIn: false,
         isLoggedIn: true,
-      }
+      };
     }
     
     case LOG_IN_FAILURE: {
@@ -36,7 +35,7 @@ export default (state = userInfo, { type, payload} ) => {
         ...state,
         isLogginIn: false,
         errorMsg: payload,
-      }
+      };
     }
 
     case AUTO_LOG_IN: {
@@ -46,14 +45,14 @@ export default (state = userInfo, { type, payload} ) => {
         userId,
         nickname,
         isLoggedIn: true,
-      }
+      };
     }
 
     case LOG_OUT_REQUEST: {
       return {
         ...state,
         isLogginOut: true,
-      }
+      };
     }
     
     case LOG_OUT_SUCCESS: {
@@ -63,8 +62,7 @@ export default (state = userInfo, { type, payload} ) => {
         nickname: '',
         isLogginOut: false,
         isLoggedIn: false,
-        isUserMenuOpen: false,
-      }
+      };
     }
     
     case LOG_OUT_FAILURE: {
@@ -72,18 +70,11 @@ export default (state = userInfo, { type, payload} ) => {
         ...state,
         isLogginOut: false,
         errorMsg: payload,
-      }
-    }
-
-    case TOGGLE_USER_MENU: {
-      return {
-        ...state,
-        isUserMenuOpen: !state.isUserMenuOpen,
-      };  
+      };
     }
     
     default: {
       return state;
     }
   }
-}
+};

@@ -23,4 +23,4 @@ export default {
   INFO_HEADER_LETTER: '#1d1b1b',
   BUTTON_BACKGROUND_FIRST: '#F5F5F5',
   BACKGROUND_USER: '#A9A9A9',
-}
+};
