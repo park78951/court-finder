@@ -74,12 +74,23 @@ export const requestSize = {
 };
 
 export const routes = {
-  search: '/search',
-  court: '/court',
+  SEARCH: '/search',
+  COURT: '/court',
+  REVIEW: '/review',
+  REVIEW_MINE: '/review/mine',
+  DETAIL: '/detail',
+  DYNAMIC_COURT_DETAIL: '/court/[id]/detail',
+  DYNAMIC_COURT_REVIEW: '/court/[id]/review',
 };
 
 export const apiRoutes = {
-  checkDuplicate: '/auth/validate/conflict/nickname',
+  AUTH_VALIDATION_NICKNAME: '/auth/validate/conflict/nickname',
+  COURTS_SEARCH: '/courts/search',
+  COURTS: '/courts',
+  REVIEW: '/review',
+  REVIEW_MINE: '/review/mine',
+  AUTH_LOGIN: '/auth/login',
+  AUTH_LOGOUT: '/auth/logout',
 };
 
 export const infiniteScroll = {

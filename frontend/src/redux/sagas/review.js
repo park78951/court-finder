@@ -18,7 +18,7 @@ import {
   failDeletingMyReview,
   closeReviewDeleter,
 } from '@actions';
-import { requestSize } from '@config';
+import { requestSize, apiRoutes } from '@config';
 
 function getAllReviewsAPI({courtId, size, page}) {
   const userApi = typeof window !== 'undefined'
@@ -32,7 +32,7 @@ function getAllReviewsAPI({courtId, size, page}) {
   });
 
   return userApi.get(
-    `/review${queryParams}`, 
+    `${apiRoutes.REVIEW}${queryParams}`, 
   );
 }
 
@@ -72,7 +72,7 @@ function getMyReviewAPI({ courtId }) {
 
   const queryParams = getSearchQueries({ courtId });
   return userApi.get(
-    `/review/mine${queryParams}`,
+    `${apiRoutes.REVIEW_MINE}${queryParams}`,
     axiosOptions
   );
 }
@@ -110,9 +110,8 @@ function uploadReviewAPI({ courtId, text }) {
 
   const queryParams = getSearchQueries({ courtId });
 
-  console.log(queryParams);
   return userApi.post(
-    `/review${queryParams}`,
+    `${apiRoutes.REVIEW}${queryParams}`,
     {text},
     axiosOptions,
   );
@@ -153,7 +152,7 @@ function deleteReviewAPI({ reviewId }) {
     : {};
 
   return userApi.delete(
-    `/review/${reviewId}`,
+    `${apiRoutes.REVIEW}/${reviewId}`,
     axiosOptions,
   );
 }

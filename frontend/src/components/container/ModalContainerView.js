@@ -1,26 +1,52 @@
 import React from 'react';
-import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import NickChanger from '../NickChanger';
+import AddReviewForm from '../AddReviewForm';
+import ReviewDeleter from '../ReviewDeleter';
+import Style from './ModalContainerStyle';
 
-const WholeAppWrapper = styled.div`
-  position: absolute;
-  width: 100vw;
-  height: 100vh;
-  left: 0;
-  top: 0;
-  background: rgba(40, 40, 40, 0.7);
-`;
+const ModalContainerView = ({ 
+  isOpenNicknameChanger,
+  isAddReviewFormOpen,
+  isDeleteReviewModalOpen,
+}) => {
+  const switchingModal = () => {
+    switch (true) {
+      case isOpenNicknameChanger: {
+        return (
+          <NickChanger />
+        );
+      }
 
-const ModalContainerView = ({ children }) => {
+      case isAddReviewFormOpen: {
+        return (
+          <AddReviewForm />
+        );
+      }
+
+      case isDeleteReviewModalOpen: {
+        return (
+          <ReviewDeleter />
+        );
+      }
+    
+      default: {
+        return null;
+      }
+    }
+  };
+
   return (
-    <WholeAppWrapper>
-      { children }
-    </WholeAppWrapper>
+    <Style.ModalContainerWrapper>
+      { switchingModal() }
+    </Style.ModalContainerWrapper>
   );
 };
 
 ModalContainerView.propTypes = {
-  children: PropTypes.object
+  isOpenNicknameChanger: PropTypes.bool,
+  isAddReviewFormOpen: PropTypes.bool,
+  isDeleteReviewModalOpen: PropTypes.boll,
 };
 
 export default ModalContainerView;

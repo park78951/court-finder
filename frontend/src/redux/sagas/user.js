@@ -9,6 +9,7 @@ import {
   openNicknameChanger,
   closeUserMenu,
 } from '@actions';
+import { apiRoutes } from '@config';
 
 function loginAPI(userInfo) {
   const userApi = typeof window !== 'undefined'
@@ -20,7 +21,7 @@ function loginAPI(userInfo) {
     : {};
 
   return userApi.post(
-    '/auth/login', 
+    apiRoutes.AUTH_LOGIN, 
     userInfo, 
     axiosOptions
   );
@@ -58,7 +59,7 @@ function logoutAPI() {
     ? apiForServer
     : apiForLocal;
 
-  return userApi.post('/auth/logout', {}, { withCredentials: true });
+  return userApi.post(apiRoutes.AUTH_LOGOUT, {}, { withCredentials: true });
 }
 
 function* logout() {

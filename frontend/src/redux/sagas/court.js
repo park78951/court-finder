@@ -8,7 +8,7 @@ import {
   failGettingCourt,
 } from '@actions';
 import { SEARCH_COURTS_REQUEST, SEARCH_COURT_REQUEST } from '@actions/types';
-import { requestSize } from '@config';
+import { requestSize, apiRoutes } from '@config';
 
 const searchItemsCache = {};
 const searchItemCache = {};
@@ -19,7 +19,7 @@ function searchCourtsAPI(query) {
     : apiForLocal;
   const searchQuery = encodeURI(getSearchQueries(query));
   
-  return courtsApi.get(`/courts/search${searchQuery}`);
+  return courtsApi.get(`${apiRoutes.COURTS_SEARCH}${searchQuery}`);
 }
 
 function* searchCourts({ payload }) {
@@ -62,7 +62,7 @@ function searchCourtAPI(id) {
     ? apiForServer
     : apiForLocal;
    
-  return courtsApi.get(`/courts/${id}`);
+  return courtsApi.get(`${apiRoutes.COURTS}/${id}`);
 }
 
 function* searchCourt({ payload }) {

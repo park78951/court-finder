@@ -10,14 +10,12 @@ import Style from './CourtListStyle';
 const CourtList = () => {
   const { searchedCourts } = useSelector(({ court }) => court);
 
-  const { court } = routes;
-
   const searchedItems = useMemo(() => {
     return searchedCourts.map(searchedCourt => (
       <Link 
         key={uniqueId(searchedCourt.name)} 
-        href={ `${court}/[id]/detail` }
-        as={`${court}/${searchedCourt.id}/detail`}
+        href={ `${routes.DYNAMIC_COURT_DETAIL}` }
+        as={`${routes.COURT}/${searchedCourt.id}${routes.DETAIL}`}
       >
         <a>
           <CourtItem 
