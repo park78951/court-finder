@@ -1,30 +1,42 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
-import { useRouter } from 'next/router'
 import PropTypes from 'prop-types';
+import { GoTriangleRight, GoTriangleLeft } from "react-icons/go";
 import Search from './Search';
 import Style from './SideBarStyle';
 import HeaderInfo from './HeaderInfo';
 
-const SideBar = ({ children }) => {
-  const isSidebarHidden = useSelector(state => {
-    return state.uiController.isSidebarHidden;
-  });
-  const { route } = useRouter();
-
-  return !isSidebarHidden && (
+const SideBar = ({ 
+  children, 
+  isSidebarHidden, 
+  currentRoute,
+  sidebarToggler
+}) => {
+  return (
     <Style.SideBarWrapper 
-      curPath={ route }
+      curPath={currentRoute}
+      isSidebarHidden={isSidebarHidden}
     >
       <Search />
-      {route.startsWith('/court') && <HeaderInfo />}
+      {currentRoute.startsWith('/court') && <HeaderInfo />}
       {children}
+      {currentRoute !== '/' && ( 
+        <Style.SidebarToggler>
+          <button onClick={sidebarToggler}>
+            {isSidebarHidden
+              ? <GoTriangleRight size={15}/>
+              : <GoTriangleLeft size={15}/>}
+          </button>
+        </Style.SidebarToggler>
+      )}
     </Style.SideBarWrapper>
   );
 };
 
 SideBar.propTypes = {
-  location: PropTypes.object
+  children: PropTypes.element.isRequired,
+  isSidebarHidden: PropTypes.bool.isRequired,
+  currentRoute: PropTypes.string.isRequired,
+  sidebarToggler: PropTypes.func.isRequired,
 };
 
 export default React.memo(SideBar);

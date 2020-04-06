@@ -19,6 +19,7 @@ const InputContainer = styled.div`
       padding: 0 0 0 10px;
       font-size: 1.1rem;
       outline: none;
+      ${({ isFocused }) => !isFocused && '#B8B8B8'};
     }
 
     button {

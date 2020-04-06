@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { defaultTheme } from '@styles';
 
 const HeaderWrapper = styled.div`
   position: relative;
@@ -6,8 +7,8 @@ const HeaderWrapper = styled.div`
   flex-flow: column;
   height: 12rem;
   width: 100%;
-  background-color: #f4b41a;
-  color: #1d1b1b;
+  background-color: ${defaultTheme.INFO_HEADER_BACKGROUND};
+  color: ${defaultTheme.INFO_HEADER_LETTER};
 
   & > button {
     position: absolute;

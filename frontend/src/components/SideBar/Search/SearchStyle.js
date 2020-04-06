@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 const SearchContainer = styled.div`
+  position: relative;
   display: flex;
   justify-content: flex-end;
   background-color: white;
@@ -9,4 +10,11 @@ const SearchContainer = styled.div`
   border: solid 1px #D3D3D3;
 `;
 
-export default { SearchContainer };
+const homeButton = styled.div`
+  position: absolute;
+  top: 1rem;
+  left: 1.5rem;
+  cursor: pointer;
+`;
+
+export default { SearchContainer, homeButton };

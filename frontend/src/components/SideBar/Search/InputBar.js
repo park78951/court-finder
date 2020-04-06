@@ -1,59 +1,31 @@
-import React, { useState, useCallback } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { useRouter } from 'next/router';
+import React, { forwardRef } from 'react';
 import { IoIosSearch } from 'react-icons/io';
 import PropTypes from 'prop-types';
-import { requestCourts, unselectCourt } from '@actions';
-import { getSearchQueries } from '@myUtils';
 import Style from './InputBarStyle';
 
-const InputBar = () => {
-  const [term, setTerm] = useState('');
-  const { filterInput } = useSelector(({ courts }) => courts);
-  const dispatch = useDispatch();
-  const router = useRouter();
-
-  const setInput = useCallback(({ target }) => {
-    const { value } = target;
-    setTerm(value);
-  }, []);
-
-  const inputSubmit = useCallback(evt => {
-    evt.preventDefault();
-    
-    dispatch(unselectCourt());
-    dispatch(requestCourts({
-      userInput: term, 
-      filterInput,
-      page: 1,
-    }));
-    setTerm('');
-
-    const searchRoute = getSearchQueries({
-      userInput: term,
-      city: filterInput.city,
-      district: filterInput.district,
-      page: 1,
-    });
-    router.push(searchRoute);
-  }, [term, filterInput, router.route]);
-
-  return (
-    <Style.InputContainer onSubmit={ inputSubmit }>
-      <form>
+const InputBar = forwardRef((
+  { 
+    onChangeTerm, 
+    inputSubmit, 
+    term 
+  },
+  ref,
+  ) => (
+    <Style.InputContainer>
+      <form onSubmit={ inputSubmit }>
         <input 
           type='text'
           placeholder='Court-Finder 검색'
-          onChange={ setInput }
-          value={ term }
+          onChange={onChangeTerm}
+          value={term}
+          ref={ref}
         />
         <button type='submit'>
-          <IoIosSearch size={ 30 } />
+          <IoIosSearch size={30} />
         </button>
       </form>
     </Style.InputContainer>
-  );
-};
+));
 
 InputBar.propTypes = {
   location: PropTypes.object,

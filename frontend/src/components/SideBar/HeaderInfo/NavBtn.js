@@ -1,35 +1,31 @@
 import React from 'react';
 import { MdInfo, MdAssignment } from 'react-icons/md';
-import { useSelector } from 'react-redux';
 import ActiveLink from '@components/lib/ActiveLink';
 import { routes, iconSize } from '@config';
 import Style from './NavBtnStyle';
-
-const { headerInfo_nav } = iconSize;
-const { court } = routes;
 
 const NavBtn = ({ id }) => {
   return (
     <Style.NavBtnStyle>
       <ActiveLink
-        href={ `${court}/[id]/detail` }
-        as={`${court}/${id}/detail`}
+        href={ `${routes.DYNAMIC_COURT_DETAIL}` }
+        as={`${routes.COURT}/${id}${routes.DETAIL}`}
         replace
       >
         <a className='link'>
           <MdInfo 
-            size={ headerInfo_nav }
+            size={ iconSize.headerInfo_nav }
           />
         </a>
       </ActiveLink>
       <ActiveLink 
-        href={ `${court}/[id]/review` }
-        as={`${court}/${id}/review`}
+        href={ `${routes.DYNAMIC_COURT_REVIEW}` }
+        as={`${routes.COURT}/${id}${routes.REVIEW}`}
         replace
       >
         <a className='link'>
           <MdAssignment 
-            size={ headerInfo_nav }
+            size={ iconSize.headerInfo_nav }
           />
         </a>
       </ActiveLink>

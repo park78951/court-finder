@@ -26,7 +26,7 @@ const CourtItem = ({ searchedInfo }) => {
       onMouseEnter={ onMouseOverOut(searchedInfo) }
       onMouseLeave={ onMouseOverOut(null) }
     >
-      <h3>{ name }</h3><span>{ isIndoor ? '실내' : '실외' }</span>
+      <h4>{ name }</h4><span>{ isIndoor ? '실내' : '실외' }</span>
       <div>
         <p>주소: { address }</p>
         <p>전화번호: { phone }</p>

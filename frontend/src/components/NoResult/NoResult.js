@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import Style from './NoResultStyle';
 
 const NoResult = () => {
-  const { userInput } = useSelector(({ courts }) => courts);
+  const { userInput } = useSelector(({ court }) => court);
   
   return (
     <Style.NoResultWrapper>

@@ -15,13 +15,13 @@ const useNicknameChecker = (nickname) => {
     if(isValidString) {
       try {
         apiAxios.get(
-          encodeURI(`${apiRoutes.checkDuplicate}/${nickname}`), 
+          encodeURI(`${apiRoutes.AUTH_VALIDATION_NICKNAME}/${nickname}`), 
           {withCredentials: true}
         )
-        .then(({ data }) => data)
-        .then(({ isConflict }) => setIsValid(!isConflict));
+          .then(({ data }) => data)
+          .then(({ isConflict }) => setIsValid(!isConflict));
       } catch (err) {
-        console.error(err)
+        console.error(err);
       }
     } else {
       setIsValid(false);

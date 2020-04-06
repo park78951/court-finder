@@ -1,4 +1,4 @@
-export const searchInfo = {
+export const courtState = {
   searchedCourts: [],
   isSearching: false,
   isError: false,
@@ -13,42 +13,34 @@ export const searchInfo = {
   },
 };
 
-export const initUIToggleInfo = {
+export const uiToggler = {
   isSidebarHidden: false,
   isOpenNicknameChanger: false,
+  isAddFormOpen: false,
+  isUserMenuOpen: false,
+  isDeleteReviewModalOpen: false,
+  isModalOpen: false,
 };
 
-export const initSubmitList = {
-  curPage: 1,
-  locationName: null,
-  web: null,
-  phone: null,
-  feeAmount: {
-    amount: null,
-    time: null
-  },
-  indoorOutdoor: null,
-  availableTime: {
-    open: null,
-    close: null
-  },
-  transportation: {
-    method: null,
-    detail: null,
-    stop: null
-  },
-  parkingLot: null,
-  tags: []
-};
-
-export const userInfo = {
+export const userState = {
   userId: null,
   nickname: null,
   isLogginIn: false,
   isLoggedIn: false,
   isLogginOut: false,
-  isUserMenuOpen: false,
   errorMsg: '',
+};
+
+export const reviewState = {
+  allReviews: [],
+  myReview: null,
+  currentPage: 1,
+  allReviewError: null,
+  myReviewError: null,
+  uploadReviewError: null,
+  deleteReviewError: null,
+  hasMoreReviews: false,
+  isLoading: false,
 };
 
 export const prevSearchItems = {};

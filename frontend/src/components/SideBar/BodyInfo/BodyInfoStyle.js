@@ -1,9 +1,10 @@
 import styled from 'styled-components';
+import { defaultTheme } from '@styles';
 
 const BodyInfoWrapper = styled.div`
   height: 74%;
   width: 100%;
-  border: #D3D3D3;
+  border: ${defaultTheme.BORDERLINE};
   padding: 0 15px;
 
   & > div {
@@ -41,7 +42,7 @@ const BodyInfoWrapper = styled.div`
       display: inline-block;
       margin-left: 10px;
       padding: 3px;
-      border: 1px solid #D3D3D3;
+      border: ${defaultTheme.BORDERLINE};
       border-radius: 5px;
     }
   }

@@ -1,23 +1,38 @@
 import React from 'react';
 import ReviewInfo from '@components/SideBar/ReviewInfo';
-import { requestCourt } from '@actions';
+import { 
+  requestCourt, 
+  requestAllReviews,
+  requestMyReview,
+} from '@actions';
 
-const Review = () => {
+const Review = ({ courtId, page }) => {
   return (
     <>
-      <ReviewInfo />
+      <ReviewInfo courtId={courtId} page={page} />
     </>
   );
 };
 
 Review.getInitialProps = async context => {
-  if(typeof window !== "undefined") return;
+  const { store, query, req } = context;
 
-  const { store, query } = context;
-
-  store.dispatch(requestCourt(query.id));
+  if(context.isServer) {
+    store.dispatch(requestCourt(query.id));
+  }
   
-  return query.id;
-}
+  if(store.getState().user.nickname || req.user) {
+    store.dispatch(requestMyReview({
+      courtId: query.id,
+    }));
+  }
+
+  store.dispatch(requestAllReviews({
+    courtId: query.id,
+    page: 1,
+  }));
+
+  return {courtId: query.id, page: 1};
+};
 
 export default Review;

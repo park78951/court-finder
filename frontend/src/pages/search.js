@@ -25,6 +25,6 @@ Search.getInitialProps = async context => {
       page: parseInt(page, 10),
     }));
   }
-}
+};
 
 export default Search;

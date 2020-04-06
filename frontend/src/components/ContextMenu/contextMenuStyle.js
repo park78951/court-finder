@@ -1,12 +1,13 @@
 import styled from 'styled-components';
+import { defaultTheme } from '@styles';
 
 const ContextMenuWrapper = styled.div`
   .react-contextmenu {
-    background-color: #fff;
+    background-color: ${defaultTheme.WHITE};
     background-clip: padding-box;
     border: 1px solid rgba(0,0,0,.15);
     border-radius: .25rem;
-    color: #373a3c;
+    color: ${defaultTheme.CONTEXT_MENU_LETTER};
     font-size: 16px;
     margin: 2px 0 0;
     min-width: 160px;
@@ -25,7 +26,7 @@ const ContextMenuWrapper = styled.div`
   .react-contextmenu-item {
     background: 0 0;
     border: 0;
-    color: #373a3c;
+    color: ${defaultTheme.CONTEXT_MENU_LETTER};
 	  cursor: pointer;
     font-weight: 400;
     line-height: 1.5;
@@ -37,9 +38,9 @@ const ContextMenuWrapper = styled.div`
 
   .react-contextmenu-item.react-contextmenu-item--active,
   .react-contextmenu-item.react-contextmenu-item--selected {
-      color: #fff;
-      background-color: #20a0ff;
-      border-color: #20a0ff;
+      color: ${defaultTheme.WHITE};
+      background-color: ${defaultTheme.POST_MODAL_BORDER_BOTTOM};
+      border-color: ${defaultTheme.POST_MODAL_BORDER_BOTTOM};
       text-decoration: none;
   }
 
@@ -47,7 +48,7 @@ const ContextMenuWrapper = styled.div`
   .react-contextmenu-item.react-contextmenu-item--disabled:hover {
       background-color: transparent;
       border-color: rgba(0,0,0,.15);
-      color: #878a8c;
+      color: ${defaultTheme.CONTEXT_MENU_LETTER};
   }
 
   .react-contextmenu-item--divider {

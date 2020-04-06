@@ -14,16 +14,16 @@ import Style from './AuthContainerStyle';
 const AuthContainer = () => {
   const { 
     isLoggedIn, 
-    isUserMenuOpen, 
     nickname 
   } = useSelector(({ user }) => user);
+  const { isUserMenuOpen } = useSelector(({ uiController }) => uiController);
   const dispatch = useDispatch();
 
   const onFail = (error) => {
     dispatch(failLogin(error.message));
   };
 
-  const onSuccessOauth = useCallback((authobj) => {
+  const onSuccessOauth = useCallback(() => {
     window.Kakao.API.request({
       url: KAKAO_API_PROFILE_URL,
       success: (res) => {

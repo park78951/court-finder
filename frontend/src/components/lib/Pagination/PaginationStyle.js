@@ -4,7 +4,7 @@ import { defaultTheme } from '@styles';
 const styleNthChild = function(idx) {
   return css`
     &:nth-child(${idx + 1}) {
-      color: #EC4D37;
+      color: ${defaultTheme.PAGINATION_SELECTED};
       font-weight: bold;
       pointer-events: none;
     }
@@ -13,7 +13,7 @@ const styleNthChild = function(idx) {
 
 const preventEvent = function(currentPage, lastPage) {
   const preventingStyle = css`
-    color: #C0C0C0;
+    color: ${defaultTheme.PAGINATION_UNCLICKABLE};
     pointer-events: none;
   `;
   if(currentPage === 1) {
@@ -38,8 +38,8 @@ const PaginationWrapper = styled.div`
   display: flex;
   justify-content: center;
   height: 2.3rem;
-  background-color: #fff;
-  border: 0.1rem solid ${ defaultTheme.borderLine };
+  background-color: ${defaultTheme.WHITE};
+  border: 0.1rem solid ${defaultTheme.BORDERLINE};
   width: 100%;
 
   & > div {
@@ -60,7 +60,7 @@ const PaginationWrapper = styled.div`
 
       
       &:hover {
-        background-color: ${ defaultTheme.borderLine };
+        background-color: ${ defaultTheme.BORDERLINE };
       }
     }
 

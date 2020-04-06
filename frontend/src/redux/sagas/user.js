@@ -2,33 +2,40 @@ import { fork, put, takeLatest, call, all } from 'redux-saga/effects';
 import { apiForLocal, apiForServer } from '@apis';
 import { LOG_IN_REQUEST, LOG_OUT_REQUEST } from '@actions/types';
 import { 
-  succeedLogin, 
+  completeLogin, 
   failLogin,
-  succeedLogout,
+  completeLogout,
   failLogout,
   openNicknameChanger,
+  closeUserMenu,
 } from '@actions';
+import { apiRoutes } from '@config';
 
 function loginAPI(userInfo) {
   const userApi = typeof window !== 'undefined'
-   ? apiForServer
-   : apiForLocal;
+    ? apiForServer
+    : apiForLocal;
 
   const axiosOptions = typeof window !== 'undefined'
     ? { withCredentials: true }
     : {};
 
-  return userApi.post('/auth/login', userInfo, axiosOptions);
+  return userApi.post(
+    apiRoutes.AUTH_LOGIN, 
+    userInfo, 
+    axiosOptions
+  );
 }
 
 function* login(action) {
   const userInfo = {
     kakaoId: action.payload.userId,
     kakaoNickname: action.payload.nickname,
-  }
+  };
+
   try {
     const { data } = yield call(loginAPI, userInfo);
-    yield put(succeedLogin({ nickname: data.nickname }));
+    yield put(completeLogin({ nickname: data.nickname }));
   } catch (err) {
     console.error(err);
     if(err.response.status === 409) {
@@ -44,22 +51,25 @@ function* watchLogin() {
   yield takeLatest(
     LOG_IN_REQUEST,
     login
-  )
+  );
 }
 
 function logoutAPI() {
   const userApi = typeof window !== 'undefined'
-   ? apiForServer
-   : apiForLocal;
+    ? apiForServer
+    : apiForLocal;
 
-  return userApi.post('/auth/logout', {}, { withCredentials: true });
+  return userApi.post(apiRoutes.AUTH_LOGOUT, {}, { withCredentials: true });
 }
 
 function* logout() {
   try {
     const { status } = yield call(logoutAPI);
 
-    if(status === 200) yield put(succeedLogout());
+    if(status === 200) {
+      yield put(completeLogout());
+      yield put(closeUserMenu());
+    }
     else throw status;
   } catch (err) {
     console.error(err);
@@ -71,12 +81,12 @@ function* watchLogout() {
   yield takeLatest(
     LOG_OUT_REQUEST,
     logout
-  )
+  );
 }
 
 export default function* userSaga() {
   yield all([
     fork(watchLogin),
     fork(watchLogout),
-  ])
+  ]);
 }

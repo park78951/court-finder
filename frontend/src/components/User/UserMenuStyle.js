@@ -1,11 +1,12 @@
 import styled from 'styled-components';
+import { defaultTheme } from '@styles';
 
 const UserMenuWrapper = styled.div`
   position: absolute;
   right: -10px;
   margin-top: 1rem;
   width: 10rem;
-  background-color: #F5F5F5;
+  background-color: ${defaultTheme.BUTTON_BACKGROUND_FIRST};
   border-radius: 0.2rem;
   
   &:after {
@@ -13,7 +14,7 @@ const UserMenuWrapper = styled.div`
     position: absolute;
     border-style: solid;
     border-width: 0 16px 20px 17.5px;
-    border-color: #F5F5F5 transparent;
+    border-color: ${defaultTheme.BUTTON_BACKGROUND_FIRST} transparent;
     display: block;
     width: 0;
     z-index: 1;
@@ -31,7 +32,7 @@ const UserMenuWrapper = styled.div`
       width: 100%;
       height: 2.3rem;
       font-size: 1rem;
-      border-bottom: 1px solid #696969;
+      border-bottom: 1px solid ${defaultTheme.BORDERLINE_SECOND};
 
       & > div {
         display: flex;

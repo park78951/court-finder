@@ -21,11 +21,11 @@ const SidebarContainerView = () => {
     currentPage,
     userInput,
     filterInput
-  } = useSelector(({ courts }) => courts);
+  } = useSelector(({ court }) => court);
   const dispatch = useDispatch();
   const router = useRouter();
 
-  const changeCurrentPage = useCallback(({userInput, filterInput, page}) => {
+  const onChangePage = useCallback((page) => {
     dispatch(requestCourts({
       userInput, 
       filterInput,
@@ -38,8 +38,8 @@ const SidebarContainerView = () => {
       district: filterInput.district,
       page: page,
     });
-
-    router.push(searchRoute);
+    
+    router.push(`/search${searchRoute}`);
   }, [currentPage, userInput, filterInput]);
 
   return (
@@ -49,7 +49,7 @@ const SidebarContainerView = () => {
         {
           isError
             ? <Refetch />
-            : (searchedCourts.length <= 0 && !isSearching
+            : (searchedCourts.length === 0 && !isSearching
               ? <NoResult />
               : <CourtList />)
         }
@@ -57,12 +57,10 @@ const SidebarContainerView = () => {
       </Style.SideBarContentsWrapper>
       { searchedCourts.length > 0 && (
         <Pagination 
-          clickHandler={ changeCurrentPage }
-          totalCourts={ totalCourts }
-          { ...courtsPageConfig }
-          userInput={ userInput }
-          filterInput={ filterInput }
-          lastPage={ currentPage }
+          onChangePage={onChangePage}
+          totalCourts={totalCourts}
+          lastPage={currentPage}
+          {...courtsPageConfig}
         />
       ) }
     </>
