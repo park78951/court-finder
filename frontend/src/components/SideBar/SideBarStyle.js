@@ -12,6 +12,14 @@ const SideBarWrapper = styled.div`
   width: 380px;
   box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.5);
   margin-right: 1rem;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+	-webkit-transform: ${({ isSidebarHidden }) => isSidebarHidden 
+    ? 'translate3d(-100%, 0, 0)'
+    : 'translate3d(0, 0, 0)'};
+	transform: ${({ isSidebarHidden }) => isSidebarHidden 
+    ? 'translate3d(-100%, 0, 0)'
+    : 'translate3d(0, 0, 0)'};
 `;
 
 const SidebarToggler = styled.div`
@@ -20,13 +28,19 @@ const SidebarToggler = styled.div`
   left: 100%;
   z-index: 10;
   border: inherit;
+  box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.5);
 
   & > button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 1.6rem;
     height: 3rem;
     border: none;
     outline: none;
     background-color: white;
+    padding: 0;
+    cursor: pointer;
   }
 `;
 
