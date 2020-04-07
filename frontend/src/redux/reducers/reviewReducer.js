@@ -25,6 +25,7 @@ const uiReducers = (state = reviewState, { type, payload }) => {
 
     case LOAD_ALLREVIEWS_SUCCESS: {
       const { hasMoreReviews, allReviews } = payload;
+      
       return {
         ...state,
         allReviews: [...state.allReviews, ...allReviews],
@@ -130,7 +131,9 @@ const uiReducers = (state = reviewState, { type, payload }) => {
     }
 
     default: {
-      return state;
+      return {
+        ...state
+      };
     }
   }
 };

@@ -12,7 +12,7 @@ const DeleteReviewChecker = () => {
 
   const onClickDeleteBtn = () => {
     dispatch(requestDeletingMyReview(myReview.id));
-  }
+  };
 
   const onClickCacelBtn = () => {
     dispatch(closeReviewDeleter());

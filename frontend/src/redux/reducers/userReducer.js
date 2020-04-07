@@ -15,7 +15,7 @@ export default (state = userState, { type, payload} ) => {
       const { userId } = payload;
       return {
         ...state,
-        isLogginIn: true,
+        isLoggingIn: true,
         userId
       };
     }
@@ -25,7 +25,7 @@ export default (state = userState, { type, payload} ) => {
       return {
         ...state,
         nickname,
-        isLogginIn: false,
+        isLoggingIn: false,
         isLoggedIn: true,
       };
     }
@@ -33,7 +33,7 @@ export default (state = userState, { type, payload} ) => {
     case LOG_IN_FAILURE: {
       return {
         ...state,
-        isLogginIn: false,
+        isLoggingIn: false,
         errorMsg: payload,
       };
     }
@@ -74,7 +74,9 @@ export default (state = userState, { type, payload} ) => {
     }
     
     default: {
-      return state;
+      return {
+        ...state
+      };
     }
   }
 };

@@ -21,7 +21,7 @@ Review.getInitialProps = async context => {
     store.dispatch(requestCourt(query.id));
   }
   
-  if(store.getState().user.nickname || req.user) {
+  if(store.getState().user || req.user) {
     store.dispatch(requestMyReview({
       courtId: query.id,
     }));

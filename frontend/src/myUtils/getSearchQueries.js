@@ -9,4 +9,4 @@ export default (requestData) => {
   }, '?');
 
   return requestQuery;
-}
+};

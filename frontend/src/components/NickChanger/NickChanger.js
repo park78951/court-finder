@@ -54,12 +54,8 @@ const NickChanger = () => {
       />
       <div>
         { isValid
-          ? <p className='nickname__possible'>
-              이 닉네임은 사용 가능합니다.
-            </p>
-          : <p className='nickname__impossible'>
-              이 닉네임은 사용할 수 없습니다.
-            </p>
+          ? <p className='nickname__possible'>이 닉네임은 사용 가능합니다.</p>
+          : <p className='nickname__impossible'>이 닉네임은 사용할 수 없습니다.</p>
         }
       </div>
       <Button

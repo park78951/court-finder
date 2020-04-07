@@ -1,4 +1,4 @@
-const { logger } = require("./config/logConfig")
+const { logger } = require("./config/logConfig");
 
 const onStart = (message) => {
   logger.info(message);
@@ -14,4 +14,4 @@ const onSendingErrorMsg = (error) => {
 module.exports = {
   onSendingErrorMsg: onSendingErrorMsg,
   onStart: onStart
-}
+};

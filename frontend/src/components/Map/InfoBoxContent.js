@@ -13,6 +13,6 @@ const InfoBoxContent = ({ name, address }) => {
 InfoBoxContent.propTypes = {
   name: PropTypes.string.isRequired,
   address: PropTypes.string.isRequired,
-}
+};
 
 export default InfoBoxContent;

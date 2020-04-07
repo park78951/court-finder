@@ -6,3 +6,5 @@ export { default as getSearchQueries } from './getSearchQueries';
 export { default as checkValidString } from './checkValidString';
 export { default as getCacheKey } from './getCacheKey';
 export { default as cacheItem } from './cacheItem';
+export { default as loginByKakao } from './loginByKakao';
+export { default as asyncPipe } from './asyncPipe';

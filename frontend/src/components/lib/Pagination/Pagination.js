@@ -58,7 +58,7 @@ const Pagination = ({
       currentPage,
       numberOfItemsOnPage: numbersOnList,
       totalPageNumbers
-    })
+    });
     setCurrentPages(currentPageNumbers);
   }, [totalCourts, currentPage]);
 

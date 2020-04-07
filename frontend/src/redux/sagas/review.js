@@ -43,11 +43,11 @@ function* getAllReviews({ payload }) {
     if(response.status === 204) {
       yield put(completeAllReviews({
         hasMoreReviews: false,
-        allReviews: [],
+        reviews: [],
       }));
+    } else {
+      yield put(completeAllReviews(response.data));
     }
-
-    yield put(completeAllReviews(response.data));
   } catch (err) {
     console.error(err);
     put(failAllReviews(err));
@@ -83,9 +83,10 @@ function* getMyReview({ payload }) {
     
     if(response.status === 204) {
       yield put(completeMyReview(null));
+    } else {
+      yield put(completeMyReview(response.data));
     }
 
-    yield put(completeMyReview(response.data));
   } catch (err) {
     console.error(err);
     put(failMyReview(err));

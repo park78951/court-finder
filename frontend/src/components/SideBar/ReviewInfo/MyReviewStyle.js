@@ -39,4 +39,4 @@ const AddReviewBtn = styled.div`
   }
 `;
 
-export default { CommentsHeader, MyReview, AddReviewBtn }
+export default { CommentsHeader, MyReview, AddReviewBtn };

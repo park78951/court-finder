@@ -16,4 +16,4 @@ describe('test getBytesFromString', () => {
     expect(getBytesFromString(shortName)).toBe(9);
     expect(getBytesFromString(longName)).toBe(39);
   });
-})
+});

@@ -47,11 +47,11 @@ const NickChangerModal = styled.form`
   & input {
     width: 100%;
     border: 1px solid ${({ isValid }) => isValid 
-      ? `${defaultTheme.PASS_BORDER}` 
-      : `${defaultTheme.FAIL_BORDER}`};
+    ? `${defaultTheme.PASS_BORDER}` 
+    : `${defaultTheme.FAIL_BORDER}`};
     box-shadow: 0px 0px 3px 4px ${({ isValid }) => isValid 
-      ? `${defaultTheme.PASS_SHADOW}`
-      : `${defaultTheme.FAIL_SHADOW}`};
+    ? `${defaultTheme.PASS_SHADOW}`
+    : `${defaultTheme.FAIL_SHADOW}`};
     border-radius: 0.2rem;
     margin-bottom: 0.5rem;
     outline: none;
