@@ -96,8 +96,11 @@ const courtReducer = (state = courtState, { type, payload }) => {
         }
       };
 
-    default:
-      return state;
+    default: {
+      return {
+        ...state
+      };
+    }
   }
 };
 

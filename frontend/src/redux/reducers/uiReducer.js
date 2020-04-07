@@ -13,39 +13,44 @@ import { uiToggler } from './initialState';
 
 const uiReducers = (state = uiToggler, { type }) => {
   switch(type) {
-    case TOGGLE_SIDEBAR:
+    case TOGGLE_SIDEBAR: {
       return {
         ...state,
         isSidebarHidden: !state.isSidebarHidden
       };
+    }
 
-    case OPEN_NICKNAME_CHANGER:
+    case OPEN_NICKNAME_CHANGER: {
       return {
         ...state,
         isOpenNicknameChanger: true,
         isModalOpen: true,
       };
+    }
 
-    case CLOSE_NICKNAME_CHANGER:
+    case CLOSE_NICKNAME_CHANGER:{
       return {
         ...state,
         isOpenNicknameChanger: false,
         isModalOpen: false,
       };
+    }
 
-    case OPEN_ADD_REVIEW_FORM:
+    case OPEN_ADD_REVIEW_FORM: {
       return {
         ...state,
         isAddReviewFormOpen: true,
         isModalOpen: true,
       };
+    }
 
-    case CLOSE_ADD_REVIEW_FORM:
+    case CLOSE_ADD_REVIEW_FORM: {
       return {
         ...state,
         isAddReviewFormOpen: false,
         isModalOpen: false,
       };
+    }
       
     case TOGGLE_USER_MENU: {
       return {
@@ -77,8 +82,11 @@ const uiReducers = (state = uiToggler, { type }) => {
       };  
     }
     
-    default: 
-      return state;
+    default: {
+      return {
+        ...state
+      };
+    }
   }
 };
 

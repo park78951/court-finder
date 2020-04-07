@@ -1,4 +1,4 @@
-  module.exports = {
+module.exports = {
   apps : [{
     name: 'frontend',
     script: './server/index.js',

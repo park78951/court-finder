@@ -2,7 +2,8 @@
     "env": {
         "browser": true,
         "es6": true,
-        "node": true
+        "node": true,
+        "jest": true
     },
     "extends": [
         "eslint:recommended",
@@ -39,7 +40,8 @@
             "before"
         ],
         "no-case-declarations": "off",
-        "no-prototype-builtins": "off"
+        "no-prototype-builtins": "off",
+        "react/display-name": "off"
     },
     "parser": "babel-eslint"
 }

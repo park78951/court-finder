@@ -46,7 +46,7 @@ const ModalContainerView = ({
 ModalContainerView.propTypes = {
   isOpenNicknameChanger: PropTypes.bool,
   isAddReviewFormOpen: PropTypes.bool,
-  isDeleteReviewModalOpen: PropTypes.boll,
+  isDeleteReviewModalOpen: PropTypes.bool,
 };
 
 export default ModalContainerView;

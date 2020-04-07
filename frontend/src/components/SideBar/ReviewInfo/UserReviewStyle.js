@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import { defaultTheme } from '@styles';
 
 const UserReviewWrapper = styled.div`

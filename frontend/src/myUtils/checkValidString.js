@@ -1,4 +1,4 @@
-import getBytesFromString from './getBytesFromString'
+import getBytesFromString from './getBytesFromString';
 
 /**
  * 자음, 모음만 있는 한글 불가
@@ -9,13 +9,13 @@ export default (strValue, bytesLimit) => {
 
   let result = true;
   const inValidKorean = /[ㄱ-ㅎ|ㅏ-ㅣ]/; 
-  const specialChar = /[\{\}\[\]\/?.,;:|\)*~`!^\-+<>@\#$%&\\\=\(\'\"]/gi;
+  const specialChar = /[{}[\]/?.,;:|)*~`!^\-+<>@#$%&\\=('"]/gi;
   
   if(inValidKorean.test(strValue) 
       || specialChar.test(strValue)
       || getBytesFromString(strValue) > bytesLimit) {
-      result = false;
-    }
+    result = false;
+  }
     
   return result;
-}
+};

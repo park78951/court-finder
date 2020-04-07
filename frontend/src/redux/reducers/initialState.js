@@ -16,7 +16,7 @@ export const courtState = {
 export const uiToggler = {
   isSidebarHidden: false,
   isOpenNicknameChanger: false,
-  isAddFormOpen: false,
+  isAddReviewFormOpen: false,
   isUserMenuOpen: false,
   isDeleteReviewModalOpen: false,
   isModalOpen: false,
@@ -25,7 +25,7 @@ export const uiToggler = {
 export const userState = {
   userId: null,
   nickname: null,
-  isLogginIn: false,
+  isLoggingIn: false,
   isLoggedIn: false,
   isLogginOut: false,
   errorMsg: '',
@@ -42,6 +42,3 @@ export const reviewState = {
   hasMoreReviews: false,
   isLoading: false,
 };
-
-export const prevSearchItems = {};
-export const prevSearchItem = {};

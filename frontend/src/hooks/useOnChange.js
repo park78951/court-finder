@@ -5,9 +5,9 @@ const useOnChange = (value) => {
 
   const onChangeHandler = useCallback(({ target }) => {
     setState(target.value);
-  }, [state])
+  }, [state]);
 
-  return [state, onChangeHandler]
+  return [state, onChangeHandler];
 };
 
 export default useOnChange;

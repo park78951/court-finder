@@ -31,7 +31,7 @@ app.prepare().then(() => {
     return handle(req, res);
   });
 
-  server.use((err, req, res, next) => {
+  server.use((err) => {
     onSendingErrorMsg(err);
   });
 

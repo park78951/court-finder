@@ -10,10 +10,10 @@ const decodeJwt = (req, res, next) => {
     const decodedToken = jwt.verify(req.cookies.courtFinderJwt, secret);
 
     req.decoded = {
-        kakaoId: decodedToken.kakaoId,
-        nickname: decodedToken.nickname,
-        exp: decodedToken.exp
-    }
+      kakaoId: decodedToken.kakaoId,
+      nickname: decodedToken.nickname,
+      exp: decodedToken.exp
+    };
   } catch (error) {
     res.clearCookie('token', { path: '/' });
   }

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { interfaceStyles, defaultTheme } from '@styles';
+import { defaultTheme } from '@styles';
 
 const CommentsHeader = styled.div`
   padding: 0 15px;

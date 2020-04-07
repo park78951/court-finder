@@ -12,7 +12,7 @@ export default class MyDocument extends Document {
         helmetContext = app.helmetContext;
         return sheet.collectStyles(app);
       },
-      enhancePage: Page => page,
+      enhancePage: Page => Page,
     });
     const styleTags = sheet.getStyleElement();
 
